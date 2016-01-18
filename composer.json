@@ -1,7 +1,7 @@
 {
   "name": "gdbots/schemas",
   "homepage": "https://github.com/gdbots/schemas",
-  "description": "Base schemas for pbj messages.",
+  "description": "Schemas for common Gdbots apps and components.",
   "type": "pbj-schema-store",
   "license": "Apache-2.0",
   "require-dev": {

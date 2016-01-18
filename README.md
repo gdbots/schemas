@@ -1,4 +1,4 @@
 Gdbots Schemas
 ========
 
-Base schemas for pbj messages.
+Schemas for common Gdbots apps and components.
