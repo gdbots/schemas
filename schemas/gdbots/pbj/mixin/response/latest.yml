@@ -1,5 +1,5 @@
 id: 'pbj:gdbots:pbj:mixin:response:1-0-0'
-mixin: true
+is_mixin: true
 fields:
   response_id:
     type: uuid

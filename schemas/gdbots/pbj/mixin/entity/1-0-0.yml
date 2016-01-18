@@ -1,5 +1,5 @@
 id: 'pbj:gdbots:pbj:mixin:entity:1-0-0'
-mixin: true
+is_mixin: true
 fields:
   _id:
     type: identifier

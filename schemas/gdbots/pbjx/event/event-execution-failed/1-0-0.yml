@@ -1,0 +1,12 @@
+id: 'pbj:gdbots:pbjx:event:event-execution-failed:1-0-0'
+fields:
+  failed_event:
+    type: message
+    required: true
+    any_of: 'gdbots:pbj:mixin:event:v1'
+  reason:
+    type: text
+mixins:
+  - 'gdbots:pbj:mixin:event:v1'
+php_options:
+  namespace: 'Gdbots\Schemas\Pbjx\Event'

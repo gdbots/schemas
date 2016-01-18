@@ -1,5 +1,5 @@
 id: 'pbj:gdbots:pbj:mixin:command:1-0-0'
-mixin: true
+is_mixin: true
 fields:
   command_id:
     type: time-uuid
