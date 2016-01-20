@@ -3,7 +3,7 @@ fields:
   failed_event:
     type: message
     required: true
-    any_of: 'gdbots:pbj:mixin:event:v1'
+    any_of: 'gdbots:pbj:mixin:event'
   reason:
     type: text
 mixins:

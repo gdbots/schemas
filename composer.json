@@ -5,6 +5,10 @@
   "type": "pbj-schema-store",
   "license": "Apache-2.0",
   "require-dev": {
-    "php": ">=5.4"
+    "php": ">=5.4",
+    "gdbots/pbjc": "dev-master"
+  },
+  "autoload-dev": {
+    "files": ["register.php"]
   }
 }
