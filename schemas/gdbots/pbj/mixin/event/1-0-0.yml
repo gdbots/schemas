@@ -1,5 +1,5 @@
 id: 'pbj:gdbots:pbj:mixin:event:1-0-0'
-is_mixin: true
+mixin: true
 fields:
   event_id:
     type: time-uuid
