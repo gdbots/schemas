@@ -10,7 +10,7 @@
     </fields>
 
     <php_options>
-      <namespace>Gdbots\Schemas\Pbj\Response</namespace>
+      <namespace>Gdbots\Schemas\Pbj\Request</namespace>
     </php_options>
   </entity>
 </schema-mapping>
