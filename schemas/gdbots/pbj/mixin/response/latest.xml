@@ -2,10 +2,12 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <entity id="pbj:gdbots:pbj:mixin:response:1-0-0" mixin="true">
-    <field name="response_id" type="time-uuid" required="true" />
-    <field name="microtime" type="microtime" required="true" />
-    <field name="request_ref" type="message-ref" />
-    <field name="correlator" type="message-ref" />
+    <fields>
+      <field name="response_id" type="time-uuid" required="true" />
+      <field name="microtime" type="microtime" required="true" />
+      <field name="request_ref" type="message-ref" />
+      <field name="correlator" type="message-ref" />
+    </fields>
 
     <php_options>
       <namespace>Gdbots\Schemas\Pbj\Response</namespace>

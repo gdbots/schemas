@@ -2,13 +2,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <entity id="pbj:gdbots:pbjx:event:event-execution-failed:1-0-0">
-    <field name="failed_event" type="message" required="true">
-      <any_of>
-        <id>gdbots:pbj:mixin:event</id>
-      </any_of>
-    </field>
+    <fields>
+      <field name="failed_event" type="message" required="true">
+        <any_of>
+          <id>gdbots:pbj:mixin:event</id>
+        </any_of>
+      </field>
 
-    <field name="reason" type="text" />
+      <field name="reason" type="text" />
+    </fields>
 
     <mixins>
       <id>gdbots:pbj:mixin:event:v1</id>
