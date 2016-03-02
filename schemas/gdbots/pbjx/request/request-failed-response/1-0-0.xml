@@ -5,7 +5,7 @@
     <fields>
       <field name="failed_request" type="message" required="true">
         <any_of>
-          <id>gdbots:pbj:mixin:request</id>
+          <curie>gdbots:pbj:mixin:request</curie>
         </any_of>
       </field>
 
@@ -13,7 +13,7 @@
     </fields>
 
     <mixins>
-      <id>gdbots:pbj:mixin:response:v1</id>
+      <curie_major>gdbots:pbj:mixin:response:v1</curie_major>
     </mixins>
 
     <php_options>

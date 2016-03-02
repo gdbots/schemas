@@ -23,6 +23,25 @@
 
     <php_options>
       <namespace>Gdbots\Schemas\Pbj\Entity</namespace>
+      <insertion-points>
+        <imports>
+            <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+            <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->get('_id'), $tag);
+}
+            ]]>
+        </methods>
+      </insertion-points>
     </php_options>
   </entity>
 </schema-mapping>
