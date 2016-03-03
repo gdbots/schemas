@@ -1,0 +1,13 @@
+<schema-mapping xmlns="gdbots:pbjc:schema-mapping"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <entity id="pbj:gdbots:enrichments:mixin:user-agent-parser:1-0-0" mixin="true">
+    <fields>
+      <field name="user_agent" type="text" overridable="true" />
+    </fields>
+
+    <php_options>
+      <namespace>Gdbots\Schemas\Enrichments\UserAgentParser</namespace>
+    </php_options>
+  </entity>
+</schema-mapping>
