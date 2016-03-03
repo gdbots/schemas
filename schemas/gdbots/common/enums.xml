@@ -37,4 +37,4 @@
       <namespace>Gdbots\Schemas\Common\Enum</namespace>
     </php-options>
   </enums>
-</enums-mapping>
+</pbj-enums>
