@@ -1,7 +1,10 @@
-<schema-mapping xmlns="gdbots:pbjc:schema-mapping"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8" ?>
 
-  <entity id="pbj:gdbots:enrichments:mixin:time-parting:1-0-0" mixin="true">
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:enrichments:mixin:time-parting:1-0-0" mixin="true">
     <fields>
       <field name="month_of_year" type="int-enum">
         <enum id="gdbots:common:month" />
@@ -13,8 +16,8 @@
       <field name="hour_of_day" type="tiny-int" max="23" />
     </fields>
 
-    <php_options>
+    <php-options>
       <namespace>Gdbots\Schemas\Enrichments\TimeParting</namespace>
-    </php_options>
-  </entity>
-</schema-mapping>
+    </php-options>
+  </schema>
+</pbj-schema>

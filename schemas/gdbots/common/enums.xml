@@ -2,7 +2,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <enums namespace="gdbots:common">
-    <enum name="day-of-week">
+    <enum name="day-of-week" type="int">
       <option key="UNKNOWN" value="0" />
       <option key="SUNDAY" value="0" />
       <option key="MONDAY" value="1" />
@@ -14,7 +14,7 @@
       <option key="SUNDAY_TOO" value="7" />
     </enum>
 
-    <enum name="month">
+    <enum name="month" type="int">
       <option key="UNKNOWN" value="0" />
       <option key="JANUARY" value="1" />
       <option key="FEBRUARY" value="2" />
@@ -30,8 +30,8 @@
       <option key="DECEMBER" value="12" />
     </enum>
 
-    <php_options>
+    <php-options>
       <namespace>Gdbots\Schemas\Common\Enum</namespace>
-    </php_options>
+    </php-options>
   </enums>
 </enums-mapping>

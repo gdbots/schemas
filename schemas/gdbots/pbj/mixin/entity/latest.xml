@@ -1,10 +1,13 @@
-<schema-mapping xmlns="gdbots:pbjc:schema-mapping"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8" ?>
 
-  <entity id="pbj:gdbots:pbj:mixin:entity:1-0-1" mixin="true">
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:pbj:mixin:entity:1-0-1" mixin="true">
     <fields>
       <field name="_id" type="identifier" required="true" overridable="true">
-        <php_options>
+        <php-options>
           <class_name>Gdbots\Identifiers\UuidIdentifier</class_name>
           <default>
             <![CDATA[
@@ -13,7 +16,7 @@
               }
             ]]>
           </default>
-        </php_options>
+        </php-options>
       </field>
 
       <field name="etag" type="string" pattern="^[A-Za-z0-9_\-]+$" max="100" />
@@ -21,7 +24,7 @@
       <field name="updated_at" type="microtime" use_type_default="false" />
     </fields>
 
-    <php_options>
+    <php-options>
       <namespace>Gdbots\Schemas\Pbj\Entity</namespace>
       <insertion-points>
         <imports>
@@ -42,6 +45,6 @@ public function generateMessageRef($tag = null)
             ]]>
         </methods>
       </insertion-points>
-    </php_options>
-  </entity>
-</schema-mapping>
+    </php-options>
+  </schema>
+</pbj-schema>

@@ -1,14 +1,17 @@
-<schema-mapping xmlns="gdbots:pbjc:schema-mapping"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8" ?>
 
-  <entity id="pbj:gdbots:pbj:mixin:event:1-0-0" mixin="true">
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:pbj:mixin:event:1-0-0" mixin="true">
     <fields>
       <field name="event_id" type="time-uuid" required="true" />
       <field name="microtime" type="microtime" required="true" />
       <field name="correlator" type="message-ref" />
     </fields>
 
-    <php_options>
+    <php-options>
       <namespace>Gdbots\Schemas\Pbj\Event</namespace>
       <insertion-points>
         <imports>
@@ -40,6 +43,6 @@ public function getUriTemplateVars()
             ]]>
         </methods>
       </insertion-points>
-    </php_options>
-  </entity>
-</schema-mapping>
+    </php-options>
+  </schema>
+</pbj-schema>

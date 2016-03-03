@@ -1,13 +1,16 @@
-<schema-mapping xmlns="gdbots:pbjc:schema-mapping"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8" ?>
 
-  <entity id="pbj:gdbots:enrichments:mixin:ip-to-geo:1-0-0" mixin="true">
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:enrichments:mixin:ip-to-geo:1-0-0" mixin="true">
     <fields>
       <field name="ipv4" type="string" format="ipv4" overridable="true" />
     </fields>
 
-    <php_options>
+    <php-options>
       <namespace>Gdbots\Schemas\Enrichments\IpToGeo</namespace>
-    </php_options>
-  </entity>
-</schema-mapping>
+    </php-options>
+  </schema>
+</pbj-schema>
