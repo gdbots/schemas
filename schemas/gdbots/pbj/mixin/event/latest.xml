@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:pbj:mixin:event:1-0-1" mixin="true">
+    <fields>
+      <field name="event_id" type="time-uuid" required="true" />
+      <field name="microtime" type="microtime" required="true" />
+      <field name="causator" type="message-ref" />
+      <field name="correlator" type="message-ref" />
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Pbj\Event</namespace>
+      <insertion-points>
+        <imports>
+            <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+            <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->get('event_id'), $tag);
+}
+
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return [
+        'event_id' => (string)$this->get('event_id'),
+        'microtime' => (string)$this->get('microtime'),
+    ];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>
