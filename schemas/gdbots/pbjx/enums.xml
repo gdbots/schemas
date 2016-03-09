@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-enums xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/enums.xsd">
+
+  <enums namespace="gdbots:pbjx">
+    <enum name="code" type="int">
+      <option key="OK" value="0"/>
+      <option key="CANCELLED" value="1"/>
+      <option key="UNKNOWN" value="2"/>
+      <option key="INVALID_ARGUMENT" value="3"/>
+      <option key="DEADLINE_EXCEEDED" value="4"/>
+      <option key="NOT_FOUND" value="5"/>
+      <option key="ALREADY_EXISTS" value="6"/>
+      <option key="PERMISSION_DENIED" value="7"/>
+      <option key="UNAUTHENTICATED" value="16"/>
+      <option key="RESOURCE_EXHAUSTED" value="8"/>
+      <option key="FAILED_PRECONDITION" value="9"/>
+      <option key="ABORTED" value="10"/>
+      <option key="OUT_OF_RANGE" value="11"/>
+      <option key="UNIMPLEMENTED" value="12"/>
+      <option key="INTERNAL" value="13"/>
+      <option key="UNAVAILABLE" value="14"/>
+      <option key="DATA_LOSS" value="15"/>
+    </enum>
+
+    <enum name="http-status-code" type="int">
+      <option key="UNKNOWN" value="0"/>
+    </enum>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Pbjx\Enum</namespace>
+    </php-options>
+  </enums>
+</pbj-enums>

@@ -4,11 +4,35 @@
   "description": "Schemas for common Gdbots apps and components.",
   "type": "pbj-schema-store",
   "license": "Apache-2.0",
-  "require-dev": {
+  "require": {
     "php": ">=5.6",
+    "gdbots/pbj": "dev-aws3 as dev-master"
+  },
+  "require-dev": {
+    "composer/composer": "1.0.*@dev",
+    "phpunit/phpunit": "~4.3",
     "gdbots/pbjc": "dev-master"
   },
+  "autoload": {
+    "psr-0": {
+      "": "src/php"
+    }
+  },
   "autoload-dev": {
-    "files": ["register.php"]
+    "files": ["pbj-schemas.php", "pbj-schema-stores.php"],
+    "psr-0": {
+      "": "tests/php"
+    }
+  },
+  "scripts": {
+    "post-package-install": [
+      "Gdbots\\Pbjc\\Composer\\ScriptHandler::writePbjSchemaStoresFile"
+    ],
+    "post-package-uninstall": [
+      "Gdbots\\Pbjc\\Composer\\ScriptHandler::writePbjSchemaStoresFile"
+    ],
+    "post-package-update": [
+      "Gdbots\\Pbjc\\Composer\\ScriptHandler::writePbjSchemaStoresFile"
+    ]
   }
 }

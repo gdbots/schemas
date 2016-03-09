@@ -1,0 +1,9 @@
+namespaces:
+  - gdbots:common
+  - gdbots:enrichments
+  - gdbots:pbjx
+
+languages:
+  php:
+    output: ./src/php
+    manifest: ./pbj-schemas.php
