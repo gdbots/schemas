@@ -16,7 +16,6 @@
         <default>0</default>
         <php-options>
           <default>Code::OK()</default>
-          <classname>Gdbots\Schemas\Pbjx\Enum\Code</classname>
         </php-options>
       </field>
 

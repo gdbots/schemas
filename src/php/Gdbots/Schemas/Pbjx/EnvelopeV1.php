@@ -29,7 +29,6 @@ final class EnvelopeV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('code', T\SmallIntType::create())
                     ->withDefault(Code::OK())
-                    ->className('Gdbots\Schemas\Pbjx\Enum\Code')
                     ->build(),
                 Fb::create('http_status_code', T\IntEnumType::create())
                     ->withDefault(HttpStatusCode::HTTP_OK())
