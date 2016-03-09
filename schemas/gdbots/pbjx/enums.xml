@@ -4,6 +4,8 @@
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/enums.xsd">
 
   <enums namespace="gdbots:pbjx">
+
+    <!-- @link https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto -->
     <enum name="code" type="int">
       <option key="OK" value="0"/>
       <option key="CANCELLED" value="1"/>
@@ -26,6 +28,68 @@
 
     <enum name="http-status-code" type="int">
       <option key="UNKNOWN" value="0"/>
+      <option key="HTTP_CONTINUE" value="100"/>
+      <option key="HTTP_SWITCHING_PROTOCOLS" value="101"/>
+      <option key="HTTP_PROCESSING" value="102"/>                                                  <!-- RFC2518 -->
+      <option key="HTTP_OK" value="200"/>
+      <option key="HTTP_CREATED" value="201"/>
+      <option key="HTTP_ACCEPTED" value="202"/>
+      <option key="HTTP_NON_AUTHORITATIVE_INFORMATION" value="203"/>
+      <option key="HTTP_NO_CONTENT" value="204"/>
+      <option key="HTTP_RESET_CONTENT" value="205"/>
+      <option key="HTTP_PARTIAL_CONTENT" value="206"/>
+      <option key="HTTP_MULTI_STATUS" value="207"/>                                                <!-- RFC4918 -->
+      <option key="HTTP_ALREADY_REPORTED" value="208"/>                                            <!-- RFC5842 -->
+      <option key="HTTP_IM_USED" value="226"/>                                                     <!-- RFC3229 -->
+      <option key="HTTP_MULTIPLE_CHOICES" value="300"/>
+      <option key="HTTP_MOVED_PERMANENTLY" value="301"/>
+      <option key="HTTP_FOUND" value="302"/>
+      <option key="HTTP_SEE_OTHER" value="303"/>
+      <option key="HTTP_NOT_MODIFIED" value="304"/>
+      <option key="HTTP_USE_PROXY" value="305"/>
+      <option key="HTTP_RESERVED" value="306"/>
+      <option key="HTTP_TEMPORARY_REDIRECT" value="307"/>
+      <option key="HTTP_PERMANENTLY_REDIRECT" value="308"/>                                        <!-- RFC7238 -->
+      <option key="HTTP_BAD_REQUEST" value="400"/>
+      <option key="HTTP_UNAUTHORIZED" value="401"/>
+      <option key="HTTP_PAYMENT_REQUIRED" value="402"/>
+      <option key="HTTP_FORBIDDEN" value="403"/>
+      <option key="HTTP_NOT_FOUND" value="404"/>
+      <option key="HTTP_METHOD_NOT_ALLOWED" value="405"/>
+      <option key="HTTP_NOT_ACCEPTABLE" value="406"/>
+      <option key="HTTP_PROXY_AUTHENTICATION_REQUIRED" value="407"/>
+      <option key="HTTP_REQUEST_TIMEOUT" value="408"/>
+      <option key="HTTP_CONFLICT" value="409"/>
+      <option key="HTTP_GONE" value="410"/>
+      <option key="HTTP_LENGTH_REQUIRED" value="411"/>
+      <option key="HTTP_PRECONDITION_FAILED" value="412"/>
+      <option key="HTTP_REQUEST_ENTITY_TOO_LARGE" value="413"/>
+      <option key="HTTP_REQUEST_URI_TOO_LONG" value="414"/>
+      <option key="HTTP_UNSUPPORTED_MEDIA_TYPE" value="415"/>
+      <option key="HTTP_REQUESTED_RANGE_NOT_SATISFIABLE" value="416"/>
+      <option key="HTTP_EXPECTATION_FAILED" value="417"/>
+      <option key="HTTP_I_AM_A_TEAPOT" value="418"/>                                               <!-- RFC2324 -->
+      <option key="HTTP_UNPROCESSABLE_ENTITY" value="422"/>                                        <!-- RFC4918 -->
+      <option key="HTTP_LOCKED" value="423"/>                                                      <!-- RFC4918 -->
+      <option key="HTTP_FAILED_DEPENDENCY" value="424"/>                                           <!-- RFC4918 -->
+      <option key="HTTP_RESERVED_FOR_WEBDAV_ADVANCED_COLLECTIONS_EXPIRED_PROPOSAL" value="425"/>   <!-- RFC2817 -->
+      <option key="HTTP_UPGRADE_REQUIRED" value="426"/>                                            <!-- RFC2817 -->
+      <option key="HTTP_PRECONDITION_REQUIRED" value="428"/>                                       <!-- RFC6585 -->
+      <option key="HTTP_TOO_MANY_REQUESTS" value="429"/>                                           <!-- RFC6585 -->
+      <option key="HTTP_CLIENT_CLOSED_REQUEST" value="499"/>
+      <option key="HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE" value="431"/>                             <!-- RFC6585 -->
+      <option key="HTTP_UNAVAILABLE_FOR_LEGAL_REASONS" value="451"/>
+      <option key="HTTP_INTERNAL_SERVER_ERROR" value="500"/>
+      <option key="HTTP_NOT_IMPLEMENTED" value="501"/>
+      <option key="HTTP_BAD_GATEWAY" value="502"/>
+      <option key="HTTP_SERVICE_UNAVAILABLE" value="503"/>
+      <option key="HTTP_GATEWAY_TIMEOUT" value="504"/>
+      <option key="HTTP_VERSION_NOT_SUPPORTED" value="505"/>
+      <option key="HTTP_VARIANT_ALSO_NEGOTIATES_EXPERIMENTAL" value="506"/>                        <!-- RFC2295 -->
+      <option key="HTTP_INSUFFICIENT_STORAGE" value="507"/>                                        <!-- RFC4918 -->
+      <option key="HTTP_LOOP_DETECTED" value="508"/>                                               <!-- RFC5842 -->
+      <option key="HTTP_NOT_EXTENDED" value="510"/>                                                <!-- RFC2774 -->
+      <option key="HTTP_NETWORK_AUTHENTICATION_REQUIRED" value="511"/>                             <!-- RFC6585 -->
     </enum>
 
     <php-options>
