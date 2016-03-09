@@ -30,7 +30,7 @@ final class RequestFailedResponseV1 extends AbstractMessage implements
                     ->className('Gdbots\Schemas\Pbjx\Request\Request')
                     ->build(),
                 Fb::create('error_code', T\SmallIntType::create())
-                    ->withDefault(Code::OK())
+                    ->withDefault(Code::OK)
                     ->build(),
                 Fb::create('error_name', T\StringType::create())
                     ->pattern('/^[A-Za-z0-9_\.:-]+$/')
