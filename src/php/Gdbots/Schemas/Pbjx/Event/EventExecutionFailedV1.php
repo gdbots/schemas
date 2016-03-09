@@ -7,9 +7,6 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Pbjx\Enum\Code;
-use Gdbots\Schemas\Pbjx\Event\EventV1;
-use Gdbots\Schemas\Pbjx\Event\EventV1Mixin;
-use Gdbots\Schemas\Pbjx\Event\EventV1Trait;
 
 final class EventExecutionFailedV1 extends AbstractMessage implements
     EventExecutionFailed,

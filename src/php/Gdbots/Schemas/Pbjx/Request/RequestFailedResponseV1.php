@@ -7,9 +7,6 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Pbjx\Enum\Code;
-use Gdbots\Schemas\Pbjx\Request\ResponseV1;
-use Gdbots\Schemas\Pbjx\Request\ResponseV1Mixin;
-use Gdbots\Schemas\Pbjx\Request\ResponseV1Trait;
 
 final class RequestFailedResponseV1 extends AbstractMessage implements
     RequestFailedResponse,
