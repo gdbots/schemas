@@ -5,8 +5,6 @@ namespace Gdbots\Schemas\Pbjx\Enum;
 use Gdbots\Common\Enum;
 
 /**
- * @link https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
- *
  * @method static Code OK()
  * @method static Code CANCELLED()
  * @method static Code UNKNOWN()

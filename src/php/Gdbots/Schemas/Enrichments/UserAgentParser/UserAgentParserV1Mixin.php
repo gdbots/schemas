@@ -25,7 +25,7 @@ final class UserAgentParserV1Mixin extends AbstractMixin
         return [
             Fb::create('user_agent', T\TextType::create())
                 ->overridable(true)
-                ->build(),
+                ->build()
         ];
     }
 }

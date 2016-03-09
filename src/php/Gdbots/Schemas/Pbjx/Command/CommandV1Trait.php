@@ -19,7 +19,7 @@ trait CommandV1Trait
     {
         return new MessageRef(static::schema()->getCurie(), $this->get('command_id'), $tag);
     }
-
+    
     /**
      * @return array
      */

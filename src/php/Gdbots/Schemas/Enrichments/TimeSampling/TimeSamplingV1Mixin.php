@@ -28,7 +28,7 @@ final class TimeSamplingV1Mixin extends AbstractMixin
             Fb::create('ts_ymd', T\IntType::create())
                 ->build(),
             Fb::create('ts_ym', T\MediumIntType::create())
-                ->build(),
+                ->build()
         ];
     }
 }

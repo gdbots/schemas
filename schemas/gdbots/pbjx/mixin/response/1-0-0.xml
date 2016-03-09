@@ -4,16 +4,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:pbj:mixin:command:1-0-1" mixin="true">
+  <schema id="pbj:gdbots:pbjx:mixin:response:1-0-0" mixin="true">
     <fields>
-      <field name="command_id" type="time-uuid" required="true" />
+      <field name="response_id" type="uuid" required="true" />
       <field name="microtime" type="microtime" required="true" />
+      <field name="request_ref" type="message-ref" />
       <field name="correlator" type="message-ref" />
-      <field name="retries" type="tiny-int" />
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Pbj\Command</namespace>
+      <namespace>Gdbots\Schemas\Pbjx\Request</namespace>
       <insertion-points>
         <imports>
             <![CDATA[
@@ -28,15 +28,16 @@ use Gdbots\Pbj\MessageRef;
  */
 public function generateMessageRef($tag = null)
 {
-    return new MessageRef(static::schema()->getCurie(), $this->get('command_id'), $tag);
+    return new MessageRef(static::schema()->getCurie(), $this->get('response_id'), $tag);
 }
+
 /**
  * @return array
  */
 public function getUriTemplateVars()
 {
     return [
-        'command_id' => (string)$this->get('command_id'),
+        'response_id' => (string)$this->get('response_id'),
         'microtime' => (string)$this->get('microtime'),
     ];
 }

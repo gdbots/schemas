@@ -32,7 +32,7 @@ final class EventV1Mixin extends AbstractMixin
             Fb::create('causator', T\MessageRefType::create())
                 ->build(),
             Fb::create('correlator', T\MessageRefType::create())
-                ->build(),
+                ->build()
         ];
     }
 }

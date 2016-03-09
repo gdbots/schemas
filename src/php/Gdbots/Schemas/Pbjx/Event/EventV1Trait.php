@@ -19,7 +19,7 @@ trait EventV1Trait
     {
         return new MessageRef(static::schema()->getCurie(), $this->get('event_id'), $tag);
     }
-
+    
     /**
      * @return array
      */

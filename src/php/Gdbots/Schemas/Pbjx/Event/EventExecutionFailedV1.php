@@ -7,8 +7,14 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Pbjx\Enum\Code;
+use Gdbots\Schemas\Pbjx\Event\EventV1;
+use Gdbots\Schemas\Pbjx\Event\EventV1Mixin;
+use Gdbots\Schemas\Pbjx\Event\EventV1Trait;
 
-final class EventExecutionFailedV1 extends AbstractMessage implements EventExecutionFailed, EventV1
+final class EventExecutionFailedV1 extends AbstractMessage implements
+    EventExecutionFailed,
+    EventV1
+  
 {
     use EventV1Trait;
 
@@ -23,14 +29,15 @@ final class EventExecutionFailedV1 extends AbstractMessage implements EventExecu
                     ->required()
                     ->className('Gdbots\Schemas\Pbjx\Event\Event')
                     ->build(),
-                Fb::create('error_code', T\SmallIntType::create())
-                    ->withDefault(Code::OK)
+                Fb::create('error_code', T\IntEnumType::create())
+                    ->withDefault(Code::OK())
+                    ->className('Gdbots\Schemas\Pbjx\Enum\Code')
                     ->build(),
                 Fb::create('error_name', T\StringType::create())
-                    ->pattern('^[A-Za-z0-9_\.:-]+$')
+                    ->pattern('/^[A-Za-z0-9_\.:-]+$/')
                     ->build(),
                 Fb::create('error_message', T\TextType::create())
-                    ->build(),
+                    ->build()
             ],
             [
                 EventV1Mixin::create()

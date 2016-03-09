@@ -27,7 +27,7 @@ final class IpToGeoV1Mixin extends AbstractMixin
             Fb::create('ipv4', T\StringType::create())
                 ->format(Format::IPV4())
                 ->overridable(true)
-                ->build(),
+                ->build()
         ];
     }
 }

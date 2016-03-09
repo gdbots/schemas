@@ -4,15 +4,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:pbj:mixin:event:1-0-0" mixin="true">
+  <schema id="pbj:gdbots:pbjx:mixin:event:1-0-0" mixin="true">
     <fields>
       <field name="event_id" type="time-uuid" required="true" />
       <field name="microtime" type="microtime" required="true" />
+      <field name="causator" type="message-ref" />
       <field name="correlator" type="message-ref" />
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Pbj\Event</namespace>
+      <namespace>Gdbots\Schemas\Pbjx\Event</namespace>
       <insertion-points>
         <imports>
             <![CDATA[

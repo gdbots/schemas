@@ -19,7 +19,7 @@ trait RequestV1Trait
     {
         return new MessageRef(static::schema()->getCurie(), $this->get('request_id'), $tag);
     }
-
+    
     /**
      * @return array
      */

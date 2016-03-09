@@ -32,7 +32,7 @@ final class RequestV1Mixin extends AbstractMixin
             Fb::create('correlator', T\MessageRefType::create())
                 ->build(),
             Fb::create('retries', T\TinyIntType::create())
-                ->build(),
+                ->build()
         ];
     }
 }

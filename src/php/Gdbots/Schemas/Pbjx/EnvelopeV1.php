@@ -10,8 +10,10 @@ use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Pbjx\Enum\Code;
 use Gdbots\Schemas\Pbjx\Enum\HttpStatusCode;
 
-final class EnvelopeV1 extends AbstractMessage implements Envelope
+final class EnvelopeV1 extends AbstractMessage implements
+    Envelope
 {
+
     /**
      * @return Schema
      */
@@ -25,19 +27,20 @@ final class EnvelopeV1 extends AbstractMessage implements Envelope
                 Fb::create('ok', T\BooleanType::create())
                     ->withDefault(true)
                     ->build(),
-                Fb::create('code', T\SmallIntType::create())
-                    ->withDefault(Code::OK)
+                Fb::create('code', T\IntEnumType::create())
+                    ->withDefault(Code::OK())
+                    ->className('Gdbots\Schemas\Pbjx\Enum\Code')
                     ->build(),
                 Fb::create('http_status_code', T\IntEnumType::create())
-                    ->className('Gdbots\Schemas\Pbjx\Enum\HttpStatusCode')
                     ->withDefault(HttpStatusCode::HTTP_OK())
+                    ->className('Gdbots\Schemas\Pbjx\Enum\HttpStatusCode')
                     ->build(),
                 Fb::create('etag', T\StringType::create())
-                    ->pattern('/^[A-Za-z0-9_\-]+$/')
                     ->maxLength(100)
+                    ->pattern('/^[A-Za-z0-9_\-]+$/')
                     ->build(),
                 Fb::create('error_name', T\StringType::create())
-                    ->pattern('^[A-Za-z0-9_\.:-]+$')
+                    ->pattern('/^[A-Za-z0-9_\.:-]+$/')
                     ->build(),
                 Fb::create('error_message', T\TextType::create())
                     ->build(),
@@ -45,7 +48,7 @@ final class EnvelopeV1 extends AbstractMessage implements Envelope
                     ->build(),
                 Fb::create('message', T\MessageType::create())
                     ->className('Gdbots\Pbj\Message')
-                    ->build(),
+                    ->build()
             ]
         );
     }
@@ -58,7 +61,7 @@ final class EnvelopeV1 extends AbstractMessage implements Envelope
     {
         return new MessageRef(static::schema()->getCurie(), $this->get('envelope_id'), $tag);
     }
-
+    
     /**
      * @return array
      */

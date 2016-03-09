@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:pbjx::envelope:1-0-0">
+    <fields>
+      <field name="envelope_id" type="uuid" required="true" />
+      <field name="ok" type="boolean">
+        <default>true</default>
+      </field>
+
+      <field name="code" type="int-enum">
+        <default>ok</default>
+        <enum id="gdbots:pbjx:code" />
+      </field>
+
+      <field name="http_status_code" type="int-enum">
+        <default>http_ok</default>
+        <enum id="gdbots:pbjx:http-status-code" />
+      </field>
+
+      <field name="etag" type="string" pattern="^[A-Za-z0-9_\-]+$" max="100" />
+      <field name="error_name" type="string" pattern="^[A-Za-z0-9_\.:-]+$" />
+      <field name="error_message" type="text" />
+      <field name="message_ref" type="message-ref" />
+
+      <field name="message" type="message">
+        <php-options>
+          <classname>Gdbots\Pbj\Message</classname>
+        </php-options>
+      </field>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Pbjx</namespace>
+      <insertion-points>
+        <imports>
+            <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+            <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->get('envelope_id'), $tag);
+}
+
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return ['envelope_id' => (string)$this->get('envelope_id')];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>
