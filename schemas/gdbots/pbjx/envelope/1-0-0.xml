@@ -11,9 +11,12 @@
         <default>true</default>
       </field>
 
-      <field name="code" type="int-enum">
-        <default>ok</default>
-        <enum id="gdbots:pbjx:code" />
+      <field name="code" type="small-int">
+        <default>0</default>
+        <php-options>
+          <default>Code::OK()</default>
+          <classname>Gdbots\Schemas\Pbjx\Enum\Code</classname>
+        </php-options>
       </field>
 
       <field name="http_status_code" type="int-enum">
@@ -39,6 +42,7 @@
         <imports>
             <![CDATA[
 use Gdbots\Pbj\MessageRef;
+use Gdbots\Schemas\Pbjx\Enum\Code;
             ]]>
         </imports>
         <methods>

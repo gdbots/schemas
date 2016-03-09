@@ -12,9 +12,12 @@
         </any-of>
       </field>
 
-      <field name="error_code" type="int-enum">
-        <default>ok</default>
-        <enum id="gdbots:pbjx:code" />
+      <field name="error_code" type="small-int">
+        <default>0</default>
+        <php-options>
+          <default>Code::OK()</default>
+          <classname>Gdbots\Schemas\Pbjx\Enum\Code</classname>
+        </php-options>
       </field>
 
       <field name="error_name" type="string" pattern="^[A-Za-z0-9_\.:-]+$" />
@@ -27,6 +30,14 @@
 
     <php-options>
       <namespace>Gdbots\Schemas\Pbjx\Event</namespace>
+      <insertion-points>
+        <imports>
+            <![CDATA[
+use Gdbots\Schemas\Pbjx\Enum\Code;
+            ]]>
+        </imports>
+        <methods/>
+      </insertion-points>
     </php-options>
   </schema>
 </pbj-schema>

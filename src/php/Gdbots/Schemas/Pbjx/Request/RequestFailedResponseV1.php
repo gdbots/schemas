@@ -29,7 +29,7 @@ final class RequestFailedResponseV1 extends AbstractMessage implements
                     ->required()
                     ->className('Gdbots\Schemas\Pbjx\Request\Request')
                     ->build(),
-                Fb::create('error_code', T\IntEnumType::create())
+                Fb::create('error_code', T\SmallIntType::create())
                     ->withDefault(Code::OK())
                     ->className('Gdbots\Schemas\Pbjx\Enum\Code')
                     ->build(),

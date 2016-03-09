@@ -27,7 +27,7 @@ final class EnvelopeV1 extends AbstractMessage implements
                 Fb::create('ok', T\BooleanType::create())
                     ->withDefault(true)
                     ->build(),
-                Fb::create('code', T\IntEnumType::create())
+                Fb::create('code', T\SmallIntType::create())
                     ->withDefault(Code::OK())
                     ->className('Gdbots\Schemas\Pbjx\Enum\Code')
                     ->build(),
