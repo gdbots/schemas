@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <pbj-schema xmlns="http://gdbots.io/pbj/xsd"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
@@ -19,8 +18,8 @@
         </php-options>
       </field>
 
-      <field name="error_name" type="string" pattern="^[A-Za-z0-9_\.:-]+$" />
-      <field name="error_message" type="text" />
+      <field name="error_name" type="string" pattern="^[A-Za-z0-9_\.:-]+$"/>
+      <field name="error_message" type="text"/>
     </fields>
 
     <mixins>
@@ -31,7 +30,7 @@
       <namespace>Gdbots\Schemas\Pbjx\Request</namespace>
       <insertion-points>
         <imports>
-            <![CDATA[
+          <![CDATA[
 use Gdbots\Schemas\Pbjx\Enum\Code;
             ]]>
         </imports>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <pbj-schema xmlns="http://gdbots.io/pbj/xsd"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
@@ -7,13 +6,13 @@
   <schema id="pbj:gdbots:enrichments:mixin:time-parting:1-0-0" mixin="true">
     <fields>
       <field name="month_of_year" type="int-enum">
-        <enum id="gdbots:common:month" />
+        <enum id="gdbots:common:month"/>
       </field>
-      <field name="day_of_month" type="tiny-int" max="31" />
+      <field name="day_of_month" type="tiny-int" max="31"/>
       <field name="day_of_week" type="int-enum">
-        <enum id="gdbots:common:day-of-week" />
+        <enum id="gdbots:common:day-of-week"/>
       </field>
-      <field name="hour_of_day" type="tiny-int" max="23" />
+      <field name="hour_of_day" type="tiny-int" max="23"/>
     </fields>
 
     <php-options>
