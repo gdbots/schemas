@@ -30,7 +30,7 @@ final class EventExecutionFailedV1 extends AbstractMessage implements
                     ->withDefault(Code::OK)
                     ->build(),
                 Fb::create('error_name', T\StringType::create())
-                    ->pattern('/^[A-Za-z0-9_\.:-]+$/')
+                    ->pattern('^[A-Za-z0-9_\.:-]+$')
                     ->build(),
                 Fb::create('error_message', T\TextType::create())
                     ->build()

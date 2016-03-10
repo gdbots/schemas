@@ -36,10 +36,10 @@ final class EnvelopeV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('etag', T\StringType::create())
                     ->maxLength(100)
-                    ->pattern('/^[A-Za-z0-9_\-]+$/')
+                    ->pattern('^[A-Za-z0-9_\-]+$')
                     ->build(),
                 Fb::create('error_name', T\StringType::create())
-                    ->pattern('/^[A-Za-z0-9_\.:-]+$/')
+                    ->pattern('^[A-Za-z0-9_\.:-]+$')
                     ->build(),
                 Fb::create('error_message', T\TextType::create())
                     ->build(),
