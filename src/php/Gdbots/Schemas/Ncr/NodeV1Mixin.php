@@ -25,7 +25,7 @@ final class NodeV1Mixin extends AbstractMixin
     {
         return [
           
-            /**
+            /*
              * The "_id" value:
              * - MUST never change for the life of the node.
              * - SHOULD be globally unique
@@ -38,7 +38,7 @@ final class NodeV1Mixin extends AbstractMixin
                 ->overridable(true)
                 ->build(),
           
-            /**
+            /*
              * The "slug" value:
              * - MUST be url friendly
              * - SHOULD not be case sensitive
@@ -48,7 +48,7 @@ final class NodeV1Mixin extends AbstractMixin
                 ->format(Format::SLUG())
                 ->build(),
           
-            /**
+            /*
              * Status is intentionally not an enum to allow for customizations.
              * There is however a gdbots:ncr:node-status enum.
              */
