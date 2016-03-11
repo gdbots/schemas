@@ -46,8 +46,10 @@ final class NodeV1Mixin extends AbstractMixin
                 ->required()
                 ->build(),
             Fb::create('updated_at', T\MicrotimeType::create())
+                ->useTypeDefault(false)
                 ->build(),
             Fb::create('published_at', T\MicrotimeType::create())
+                ->useTypeDefault(false)
                 ->build()
         ];
     }
