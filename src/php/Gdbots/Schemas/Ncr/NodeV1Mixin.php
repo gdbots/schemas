@@ -33,6 +33,11 @@ final class NodeV1Mixin extends AbstractMixin
             Fb::create('slug', T\StringType::create())
                 ->format(Format::SLUG())
                 ->build(),
+            Fb::create('status', T\StringType::create())
+                ->pattern('^[A-Za-z0-9_\-]+$')
+                ->withDefault("draft")
+                ->overridable(true)
+                ->build(),
             Fb::create('etag', T\StringType::create())
                 ->maxLength(100)
                 ->pattern('^[A-Za-z0-9_\-]+$')
@@ -41,6 +46,8 @@ final class NodeV1Mixin extends AbstractMixin
                 ->required()
                 ->build(),
             Fb::create('updated_at', T\MicrotimeType::create())
+                ->build(),
+            Fb::create('published_at', T\MicrotimeType::create())
                 ->build()
         ];
     }
