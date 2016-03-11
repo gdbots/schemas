@@ -1,6 +1,7 @@
 namespaces:
   - gdbots:common
   - gdbots:enrichments
+  - gdbots:ncr
   - gdbots:pbjx
 
 languages:
