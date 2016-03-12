@@ -3,7 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/enums.xsd">
 
-  <!-- fixme: this enum  won't generate, pbjc throws errors -->
   <enums namespace="gdbots:ncr">
     <enum name="node-status" type="string">
       <option key="UNKNOWN" value="unknown"/>
