@@ -24,7 +24,6 @@ final class NodeV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-          
             /*
              * The "_id" value:
              * - MUST never change for the life of the node.
@@ -43,7 +42,7 @@ final class NodeV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('etag', T\StringType::create())
                 ->maxLength(100)
-                ->pattern('^[A-Za-z0-9_\.:-]+$')
+                ->pattern('^[\w\.:-]+$')
                 ->build(),
             Fb::create('created_at', T\MicrotimeType::create())
                 ->required()

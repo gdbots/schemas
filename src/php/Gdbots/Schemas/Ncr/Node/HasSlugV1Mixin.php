@@ -24,7 +24,6 @@ final class HasSlugV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-          
             /*
              * The "slug" is a secondary identifier, typically used in a url:
              * - MUST be url friendly

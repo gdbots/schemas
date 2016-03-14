@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:ncr:mixin:has-dated-slug:1-0-0" mixin="true" extends="gdbots:ncr:mixin:node:v1">
     <fields>
-      <field name="slug" type="string" format="dated-slug">
+      <field name="slug" type="string" format="slug">
         <description>
           <![CDATA[
             The "slug" is a secondary identifier, typically used in a url:

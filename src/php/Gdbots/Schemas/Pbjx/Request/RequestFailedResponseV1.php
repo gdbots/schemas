@@ -30,7 +30,7 @@ final class RequestFailedResponseV1 extends AbstractMessage implements
                     ->withDefault(Code::OK)
                     ->build(),
                 Fb::create('error_name', T\StringType::create())
-                    ->pattern('^[A-Za-z0-9\/_\.:-]+$')
+                    ->pattern('^[\w\/\.:-]+$')
                     ->build(),
                 Fb::create('error_message', T\TextType::create())
                     ->build()

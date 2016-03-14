@@ -24,7 +24,6 @@ final class HasDatedSlugV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-          
             /*
              * The "slug" is a secondary identifier, typically used in a url:
              * - MUST be url friendly
@@ -32,7 +31,7 @@ final class HasDatedSlugV1Mixin extends AbstractMixin
              * - SHOULD be unique within the message curie namespace
              */
             Fb::create('slug', T\StringType::create())
-                ->format(Format::DATED-SLUG())
+                ->format(Format::SLUG())
                 ->build()
         ];
     }
