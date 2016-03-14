@@ -25,7 +25,7 @@
       <option key="DATA_LOSS" value="15"/>
     </enum>
 
-    <enum name="http-status-code" type="int">
+    <enum name="http-code" type="int">
       <option key="UNKNOWN" value="0"/>
       <option key="HTTP_CONTINUE" value="100"/>
       <option key="HTTP_SWITCHING_PROTOCOLS" value="101"/>

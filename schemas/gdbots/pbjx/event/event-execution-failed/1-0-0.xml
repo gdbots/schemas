@@ -18,7 +18,7 @@
         </php-options>
       </field>
 
-      <field name="error_name" type="string" pattern="^[A-Za-z0-9_\.:-]+$"/>
+      <field name="error_name" type="string" pattern="^[A-Za-z0-9\/_\.:-]+$"/>
       <field name="error_message" type="text"/>
     </fields>
 

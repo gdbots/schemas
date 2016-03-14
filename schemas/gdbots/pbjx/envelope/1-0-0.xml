@@ -17,13 +17,13 @@
         </php-options>
       </field>
 
-      <field name="http_status_code" type="int-enum">
+      <field name="http_code" type="int-enum">
         <default>http_ok</default>
-        <enum id="gdbots:pbjx:http-status-code"/>
+        <enum id="gdbots:pbjx:http-code"/>
       </field>
 
-      <field name="etag" type="string" pattern="^[A-Za-z0-9_\-]+$" max="100"/>
-      <field name="error_name" type="string" pattern="^[A-Za-z0-9_\.:-]+$"/>
+      <field name="etag" type="string" pattern="^[A-Za-z0-9_\.:-]+$" max="100"/>
+      <field name="error_name" type="string" pattern="^[A-Za-z0-9\/_\.:-]+$"/>
       <field name="error_message" type="text"/>
       <field name="message_ref" type="message-ref"/>
 

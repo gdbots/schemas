@@ -1,6 +1,6 @@
 <?php
 
-namespace Gdbots\Schemas\Ncr;
+namespace Gdbots\Schemas\Ncr\Node;
 
 use Gdbots\Pbj\Message;
 

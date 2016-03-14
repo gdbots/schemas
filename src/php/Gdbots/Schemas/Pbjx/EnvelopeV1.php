@@ -8,7 +8,7 @@ use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Pbjx\Enum\Code;
-use Gdbots\Schemas\Pbjx\Enum\HttpStatusCode;
+use Gdbots\Schemas\Pbjx\Enum\HttpCode;
 
 final class EnvelopeV1 extends AbstractMessage implements
     Envelope
@@ -30,16 +30,16 @@ final class EnvelopeV1 extends AbstractMessage implements
                 Fb::create('code', T\SmallIntType::create())
                     ->withDefault(Code::OK)
                     ->build(),
-                Fb::create('http_status_code', T\IntEnumType::create())
-                    ->withDefault(HttpStatusCode::HTTP_OK())
-                    ->className('Gdbots\Schemas\Pbjx\Enum\HttpStatusCode')
+                Fb::create('http_code', T\IntEnumType::create())
+                    ->withDefault(HttpCode::HTTP_OK())
+                    ->className('Gdbots\Schemas\Pbjx\Enum\HttpCode')
                     ->build(),
                 Fb::create('etag', T\StringType::create())
                     ->maxLength(100)
-                    ->pattern('^[A-Za-z0-9_\-]+$')
+                    ->pattern('^[A-Za-z0-9_\.:-]+$')
                     ->build(),
                 Fb::create('error_name', T\StringType::create())
-                    ->pattern('^[A-Za-z0-9_\.:-]+$')
+                    ->pattern('^[A-Za-z0-9\/_\.:-]+$')
                     ->build(),
                 Fb::create('error_message', T\TextType::create())
                     ->build(),
