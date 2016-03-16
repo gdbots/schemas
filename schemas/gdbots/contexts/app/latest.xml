@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:contexts::app:1-0-0">
+    <fields>
+      <field name="_id" type="uuid" use-type-default="false"/>
+      <field name="vendor" type="string" pattern="^[a-z0-9-]+$" max="50"/>
+      <field name="name" type="string" pattern="^[a-z0-9\.-]+$" max="50"/>
+      <field name="version" type="string" pattern="^[\w\.-]+$" max="10"/>
+      <field name="build" type="string" pattern="^[\w\.-]+$" max="50"/>
+      <field name="variant" type="string" pattern="^[\w\.-]+$" max="10"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Contexts</namespace>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->get('_id'), $tag);
+}
+
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return ['app_id' => (string)$this->get('_id')];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>

@@ -10,6 +10,11 @@
       <field name="causator" type="message-ref"/>
       <field name="correlator" type="message-ref"/>
       <field name="retries" type="tiny-int"/>
+      <field name="app" type="message">
+        <any-of>
+          <curie>gdbots:contexts::app</curie>
+        </any-of>
+      </field>
     </fields>
 
     <php-options>

@@ -34,6 +34,9 @@ final class CommandV1Mixin extends AbstractMixin
             Fb::create('correlator', T\MessageRefType::create())
                 ->build(),
             Fb::create('retries', T\TinyIntType::create())
+                ->build(),
+            Fb::create('app', T\MessageType::create())
+                ->className('Gdbots\Schemas\Contexts\App')
                 ->build()
         ];
     }

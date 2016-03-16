@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:geo::address:1-0-0">
+    <fields>
+      <field name="geo_hash" type="string" pattern="^\w+$" max="20"/>
+      <field name="geo_location" type="geo-point"/>
+      <field name="street1" type="string"/>
+      <field name="street2" type="string" max="20"/>
+      <field name="po_box" type="string" max="20"/>
+      <field name="city" type="string"/>
+      <field name="province" type="string"/>
+      <field name="postal_code" type="string" pattern="^[\w\s-]+$" max="30"/>
+      <field name="country" type="string" pattern="^[A-Z]{2}$"/>
+      <field name="continent" type="string"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Geo</namespace>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->get('geo_hash'), $tag);
+}
+
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return [
+        'geo_hash' => (string)$this->get('geo_hash'),
+        'geo_location' => (string)$this->get('geo_location'),
+    ];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>

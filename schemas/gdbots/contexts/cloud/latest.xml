@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:contexts::cloud:1-0-0">
+    <fields>
+      <field name="provider" type="string" format="slug" max="20"/>
+      <field name="region" type="string" format="slug" max="20"/>
+      <field name="zone" type="string" format="slug" max="20"/>
+      <field name="instance_id" type="string" format="slug" max="50"/>
+      <field name="instance_type" type="string" format="slug" max="20"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Contexts</namespace>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->generateEtag(), $tag);
+}
+
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return [
+      'provider' => (string)$this->get('provider'),
+      'region' => (string)$this->get('region'),
+      'zone' => (string)$this->get('zone'),
+      'instance_id' => (string)$this->get('instance_id'),
+      'instance_type' => (string)$this->get('instance_type'),
+    ];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>
