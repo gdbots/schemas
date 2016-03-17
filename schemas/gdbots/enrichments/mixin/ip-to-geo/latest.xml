@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:enrichments:mixin:ip-to-geo:1-0-0" mixin="true">
     <fields>
-      <field name="ipv4" type="string" format="ipv4" overridable="true"/>
+      <field name="ip" type="string" format="ipv4" overridable="true"/>
     </fields>
 
     <php-options>

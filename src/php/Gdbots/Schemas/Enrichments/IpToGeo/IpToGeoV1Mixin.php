@@ -24,7 +24,7 @@ final class IpToGeoV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('ipv4', T\StringType::create())
+            Fb::create('ip', T\StringType::create())
                 ->format(Format::IPV4())
                 ->overridable(true)
                 ->build()
