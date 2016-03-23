@@ -34,11 +34,11 @@ final class CloudV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('instance_id', T\StringType::create())
                     ->maxLength(50)
-                    ->format(Format::SLUG())
+                    ->pattern('^[\w\.-]+$')
                     ->build(),
                 Fb::create('instance_type', T\StringType::create())
                     ->maxLength(20)
-                    ->format(Format::SLUG())
+                    ->pattern('^[\w\.-]+$')
                     ->build()
             ]
         );
@@ -59,11 +59,11 @@ final class CloudV1 extends AbstractMessage implements
     public function getUriTemplateVars()
     {
         return [
-          'provider' => (string)$this->get('provider'),
-          'region' => (string)$this->get('region'),
-          'zone' => (string)$this->get('zone'),
-          'instance_id' => (string)$this->get('instance_id'),
-          'instance_type' => (string)$this->get('instance_type'),
+          'provider' => $this->get('provider'),
+          'region' => $this->get('region'),
+          'zone' => $this->get('zone'),
+          'instance_id' => $this->get('instance_id'),
+          'instance_type' => $this->get('instance_type'),
         ];
     }
 }

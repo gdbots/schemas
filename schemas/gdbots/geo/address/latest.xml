@@ -6,12 +6,23 @@
   <schema id="pbj:gdbots:geo::address:1-0-0">
     <fields>
       <field name="geo_hash" type="string" pattern="^\w+$" max="20"/>
-      <field name="geo_location" type="geo-point"/>
+      <field name="geo_point" type="geo-point"/>
+      <field name="verified" type="boolean"/>
       <field name="street1" type="string"/>
       <field name="street2" type="string" max="20"/>
       <field name="po_box" type="string" max="20"/>
-      <field name="city" type="string"/>
-      <field name="province" type="string"/>
+      <field name="city" type="string" max="100"/>
+      <field name="region" type="string" pattern="^[A-Z0-9]{2}$">
+        <description>
+          A two letter alpha or numeric code indicating the region, e.g. "CA".
+          @link http://www.maxmind.com/download/geoip/misc/region_codes.csv
+        </description>
+      </field>
+      <field name="region_name" type="string" max="150">
+        <description>
+          The full name of the region, e.g. "California".
+        </description>
+      </field>
       <field name="postal_code" type="string" pattern="^[\w\s-]+$" max="30"/>
       <field name="country" type="string" pattern="^[A-Z]{2}$"/>
       <field name="continent" type="string"/>
@@ -42,8 +53,8 @@ public function generateMessageRef($tag = null)
 public function getUriTemplateVars()
 {
     return [
-        'geo_hash' => (string)$this->get('geo_hash'),
-        'geo_location' => (string)$this->get('geo_location'),
+        'geo_hash' => $this->get('geo_hash'),
+        'geo_point' => (string)$this->get('geo_point'),
     ];
 }
             ]]>

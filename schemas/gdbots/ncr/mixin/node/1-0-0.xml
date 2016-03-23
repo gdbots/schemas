@@ -25,8 +25,11 @@
 
       <field name="etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
       <field name="created_at" type="microtime" required="true"/>
+      <field name="created_by" type="message-ref"/>
       <field name="updated_at" type="microtime" use-type-default="false"/>
+      <field name="updated_by" type="message-ref"/>
       <field name="published_at" type="microtime" use-type-default="false"/>
+      <field name="expires_at" type="timestamp" use-type-default="false"/>
       <field name="title" type="string"/>
     </fields>
 

@@ -10,6 +10,7 @@ use Gdbots\Common\Enum;
  * @method static NodeStatus DRAFT()
  * @method static NodeStatus PENDING()
  * @method static NodeStatus EXPIRED()
+ * @method static NodeStatus ARCHIVED()
  * @method static NodeStatus DELETED()
  */
 final class NodeStatus extends Enum
@@ -19,5 +20,6 @@ final class NodeStatus extends Enum
     const DRAFT = 'draft';
     const PENDING = 'pending';
     const EXPIRED = 'expired';
+    const ARCHIVED = 'archived';
     const DELETED = 'deleted';
 }

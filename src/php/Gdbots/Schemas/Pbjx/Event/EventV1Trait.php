@@ -26,8 +26,10 @@ trait EventV1Trait
     public function getUriTemplateVars()
     {
         return [
+            'stream_id' => (string)$this->get('stream_id'),
             'event_id' => (string)$this->get('event_id'),
-            'microtime' => (string)$this->get('microtime'),
+            'occurred_at' => (string)$this->get('occurred_at'),
+            'ctx_user_ref' => (string)$this->get('ctx_user_ref'),
         ];
     }
 }

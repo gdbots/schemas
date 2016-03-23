@@ -27,7 +27,7 @@ trait ResponseV1Trait
     {
         return [
             'response_id' => (string)$this->get('response_id'),
-            'microtime' => (string)$this->get('microtime'),
+            'created_at' => (string)$this->get('created_at'),
         ];
     }
 }

@@ -27,7 +27,7 @@ trait RequestV1Trait
     {
         return [
             'request_id' => (string)$this->get('request_id'),
-            'microtime' => (string)$this->get('microtime'),
+            'occurred_at' => (string)$this->get('occurred_at'),
         ];
     }
 }

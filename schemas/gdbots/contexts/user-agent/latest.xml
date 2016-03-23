@@ -3,13 +3,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:contexts::cloud:1-0-0">
+  <schema id="pbj:gdbots:contexts::user-agent:1-0-0">
     <fields>
-      <field name="provider" type="string" format="slug" max="20"/>
-      <field name="region" type="string" format="slug" max="20"/>
-      <field name="zone" type="string" format="slug" max="20"/>
-      <field name="instance_id" type="string" pattern="^[\w\.-]+$" max="50"/>
-      <field name="instance_type" type="string" pattern="^[\w\.-]+$" max="20"/>
+      <field name="br_family" type="string" pattern="^[\w\s\(\)\[\]\{\}\/\.:;-]+$"/>
+      <field name="br_major" type="small-int"/>
+      <field name="br_minor" type="small-int"/>
+      <field name="br_patch" type="small-int"/>
+
+      <field name="os_family" type="string" pattern="^[\w\s\(\)\[\]\{\}\/\.:;-]+$"/>
+      <field name="os_major" type="small-int"/>
+      <field name="os_minor" type="small-int"/>
+      <field name="os_patch" type="small-int"/>
+      <field name="os_patch_minor" type="small-int"/>
+
+      <field name="device_family" type="string" pattern="^[\w\s\(\)\[\]\{\}\/\.:;-]+$"/>
     </fields>
 
     <php-options>
@@ -36,13 +43,7 @@ public function generateMessageRef($tag = null)
  */
 public function getUriTemplateVars()
 {
-    return [
-      'provider' => $this->get('provider'),
-      'region' => $this->get('region'),
-      'zone' => $this->get('zone'),
-      'instance_id' => $this->get('instance_id'),
-      'instance_type' => $this->get('instance_type'),
-    ];
+    return ['ua_hash' => $this->generateEtag()];
 }
             ]]>
         </methods>

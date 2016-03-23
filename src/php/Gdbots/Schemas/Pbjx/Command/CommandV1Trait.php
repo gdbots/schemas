@@ -26,8 +26,10 @@ trait CommandV1Trait
     public function getUriTemplateVars()
     {
         return [
+            'stream_id' => (string)$this->get('stream_id'),
             'command_id' => (string)$this->get('command_id'),
-            'microtime' => (string)$this->get('microtime'),
+            'occurred_at' => (string)$this->get('occurred_at'),
+            'ctx_user' => (string)$this->get('ctx_user'),
         ];
     }
 }

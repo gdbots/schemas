@@ -10,6 +10,7 @@
       <option key="DRAFT" value="draft"/>
       <option key="PENDING" value="pending"/>
       <option key="EXPIRED" value="expired"/>
+      <option key="ARCHIVED" value="archived"/>
       <option key="DELETED" value="deleted"/>
     </enum>
 

@@ -26,10 +26,10 @@ final class RequestV1Mixin extends AbstractMixin
             Fb::create('request_id', T\UuidType::create())
                 ->required()
                 ->build(),
-            Fb::create('microtime', T\MicrotimeType::create())
+            Fb::create('occurred_at', T\MicrotimeType::create())
                 ->required()
                 ->build(),
-            Fb::create('correlator', T\MessageRefType::create())
+            Fb::create('correlator_ref', T\MessageRefType::create())
                 ->build(),
             Fb::create('retries', T\TinyIntType::create())
                 ->build()

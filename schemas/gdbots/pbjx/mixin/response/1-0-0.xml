@@ -6,9 +6,9 @@
   <schema id="pbj:gdbots:pbjx:mixin:response:1-0-0" mixin="true">
     <fields>
       <field name="response_id" type="uuid" required="true"/>
-      <field name="microtime" type="microtime" required="true"/>
+      <field name="created_at" type="microtime" required="true"/>
       <field name="request_ref" type="message-ref"/>
-      <field name="correlator" type="message-ref"/>
+      <field name="correlator_ref" type="message-ref"/>
     </fields>
 
     <php-options>
@@ -37,7 +37,7 @@ public function getUriTemplateVars()
 {
     return [
         'response_id' => (string)$this->get('response_id'),
-        'microtime' => (string)$this->get('microtime'),
+        'created_at' => (string)$this->get('created_at'),
     ];
 }
             ]]>

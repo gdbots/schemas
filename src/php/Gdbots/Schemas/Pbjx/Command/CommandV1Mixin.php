@@ -3,6 +3,7 @@
 namespace Gdbots\Schemas\Pbjx\Command;
 
 use Gdbots\Pbj\AbstractMixin;
+use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
@@ -23,20 +24,55 @@ final class CommandV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
+            /*
+             * The "stream_id" can be used to provide sequential ordering of messages.
+             * It is still up to the transports and consumers to handle the ordering and
+             * the sequence can only be reliable within the stream_id.
+             */
+            Fb::create('stream_id', T\IdentifierType::create())
+                ->className('Gdbots\Schemas\Pbjx\StreamId')
+                ->overridable(true)
+                ->build(),
             Fb::create('command_id', T\TimeUuidType::create())
                 ->required()
                 ->build(),
-            Fb::create('microtime', T\MicrotimeType::create())
+            Fb::create('occurred_at', T\MicrotimeType::create())
                 ->required()
                 ->build(),
-            Fb::create('causator', T\MessageRefType::create())
+            /*
+             * The "ctx_retries" field is used to keep track of how many attempts were
+             * made to process this command. In some cases, the service or transport
+             * that handles the command may be down or an optimistic check has failed
+             * and is being retried.
+             */
+            Fb::create('ctx_retries', T\TinyIntType::create())
                 ->build(),
-            Fb::create('correlator', T\MessageRefType::create())
+            Fb::create('ctx_causator_ref', T\MessageRefType::create())
                 ->build(),
-            Fb::create('retries', T\TinyIntType::create())
+            Fb::create('ctx_correlator_ref', T\MessageRefType::create())
                 ->build(),
-            Fb::create('app', T\MessageType::create())
+            Fb::create('ctx_user_ref', T\MessageRefType::create())
+                ->build(),
+            /*
+             * The "ctx_app" refers to the application used to send the command which
+             * in turn resulted in this event being published.
+             */
+            Fb::create('ctx_app', T\MessageType::create())
                 ->className('Gdbots\Schemas\Contexts\App')
+                ->build(),
+            /*
+             * The "ctx_cloud" is set by the server receiving the command and is generally
+             * only used internally for tracking and performance monitoring.
+             */
+            Fb::create('ctx_cloud', T\MessageType::create())
+                ->className('Gdbots\Schemas\Contexts\Cloud')
+                ->build(),
+            Fb::create('ctx_ip', T\StringType::create())
+                ->format(Format::IPV4())
+                ->overridable(true)
+                ->build(),
+            Fb::create('ctx_ua', T\TextType::create())
+                ->overridable(true)
                 ->build()
         ];
     }

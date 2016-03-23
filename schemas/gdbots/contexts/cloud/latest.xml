@@ -8,8 +8,8 @@
       <field name="provider" type="string" format="slug" max="20"/>
       <field name="region" type="string" format="slug" max="20"/>
       <field name="zone" type="string" format="slug" max="20"/>
-      <field name="instance_id" type="string" format="slug" max="50"/>
-      <field name="instance_type" type="string" format="slug" max="20"/>
+      <field name="instance_id" type="string" pattern="^[\w\.-]+$" max="50"/>
+      <field name="instance_type" type="string" pattern="^[\w\.-]+$" max="20"/>
     </fields>
 
     <php-options>
@@ -37,11 +37,11 @@ public function generateMessageRef($tag = null)
 public function getUriTemplateVars()
 {
     return [
-      'provider' => (string)$this->get('provider'),
-      'region' => (string)$this->get('region'),
-      'zone' => (string)$this->get('zone'),
-      'instance_id' => (string)$this->get('instance_id'),
-      'instance_type' => (string)$this->get('instance_type'),
+      'provider' => $this->get('provider'),
+      'region' => $this->get('region'),
+      'zone' => $this->get('zone'),
+      'instance_id' => $this->get('instance_id'),
+      'instance_type' => $this->get('instance_type'),
     ];
 }
             ]]>

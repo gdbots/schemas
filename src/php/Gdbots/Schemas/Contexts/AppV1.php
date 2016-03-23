@@ -60,6 +60,13 @@ final class AppV1 extends AbstractMessage implements
      */
     public function getUriTemplateVars()
     {
-        return ['app_id' => (string)$this->get('_id')];
+        return [
+          'app_id' => (string)$this->get('_id'),
+          'vendor' => $this->get('vendor'),
+          'name' => $this->get('name'),
+          'version' => $this->get('version'),
+          'build' => $this->get('build'),
+          'variant' => $this->get('variant'),
+        ];
     }
 }

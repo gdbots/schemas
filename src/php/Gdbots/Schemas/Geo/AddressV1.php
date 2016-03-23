@@ -23,7 +23,9 @@ final class AddressV1 extends AbstractMessage implements
                     ->maxLength(20)
                     ->pattern('^\w+$')
                     ->build(),
-                Fb::create('geo_location', T\GeoPointType::create())
+                Fb::create('geo_point', T\GeoPointType::create())
+                    ->build(),
+                Fb::create('verified', T\BooleanType::create())
                     ->build(),
                 Fb::create('street1', T\StringType::create())
                     ->build(),
@@ -34,8 +36,20 @@ final class AddressV1 extends AbstractMessage implements
                     ->maxLength(20)
                     ->build(),
                 Fb::create('city', T\StringType::create())
+                    ->maxLength(100)
                     ->build(),
-                Fb::create('province', T\StringType::create())
+                /*
+                 * A two letter alpha or numeric code indicating the region, e.g. "CA".
+                 * @link http://www.maxmind.com/download/geoip/misc/region_codes.csv
+                 */
+                Fb::create('region', T\StringType::create())
+                    ->pattern('^[A-Z0-9]{2}$')
+                    ->build(),
+                /*
+                 * The full name of the region, e.g. "California".
+                 */
+                Fb::create('region_name', T\StringType::create())
+                    ->maxLength(150)
                     ->build(),
                 Fb::create('postal_code', T\StringType::create())
                     ->maxLength(30)
@@ -65,8 +79,8 @@ final class AddressV1 extends AbstractMessage implements
     public function getUriTemplateVars()
     {
         return [
-            'geo_hash' => (string)$this->get('geo_hash'),
-            'geo_location' => (string)$this->get('geo_location'),
+            'geo_hash' => $this->get('geo_hash'),
+            'geo_point' => (string)$this->get('geo_point'),
         ];
     }
 }
