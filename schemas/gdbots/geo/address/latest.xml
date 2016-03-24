@@ -7,7 +7,7 @@
     <fields>
       <field name="geo_hash" type="string" pattern="^\w+$" max="20"/>
       <field name="geo_point" type="geo-point"/>
-      <field name="verified" type="boolean"/>
+      <field name="is_verified" type="boolean"/>
       <field name="street1" type="string"/>
       <field name="street2" type="string" max="20"/>
       <field name="po_box" type="string" max="20"/>

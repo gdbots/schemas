@@ -29,7 +29,7 @@ trait CommandV1Trait
             'stream_id' => (string)$this->get('stream_id'),
             'command_id' => (string)$this->get('command_id'),
             'occurred_at' => (string)$this->get('occurred_at'),
-            'ctx_user' => (string)$this->get('ctx_user'),
+            'ctx_user_ref' => (string)$this->get('ctx_user_ref'),
         ];
     }
 }

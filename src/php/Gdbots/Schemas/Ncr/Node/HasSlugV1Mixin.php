@@ -27,7 +27,7 @@ final class HasSlugV1Mixin extends AbstractMixin
             /*
              * The "slug" is a secondary identifier, typically used in a url:
              * - MUST be url friendly
-             * - SHOULD not be case sensitive
+             * - SHOULD NOT be case sensitive
              * - SHOULD be unique within the message curie namespace
              */
             Fb::create('slug', T\StringType::create())

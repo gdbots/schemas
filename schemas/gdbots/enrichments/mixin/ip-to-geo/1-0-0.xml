@@ -5,8 +5,8 @@
 
   <schema id="pbj:gdbots:enrichments:mixin:ip-to-geo:1-0-0" mixin="true">
     <fields>
-      <field name="actor_ip" type="string" format="ipv4" overridable="true"/>
-      <field name="actor_ip_geo" type="message">
+      <field name="ctx_ip" type="string" format="ipv4" overridable="true"/>
+      <field name="ctx_ip_geo" type="message">
         <any-of>
           <curie>gdbots:geo::address</curie>
         </any-of>

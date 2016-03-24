@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:pbjx:mixin:event:1-0-0" mixin="true">
+  <schema id="pbj:gdbots:pbjx:mixin:command:1-0-0" mixin="true">
     <fields>
       <field name="stream_id" type="identifier" overridable="true">
         <description>
@@ -17,10 +17,10 @@
       </field>
       <field name="event_id" type="time-uuid" required="true"/>
       <field name="occurred_at" type="microtime" required="true"/>
-      <field name="causator_ref" type="message-ref"/>
-      <field name="correlator_ref" type="message-ref"/>
-      <field name="user_ref" type="message-ref"/>
-      <field name="user_app" type="message">
+      <field name="ctx_causator_ref" type="message-ref"/>
+      <field name="ctx_correlator_ref" type="message-ref"/>
+      <field name="ctx_user_ref" type="message-ref"/>
+      <field name="ctx_app" type="message">
         <description>
           The "ctx_app" refers to the application used to send the command which
           in turn resulted in this event being published.
@@ -29,8 +29,8 @@
           <curie>gdbots:contexts::app</curie>
         </any-of>
       </field>
-      <field name="user_ip" type="string" format="ipv4" overridable="true"/>
-      <field name="user_agent" type="text" overridable="true"/>
+      <field name="ctx_ip" type="string" format="ipv4" overridable="true"/>
+      <field name="ctx_ua" type="text" overridable="true"/>
     </fields>
 
     <php-options>
