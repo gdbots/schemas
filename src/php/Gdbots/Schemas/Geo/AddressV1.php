@@ -25,7 +25,7 @@ final class AddressV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('geo_point', T\GeoPointType::create())
                     ->build(),
-                Fb::create('verified', T\BooleanType::create())
+                Fb::create('is_verified', T\BooleanType::create())
                     ->build(),
                 Fb::create('street1', T\StringType::create())
                     ->build(),

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:mixin:edge:1-0-0" mixin="true">
+    <fields>
+      <field name="from_ref" type="message-ref" required="true"/>
+      <field name="to_ref" type="message-ref" required="true"/>
+      <field name="multiplicity" type="string-enum" overridable="true">
+        <default>multi</default>
+        <enum id="gdbots:ncr:edge-multiplicity"/>
+      </field>
+      <field name="created_at" type="microtime" required="true"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Edge</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

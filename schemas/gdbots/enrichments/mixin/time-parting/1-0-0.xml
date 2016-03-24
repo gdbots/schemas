@@ -12,6 +12,7 @@
       <field name="day_of_week" type="int-enum">
         <enum id="gdbots:common:day-of-week"/>
       </field>
+      <field name="is_weekend" type="boolean"/>
       <field name="hour_of_day" type="tiny-int" max="23"/>
     </fields>
 

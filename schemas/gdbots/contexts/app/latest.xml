@@ -29,7 +29,7 @@ use Gdbots\Pbj\MessageRef;
  */
 public function generateMessageRef($tag = null)
 {
-    return new MessageRef(static::schema()->getCurie(), $this->get('_id'), $tag);
+    return new MessageRef(static::schema()->getCurie(), $this->get('_id') ?: $this->generateEtag(), $tag);
 }
 
 /**

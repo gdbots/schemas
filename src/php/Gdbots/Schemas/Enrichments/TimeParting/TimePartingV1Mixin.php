@@ -36,6 +36,8 @@ final class TimePartingV1Mixin extends AbstractMixin
                 ->withDefault(DayOfWeek::UNKNOWN())
                 ->className('Gdbots\Schemas\Common\Enum\DayOfWeek')
                 ->build(),
+            Fb::create('is_weekend', T\BooleanType::create())
+                ->build(),
             Fb::create('hour_of_day', T\TinyIntType::create())
                 ->max(23)
                 ->build()

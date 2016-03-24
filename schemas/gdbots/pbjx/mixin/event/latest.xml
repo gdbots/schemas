@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:pbjx:mixin:command:1-0-0" mixin="true">
+  <schema id="pbj:gdbots:pbjx:mixin:event:1-0-0" mixin="true">
     <fields>
       <field name="stream_id" type="identifier" overridable="true">
         <description>

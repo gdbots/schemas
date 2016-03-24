@@ -52,7 +52,7 @@ final class AppV1 extends AbstractMessage implements
      */
     public function generateMessageRef($tag = null)
     {
-        return new MessageRef(static::schema()->getCurie(), $this->get('_id'), $tag);
+        return new MessageRef(static::schema()->getCurie(), $this->get('_id') ?: $this->generateEtag(), $tag);
     }
     
     /**

@@ -54,8 +54,9 @@ final class CommandV1Mixin extends AbstractMixin
             Fb::create('ctx_user_ref', T\MessageRefType::create())
                 ->build(),
             /*
-             * The "ctx_app" refers to the application used to send the command which
-             * in turn resulted in this event being published.
+             * The "ctx_app" refers to the application used to send the command. This is
+             * different from ctx_ua (user_agent) because the agent used (Safari, Firefox)
+             * is not necessarily the app used (cms, iOS app, website)
              */
             Fb::create('ctx_app', T\MessageType::create())
                 ->className('Gdbots\Schemas\Contexts\App')
