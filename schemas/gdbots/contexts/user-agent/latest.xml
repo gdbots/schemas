@@ -16,7 +16,7 @@
       <field name="os_patch" type="small-int"/>
       <field name="os_patch_minor" type="small-int"/>
 
-      <field name="device_family" type="string" pattern="^[\w\s\(\)\[\]\{\}\/\.:;-]+$"/>
+      <field name="dvce_family" type="string" pattern="^[\w\s\(\)\[\]\{\}\/\.:;-]+$"/>
     </fields>
 
     <php-options>

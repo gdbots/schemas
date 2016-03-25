@@ -31,6 +31,7 @@ final class EdgeV1Mixin extends AbstractMixin
                 ->required()
                 ->build(),
             Fb::create('multiplicity', T\StringEnumType::create())
+                ->required()
                 ->withDefault(EdgeMultiplicity::MULTI())
                 ->className('Gdbots\Schemas\Ncr\Enum\EdgeMultiplicity')
                 ->overridable(true)

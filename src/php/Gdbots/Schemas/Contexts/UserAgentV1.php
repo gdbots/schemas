@@ -39,7 +39,7 @@ final class UserAgentV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('os_patch_minor', T\SmallIntType::create())
                     ->build(),
-                Fb::create('device_family', T\StringType::create())
+                Fb::create('dvce_family', T\StringType::create())
                     ->pattern('^[\w\s\(\)\[\]\{\}\/\.:;-]+$')
                     ->build()
             ]
