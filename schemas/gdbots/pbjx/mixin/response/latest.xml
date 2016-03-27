@@ -7,8 +7,8 @@
     <fields>
       <field name="response_id" type="uuid" required="true"/>
       <field name="created_at" type="microtime" required="true"/>
-      <field name="request_ref" type="message-ref"/>
-      <field name="correlator_ref" type="message-ref"/>
+      <field name="ctx_request_ref" type="message-ref"/>
+      <field name="ctx_correlator_ref" type="message-ref"/>
     </fields>
 
     <php-options>
