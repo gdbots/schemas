@@ -1,4 +1,4 @@
-domain: http://schemas.gdbots.io/json-schema
+domain: http://schemas.gdbots.io
 
 namespaces:
   - gdbots:common
@@ -14,4 +14,5 @@ languages:
     manifest: ./pbj-schemas.php
 
   json-schema:
+    include_all: true
     output: ./gh-pages/json-schema
