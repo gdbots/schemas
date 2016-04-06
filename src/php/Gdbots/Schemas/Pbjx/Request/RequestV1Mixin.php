@@ -37,7 +37,6 @@ final class RequestV1Mixin extends AbstractMixin
                 ->required()
                 ->build(),
             Fb::create('occurred_at', T\MicrotimeType::create())
-                ->required()
                 ->build(),
             /*
              * The "ctx_retries" field is used to keep track of how many attempts were

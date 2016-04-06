@@ -27,7 +27,6 @@ final class ResponseV1Mixin extends AbstractMixin
                 ->required()
                 ->build(),
             Fb::create('created_at', T\MicrotimeType::create())
-                ->required()
                 ->build(),
             Fb::create('ctx_request_ref', T\MessageRefType::create())
                 ->build(),

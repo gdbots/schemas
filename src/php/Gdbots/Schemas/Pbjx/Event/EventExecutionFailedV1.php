@@ -23,7 +23,6 @@ final class EventExecutionFailedV1 extends AbstractMessage implements
         return new Schema('pbj:gdbots:pbjx:event:event-execution-failed:1-0-0', __CLASS__,
             [
                 Fb::create('event', T\MessageType::create())
-                    ->required()
                     ->className('Gdbots\Schemas\Pbjx\Event\Event')
                     ->build(),
                 Fb::create('error_code', T\SmallIntType::create())

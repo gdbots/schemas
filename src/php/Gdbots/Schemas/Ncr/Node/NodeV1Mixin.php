@@ -45,7 +45,6 @@ final class NodeV1Mixin extends AbstractMixin
                 ->pattern('^[\w\.:-]+$')
                 ->build(),
             Fb::create('created_at', T\MicrotimeType::create())
-                ->required()
                 ->build(),
             Fb::create('creator_ref', T\MessageRefType::create())
                 ->build(),

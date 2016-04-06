@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:mixin:update-node:1-0-0" mixin="true">
+    <fields>
+      <field name="new_node" type="message">
+        <any-of>
+          <curie>gdbots:ncr:mixin:node</curie>
+        </any-of>
+      </field>
+      <field name="old_node" type="message">
+        <any-of>
+          <curie>gdbots:ncr:mixin:node</curie>
+        </any-of>
+      </field>
+      <field name="expected_etag" type="string" pattern="^[\w\.:-]+$" max="100">
+        <description>
+          Used to perform optimistic concurrency control.
+          @link https://en.wikipedia.org/wiki/HTTP_ETag
+        </description>
+      </field>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Command</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

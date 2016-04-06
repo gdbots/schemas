@@ -16,7 +16,7 @@
         </php-options>
       </field>
       <field name="command_id" type="time-uuid" required="true"/>
-      <field name="occurred_at" type="microtime" required="true"/>
+      <field name="occurred_at" type="microtime"/>
       <field name="ctx_retries" type="tiny-int">
         <description>
           The "ctx_retries" field is used to keep track of how many attempts were

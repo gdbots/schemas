@@ -23,7 +23,6 @@ final class RequestFailedResponseV1 extends AbstractMessage implements
         return new Schema('pbj:gdbots:pbjx:request:request-failed-response:1-0-0', __CLASS__,
             [
                 Fb::create('request', T\MessageType::create())
-                    ->required()
                     ->className('Gdbots\Schemas\Pbjx\Request\Request')
                     ->build(),
                 Fb::create('error_code', T\SmallIntType::create())
