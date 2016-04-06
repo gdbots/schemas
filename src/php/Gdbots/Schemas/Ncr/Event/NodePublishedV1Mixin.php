@@ -1,20 +1,20 @@
 <?php
 
-namespace Gdbots\Schemas\Ncr\Command;
+namespace Gdbots\Schemas\Ncr\Event;
 
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
 
-final class UpdateNodeV1Mixin extends AbstractMixin
+final class NodePublishedV1Mixin extends AbstractMixin
 {
     /**
      * {@inheritdoc}
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:ncr:mixin:update-node:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:ncr:mixin:node-published:1-0-0');
     }
 
     /**
@@ -24,12 +24,6 @@ final class UpdateNodeV1Mixin extends AbstractMixin
     {
         return [
             Fb::create('node', T\MessageType::create())
-                ->className('Gdbots\Schemas\Ncr\Node\Node')
-                ->build(),
-            /*
-             * The entire node, as it appeared before it was modified.
-             */
-            Fb::create('old_node', T\MessageType::create())
                 ->className('Gdbots\Schemas\Ncr\Node\Node')
                 ->build()
         ];

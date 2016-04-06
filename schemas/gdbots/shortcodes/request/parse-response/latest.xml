@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:shortcodes:request:parse-response:1-0-0">
+    <fields>
+      <field name="output" type="text"/>
+      <field name="shortcodes" type="message" rule="map">
+        <description>
+          The key of the map (key => shortcode) is the token that will be
+          present in the output string.  For example "{{token1}}" in the output
+          corresponds to "shortcodes['token1']".
+        </description>
+        <any-of>
+          <curie>gdbots:shortcodes:mixin:shortcode</curie>
+        </any-of>
+      </field>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:pbjx:mixin:response:v1</curie-major>
+    </mixins>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Shortcodes\Request</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

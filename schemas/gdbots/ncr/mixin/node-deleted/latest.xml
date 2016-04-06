@@ -3,17 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:ncr:mixin:update-node:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:command:v1">
+  <schema id="pbj:gdbots:ncr:mixin:node-deleted:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
     <fields>
       <field name="node" type="message">
-        <any-of>
-          <curie>gdbots:ncr:mixin:node</curie>
-        </any-of>
-      </field>
-      <field name="old_node" type="message">
-        <description>
-          The entire node, as it appeared before it was modified.
-        </description>
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>
@@ -21,7 +13,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Command</namespace>
+      <namespace>Gdbots\Schemas\Ncr\Event</namespace>
     </php-options>
   </schema>
 </pbj-schema>
