@@ -15,8 +15,6 @@
     'gdbots:ncr:event:edge-created' => 'Gdbots\Schemas\Ncr\Event\EdgeCreatedV1',
     'gdbots:ncr:command:delete-edge' => 'Gdbots\Schemas\Ncr\Command\DeleteEdgeV1',
     'gdbots:ncr:event:edge-deleted' => 'Gdbots\Schemas\Ncr\Event\EdgeDeletedV1',
-    'gdbots:shortcodes:request:parse-request' => 'Gdbots\Schemas\Shortcodes\Request\ParseRequestV1',
-    'gdbots:shortcodes:request:parse-response' => 'Gdbots\Schemas\Shortcodes\Request\ParseResponseV1',
     'gdbots:contexts::app' => 'Gdbots\Schemas\Contexts\AppV1',
     'gdbots:contexts::cloud' => 'Gdbots\Schemas\Contexts\CloudV1',
     'gdbots:contexts::user-agent' => 'Gdbots\Schemas\Contexts\UserAgentV1',

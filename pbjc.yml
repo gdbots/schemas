@@ -7,7 +7,6 @@ namespaces:
   - gdbots:geo
   - gdbots:ncr
   - gdbots:pbjx
-  - gdbots:shortcodes
 
 languages:
   php:

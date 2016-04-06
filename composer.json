@@ -25,6 +25,7 @@
     }
   },
   "scripts": {
+    "pbjc": "vendor/bin/pbjc",
     "post-package-install": [
       "Gdbots\\Pbjc\\Composer\\ScriptHandler::writePbjSchemaStoresFile"
     ],
@@ -33,6 +34,7 @@
     ],
     "post-package-update": [
       "Gdbots\\Pbjc\\Composer\\ScriptHandler::writePbjSchemaStoresFile"
-    ]
+    ],
+    "test": "vendor/bin/phpunit"
   }
 }
