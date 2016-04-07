@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:command:delete-edge:1-0-0">
+    <fields>
+      <field name="edge" type="message">
+        <any-of>
+          <curie>gdbots:ncr:mixin:edge</curie>
+        </any-of>
+      </field>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:pbjx:mixin:command:v1</curie-major>
+    </mixins>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Command</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

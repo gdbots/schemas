@@ -37,7 +37,14 @@ final class CommandV1Mixin extends AbstractMixin
                 ->required()
                 ->build(),
             Fb::create('occurred_at', T\MicrotimeType::create())
-                ->required()
+                ->build(),
+            /*
+             * Used to perform optimistic concurrency control.
+             * @link https://en.wikipedia.org/wiki/HTTP_ETag
+             */
+            Fb::create('expected_etag', T\StringType::create())
+                ->maxLength(100)
+                ->pattern('^[\w\.:-]+$')
                 ->build(),
             /*
              * The "ctx_retries" field is used to keep track of how many attempts were

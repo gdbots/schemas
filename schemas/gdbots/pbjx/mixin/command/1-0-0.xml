@@ -16,7 +16,13 @@
         </php-options>
       </field>
       <field name="command_id" type="time-uuid" required="true"/>
-      <field name="occurred_at" type="microtime" required="true"/>
+      <field name="occurred_at" type="microtime"/>
+      <field name="expected_etag" type="string" pattern="^[\w\.:-]+$" max="100">
+        <description>
+          Used to perform optimistic concurrency control.
+          @link https://en.wikipedia.org/wiki/HTTP_ETag
+        </description>
+      </field>
       <field name="ctx_retries" type="tiny-int">
         <description>
           The "ctx_retries" field is used to keep track of how many attempts were

@@ -24,7 +24,7 @@
       </field>
 
       <field name="etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
-      <field name="created_at" type="microtime" required="true"/>
+      <field name="created_at" type="microtime"/>
       <field name="creator_ref" type="message-ref"/>
       <field name="updated_at" type="microtime" use-type-default="false"/>
       <field name="updater_ref" type="message-ref"/>
@@ -35,6 +35,25 @@
 
     <php-options>
       <namespace>Gdbots\Schemas\Ncr\Node</namespace>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->get('_id'), $tag);
+}
+            ]]>
+        </methods>
+      </insertion-points>
     </php-options>
   </schema>
 </pbj-schema>

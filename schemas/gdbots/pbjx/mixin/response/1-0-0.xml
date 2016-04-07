@@ -6,7 +6,7 @@
   <schema id="pbj:gdbots:pbjx:mixin:response:1-0-0" mixin="true">
     <fields>
       <field name="response_id" type="uuid" required="true"/>
-      <field name="created_at" type="microtime" required="true"/>
+      <field name="created_at" type="microtime"/>
       <field name="ctx_request_ref" type="message-ref"/>
       <field name="ctx_correlator_ref" type="message-ref"/>
     </fields>

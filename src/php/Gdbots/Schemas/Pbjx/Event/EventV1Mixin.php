@@ -37,7 +37,6 @@ final class EventV1Mixin extends AbstractMixin
                 ->required()
                 ->build(),
             Fb::create('occurred_at', T\MicrotimeType::create())
-                ->required()
                 ->build(),
             Fb::create('ctx_causator_ref', T\MessageRefType::create())
                 ->build(),

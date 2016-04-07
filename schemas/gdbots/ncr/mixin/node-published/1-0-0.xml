@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:mixin:node-published:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
+    <fields>
+      <field name="node_ref" type="message-ref"/>
+      <field name="published_at" type="microtime" use-type-default="false"/>
+      <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+      <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Event</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

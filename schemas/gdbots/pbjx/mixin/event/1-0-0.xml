@@ -16,7 +16,7 @@
         </php-options>
       </field>
       <field name="event_id" type="time-uuid" required="true"/>
-      <field name="occurred_at" type="microtime" required="true"/>
+      <field name="occurred_at" type="microtime"/>
       <field name="ctx_causator_ref" type="message-ref"/>
       <field name="ctx_correlator_ref" type="message-ref"/>
       <field name="ctx_user_ref" type="message-ref"/>

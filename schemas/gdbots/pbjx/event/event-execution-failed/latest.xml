@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:pbjx:event:event-execution-failed:1-0-0">
     <fields>
-      <field name="event" type="message" required="true">
+      <field name="event" type="message">
         <any-of>
           <curie>gdbots:pbjx:mixin:event</curie>
         </any-of>

@@ -2,6 +2,7 @@
 
 namespace Gdbots\Schemas\Ncr\Node;
 
+use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
 
 /**
@@ -10,4 +11,12 @@ use Gdbots\Pbj\Schema;
  */
 trait NodeV1Trait
 {
+    /**
+     * @param string $tag
+     * @return MessageRef
+     */
+    public function generateMessageRef($tag = null)
+    {
+        return new MessageRef(static::schema()->getCurie(), $this->get('_id'), $tag);
+    }
 }

@@ -25,19 +25,15 @@ final class EdgeV1Mixin extends AbstractMixin
     {
         return [
             Fb::create('from_ref', T\MessageRefType::create())
-                ->required()
                 ->build(),
             Fb::create('to_ref', T\MessageRefType::create())
-                ->required()
                 ->build(),
             Fb::create('multiplicity', T\StringEnumType::create())
-                ->required()
                 ->withDefault(EdgeMultiplicity::MULTI())
                 ->className('Gdbots\Schemas\Ncr\Enum\EdgeMultiplicity')
                 ->overridable(true)
                 ->build(),
             Fb::create('created_at', T\MicrotimeType::create())
-                ->required()
                 ->build()
         ];
     }
