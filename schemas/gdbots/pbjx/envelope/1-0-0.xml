@@ -18,8 +18,11 @@
       </field>
 
       <field name="http_code" type="int-enum">
-        <default>http_ok</default>
+        <default>200</default>
         <enum id="gdbots:pbjx:http-code"/>
+        <php-options>
+          <default>HttpCode::HTTP_OK()</default>
+        </php-options>
       </field>
 
       <field name="etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
