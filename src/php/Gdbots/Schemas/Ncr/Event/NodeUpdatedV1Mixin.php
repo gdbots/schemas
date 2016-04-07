@@ -23,7 +23,17 @@ final class NodeUpdatedV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('node', T\MessageType::create())
+            Fb::create('node_ref', T\MessageRefType::create())
+                ->build(),
+            Fb::create('new_etag', T\StringType::create())
+                ->maxLength(100)
+                ->pattern('^[\w\.:-]+$')
+                ->build(),
+            Fb::create('old_etag', T\StringType::create())
+                ->maxLength(100)
+                ->pattern('^[\w\.:-]+$')
+                ->build(),
+            Fb::create('new_node', T\MessageType::create())
                 ->className('Gdbots\Schemas\Ncr\Node\Node')
                 ->build(),
             /*
@@ -31,14 +41,6 @@ final class NodeUpdatedV1Mixin extends AbstractMixin
              */
             Fb::create('old_node', T\MessageType::create())
                 ->className('Gdbots\Schemas\Ncr\Node\Node')
-                ->build(),
-            /*
-             * Used to perform optimistic concurrency control.
-             * @link https://en.wikipedia.org/wiki/HTTP_ETag
-             */
-            Fb::create('old_etag', T\StringType::create())
-                ->maxLength(100)
-                ->pattern('^[\w\.:-]+$')
                 ->build()
         ];
     }

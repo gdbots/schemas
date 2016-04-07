@@ -23,8 +23,18 @@ final class NodePublishedV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('node', T\MessageType::create())
-                ->className('Gdbots\Schemas\Ncr\Node\Node')
+            Fb::create('node_ref', T\MessageRefType::create())
+                ->build(),
+            Fb::create('published_at', T\MicrotimeType::create())
+                ->useTypeDefault(false)
+                ->build(),
+            Fb::create('new_etag', T\StringType::create())
+                ->maxLength(100)
+                ->pattern('^[\w\.:-]+$')
+                ->build(),
+            Fb::create('old_etag', T\StringType::create())
+                ->maxLength(100)
+                ->pattern('^[\w\.:-]+$')
                 ->build()
         ];
     }

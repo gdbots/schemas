@@ -5,7 +5,10 @@
 
   <schema id="pbj:gdbots:ncr:mixin:node-updated:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
     <fields>
-      <field name="node" type="message">
+      <field name="node_ref" type="message-ref"/>
+      <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+      <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+      <field name="new_node" type="message">
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>
@@ -17,12 +20,6 @@
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>
-      </field>
-      <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100">
-        <description>
-          Used to perform optimistic concurrency control.
-          @link https://en.wikipedia.org/wiki/HTTP_ETag
-        </description>
       </field>
     </fields>
 

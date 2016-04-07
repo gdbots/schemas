@@ -7,14 +7,14 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
 
-final class NodeDeletedV1Mixin extends AbstractMixin
+final class NodeExpiredV1Mixin extends AbstractMixin
 {
     /**
      * {@inheritdoc}
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:ncr:mixin:node-deleted:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:ncr:mixin:node-expired:1-0-0');
     }
 
     /**

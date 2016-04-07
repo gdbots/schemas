@@ -23,7 +23,9 @@ final class UpdateNodeV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('node', T\MessageType::create())
+            Fb::create('node_ref', T\MessageRefType::create())
+                ->build(),
+            Fb::create('new_node', T\MessageType::create())
                 ->className('Gdbots\Schemas\Ncr\Node\Node')
                 ->build(),
             /*

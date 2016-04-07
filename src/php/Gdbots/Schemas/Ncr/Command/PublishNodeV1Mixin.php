@@ -25,7 +25,7 @@ final class PublishNodeV1Mixin extends AbstractMixin
         return [
             Fb::create('node_ref', T\MessageRefType::create())
                 ->build(),
-            Fb::create('publish_at', T\MicrotimeType::create())
+            Fb::create('published_at', T\MicrotimeType::create())
                 ->build()
         ];
     }
