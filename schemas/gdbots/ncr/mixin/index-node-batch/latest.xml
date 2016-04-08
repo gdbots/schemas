@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:mixin:index-node-batch:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:command:v1">
+    <fields>
+      <field name="node_refs" type="message-ref" rule="set"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Command</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

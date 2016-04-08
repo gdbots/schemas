@@ -11,7 +11,7 @@
   "require-dev": {
     "composer/composer": "1.0.*@dev",
     "phpunit/phpunit": "~4.3",
-    "gdbots/pbjc": "dev-master"
+    "gdbots/pbjc": "dev-jsonschema as dev-master"
   },
   "autoload": {
     "psr-0": {
