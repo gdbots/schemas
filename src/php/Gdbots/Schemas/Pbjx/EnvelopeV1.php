@@ -4,6 +4,7 @@ namespace Gdbots\Schemas\Pbjx;
 
 use Gdbots\Pbj\AbstractMessage;
 use Gdbots\Pbj\FieldBuilder as Fb;
+use Gdbots\Pbj\Message;
 use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
@@ -13,7 +14,6 @@ use Gdbots\Schemas\Pbjx\Enum\HttpCode;
 final class EnvelopeV1 extends AbstractMessage implements
     Envelope
 {
-
     /**
      * @return Schema
      */

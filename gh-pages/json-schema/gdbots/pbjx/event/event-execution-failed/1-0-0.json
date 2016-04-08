@@ -204,9 +204,7 @@
   },
   "required": [
     "_schema",
-    "event",
-    "event_id",
-    "occurred_at"
+    "event_id"
   ],
   "definitions": {
     "event": {

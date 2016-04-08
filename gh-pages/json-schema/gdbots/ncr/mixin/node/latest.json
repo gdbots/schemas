@@ -149,8 +149,7 @@
     }
   },
   "required": [
-    "_id",
-    "created_at"
+    "_id"
   ],
   "additionalProperties": true
 }

@@ -35,6 +35,7 @@
     },
     "http_code": {
       "type": "integer",
+      "default": 200,
       "enum": [
         0,
         100,

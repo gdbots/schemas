@@ -85,8 +85,7 @@
     }
   },
   "required": [
-    "response_id",
-    "created_at"
+    "response_id"
   ],
   "additionalProperties": true
 }

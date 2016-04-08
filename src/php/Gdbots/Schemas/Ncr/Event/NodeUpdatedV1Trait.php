@@ -3,6 +3,7 @@
 namespace Gdbots\Schemas\Ncr\Event;
 
 use Gdbots\Pbj\Schema;
+use Gdbots\Schemas\Pbjx\Event\EventV1Trait;
 
 /**
  * @method static Schema schema
@@ -10,4 +11,6 @@ use Gdbots\Pbj\Schema;
  */
 trait NodeUpdatedV1Trait
 {
+    use EventV1Trait;
+
 }

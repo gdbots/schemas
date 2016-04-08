@@ -2,6 +2,7 @@
 
 namespace Gdbots\Schemas\Ncr\Node;
 
+use Gdbots\Identifiers\UuidIdentifier;
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;

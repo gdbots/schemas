@@ -11,7 +11,6 @@ use Gdbots\Pbj\Type as T;
 final class AppV1 extends AbstractMessage implements
     App
 {
-
     /**
      * @return Schema
      */
