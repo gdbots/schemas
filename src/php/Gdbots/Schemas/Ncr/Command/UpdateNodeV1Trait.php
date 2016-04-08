@@ -3,7 +3,6 @@
 namespace Gdbots\Schemas\Ncr\Command;
 
 use Gdbots\Pbj\Schema;
-use Gdbots\Schemas\Pbjx\Command\CommandV1Trait;
 
 /**
  * @method static Schema schema
@@ -11,6 +10,4 @@ use Gdbots\Schemas\Pbjx\Command\CommandV1Trait;
  */
 trait UpdateNodeV1Trait
 {
-    use CommandV1Trait;
-
 }

@@ -3,7 +3,6 @@
 namespace Gdbots\Schemas\Ncr\Event;
 
 use Gdbots\Pbj\Schema;
-use Gdbots\Schemas\Pbjx\Event\EventV1Trait;
 
 /**
  * @method static Schema schema
@@ -11,6 +10,4 @@ use Gdbots\Schemas\Pbjx\Event\EventV1Trait;
  */
 trait NodeExpiredV1Trait
 {
-    use EventV1Trait;
-
 }
