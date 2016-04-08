@@ -93,11 +93,5 @@
       }
     }
   },
-  "required": [
-    "from_ref",
-    "to_ref",
-    "multiplicity",
-    "created_at"
-  ],
   "additionalProperties": true
 }

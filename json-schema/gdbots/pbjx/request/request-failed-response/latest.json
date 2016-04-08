@@ -129,9 +129,7 @@
   },
   "required": [
     "_schema",
-    "request",
-    "response_id",
-    "created_at"
+    "response_id"
   ],
   "definitions": {
     "request": {

@@ -1,8 +1,13 @@
 {
-  "id": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-0.json#",
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/ncr/command/create-edge/1-0-0.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "_schema": {
+      "type": "string",
+      "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+      "default": "pbj:gdbots:ncr:command:create-edge:1-0-0"
+    },
     "stream_id": {
       "type": "string",
       "description": "The \"stream_id\" can be used to provide sequential ordering of messages. It is still up to the transports and consumers to handle the ordering and the sequence can only be reliable within the stream_id.",
@@ -189,12 +194,33 @@
         "rule": "single",
         "overridable": true
       }
+    },
+    "edge": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/edge"
+        }
+      ],
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
     }
   },
   "required": [
+    "_schema",
     "command_id"
   ],
   "definitions": {
+    "edge": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/edge/1-0-0.json#"
+        }
+      ]
+    },
     "app": {
       "type": "object",
       "anyOf": [
@@ -212,5 +238,5 @@
       ]
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

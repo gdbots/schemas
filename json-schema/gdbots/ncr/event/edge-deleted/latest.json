@@ -1,8 +1,13 @@
 {
-  "id": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-0.json#",
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/ncr/event/edge-deleted/1-0-0.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "_schema": {
+      "type": "string",
+      "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+      "default": "pbj:gdbots:ncr:event:edge-deleted:1-0-0"
+    },
     "stream_id": {
       "type": "string",
       "description": "The \"stream_id\" can be used to provide sequential ordering of messages. It is still up to the transports and consumers to handle the ordering and the sequence can only be reliable within the stream_id.",
@@ -13,7 +18,7 @@
         "overridable": true
       }
     },
-    "command_id": {
+    "event_id": {
       "type": "string",
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
       "pbj": {
@@ -26,25 +31,6 @@
       "pattern": "^[1-9]{1}[0-9]{12,15}$",
       "pbj": {
         "type": "microtime",
-        "rule": "single"
-      }
-    },
-    "expected_etag": {
-      "type": "string",
-      "description": "Used to perform optimistic concurrency control. @link https://en.wikipedia.org/wiki/HTTP_ETag",
-      "pattern": "^[\\w\\.:-]+$",
-      "pbj": {
-        "type": "string",
-        "rule": "single"
-      }
-    },
-    "ctx_retries": {
-      "type": "integer",
-      "description": "The \"ctx_retries\" field is used to keep track of how many attempts were made to process this command. In some cases, the service or transport that handles the command may be down or an optimistic check has failed and is being retried.",
-      "minimum": 0,
-      "maximum": 255,
-      "pbj": {
-        "type": "tiny-int",
         "rule": "single"
       }
     },
@@ -146,23 +132,10 @@
     },
     "ctx_app": {
       "type": "object",
-      "description": "The \"ctx_app\" refers to the application used to send the command. This is different from ctx_ua (user_agent) because the agent used (Safari, Firefox) is not necessarily the app used (cms, iOS app, website)",
+      "description": "The \"ctx_app\" refers to the application used to send the command which in turn resulted in this event being published.",
       "anyOf": [
         {
           "$ref": "#/definitions/app"
-        }
-      ],
-      "pbj": {
-        "type": "message",
-        "rule": "single"
-      }
-    },
-    "ctx_cloud": {
-      "type": "object",
-      "description": "The \"ctx_cloud\" is set by the server receiving the command and is generally only used internally for tracking and performance monitoring.",
-      "anyOf": [
-        {
-          "$ref": "#/definitions/cloud"
         }
       ],
       "pbj": {
@@ -189,12 +162,33 @@
         "rule": "single",
         "overridable": true
       }
+    },
+    "edge": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/edge"
+        }
+      ],
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
     }
   },
   "required": [
-    "command_id"
+    "_schema",
+    "event_id"
   ],
   "definitions": {
+    "edge": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/edge/1-0-0.json#"
+        }
+      ]
+    },
     "app": {
       "type": "object",
       "anyOf": [
@@ -202,15 +196,7 @@
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/app/1-0-0.json#"
         }
       ]
-    },
-    "cloud": {
-      "type": "object",
-      "anyOf": [
-        {
-          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/cloud/1-0-0.json#"
-        }
-      ]
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

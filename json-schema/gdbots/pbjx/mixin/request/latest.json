@@ -183,8 +183,7 @@
     }
   },
   "required": [
-    "request_id",
-    "occurred_at"
+    "request_id"
   ],
   "definitions": {
     "app": {
