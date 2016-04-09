@@ -6,12 +6,12 @@
   "license": "Apache-2.0",
   "require": {
     "php": ">=5.6",
-    "gdbots/pbj": "dev-aws3 as dev-master"
+    "gdbots/pbj": "~1.0"
   },
   "require-dev": {
     "composer/composer": "1.0.*@dev",
     "phpunit/phpunit": "~4.3",
-    "gdbots/pbjc": "dev-jsonschema as dev-master"
+    "gdbots/pbjc": "~0.1"
   },
   "autoload": {
     "psr-0": {
