@@ -14,7 +14,7 @@
         </description>
         <php-options>
           <classname>Gdbots\Identifiers\UuidIdentifier</classname>
-          <default>function() { return \Gdbots\Identifiers\UuidIdentifier::generate(); }</default>
+          <default>function() { return UuidIdentifier::generate(); }</default>
         </php-options>
       </field>
 
