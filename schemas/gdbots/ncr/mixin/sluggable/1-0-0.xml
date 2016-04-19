@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:mixin:sluggable:1-0-0" mixin="true" extends="gdbots:ncr:mixin:node:v1">
+    <fields>
+      <field name="slug" type="string" format="slug">
+        <description>
+          The "slug" is a secondary identifier, typically used in a url:
+          - MUST be url friendly
+          - SHOULD NOT be case sensitive
+          - SHOULD be unique within the message curie namespace
+          - CAN be changed, but in practice once nodes are published you should avoid it if possible
+        </description>
+      </field>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\Sluggable</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

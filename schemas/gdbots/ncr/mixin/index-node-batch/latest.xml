@@ -9,7 +9,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Command</namespace>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\IndexNodeBatch</namespace>
     </php-options>
   </schema>
 </pbj-schema>

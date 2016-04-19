@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:mixin:node-renamed:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
+    <fields>
+      <field name="node_ref" type="message-ref"/>
+      <field name="node_status" type="string-enum">
+        <enum id="gdbots:ncr:node-status"/>
+      </field>
+      <field name="new_slug" type="string" format="slug"/>
+      <field name="old_slug" type="string" format="slug"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\NodeRenamed</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

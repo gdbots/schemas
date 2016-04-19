@@ -17,7 +17,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Enrichments\TimeParting</namespace>
+      <namespace>Gdbots\Schemas\Enrichments\Mixin\TimeParting</namespace>
     </php-options>
   </schema>
 </pbj-schema>

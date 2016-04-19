@@ -15,7 +15,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Edge</namespace>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\Edge</namespace>
       <insertion-points>
         <imports>
           <![CDATA[

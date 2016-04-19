@@ -12,7 +12,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Pbjx\Request</namespace>
+      <namespace>Gdbots\Schemas\Pbjx\Mixin\Response</namespace>
       <insertion-points>
         <imports>
           <![CDATA[

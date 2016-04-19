@@ -14,7 +14,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Enrichments\UaParser</namespace>
+      <namespace>Gdbots\Schemas\Enrichments\Mixin\UaParser</namespace>
     </php-options>
   </schema>
 </pbj-schema>

@@ -13,7 +13,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Command</namespace>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\IndexNode</namespace>
     </php-options>
   </schema>
 </pbj-schema>

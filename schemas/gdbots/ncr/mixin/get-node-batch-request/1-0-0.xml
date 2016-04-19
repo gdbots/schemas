@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:mixin:get-node-batch-request:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:request:v1">
+    <fields>
+      <field name="node_refs" type="message-ref" rule="set">
+        <description>
+          When "node_refs" is supplied it SHOULD be used to perform the request.
+          The "node_refs", "_ids" and "slugs" are analagous to protobuf unions in that
+          only one of these should exist and the priority of selection is as
+          ordered in this schema.
+        </description>
+      </field>
+      <field name="_ids" type="string" pattern="^[\w\/\.:-]+$" rule="set"/>
+      <field name="slugs" type="string" format="slug" rule="set"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

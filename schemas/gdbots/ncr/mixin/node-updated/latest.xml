@@ -6,6 +6,7 @@
   <schema id="pbj:gdbots:ncr:mixin:node-updated:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
     <fields>
       <field name="node_ref" type="message-ref"/>
+      <field name="slug" type="string" format="slug"/>
       <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
       <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
       <field name="new_node" type="message">
@@ -24,7 +25,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Event</namespace>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\NodeUpdated</namespace>
     </php-options>
   </schema>
 </pbj-schema>

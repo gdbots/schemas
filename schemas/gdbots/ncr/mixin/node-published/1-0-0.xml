@@ -6,13 +6,12 @@
   <schema id="pbj:gdbots:ncr:mixin:node-published:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
     <fields>
       <field name="node_ref" type="message-ref"/>
-      <field name="published_at" type="microtime" use-type-default="false"/>
-      <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
-      <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+      <field name="slug" type="string" format="slug"/>
+      <field name="published_at" type="date-time" use-type-default="false"/>
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Event</namespace>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\NodePublished</namespace>
     </php-options>
   </schema>
 </pbj-schema>

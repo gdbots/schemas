@@ -6,10 +6,11 @@
   <schema id="pbj:gdbots:ncr:mixin:node-deleted:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
     <fields>
       <field name="node_ref" type="message-ref"/>
+      <field name="slug" type="string" format="slug"/>
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Event</namespace>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\NodeDeleted</namespace>
     </php-options>
   </schema>
 </pbj-schema>

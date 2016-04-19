@@ -7,6 +7,9 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Pbjx\Enum\Code;
+use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1;
+use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Mixin;
+use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Trait;
 
 final class EventExecutionFailedV1 extends AbstractMessage implements
     EventExecutionFailed,
@@ -23,7 +26,7 @@ final class EventExecutionFailedV1 extends AbstractMessage implements
         return new Schema('pbj:gdbots:pbjx:event:event-execution-failed:1-0-0', __CLASS__,
             [
                 Fb::create('event', T\MessageType::create())
-                    ->className('Gdbots\Schemas\Pbjx\Event\Event')
+                    ->className('Gdbots\Schemas\Pbjx\Mixin\Event\Event')
                     ->build(),
                 Fb::create('error_code', T\SmallIntType::create())
                     ->withDefault(Code::OK)

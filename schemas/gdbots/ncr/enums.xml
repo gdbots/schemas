@@ -47,10 +47,9 @@
     <enum name="node-status" type="string">
       <option key="UNKNOWN" value="unknown"/>
       <option key="PUBLISHED" value="published"/>
+      <option key="SCHEDULED" value="scheduled"/>
       <option key="DRAFT" value="draft"/>
-      <option key="PENDING" value="pending"/>
       <option key="EXPIRED" value="expired"/>
-      <option key="ARCHIVED" value="archived"/>
       <option key="DELETED" value="deleted"/>
     </enum>
 
