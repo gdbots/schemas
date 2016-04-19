@@ -31,6 +31,7 @@
     "ctx_retries": {
       "type": "integer",
       "description": "The \"ctx_retries\" field is used to keep track of how many attempts were made to handle this request. In some cases, the service or transport that handles the request may be down or over capacity and is being retried.",
+      "default": 0,
       "minimum": 0,
       "maximum": 255,
       "pbj": {

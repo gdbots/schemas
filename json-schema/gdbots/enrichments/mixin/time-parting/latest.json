@@ -5,6 +5,7 @@
   "properties": {
     "month_of_year": {
       "type": "integer",
+      "default": 0,
       "enum": [
         0,
         1,
@@ -27,6 +28,7 @@
     },
     "day_of_month": {
       "type": "integer",
+      "default": 0,
       "minimum": 0,
       "maximum": 31,
       "pbj": {
@@ -36,6 +38,7 @@
     },
     "day_of_week": {
       "type": "integer",
+      "default": 0,
       "enum": [
         0,
         0,
@@ -61,6 +64,7 @@
     },
     "hour_of_day": {
       "type": "integer",
+      "default": 0,
       "minimum": 0,
       "maximum": 23,
       "pbj": {

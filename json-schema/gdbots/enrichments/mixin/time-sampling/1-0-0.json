@@ -5,6 +5,7 @@
   "properties": {
     "ts_ymdh": {
       "type": "integer",
+      "default": 0,
       "minimum": 0,
       "maximum": 4294967295,
       "pbj": {
@@ -14,6 +15,7 @@
     },
     "ts_ymd": {
       "type": "integer",
+      "default": 0,
       "minimum": 0,
       "maximum": 4294967295,
       "pbj": {
@@ -23,6 +25,7 @@
     },
     "ts_ym": {
       "type": "integer",
+      "default": 0,
       "minimum": 0,
       "maximum": 16777215,
       "pbj": {

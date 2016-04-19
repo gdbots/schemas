@@ -189,6 +189,7 @@
     },
     "error_code": {
       "type": "integer",
+      "default": 0,
       "minimum": 0,
       "maximum": 65535,
       "pbj": {
