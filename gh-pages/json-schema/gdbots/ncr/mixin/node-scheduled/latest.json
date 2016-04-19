@@ -47,9 +47,8 @@
       }
     },
     "publish_at": {
-      "type": "string",
-      "minimum": -2147483648,
-      "maximum": 2147483647,
+      "type": "object",
+      "format": "date-time",
       "pbj": {
         "type": "date-time",
         "rule": "single",

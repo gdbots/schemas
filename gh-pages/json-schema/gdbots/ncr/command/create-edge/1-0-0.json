@@ -45,6 +45,7 @@
     "ctx_retries": {
       "type": "integer",
       "description": "The \"ctx_retries\" field is used to keep track of how many attempts were made to process this command. In some cases, the service or transport that handles the command may be down or an optimistic check has failed and is being retried.",
+      "default": 0,
       "minimum": 0,
       "maximum": 255,
       "pbj": {

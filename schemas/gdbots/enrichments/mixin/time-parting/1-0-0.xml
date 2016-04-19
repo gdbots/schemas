@@ -6,10 +6,12 @@
   <schema id="pbj:gdbots:enrichments:mixin:time-parting:1-0-0" mixin="true">
     <fields>
       <field name="month_of_year" type="int-enum">
+        <default>0</default>
         <enum id="gdbots:common:month"/>
       </field>
       <field name="day_of_month" type="tiny-int" max="31"/>
       <field name="day_of_week" type="int-enum">
+        <default>0</default>
         <enum id="gdbots:common:day-of-week"/>
       </field>
       <field name="is_weekend" type="boolean"/>

@@ -28,7 +28,6 @@ final class RenameNodeV1Mixin extends AbstractMixin
             Fb::create('node_ref', T\MessageRefType::create())
                 ->build(),
             Fb::create('node_status', T\StringEnumType::create())
-                ->withDefault(NodeStatus::UNKNOWN())
                 ->className('Gdbots\Schemas\Ncr\Enum\NodeStatus')
                 ->build(),
             Fb::create('new_slug', T\StringType::create())
