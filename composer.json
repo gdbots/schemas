@@ -26,6 +26,7 @@
   },
   "scripts": {
     "pbjc": "vendor/bin/pbjc",
+    "pbjc-json-schema": "vendor/bin/pbjc -l json-schema",
     "post-package-install": [
       "Gdbots\\Pbjc\\Composer\\ScriptHandler::writePbjSchemaStoresFile"
     ],
