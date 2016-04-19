@@ -1,0 +1,18 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/publishable/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "published_at": {
+      "type": "string",
+      "minimum": -2147483648,
+      "maximum": 2147483647,
+      "pbj": {
+        "type": "date-time",
+        "rule": "single",
+        "useTypeDefault": false
+      }
+    }
+  },
+  "additionalProperties": true
+}
