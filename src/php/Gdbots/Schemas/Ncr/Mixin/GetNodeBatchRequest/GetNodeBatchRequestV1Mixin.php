@@ -26,7 +26,7 @@ final class GetNodeBatchRequestV1Mixin extends AbstractMixin
         return [
             /*
              * When "node_refs" is supplied it SHOULD be used to perform the request.
-             * The "node_refs", "_ids" and "slugs" are analagous to protobuf unions in that
+             * The "node_refs", "_ids" and "slugs" are analogous to protobuf unions in that
              * only one of these should exist and the priority of selection is as
              * ordered in this schema.
              */
