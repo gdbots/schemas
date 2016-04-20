@@ -4,31 +4,14 @@
   "type": "object",
   "properties": {
     "node_refs": {
-      "type": "object",
-      "properties": {
-        "curie": {
-          "type": "string",
-          "pattern": "^([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+)$",
-          "minLength": 0,
-          "maxLength": 146
-        },
-        "id": {
-          "type": "string",
-          "pattern": "^[A-Za-z0-9:_\\-]+$",
-          "minLength": 0,
-          "maxLength": 255
-        },
-        "tag": {
-          "type": "string",
-          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
-          "minLength": 0,
-          "maxLength": 255
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "description": "When \"node_refs\" is supplied it SHOULD be used to perform the request. The \"node_refs\", \"_ids\" and \"slugs\" are analogous to protobuf unions in that only one of these should exist and the priority of selection is as ordered in this schema."
         }
-      },
-      "required": [
-        "curie",
-        "id"
       ],
+      "uniqueItems": true,
       "additionalProperties": false,
       "pbj": {
         "type": "message-ref",
@@ -36,18 +19,32 @@
       }
     },
     "_ids": {
-      "type": "string",
-      "pattern": "^[\\w\\/\\.:-]+$",
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^[\\w\\/\\.:-]+$"
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
       "pbj": {
         "type": "string",
         "rule": "set"
       }
     },
     "slugs": {
-      "type": "string",
-      "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
-      "minLength": 0,
-      "maxLength": 255,
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
       "pbj": {
         "type": "string",
         "rule": "set",

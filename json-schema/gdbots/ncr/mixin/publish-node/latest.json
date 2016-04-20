@@ -36,7 +36,7 @@
       }
     },
     "publish_at": {
-      "type": "object",
+      "type": "string",
       "format": "date-time",
       "pbj": {
         "type": "date-time",
