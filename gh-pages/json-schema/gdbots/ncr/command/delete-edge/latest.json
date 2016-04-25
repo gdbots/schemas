@@ -213,14 +213,6 @@
     "command_id"
   ],
   "definitions": {
-    "edge": {
-      "type": "object",
-      "anyOf": [
-        {
-          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/edge/1-0-0.json#"
-        }
-      ]
-    },
     "app": {
       "type": "object",
       "anyOf": [
@@ -234,6 +226,14 @@
       "anyOf": [
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/cloud/1-0-0.json#"
+        }
+      ]
+    },
+    "edge": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/edge/1-0-0.json#"
         }
       ]
     }

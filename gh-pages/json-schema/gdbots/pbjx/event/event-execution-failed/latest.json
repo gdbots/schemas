@@ -220,14 +220,6 @@
     "event_id"
   ],
   "definitions": {
-    "event": {
-      "type": "object",
-      "anyOf": [
-        {
-          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-0.json#"
-        }
-      ]
-    },
     "app": {
       "type": "object",
       "anyOf": [
@@ -241,6 +233,14 @@
       "anyOf": [
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/cloud/1-0-0.json#"
+        }
+      ]
+    },
+    "event": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-0.json#"
         }
       ]
     }
