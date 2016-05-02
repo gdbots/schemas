@@ -30,7 +30,7 @@ final class RequestV1Mixin extends AbstractMixin
              * the sequence can only be reliable within the stream_id.
              */
             Fb::create('stream_id', T\StringType::create())
-                ->pattern('^[\w\/\.:-]+$')
+                ->pattern('^[\w\/\.:#@-]+$')
                 ->build(),
             Fb::create('request_id', T\UuidType::create())
                 ->required()

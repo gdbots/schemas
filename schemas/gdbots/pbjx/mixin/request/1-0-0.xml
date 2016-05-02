@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:pbjx:mixin:request:1-0-0" mixin="true">
     <fields>
-      <field name="stream_id" type="string" pattern="^[\w\/\.:-]+$">
+      <field name="stream_id" type="string" pattern="^[\w\/\.:#@-]+$">
         <description>
           The "stream_id" can be used to provide sequential ordering of messages.
           It is still up to the transports and consumers to handle the ordering and

@@ -30,7 +30,7 @@ final class EventV1Mixin extends AbstractMixin
              * the sequence can only be reliable within the stream_id.
              */
             Fb::create('stream_id', T\StringType::create())
-                ->pattern('^[\w\/\.:-]+$')
+                ->pattern('^[\w\/\.:#@-]+$')
                 ->build(),
             Fb::create('event_id', T\TimeUuidType::create())
                 ->required()
