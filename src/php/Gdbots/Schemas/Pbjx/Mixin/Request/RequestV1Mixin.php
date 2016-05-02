@@ -24,14 +24,6 @@ final class RequestV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            /*
-             * The "stream_id" can be used to provide sequential ordering of messages.
-             * It is still up to the transports and consumers to handle the ordering and
-             * the sequence can only be reliable within the stream_id.
-             */
-            Fb::create('stream_id', T\StringType::create())
-                ->pattern('^[\w\/\.:#@-]+$')
-                ->build(),
             Fb::create('request_id', T\UuidType::create())
                 ->required()
                 ->build(),

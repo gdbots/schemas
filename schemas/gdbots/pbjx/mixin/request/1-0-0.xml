@@ -5,13 +5,6 @@
 
   <schema id="pbj:gdbots:pbjx:mixin:request:1-0-0" mixin="true">
     <fields>
-      <field name="stream_id" type="string" pattern="^[\w\/\.:#@-]+$">
-        <description>
-          The "stream_id" can be used to provide sequential ordering of messages.
-          It is still up to the transports and consumers to handle the ordering and
-          the sequence can only be reliable within the stream_id.
-        </description>
-      </field>
       <field name="request_id" type="uuid" required="true"/>
       <field name="occurred_at" type="microtime"/>
       <field name="ctx_retries" type="tiny-int">
@@ -72,7 +65,6 @@ public function generateMessageRef($tag = null)
 public function getUriTemplateVars()
 {
     return [
-        'stream_id' => $this->get('stream_id'),
         'request_id' => (string)$this->get('request_id'),
         'occurred_at' => (string)$this->get('occurred_at'),
         'ctx_user_ref' => (string)$this->get('ctx_user_ref'),
