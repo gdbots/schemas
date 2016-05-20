@@ -26,21 +26,24 @@ final class SearchEventsRequestV1Mixin extends AbstractMixin
         return [
             Fb::create('q', T\StringType::create())
                 ->build(),
+            /*
+             * The number of results to return.
+             */
+            Fb::create('count', T\TinyIntType::create())
+                ->min(1)
+                ->withDefault(25)
+                ->build(),
             Fb::create('page', T\TinyIntType::create())
                 ->min(1)
                 ->withDefault(1)
                 ->build(),
-            Fb::create('per_page', T\TinyIntType::create())
-                ->min(1)
-                ->withDefault(25)
-                ->build(),
             Fb::create('sort', T\StringEnumType::create())
-                ->withDefault(SearchSort::DATE_DESC())
+                ->withDefault(SearchSort::RELEVANCE())
                 ->className('Gdbots\Schemas\Pbjx\Enum\SearchSort')
                 ->build(),
-            Fb::create('from', T\DateTimeType::create())
+            Fb::create('occurred_after', T\DateTimeType::create())
                 ->build(),
-            Fb::create('until', T\DateTimeType::create())
+            Fb::create('occurred_before', T\DateTimeType::create())
                 ->build(),
             Fb::create('parsed_query_json', T\TextType::create())
                 ->build()

@@ -12,6 +12,17 @@
         "rule": "single"
       }
     },
+    "count": {
+      "type": "integer",
+      "default": 25,
+      "minimum": 1,
+      "maximum": 255,
+      "description": "The number of results to return.",
+      "pbj": {
+        "type": "tiny-int",
+        "rule": "single"
+      }
+    },
     "page": {
       "type": "integer",
       "default": 1,
@@ -22,19 +33,9 @@
         "rule": "single"
       }
     },
-    "per_page": {
-      "type": "integer",
-      "default": 25,
-      "minimum": 1,
-      "maximum": 255,
-      "pbj": {
-        "type": "tiny-int",
-        "rule": "single"
-      }
-    },
     "sort": {
       "type": "string",
-      "default": "date-desc",
+      "default": "relevance",
       "enum": [
         "unknown",
         "relevance",
@@ -46,7 +47,7 @@
         "rule": "single"
       }
     },
-    "from": {
+    "occurred_after": {
       "type": "string",
       "format": "date-time",
       "pbj": {
@@ -54,7 +55,7 @@
         "rule": "single"
       }
     },
-    "until": {
+    "occurred_before": {
       "type": "string",
       "format": "date-time",
       "pbj": {
