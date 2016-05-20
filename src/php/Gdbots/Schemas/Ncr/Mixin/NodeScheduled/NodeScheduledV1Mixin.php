@@ -30,7 +30,6 @@ final class NodeScheduledV1Mixin extends AbstractMixin
                 ->format(Format::SLUG())
                 ->build(),
             Fb::create('publish_at', T\DateTimeType::create())
-                ->useTypeDefault(false)
                 ->build()
         ];
     }

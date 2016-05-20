@@ -1,0 +1,48 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/search-events-response/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 4294967295,
+      "pbj": {
+        "type": "int",
+        "rule": "single"
+      }
+    },
+    "has_more": {
+      "type": "boolean",
+      "pbj": {
+        "type": "boolean",
+        "rule": "single"
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": [
+        {
+          "$ref": "#/definitions/event"
+        }
+      ],
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message",
+        "rule": "list"
+      }
+    }
+  },
+  "definitions": {
+    "event": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

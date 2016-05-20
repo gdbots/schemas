@@ -7,7 +7,7 @@
       "type": "object",
       "anyOf": [
         {
-          "$ref": "#/definitions/node"
+          "$ref": "#/definitions/indexed"
         }
       ],
       "pbj": {
@@ -17,11 +17,11 @@
     }
   },
   "definitions": {
-    "node": {
+    "indexed": {
       "type": "object",
       "anyOf": [
         {
-          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/node/1-0-0.json#"
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/indexed/1-0-0.json#"
         }
       ]
     }

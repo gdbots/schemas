@@ -59,6 +59,15 @@ class StreamIdTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($id->toString(), StreamId::fromSnsTopicName($id->toSnsTopicName())->toString());
     }
 
+    public function testToS3Path()
+    {
+        $id = StreamId::fromString('My-Topic:IS_COOL:BR0.T33n');
+
+        $this->assertSame('My-Topic/IS_COOL/BR0.T33n', $id->toS3Path());
+        $this->assertTrue($id->equals(StreamId::fromS3Path($id->toS3Path())));
+        $this->assertSame($id->toString(), StreamId::fromS3Path($id->toS3Path())->toString());
+    }
+
     /**
      * @expectedException \Gdbots\Pbj\Exception\AssertionFailed
      */

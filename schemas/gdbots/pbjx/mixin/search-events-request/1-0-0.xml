@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:pbjx:mixin:search-events-request:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:request:v1">
+    <fields>
+      <field name="q" type="string"/>
+      <field name="page" type="tiny-int" min="1">
+        <default>1</default>
+      </field>
+      <field name="per_page" type="tiny-int" min="1">
+        <default>25</default>
+      </field>
+      <field name="sort" type="string-enum">
+        <default>date-desc</default>
+        <enum id="gdbots:pbjx:search-sort"/>
+        <php-options>
+          <default>SearchSort::DATE_DESC()</default>
+        </php-options>
+      </field>
+      <field name="from" type="date-time"/>
+      <field name="until" type="date-time"/>
+      <field name="parsed_query_json" type="text"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Pbjx\Mixin\SearchEventsRequest</namespace>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Schemas\Pbjx\Enum\SearchSort;
+            ]]>
+        </imports>
+        <methods/>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>

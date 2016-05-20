@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:ncr:mixin:expirable:1-0-0" mixin="true" extends="gdbots:ncr:mixin:node:v1">
     <fields>
-      <field name="expires_at" type="date-time" use-type-default="false"/>
+      <field name="expires_at" type="date-time"/>
     </fields>
 
     <php-options>

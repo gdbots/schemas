@@ -30,7 +30,6 @@ final class NodePublishedV1Mixin extends AbstractMixin
                 ->format(Format::SLUG())
                 ->build(),
             Fb::create('published_at', T\DateTimeType::create())
-                ->useTypeDefault(false)
                 ->build()
         ];
     }

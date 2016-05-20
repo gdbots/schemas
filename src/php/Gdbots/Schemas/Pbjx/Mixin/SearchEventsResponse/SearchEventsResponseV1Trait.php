@@ -1,6 +1,6 @@
 <?php
 
-namespace Gdbots\Schemas\Ncr\Mixin\Indexable;
+namespace Gdbots\Schemas\Pbjx\Mixin\SearchEventsResponse;
 
 use Gdbots\Pbj\Schema;
 
@@ -8,6 +8,6 @@ use Gdbots\Pbj\Schema;
  * @method static Schema schema
  * @method mixed get($fieldName, $default = null)
  */
-trait IndexableV1Trait
+trait SearchEventsResponseV1Trait
 {
 }

@@ -40,8 +40,7 @@
       "format": "date-time",
       "pbj": {
         "type": "date-time",
-        "rule": "single",
-        "useTypeDefault": false
+        "rule": "single"
       }
     }
   },
