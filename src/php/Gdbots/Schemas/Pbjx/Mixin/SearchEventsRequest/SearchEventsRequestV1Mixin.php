@@ -30,7 +30,6 @@ final class SearchEventsRequestV1Mixin extends AbstractMixin
              * The number of results to return.
              */
             Fb::create('count', T\TinyIntType::create())
-                ->min(1)
                 ->withDefault(25)
                 ->build(),
             Fb::create('page', T\TinyIntType::create())

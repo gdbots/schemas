@@ -15,7 +15,7 @@
     "count": {
       "type": "integer",
       "default": 25,
-      "minimum": 1,
+      "minimum": 0,
       "maximum": 255,
       "description": "The number of results to return.",
       "pbj": {

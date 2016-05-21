@@ -6,7 +6,7 @@
   <schema id="pbj:gdbots:pbjx:mixin:search-events-request:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:request:v1">
     <fields>
       <field name="q" type="string"/>
-      <field name="count" type="tiny-int" min="1">
+      <field name="count" type="tiny-int">
         <description>The number of results to return.</description>
         <default>25</default>
       </field>
