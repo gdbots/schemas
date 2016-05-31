@@ -44,6 +44,13 @@ final class SearchEventsRequestV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('occurred_before', T\DateTimeType::create())
                 ->build(),
+            /*
+             * The fields that are being queried as determined by parsing the "q" field.
+             */
+            Fb::create('fields_used', T\StringType::create())
+                ->asASet()
+                ->pattern('^[\w\.-]+$')
+                ->build(),
             Fb::create('parsed_query_json', T\TextType::create())
                 ->build()
         ];

@@ -63,6 +63,22 @@
         "rule": "single"
       }
     },
+    "fields_used": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^[\\w\\.-]+$"
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "description": "The fields that are being queried as determined by parsing the \"q\" field.",
+      "pbj": {
+        "type": "string",
+        "rule": "set"
+      }
+    },
     "parsed_query_json": {
       "type": "string",
       "minLength": 0,

@@ -101,21 +101,9 @@
         "rule": "single"
       }
     },
-    "request": {
-      "type": "object",
-      "anyOf": [
-        {
-          "$ref": "#/definitions/request"
-        }
-      ],
-      "pbj": {
-        "type": "message",
-        "rule": "single"
-      }
-    },
     "error_code": {
       "type": "integer",
-      "default": 0,
+      "default": 2,
       "minimum": 0,
       "maximum": 65535,
       "pbj": {

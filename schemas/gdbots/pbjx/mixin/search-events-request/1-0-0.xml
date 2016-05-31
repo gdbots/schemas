@@ -22,6 +22,9 @@
       </field>
       <field name="occurred_after" type="date-time"/>
       <field name="occurred_before" type="date-time"/>
+      <field name="fields_used" type="string" pattern="^[\w\.-]+$" rule="set">
+        <description>The fields that are being queried as determined by parsing the "q" field.</description>
+      </field>
       <field name="parsed_query_json" type="text"/>
     </fields>
 
