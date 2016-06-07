@@ -30,7 +30,7 @@ final class AppV1 extends AbstractMessage implements
                     ->pattern('^[a-z0-9\.-]+$')
                     ->build(),
                 Fb::create('version', T\StringType::create())
-                    ->maxLength(10)
+                    ->maxLength(20)
                     ->pattern('^[\w\.-]+$')
                     ->build(),
                 Fb::create('build', T\StringType::create())
@@ -38,7 +38,7 @@ final class AppV1 extends AbstractMessage implements
                     ->pattern('^[\w\.-]+$')
                     ->build(),
                 Fb::create('variant', T\StringType::create())
-                    ->maxLength(10)
+                    ->maxLength(20)
                     ->pattern('^[\w\.-]+$')
                     ->build()
             ]
