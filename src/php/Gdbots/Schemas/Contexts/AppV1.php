@@ -23,11 +23,11 @@ final class AppV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('vendor', T\StringType::create())
                     ->maxLength(50)
-                    ->pattern('^[a-z0-9-]+$')
+                    ->pattern('^[\w\.-]+$')
                     ->build(),
                 Fb::create('name', T\StringType::create())
                     ->maxLength(50)
-                    ->pattern('^[a-z0-9\.-]+$')
+                    ->pattern('^[\w\.-]+$')
                     ->build(),
                 Fb::create('version', T\StringType::create())
                     ->maxLength(20)

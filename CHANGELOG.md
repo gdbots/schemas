@@ -11,6 +11,7 @@
 * Adds `Gdbots\Schemas\Pbjx\StreamId` identifier class for use in pbjx lib and available as identifer for schemas.
   Provides a standard for stream ids with `topic:partition:sub-partition` naming convention.
 * Increase string length to 20 on `gdbots:contexts::app` version and variant.
+* Added `gdbots:pbjx:mixin:indexed:v1` to `pbj:gdbots:pbjx:event:event-execution-failed:1-0-1`.
 
 
 ## v1.0.4
