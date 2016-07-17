@@ -17,7 +17,7 @@
       </field>
       <field name="results" type="message" rule="list">
         <any-of>
-          <curie>gdbots:pbjx:mixin:event</curie>
+          <curie>gdbots:pbjx:mixin:indexed</curie>
         </any-of>
       </field>
     </fields>

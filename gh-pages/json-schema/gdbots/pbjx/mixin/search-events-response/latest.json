@@ -45,7 +45,7 @@
       "type": "array",
       "items": [
         {
-          "$ref": "#/definitions/event"
+          "$ref": "#/definitions/indexed"
         }
       ],
       "additionalProperties": false,
@@ -56,11 +56,11 @@
     }
   },
   "definitions": {
-    "event": {
+    "indexed": {
       "type": "object",
       "anyOf": [
         {
-          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-0.json#"
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/indexed/1-0-0.json#"
         }
       ]
     }

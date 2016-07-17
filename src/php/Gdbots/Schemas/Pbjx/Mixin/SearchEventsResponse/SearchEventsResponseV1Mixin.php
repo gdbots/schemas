@@ -42,7 +42,7 @@ final class SearchEventsResponseV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('results', T\MessageType::create())
                 ->asAList()
-                ->className('Gdbots\Schemas\Pbjx\Mixin\Event\Event')
+                ->className('Gdbots\Schemas\Pbjx\Mixin\Indexed\Indexed')
                 ->build()
         ];
     }
