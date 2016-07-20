@@ -1,6 +1,6 @@
 <?php
 
-namespace Gdbots\Schemas\Common\Request;
+namespace Gdbots\Schemas\Pbjx\Request;
 
 use Gdbots\Pbj\Message;
 

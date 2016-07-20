@@ -15,11 +15,11 @@
     'gdbots:ncr:event:edge-created' => 'Gdbots\Schemas\Ncr\Event\EdgeCreatedV1',
     'gdbots:ncr:command:delete-edge' => 'Gdbots\Schemas\Ncr\Command\DeleteEdgeV1',
     'gdbots:ncr:event:edge-deleted' => 'Gdbots\Schemas\Ncr\Event\EdgeDeletedV1',
-    'gdbots:common:request:echo-request' => 'Gdbots\Schemas\Common\Request\EchoRequestV1',
-    'gdbots:common:request:echo-response' => 'Gdbots\Schemas\Common\Request\EchoResponseV1',
     'gdbots:contexts::app' => 'Gdbots\Schemas\Contexts\AppV1',
     'gdbots:contexts::cloud' => 'Gdbots\Schemas\Contexts\CloudV1',
     'gdbots:contexts::user-agent' => 'Gdbots\Schemas\Contexts\UserAgentV1',
     'gdbots:geo::address' => 'Gdbots\Schemas\Geo\AddressV1',
     'gdbots:pbjx::envelope' => 'Gdbots\Schemas\Pbjx\EnvelopeV1',
+    'gdbots:pbjx:request:echo-request' => 'Gdbots\Schemas\Pbjx\Request\EchoRequestV1',
+    'gdbots:pbjx:request:echo-response' => 'Gdbots\Schemas\Pbjx\Request\EchoResponseV1',
 ]);

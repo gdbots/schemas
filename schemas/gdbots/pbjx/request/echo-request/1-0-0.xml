@@ -3,17 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:common:request:echo-response:1-0-0">
+  <schema id="pbj:gdbots:pbjx:request:echo-request:1-0-0">
     <fields>
       <field name="msg" type="string"/>
     </fields>
 
     <mixins>
-      <curie-major>gdbots:pbjx:mixin:response:v1</curie-major>
+      <curie-major>gdbots:pbjx:mixin:request:v1</curie-major>
     </mixins>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Common\Request</namespace>
+      <namespace>Gdbots\Schemas\Pbjx\Request</namespace>
     </php-options>
   </schema>
 </pbj-schema>

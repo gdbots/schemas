@@ -1,6 +1,6 @@
 <?php
 
-namespace Gdbots\Schemas\Common\Request;
+namespace Gdbots\Schemas\Pbjx\Request;
 
 use Gdbots\Pbj\AbstractMessage;
 use Gdbots\Pbj\FieldBuilder as Fb;
@@ -22,7 +22,7 @@ final class EchoResponseV1 extends AbstractMessage implements
      */
     protected static function defineSchema()
     {
-        return new Schema('pbj:gdbots:common:request:echo-response:1-0-0', __CLASS__,
+        return new Schema('pbj:gdbots:pbjx:request:echo-response:1-0-0', __CLASS__,
             [
                 Fb::create('msg', T\StringType::create())
                     ->build()
