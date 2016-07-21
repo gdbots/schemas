@@ -14,6 +14,8 @@
   Provides a standard for stream ids with `topic:partition:sub-partition` naming convention.
 * Increase string length to 20 on `gdbots:contexts::app` version and variant.
 * Added `gdbots:pbjx:mixin:indexed:v1` to `pbj:gdbots:pbjx:event:event-execution-failed:1-0-1`.
+* Added `verified` boolean to `pbj:gdbots:geo::address:1-0-1` to indicate whether or not the address was checked.
+  `is_verified` is the result of that verification.
 
 
 ## v1.0.4

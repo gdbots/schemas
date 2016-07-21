@@ -16,7 +16,7 @@ final class AddressV1 extends AbstractMessage implements
      */
     protected static function defineSchema()
     {
-        return new Schema('pbj:gdbots:geo::address:1-0-0', __CLASS__,
+        return new Schema('pbj:gdbots:geo::address:1-0-1', __CLASS__,
             [
                 Fb::create('geo_hash', T\StringType::create())
                     ->maxLength(20)
@@ -24,6 +24,15 @@ final class AddressV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('geo_point', T\GeoPointType::create())
                     ->build(),
+                /*
+                 * Indicates if a verification has been run on this address.
+                 */
+                Fb::create('verified', T\BooleanType::create())
+                    ->build(),
+                /*
+                 * Indicates if this is a valid adddress or not. Generally only true if the
+                 * verified field is also true.
+                 */
                 Fb::create('is_verified', T\BooleanType::create())
                     ->build(),
                 Fb::create('street1', T\StringType::create())
