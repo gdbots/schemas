@@ -32,6 +32,14 @@
       <option key="DECEMBER" value="12"/>
     </enum>
 
+    <enum name="phone-type" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="MOBILE" value="mobile"/>
+      <option key="HOME" value="home"/>
+      <option key="WORK" value="work"/>
+      <option key="FAX" value="fax"/>
+    </enum>
+
     <php-options>
       <namespace>Gdbots\Schemas\Common\Enum</namespace>
     </php-options>
