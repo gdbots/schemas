@@ -4,6 +4,7 @@
 ## v1.0.5
 * issue #11: Added schemas for event store and search.
 * __New Schemas:__
+  * `gdbots:common:gender`
   * `gdbots:common:phone-type`
   * `gdbots:pbjx:mixin:indexed`
   * `gdbots:pbjx:mixin:search-events-request`
