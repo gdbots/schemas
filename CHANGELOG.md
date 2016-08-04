@@ -4,6 +4,11 @@
 ## v1.0.5
 * issue #11: Added schemas for event store and search.
 * __New Schemas:__
+  * `gdbots:analytics:comparison-operator`
+  * `gdbots:analytics:interval`
+  * `gdbots:analytics:mixin:tracked-message`
+  * `gdbots:analytics:stream-control`
+  * `gdbots:analytics:tracker`
   * `gdbots:common:gender`
   * `gdbots:common:phone-type`
   * `gdbots:pbjx:mixin:indexed`

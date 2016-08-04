@@ -1,6 +1,7 @@
 domain: http://schemas.gdbots.io
 
 namespaces:
+  - gdbots:analytics
   - gdbots:common
   - gdbots:contexts
   - gdbots:enrichments

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-enums xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/enums.xsd">
+
+  <enums namespace="gdbots:analytics">
+    <enum name="comparison-operator" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="EQUAL_TO" value="eq"/>
+      <option key="NOT_EQUAL_TO" value="ne"/>
+      <option key="GREATER_THAN" value="gt"/>
+      <option key="GREATER_THAN_OR_EQUAL_TO" value="gte"/>
+      <option key="LESS_THAN" value="lt"/>
+      <option key="LESS_THAN_OR_EQUAL_TO" value="lte"/>
+      <option key="EXISTS" value="exists"/>
+      <option key="IN" value="in"/>
+      <option key="CONTAINS" value="contains"/>
+      <option key="NOT_CONTAINS" value="not_contains"/>
+      <option key="WITHIN" value="within"/>
+    </enum>
+
+    <enum name="interval" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="MINUTELY" value="minutely"/>
+      <option key="HOURLY" value="hourly"/>
+      <option key="DAILY" value="daily"/>
+      <option key="WEEKLY" value="weekly"/>
+      <option key="MONTHLY" value="monthly"/>
+      <option key="YEARLY" value="yearly"/>
+    </enum>
+
+    <enum name="stream-control" type="int">
+      <option key="UNKNOWN" value="0"/>
+      <option key="CTRL_STOP" value="0"/>
+      <option key="CTRL_CONTINUE" value="1"/>
+    </enum>
+
+    <enum name="tracker" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="CUSTOM" value="custom"/>
+      <option key="AKAMAI_MEDIA_ANALYTICS" value="akamai_ma"/>
+      <option key="AWS_CLOUD_WATCH" value="aws_cw"/>
+      <option key="AWS_MOBILE_ANALYTICS" value="aws_ma"/>
+      <option key="CRASHLYTICS" value="crashlytics"/>
+      <option key="GOOGLE_ANALYTICS" value="ga"/>
+      <option key="FLURRY" value="flurry"/>
+      <option key="IRIS" value="iris"/>
+      <option key="KALTURA" value="kaltura"/>
+      <option key="KEEN" value="keen"/>
+      <option key="MIXPANEL" value="mixpanel"/>
+      <option key="OMNITURE" value="omniture"/>
+      <option key="SEGMENT" value="segment"/>
+      <option key="SNOWPLOW" value="snowplow"/>
+    </enum>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Analytics\Enum</namespace>
+    </php-options>
+  </enums>
+</pbj-enums>
