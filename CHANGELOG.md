@@ -7,8 +7,10 @@
   * `gdbots:analytics:comparison-operator`
   * `gdbots:analytics:interval`
   * `gdbots:analytics:mixin:tracked-message`
+  * `gdbots:analytics:mixin:tracker`
   * `gdbots:analytics:stream-control`
   * `gdbots:analytics:tracker`
+  * `gdbots:analytics:tracker:keen`
   * `gdbots:common:gender`
   * `gdbots:common:phone-type`
   * `gdbots:pbjx:mixin:indexed`
