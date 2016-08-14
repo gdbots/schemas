@@ -24,7 +24,6 @@
       "": "tests/php"
     }
   },
-  "minimum-stability": "dev",
   "scripts": {
     "pbjc": "vendor/bin/pbjc",
     "post-package-install": [
