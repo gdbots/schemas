@@ -2,11 +2,11 @@
 
 namespace Gdbots\Schemas\Ncr\Mixin\Node;
 
-use Gdbots\Pbj\WellKnown\UuidIdentifier;
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Pbj\WellKnown\UuidIdentifier;
 use Gdbots\Schemas\Ncr\Enum\NodeStatus;
 
 final class NodeV1Mixin extends AbstractMixin
