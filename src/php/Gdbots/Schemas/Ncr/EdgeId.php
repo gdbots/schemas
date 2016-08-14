@@ -2,7 +2,7 @@
 
 namespace Gdbots\Schemas\Ncr;
 
-use Gdbots\Identifiers\Identifier;
+use Gdbots\Pbj\WellKnown\Identifier;
 use Gdbots\Schemas\Ncr\Mixin\Edge\Edge;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;

@@ -2,9 +2,9 @@
 
 namespace Gdbots\Schemas\Pbjx;
 
-use Gdbots\Identifiers\Identifier;
 use Gdbots\Pbj\Assertion;
 use Gdbots\Pbj\Exception\InvalidArgumentException;
+use Gdbots\Pbj\WellKnown\Identifier;
 
 /**
  * A stream id represents a stream of events.  The parts of the id are delimited by a colon

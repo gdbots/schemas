@@ -2,7 +2,7 @@
 
 namespace Gdbots\Schemas\Ncr\Mixin\Node;
 
-use Gdbots\Identifiers\UuidIdentifier;
+use Gdbots\Pbj\WellKnown\UuidIdentifier;
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
@@ -34,7 +34,7 @@ final class NodeV1Mixin extends AbstractMixin
             Fb::create('_id', T\IdentifierType::create())
                 ->required()
                 ->withDefault(function() { return UuidIdentifier::generate(); })
-                ->className('Gdbots\Identifiers\UuidIdentifier')
+                ->className('Gdbots\Pbj\WellKnown\UuidIdentifier')
                 ->overridable(true)
                 ->build(),
             Fb::create('status', T\StringEnumType::create())

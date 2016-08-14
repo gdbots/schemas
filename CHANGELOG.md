@@ -1,8 +1,9 @@
 # CHANGELOG
 
 
-## v1.0.5
+## v1.1.0
 * issue #11: Added schemas for event store and search.
+* Use `Gdbots\Pbj\WellKnown\*` classes for all types instead of the classes from `gdbots/common` lib.
 * __New Schemas:__
   * `gdbots:analytics:comparison-operator`
   * `gdbots:analytics:interval`
