@@ -14,6 +14,8 @@
   * `gdbots:analytics:tracker:keen`
   * `gdbots:common:gender`
   * `gdbots:common:phone-type`
+  * `gdbots:pbjx:mixin:get-events-request`
+  * `gdbots:pbjx:mixin:get-events-response`
   * `gdbots:pbjx:mixin:indexed`
   * `gdbots:pbjx:mixin:search-events-request`
   * `gdbots:pbjx:mixin:search-events-response`

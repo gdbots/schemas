@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:pbjx:mixin:get-events-response:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:response:v1">
+    <fields>
+      <field name="has_more" type="boolean"/>
+      <field name="last_occurred_at" type="microtime" use-type-default="false">
+        <description>
+          The last "occurred_at" value from the last event in the "events" list.  This can be
+          used as "since" when requesting the next set of events if "has_more" is true.
+        </description>
+      </field>
+      <field name="events" type="message" rule="list">
+        <any-of>
+          <curie>gdbots:pbjx:mixin:event</curie>
+        </any-of>
+      </field>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Pbjx\Mixin\GetEventsResponse</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

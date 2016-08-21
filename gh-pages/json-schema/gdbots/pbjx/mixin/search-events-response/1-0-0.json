@@ -41,11 +41,11 @@
         "rule": "single"
       }
     },
-    "results": {
+    "events": {
       "type": "array",
       "items": [
         {
-          "$ref": "#/definitions/indexed"
+          "$ref": "#/definitions/event"
         }
       ],
       "additionalProperties": false,
@@ -56,11 +56,11 @@
     }
   },
   "definitions": {
-    "indexed": {
+    "event": {
       "type": "object",
       "anyOf": [
         {
-          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/indexed/1-0-0.json#"
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-0.json#"
         }
       ]
     }

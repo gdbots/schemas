@@ -15,9 +15,9 @@
       <field name="max_score" type="float">
         <description>The maximum score of a matching event from the entire search.</description>
       </field>
-      <field name="results" type="message" rule="list">
+      <field name="events" type="message" rule="list">
         <any-of>
-          <curie>gdbots:pbjx:mixin:indexed</curie>
+          <curie>gdbots:pbjx:mixin:event</curie>
         </any-of>
       </field>
     </fields>

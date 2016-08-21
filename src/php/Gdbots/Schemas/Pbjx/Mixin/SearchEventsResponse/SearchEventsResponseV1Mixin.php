@@ -40,9 +40,9 @@ final class SearchEventsResponseV1Mixin extends AbstractMixin
              */
             Fb::create('max_score', T\FloatType::create())
                 ->build(),
-            Fb::create('results', T\MessageType::create())
+            Fb::create('events', T\MessageType::create())
                 ->asAList()
-                ->className('Gdbots\Schemas\Pbjx\Mixin\Indexed\Indexed')
+                ->className('Gdbots\Schemas\Pbjx\Mixin\Event\Event')
                 ->build()
         ];
     }
