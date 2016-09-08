@@ -14,6 +14,7 @@
   * `gdbots:analytics:tracker:keen`
   * `gdbots:common:gender`
   * `gdbots:common:phone-type`
+  * `gdbots:common:trinary`
   * `gdbots:pbjx:mixin:get-events-request`
   * `gdbots:pbjx:mixin:get-events-response`
   * `gdbots:pbjx:mixin:indexed`
