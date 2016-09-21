@@ -3,7 +3,7 @@
 namespace Gdbots\Schemas\Files;
 
 use Gdbots\Pbj\Assertion;
-use Gdbots\Pbj\Exception\InvalidArgumentException;
+use Gdbots\Pbj\Exception\AssertionFailed;
 use Gdbots\Pbj\WellKnown\Identifier;
 use Gdbots\Pbj\WellKnown\UuidIdentifier;
 
@@ -31,7 +31,7 @@ final class FileId implements Identifier, \JsonSerializable
      * Regular expression pattern for matching a valid FileId string.
      * @constant string
      */
-    const VALID_PATTERN = '/^[a-z0-9]{1,12}_[a-z0-9]{1,10}_[a-f0-9]{32}$/';
+    const VALID_PATTERN = '/^([a-z0-9]{1,12})_([a-z0-9]{1,10})_([a-f0-9]{32})$/';
 
     /** @var string */
     private $id;
@@ -66,18 +66,21 @@ final class FileId implements Identifier, \JsonSerializable
     /**
      * {@inheritdoc}
      * @return static
+     *
+     * @throws AssertionFailed
      */
     public static function fromString($string)
     {
-        $okay = strlen($string) < 57;
-        Assertion::true($okay, 'FileId cannot be greater than 56 chars.', 'FileId');
         if (!preg_match(self::VALID_PATTERN, $string, $matches)) {
-            throw new InvalidArgumentException(
+            throw new AssertionFailed(
                 sprintf(
                     'FileId [%s] is invalid.  It must match the pattern [%s].',
                     $string,
                     self::VALID_PATTERN
-                )
+                ),
+                Assertion::INVALID_REGEX,
+                null,
+                $string
             );
         }
 
@@ -90,18 +93,23 @@ final class FileId implements Identifier, \JsonSerializable
      * @param UuidIdentifier $uuid  Uuid for the file, if not supplied a v4 uuid will be created.
      *
      * @return FileId
+     *
+     * @throws AssertionFailed
      */
     public static function create($type, $ext, UuidIdentifier $uuid = null)
     {
         $uuid = $uuid ?: UuidIdentifier::generate();
         $fileId = new self($type, $ext, $uuid);
         if (!preg_match(self::VALID_PATTERN, $fileId->id)) {
-            throw new InvalidArgumentException(
+            throw new AssertionFailed(
                 sprintf(
                     'FileId [%s] is invalid.  It must match the pattern [%s].',
                     $fileId->id,
                     self::VALID_PATTERN
-                )
+                ),
+                Assertion::INVALID_REGEX,
+                null,
+                $fileId->id
             );
         }
 
