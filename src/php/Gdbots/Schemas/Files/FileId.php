@@ -61,7 +61,7 @@ final class FileId implements Identifier, \JsonSerializable
         $this->ext = $ext;
         $this->date = $date;
         $this->uuid = strtolower(str_replace('-', '', $uuid));
-        $this->id = sprintf('%s_%s_%s', $type, $ext, $this->uuid);
+        $this->id = sprintf('%s_%s_%s_%s', $type, $ext, $this->date, $this->uuid);
     }
 
     /**
@@ -85,22 +85,24 @@ final class FileId implements Identifier, \JsonSerializable
             );
         }
 
-        return new self($matches[1], $matches[2], $matches[3]);
+        return new self($matches[1], $matches[2], $matches[3], $matches[4]);
     }
 
     /**
      * @param string $type          The primary type for this file. e.g. image, video, audio.
      * @param string $ext           Extension of the file.  jpg, gif, mp4, txt, pdf
+     * @param \DateTime $date
      * @param UuidIdentifier $uuid  Uuid for the file, if not supplied a v4 uuid will be created.
      *
      * @return FileId
      *
      * @throws AssertionFailed
      */
-    public static function create($type, $ext, UuidIdentifier $uuid = null)
+    public static function create($type, $ext, \DateTime $date = null, UuidIdentifier $uuid = null)
     {
+        $date = $date ?: new \DateTime('now', new \DateTimeZone('UTC'));
         $uuid = $uuid ?: UuidIdentifier::generate();
-        $fileId = new self($type, $ext, $uuid->toString());
+        $fileId = new self($type, $ext, $date->format('Ymd'), $uuid->toString());
         if (!preg_match(self::VALID_PATTERN, $fileId->id)) {
             throw new AssertionFailed(
                 sprintf(
@@ -134,10 +136,30 @@ final class FileId implements Identifier, \JsonSerializable
     }
 
     /**
-     * @return string
+     * @param bool $asObject    Returns the date as a \DateTime instead of Ymd string.
+     *
+     * @return \DateTime|string
      */
-    public function getUuid()
+    public function getDate($asObject = false)
     {
+        if (true === $asObject) {
+            return \DateTime::createFromFormat('!Ymd', $this->date, new \DateTimeZone('UTC'));
+        }
+
+        return $this->date;
+    }
+
+    /**
+     * @param bool $asObject    Returns the uuid as a UuidIdentifier instead of formatted uuid string (all lowercase, no dashes)
+     *
+     * @return UuidIdentifier|string
+     */
+    public function getUuid($asObject = false)
+    {
+        if (true === $asObject) {
+            return UuidIdentifier::fromString($this->uuid);
+        }
+
         return $this->uuid;
     }
 
@@ -176,12 +198,12 @@ final class FileId implements Identifier, \JsonSerializable
     /**
      * Returns a path to this file for the given version/quality.  The version and quality are completely arbitrary
      * and up to the consumer of this class.  Typically your "version" would indicate thumbnail size or format of
-     * a video, etc. and the quality would clarify it further.
+     * video, etc. and the quality would clarify it further.
      *
-     * For example, for the file id 'image_jpg_27ca03c7b490460992a78692aca42b10'
+     * For example, for the file id 'image_jpg_20151201_27ca03c7b490460992a78692aca42b10'
      *  $fileId->toFilePath('250x', 'n')
      * would return:
-     *  'image/250x/27/ca/03/27ca03c7b490460992a78692aca42b10_n.jpg'
+     *  'image/250x/2015/12/01/27/27ca03c7b490460992a78692aca42b10_n.jpg'
      *
      * @param string $version   An identifier for the version, e.g. "o" for original or "250x" for a thumbnail size.
      * @param string $quality   If applicable, a quality setting like "n" for normal or "high", "low", etc.
@@ -191,31 +213,16 @@ final class FileId implements Identifier, \JsonSerializable
     public function toFilePath($version = null, $quality = null)
     {
         return sprintf(
-            '%s/%s%s/%s/%s/%s%s.%s',
-            $this->type,
-            null === $version ? '' : $version.'/',
+            '%s/%s%s/%s/%s/%s/%s%s.%s',
+            $this->type, // image, video, document, etc.
+            null === $version ? '' : $version.'/', // o, 250x, hls, etc.
+            substr($this->date, 0, 4), // yyyy
+            substr($this->date, 4, 2), // mm
+            substr($this->date, 6, 2), // dd
             substr($this->uuid, 0, 2),
-            substr($this->uuid, 2, 2),
-            substr($this->uuid, 4, 2),
             $this->uuid,
             null === $quality ? '' : '_'.$quality,
             $this->ext
-        );
-    }
-
-    /**
-     * Returns a directory path of first 6 chars of the uuid as
-     * aa/aa/aa which can be used when building file paths.
-     *
-     * @return string
-     */
-    public function getDirHash()
-    {
-        return sprintf(
-            '%s/%s/%s',
-            substr($this->uuid, 0, 2),
-            substr($this->uuid, 2, 2),
-            substr($this->uuid, 4, 2)
         );
     }
 }
