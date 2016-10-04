@@ -234,16 +234,34 @@ final class StreamId implements Identifier, \JsonSerializable
      */
     public static function fromFilePath($string)
     {
-        return self::fromString(str_replace('/', ':', $string));
+        $parts = explode('/', $string, 6);
+        unset($parts[1]);
+        unset($parts[2]);
+        unset($parts[3]);
+        return self::fromString(implode(':', $parts));
     }
 
     /**
-     * Returns a string that can be used for a file path by replacing colons with a slash.
+     * Returns a string that can be used for a file path by replacing colons with a slash
+     * and producing a hash of the partition (if it exists).
      *
      * @return string
      */
     public function toFilePath()
     {
-        return str_replace(':', '/', $this->id);
+        if (empty($this->partition)) {
+            return str_replace(':', '/', $this->id);
+        }
+
+        $hash = md5($this->partition);
+        return trim(sprintf(
+            '%s/%s/%s/%s/%s/%s',
+            $this->topic,
+            substr($hash, 0, 2),
+            substr($hash, 2, 2),
+            substr($hash, 4, 2),
+            $this->partition,
+            $this->subPartition
+        ), '/');
     }
 }

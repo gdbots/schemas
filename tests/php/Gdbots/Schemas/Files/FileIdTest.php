@@ -9,11 +9,16 @@ class FileIdTest extends \PHPUnit_Framework_TestCase
 {
     public function testFromString()
     {
-        $id = FileId::fromString('image_jpg_cb9c3c8c5c88453b960933a59ede6505');
+        $id = FileId::fromString('image_jpg_20151201_cb9c3c8c5c88453b960933a59ede6505');
 
         $this->assertSame('image', $id->getType());
         $this->assertSame('jpg', $id->getExt());
-        $this->assertSame(UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(), $id->getUuid()->toString());
+        $this->assertSame(
+            UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(),
+            UuidIdentifier::fromString($id->getUuid())->toString()
+        );
+        $this->assertSame('image/2015/12/25/cb/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
+        $this->assertSame('image/o/2015/12/25/cb/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath('o'));
         $this->assertSame('cb/9c/3c', $id->getDirHash());
     }
 
@@ -23,7 +28,12 @@ class FileIdTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('image', $id->getType());
         $this->assertSame('jpg', $id->getExt());
-        $this->assertSame(UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(), $id->getUuid()->toString());
+        $this->assertSame(
+            UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(),
+            UuidIdentifier::fromString($id->getUuid())->toString()
+        );
+        $this->assertSame('image/cb/9c/3c/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
+        $this->assertSame('image/250x/cb/9c/3c/cb9c3c8c5c88453b960933a59ede6505_n.jpg', $id->toFilePath('250x', 'n'));
         $this->assertSame('cb/9c/3c', $id->getDirHash());
     }
 
@@ -33,7 +43,7 @@ class FileIdTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('image', $id->getType());
         $this->assertSame('jpg', $id->getExt());
-        $this->assertInstanceOf('Gdbots\Pbj\WellKnown\UuidIdentifier', $id->getUuid());
+        $this->assertInstanceOf('Gdbots\Pbj\WellKnown\UuidIdentifier', UuidIdentifier::fromString($id->getUuid()));
     }
 
     /**
