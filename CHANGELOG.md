@@ -15,6 +15,8 @@
   * `gdbots:common:gender`
   * `gdbots:common:phone-type`
   * `gdbots:common:trinary`
+  * `gdbots:pbjx:command:check-health`
+  * `gdbots:pbjx:event:health-checked`
   * `gdbots:pbjx:mixin:get-events-request`
   * `gdbots:pbjx:mixin:get-events-response`
   * `gdbots:pbjx:mixin:indexed`
