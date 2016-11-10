@@ -73,9 +73,9 @@ final class StreamId implements Identifier, \JsonSerializable
         $this->subPartition = $subPartition;
         $this->id = $topic;
 
-        if (!empty($partition)) {
+        if (strlen($partition) > 0) {
             $this->id .= ':' . $partition;
-            if (!empty($subPartition)) {
+            if (strlen($subPartition) > 0) {
                 $this->id .= ':' . $subPartition;
             }
         }
@@ -249,7 +249,7 @@ final class StreamId implements Identifier, \JsonSerializable
      */
     public function toFilePath()
     {
-        if (empty($this->partition)) {
+        if (!strlen($this->partition)) {
             return str_replace(':', '/', $this->id);
         }
 
