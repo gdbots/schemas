@@ -63,13 +63,13 @@ class StreamIdTest extends \PHPUnit_Framework_TestCase
     {
         $id = StreamId::fromString('My-Topic:IS_COOL:BR0.T33n');
         $this->assertSame('My-Topic:IS_COOL:BR0.T33n', $id->toString());
-        $this->assertSame('My-Topic/8a/9f/7b/IS_COOL/BR0.T33n', $id->toFilePath());
+        $this->assertSame('My-Topic/8a/9f/IS_COOL/BR0.T33n', $id->toFilePath());
         $this->assertTrue($id->equals(StreamId::fromFilePath($id->toFilePath())));
         $this->assertSame($id->toString(), StreamId::fromFilePath($id->toFilePath())->toString());
 
         $id = StreamId::fromString('My-Topic:IS_COOL');
         $this->assertSame('My-Topic:IS_COOL', $id->toString());
-        $this->assertSame('My-Topic/8a/9f/7b/IS_COOL', $id->toFilePath());
+        $this->assertSame('My-Topic/8a/9f/IS_COOL', $id->toFilePath());
         $this->assertTrue($id->equals(StreamId::fromFilePath($id->toFilePath())));
         $this->assertSame($id->toString(), StreamId::fromFilePath($id->toFilePath())->toString());
 
@@ -81,7 +81,7 @@ class StreamIdTest extends \PHPUnit_Framework_TestCase
 
         $id = StreamId::fromString('My-Topic:IS_COOL:0');
         $this->assertSame('My-Topic:IS_COOL:0', $id->toString());
-        $this->assertSame('My-Topic/8a/9f/7b/IS_COOL/0', $id->toFilePath());
+        $this->assertSame('My-Topic/8a/9f/IS_COOL/0', $id->toFilePath());
         $this->assertTrue($id->equals(StreamId::fromFilePath($id->toFilePath())));
         $this->assertSame($id->toString(), StreamId::fromFilePath($id->toFilePath())->toString());
     }

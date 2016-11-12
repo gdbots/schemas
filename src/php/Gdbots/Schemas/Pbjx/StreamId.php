@@ -237,7 +237,6 @@ final class StreamId implements Identifier, \JsonSerializable
         $parts = explode('/', $string, 6);
         unset($parts[1]);
         unset($parts[2]);
-        unset($parts[3]);
         return self::fromString(implode(':', $parts));
     }
 
@@ -255,11 +254,10 @@ final class StreamId implements Identifier, \JsonSerializable
 
         $hash = md5($this->partition);
         return trim(sprintf(
-            '%s/%s/%s/%s/%s/%s',
+            '%s/%s/%s/%s/%s',
             $this->topic,
             substr($hash, 0, 2),
             substr($hash, 2, 2),
-            substr($hash, 4, 2),
             $this->partition,
             $this->subPartition
         ), '/');
