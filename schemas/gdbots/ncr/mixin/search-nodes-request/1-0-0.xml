@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:mixin:search-nodes-request:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:request:v1">
+    <fields>
+      <field name="q" type="string"/>
+      <field name="count" type="tiny-int">
+        <description>The number of results to return.</description>
+        <default>25</default>
+      </field>
+      <field name="page" type="tiny-int" min="1">
+        <default>1</default>
+      </field>
+      <field name="sort" type="string-enum">
+        <default>relevance</default>
+        <enum id="gdbots:ncr:search-sort"/>
+        <php-options>
+          <default>SearchSort::RELEVANCE()</default>
+        </php-options>
+      </field>
+      <field name="created_after" type="date-time"/>
+      <field name="created_before" type="date-time"/>
+      <field name="updated_after" type="date-time"/>
+      <field name="updated_before" type="date-time"/>
+      <field name="fields_used" type="string" pattern="^[\w\.-]+$" rule="set">
+        <description>The fields that are being queried as determined by parsing the "q" field.</description>
+      </field>
+      <field name="parsed_query_json" type="text"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Ncr\Mixin\SearchNodesRequest</namespace>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Schemas\Ncr\Enum\SearchSort;
+            ]]>
+        </imports>
+        <methods/>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>

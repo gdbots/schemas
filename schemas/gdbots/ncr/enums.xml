@@ -53,6 +53,17 @@
       <option key="DELETED" value="deleted"/>
     </enum>
 
+    <enum name="search-sort" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="RELEVANCE" value="relevance"/>
+      <option key="CREATED_AT_DESC" value="created-at-desc"/>
+      <option key="CREATED_AT_ASC" value="created-at-asc"/>
+      <option key="UPDATED_AT_DESC" value="updated-at-desc"/>
+      <option key="UPDATED_AT_ASC" value="updated-at-asc"/>
+      <option key="TITLE_DESC" value="title-desc"/>
+      <option key="TITLE_ASC" value="title-asc"/>
+    </enum>
+
     <php-options>
       <namespace>Gdbots\Schemas\Ncr\Enum</namespace>
     </php-options>
