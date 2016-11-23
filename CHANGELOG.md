@@ -15,7 +15,6 @@
   * `gdbots:common:gender`
   * `gdbots:common:phone-type`
   * `gdbots:common:trinary`
-  * `gdbots:ncr:search-sort`
   * `gdbots:ncr:mixin:search-nodes-request`
   * `gdbots:ncr:mixin:search-nodes-response`
   * `gdbots:pbjx:command:check-health`

@@ -6,7 +6,7 @@ use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Ncr\Enum\SearchSort;
+use Gdbots\Schemas\Ncr\Enum\NodeStatus;
 
 final class SearchNodesRequestV1Mixin extends AbstractMixin
 {
@@ -36,9 +36,8 @@ final class SearchNodesRequestV1Mixin extends AbstractMixin
                 ->min(1)
                 ->withDefault(1)
                 ->build(),
-            Fb::create('sort', T\StringEnumType::create())
-                ->withDefault(SearchSort::RELEVANCE())
-                ->className('Gdbots\Schemas\Ncr\Enum\SearchSort')
+            Fb::create('status', T\StringEnumType::create())
+                ->className('Gdbots\Schemas\Ncr\Enum\NodeStatus')
                 ->build(),
             Fb::create('created_after', T\DateTimeType::create())
                 ->build(),
