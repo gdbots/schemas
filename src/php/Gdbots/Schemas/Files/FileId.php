@@ -26,7 +26,7 @@ use Gdbots\Pbj\WellKnown\UuidIdentifier;
  *  document_pdf_20151201_27ca03c7b490460992a78692aca42b10
  *
  */
-final class FileId implements Identifier, \JsonSerializable
+final class FileId implements Identifier
 {
     /**
      * Regular expression pattern for matching a valid FileId string.

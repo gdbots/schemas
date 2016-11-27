@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:ncr:event:edge-created:1-0-0">
     <fields>
-      <field name="edge" type="message">
+      <field name="edge" type="message" required="true">
         <any-of>
           <curie>gdbots:ncr:mixin:edge</curie>
         </any-of>

@@ -6,6 +6,7 @@ use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Ncr\NodeRef;
 
 final class IndexNodeBatchV1Mixin extends AbstractMixin
 {
@@ -23,8 +24,10 @@ final class IndexNodeBatchV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('node_refs', T\MessageRefType::create())
+            Fb::create('node_refs', T\IdentifierType::create())
                 ->asASet()
+                ->required()
+                ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build()
         ];
     }

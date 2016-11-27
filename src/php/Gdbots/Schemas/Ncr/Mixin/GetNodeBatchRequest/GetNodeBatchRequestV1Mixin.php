@@ -7,6 +7,7 @@ use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Ncr\NodeRef;
 
 final class GetNodeBatchRequestV1Mixin extends AbstractMixin
 {
@@ -26,16 +27,13 @@ final class GetNodeBatchRequestV1Mixin extends AbstractMixin
         return [
             /*
              * When "node_refs" is supplied it SHOULD be used to perform the request.
-             * The "node_refs", "_ids" and "slugs" are analogous to protobuf unions in that
+             * The "node_refs" and "slugs" are analogous to protobuf unions in that
              * only one of these should exist and the priority of selection is as
              * ordered in this schema.
              */
-            Fb::create('node_refs', T\MessageRefType::create())
+            Fb::create('node_refs', T\IdentifierType::create())
                 ->asASet()
-                ->build(),
-            Fb::create('_ids', T\StringType::create())
-                ->asASet()
-                ->pattern('^[\w\/\.:-]+$')
+                ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build(),
             Fb::create('slugs', T\StringType::create())
                 ->asASet()

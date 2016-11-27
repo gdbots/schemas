@@ -41,7 +41,7 @@ use Gdbots\Pbj\WellKnown\Identifier;
  *      poll.votes:batman-vs-superman:20160301.c2
  *
  */
-final class StreamId implements Identifier, \JsonSerializable
+final class StreamId implements Identifier
 {
     /**
      * Regular expression pattern for matching a valid StreamId string.

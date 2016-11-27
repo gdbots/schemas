@@ -5,15 +5,17 @@
 
   <schema id="pbj:gdbots:ncr:mixin:get-node-batch-request:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:request:v1">
     <fields>
-      <field name="node_refs" type="message-ref" rule="set">
+      <field name="node_refs" type="identifier" rule="set">
         <description>
           When "node_refs" is supplied it SHOULD be used to perform the request.
-          The "node_refs", "_ids" and "slugs" are analogous to protobuf unions in that
+          The "node_refs" and "slugs" are analogous to protobuf unions in that
           only one of these should exist and the priority of selection is as
           ordered in this schema.
         </description>
+        <php-options>
+          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+        </php-options>
       </field>
-      <field name="_ids" type="string" pattern="^[\w\/\.:-]+$" rule="set"/>
       <field name="slugs" type="string" format="slug" rule="set"/>
     </fields>
 

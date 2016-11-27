@@ -8,6 +8,7 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Ncr\Enum\NodeStatus;
+use Gdbots\Schemas\Ncr\NodeRef;
 
 final class RenameNodeV1Mixin extends AbstractMixin
 {
@@ -25,7 +26,9 @@ final class RenameNodeV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('node_ref', T\MessageRefType::create())
+            Fb::create('node_ref', T\IdentifierType::create())
+                ->required()
+                ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build(),
             Fb::create('node_status', T\StringEnumType::create())
                 ->className('Gdbots\Schemas\Ncr\Enum\NodeStatus')

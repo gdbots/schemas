@@ -5,8 +5,16 @@
 
   <schema id="pbj:gdbots:ncr:mixin:edge:1-0-0" mixin="true">
     <fields>
-      <field name="from_ref" type="message-ref"/>
-      <field name="to_ref" type="message-ref"/>
+      <field name="from_ref" type="identifier" required="true">
+        <php-options>
+          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+        </php-options>
+      </field>
+      <field name="to_ref" type="identifier" required="true">
+        <php-options>
+          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+        </php-options>
+      </field>
       <field name="multiplicity" type="string-enum" overridable="true">
         <default>multi</default>
         <enum id="gdbots:ncr:edge-multiplicity"/>

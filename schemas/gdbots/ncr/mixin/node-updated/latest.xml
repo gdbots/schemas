@@ -5,11 +5,15 @@
 
   <schema id="pbj:gdbots:ncr:mixin:node-updated:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
     <fields>
-      <field name="node_ref" type="message-ref"/>
+      <field name="node_ref" type="identifier" required="true">
+        <php-options>
+          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+        </php-options>
+      </field>
       <field name="slug" type="string" format="slug"/>
       <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
       <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
-      <field name="new_node" type="message">
+      <field name="new_node" type="message" required="true">
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>
