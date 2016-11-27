@@ -26,6 +26,11 @@ final class GetNodeRequestV1Mixin extends AbstractMixin
     {
         return [
             /*
+             * If true, a strongly consistent read is used; if false (the default), an eventually consistent read is used.
+             */
+            Fb::create('consistent_read', T\BooleanType::create())
+                ->build(),
+            /*
              * When "node_ref" is supplied it SHOULD be used to perform the request.
              * The "node_ref" and "slug" are analogous to protobuf unions in that
              * only one of these should exist and the priority of selection is as

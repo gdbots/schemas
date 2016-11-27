@@ -5,6 +5,11 @@
 
   <schema id="pbj:gdbots:ncr:mixin:get-node-request:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:request:v1">
     <fields>
+      <field name="consistent_read" type="boolean">
+        <description>
+          If true, a strongly consistent read is used; if false (the default), an eventually consistent read is used.
+        </description>
+      </field>
       <field name="node_ref" type="identifier">
         <description>
           When "node_ref" is supplied it SHOULD be used to perform the request.

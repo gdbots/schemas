@@ -187,7 +187,7 @@ final class StreamId implements Identifier
      */
     public static function fromSnsTopicName($string)
     {
-        return self::fromString(str_replace('__', ':', str_replace('--', '.', $string)));
+        return self::fromString(str_replace(['__', '--'], [':', '.'], $string));
     }
 
     /**
@@ -198,7 +198,7 @@ final class StreamId implements Identifier
      */
     public function toSnsTopicName()
     {
-        return str_replace('.', '--', str_replace(':', '__', $this->id));
+        return str_replace([':', '.'], ['__', '--'], $this->id);
     }
 
     /**

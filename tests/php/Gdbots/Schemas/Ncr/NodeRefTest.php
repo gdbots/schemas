@@ -109,4 +109,22 @@ class NodeRefTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('article', $nodeRef->getLabel());
         $this->assertSame('123', $nodeRef->getId());
     }
+
+    public function testToFilePath()
+    {
+        $nodeRef = NodeRef::fromString('acme:article:123');
+        $this->assertSame('acme/article/20/2c/123', $nodeRef->toFilePath());
+        $this->assertTrue($nodeRef->equals(NodeRef::fromFilePath($nodeRef->toFilePath())));
+        $this->assertSame($nodeRef->toString(), NodeRef::fromFilePath($nodeRef->toFilePath())->toString());
+
+        $nodeRef = NodeRef::fromString('acme:article:2015/12/25/test');
+        $this->assertSame('acme/article/d9/20/2015__FS__12__FS__25__FS__test', $nodeRef->toFilePath());
+        $this->assertTrue($nodeRef->equals(NodeRef::fromFilePath($nodeRef->toFilePath())));
+        $this->assertSame($nodeRef->toString(), NodeRef::fromFilePath($nodeRef->toFilePath())->toString());
+
+        $nodeRef = NodeRef::fromString('acme-widgets:poll-widget:a:b:C_');
+        $this->assertSame('acme-widgets/poll-widget/69/a9/a__CLN__b__CLN__C_', $nodeRef->toFilePath());
+        $this->assertTrue($nodeRef->equals(NodeRef::fromFilePath($nodeRef->toFilePath())));
+        $this->assertSame($nodeRef->toString(), NodeRef::fromFilePath($nodeRef->toFilePath())->toString());
+    }
 }
