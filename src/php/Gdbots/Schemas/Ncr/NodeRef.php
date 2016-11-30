@@ -6,6 +6,7 @@ use Gdbots\Pbj\Assertion;
 use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\SchemaQName;
 use Gdbots\Pbj\WellKnown\Identifier;
+use Gdbots\Schemas\Ncr\Mixin\Node\Node;
 
 /**
  * A NodeRef is a qualified identifier to a node/vertex.  It is less verbose than a MessageRef
@@ -62,6 +63,16 @@ final class NodeRef implements Identifier
         $id = array_pop($parts);
         $qname = SchemaQName::fromString(implode(':', $parts));
         return new self($qname, $id);
+    }
+
+    /**
+     * @param Node $node
+     *
+     * @return self
+     */
+    public static function fromNode(Node $node)
+    {
+        return new self($node::schema()->getQName(), $node->get('_id'));
     }
 
     /**
