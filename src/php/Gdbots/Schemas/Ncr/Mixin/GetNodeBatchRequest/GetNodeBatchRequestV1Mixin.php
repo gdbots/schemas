@@ -40,6 +40,13 @@ final class GetNodeBatchRequestV1Mixin extends AbstractMixin
                 ->asASet()
                 ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build(),
+            /*
+             * The "qname" field should be populated when the request is not
+             * using "node_refs", e.g. "acme:article"
+             */
+            Fb::create('qname', T\StringType::create())
+                ->pattern('^[a-z0-9-]+:[a-z0-9-]+$')
+                ->build(),
             Fb::create('slugs', T\StringType::create())
                 ->asASet()
                 ->format(Format::SLUG())

@@ -39,6 +39,13 @@ final class GetNodeRequestV1Mixin extends AbstractMixin
             Fb::create('node_ref', T\IdentifierType::create())
                 ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build(),
+            /*
+             * The "qname" field should be populated when the request is not
+             * using "node_ref", e.g. "acme:article"
+             */
+            Fb::create('qname', T\StringType::create())
+                ->pattern('^[a-z0-9-]+:[a-z0-9-]+$')
+                ->build(),
             Fb::create('slug', T\StringType::create())
                 ->format(Format::SLUG())
                 ->build()

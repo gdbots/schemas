@@ -27,6 +27,15 @@
         "rule": "set"
       }
     },
+    "qname": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+:[a-z0-9-]+$",
+      "description": "The \"qname\" field should be populated when the request is not using \"node_refs\", e.g. \"acme:article\"",
+      "pbj": {
+        "type": "string",
+        "rule": "single"
+      }
+    },
     "slugs": {
       "type": "array",
       "items": [
