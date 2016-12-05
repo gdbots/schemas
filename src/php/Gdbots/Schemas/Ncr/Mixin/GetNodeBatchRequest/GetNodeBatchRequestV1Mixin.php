@@ -3,7 +3,6 @@
 namespace Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest;
 
 use Gdbots\Pbj\AbstractMixin;
-use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
@@ -39,17 +38,6 @@ final class GetNodeBatchRequestV1Mixin extends AbstractMixin
             Fb::create('node_refs', T\IdentifierType::create())
                 ->asASet()
                 ->className('Gdbots\Schemas\Ncr\NodeRef')
-                ->build(),
-            /*
-             * The "qname" field should be populated when the request is not
-             * using "node_refs", e.g. "acme:article"
-             */
-            Fb::create('qname', T\StringType::create())
-                ->pattern('^[a-z0-9-]+:[a-z0-9-]+$')
-                ->build(),
-            Fb::create('slugs', T\StringType::create())
-                ->asASet()
-                ->format(Format::SLUG())
                 ->build()
         ];
     }

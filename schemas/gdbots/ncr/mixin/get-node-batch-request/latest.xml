@@ -21,13 +21,6 @@
           <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
         </php-options>
       </field>
-      <field name="qname" type="string" pattern="^[a-z0-9-]+:[a-z0-9-]+$">
-        <description>
-          The "qname" field should be populated when the request is not
-          using "node_refs", e.g. "acme:article"
-        </description>
-      </field>
-      <field name="slugs" type="string" format="slug" rule="set"/>
     </fields>
 
     <php-options>

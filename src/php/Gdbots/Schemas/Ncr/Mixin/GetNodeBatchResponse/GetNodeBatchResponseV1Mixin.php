@@ -3,7 +3,6 @@
 namespace Gdbots\Schemas\Ncr\Mixin\GetNodeBatchResponse;
 
 use Gdbots\Pbj\AbstractMixin;
-use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
@@ -36,14 +35,6 @@ final class GetNodeBatchResponseV1Mixin extends AbstractMixin
             Fb::create('missing_node_refs', T\IdentifierType::create())
                 ->asASet()
                 ->className('Gdbots\Schemas\Ncr\NodeRef')
-                ->build(),
-            /*
-             * The "missing_slugs" field contains a set of slugs that
-             * the batch request failed to retrieve.
-             */
-            Fb::create('missing_slugs', T\StringType::create())
-                ->asASet()
-                ->format(Format::SLUG())
                 ->build()
         ];
     }
