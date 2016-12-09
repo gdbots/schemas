@@ -32,6 +32,10 @@ final class RequestFailedResponseV1 extends AbstractMessage implements
                     ->pattern('^[\w\/\.:-]+$')
                     ->build(),
                 Fb::create('error_message', T\TextType::create())
+                    ->build(),
+                Fb::create('prev_error_message', T\TextType::create())
+                    ->build(),
+                Fb::create('stack_trace', T\TextType::create())
                     ->build()
             ],
             [
