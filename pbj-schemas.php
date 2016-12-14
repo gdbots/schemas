@@ -20,6 +20,8 @@
     'gdbots:analytics:tracker:keen' => 'Gdbots\Schemas\Analytics\Tracker\KeenV1',
     'gdbots:pbjx:command:check-health' => 'Gdbots\Schemas\Pbjx\Command\CheckHealthV1',
     'gdbots:pbjx:event:health-checked' => 'Gdbots\Schemas\Pbjx\Event\HealthCheckedV1',
+    'gdbots:ncr:request:get-node-batch-request' => 'Gdbots\Schemas\Ncr\Request\GetNodeBatchRequestV1',
+    'gdbots:ncr:request:get-node-batch-response' => 'Gdbots\Schemas\Ncr\Request\GetNodeBatchResponseV1',
     'gdbots:contexts::app' => 'Gdbots\Schemas\Contexts\AppV1',
     'gdbots:contexts::cloud' => 'Gdbots\Schemas\Contexts\CloudV1',
     'gdbots:contexts::user-agent' => 'Gdbots\Schemas\Contexts\UserAgentV1',
