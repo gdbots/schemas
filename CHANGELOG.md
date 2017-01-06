@@ -13,6 +13,7 @@
   * `gdbots:analytics:tracker`
   * `gdbots:analytics:tracker:keen`
   * `gdbots:common:gender`
+  * `gdbots:common:mixin:taggable`
   * `gdbots:common:phone-type`
   * `gdbots:common:trinary`
   * `gdbots:ncr:mixin:search-nodes-request`
