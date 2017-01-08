@@ -19,7 +19,7 @@ final class UserAgentV1 extends AbstractMessage implements
         return new Schema('pbj:gdbots:contexts::user-agent:1-0-0', __CLASS__,
             [
                 Fb::create('br_family', T\StringType::create())
-                    ->pattern('^[\w\s\(\)\[\]\{\}\/\.:;-]+$')
+                    ->pattern('^[\w\s\(\)\[\]\{\}\/\.\|:;,-]+$')
                     ->build(),
                 Fb::create('br_major', T\SmallIntType::create())
                     ->build(),
@@ -28,7 +28,7 @@ final class UserAgentV1 extends AbstractMessage implements
                 Fb::create('br_patch', T\SmallIntType::create())
                     ->build(),
                 Fb::create('os_family', T\StringType::create())
-                    ->pattern('^[\w\s\(\)\[\]\{\}\/\.:;-]+$')
+                    ->pattern('^[\w\s\(\)\[\]\{\}\/\.\|:;,-]+$')
                     ->build(),
                 Fb::create('os_major', T\SmallIntType::create())
                     ->build(),
@@ -39,7 +39,7 @@ final class UserAgentV1 extends AbstractMessage implements
                 Fb::create('os_patch_minor', T\SmallIntType::create())
                     ->build(),
                 Fb::create('dvce_family', T\StringType::create())
-                    ->pattern('^[\w\s\(\)\[\]\{\}\/\.:;-]+$')
+                    ->pattern('^[\w\s\(\)\[\]\{\}\/\.\|:;,-]+$')
                     ->build()
             ]
         );
