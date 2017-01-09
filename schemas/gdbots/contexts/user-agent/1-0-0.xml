@@ -5,18 +5,18 @@
 
   <schema id="pbj:gdbots:contexts::user-agent:1-0-0">
     <fields>
-      <field name="br_family" type="string" pattern="^[\w\s\(\)\[\]\{\}\/\.\|:;,-]+$"/>
+      <field name="br_family" type="string" pattern=".+"/>
       <field name="br_major" type="small-int"/>
       <field name="br_minor" type="small-int"/>
       <field name="br_patch" type="small-int"/>
 
-      <field name="os_family" type="string" pattern="^[\w\s\(\)\[\]\{\}\/\.\|:;,-]+$"/>
+      <field name="os_family" type="string" pattern=".+"/>
       <field name="os_major" type="small-int"/>
       <field name="os_minor" type="small-int"/>
       <field name="os_patch" type="small-int"/>
       <field name="os_patch_minor" type="small-int"/>
 
-      <field name="dvce_family" type="string" pattern="^[\w\s\(\)\[\]\{\}\/\.\|:;,-]+$"/>
+      <field name="dvce_family" type="string" pattern=".+"/>
     </fields>
 
     <php-options>
