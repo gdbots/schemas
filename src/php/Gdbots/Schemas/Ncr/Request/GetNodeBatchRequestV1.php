@@ -30,10 +30,10 @@ final class GetNodeBatchRequestV1 extends AbstractMessage implements
         return new Schema('pbj:gdbots:ncr:request:get-node-batch-request:1-0-0', __CLASS__,
             [
                 /*
-                 * Hints is a map of data that helps the NCR decide where to read/write data from.
+                 * Context is a map of data that helps the NCR decide where to read/write data from.
                  * A common use case is multi-tenant applications.
                  */
-                Fb::create('hints', T\StringType::create())
+                Fb::create('context', T\StringType::create())
                     ->asAMap()
                     ->pattern('^[\w\/\.:-]+$')
                     ->build()
