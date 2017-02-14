@@ -51,6 +51,23 @@
       <option key="FAX" value="fax"/>
     </enum>
 
+    <enum name="social-network" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="FACEBOOK" value="facebook"/>
+      <option key="FLICKR" value="flickr"/>
+      <option key="GOOGLEPLUS" value="googleplus"/>
+      <option key="INSTAGRAM" value="instagram"/>
+      <option key="LINKEDIN" value="linkedin"/>
+      <option key="MYSPACE" value="myspace"/>
+      <option key="PINTEREST" value="pinterest"/>
+      <option key="REDDIT" value="reddit"/>
+      <option key="SNAPCHAT" value="snapchat"/>
+      <option key="TUMBLR" value="tumblr"/>
+      <option key="TWITTER" value="twitter"/>
+      <option key="VINE" value="vine"/>
+      <option key="YOUTUBE" value="youtube"/>
+    </enum>
+
     <!--
       @link https://en.wikipedia.org/wiki/Three-valued_logic
     -->
