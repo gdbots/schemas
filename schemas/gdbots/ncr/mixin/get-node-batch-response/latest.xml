@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:ncr:mixin:get-node-batch-response:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:response:v1">
     <fields>
-      <field name="nodes" type="message" rule="map">
+      <field name="nodes" type="message" rule="map" overridable="true">
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>

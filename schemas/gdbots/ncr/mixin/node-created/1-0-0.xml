@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:ncr:mixin:node-created:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:event:v1">
     <fields>
-      <field name="node" type="message" required="true">
+      <field name="node" type="message" required="true" overridable="true">
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>

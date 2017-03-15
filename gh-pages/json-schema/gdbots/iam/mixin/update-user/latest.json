@@ -1,0 +1,46 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/update-user/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "new_node": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/user"
+        }
+      ],
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    },
+    "old_node": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/user"
+        }
+      ],
+      "description": "The entire node, as it appeared before it was modified.",
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    }
+  },
+  "required": [
+    "new_node"
+  ],
+  "definitions": {
+    "user": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

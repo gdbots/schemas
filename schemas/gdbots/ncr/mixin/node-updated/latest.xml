@@ -13,12 +13,12 @@
       <field name="slug" type="string" format="slug"/>
       <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
       <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
-      <field name="new_node" type="message" required="true">
+      <field name="new_node" type="message" required="true" overridable="true">
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>
       </field>
-      <field name="old_node" type="message">
+      <field name="old_node" type="message" overridable="true">
         <description>
           The entire node, as it appeared before it was modified.
         </description>

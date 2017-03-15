@@ -12,7 +12,7 @@
           used as "since" when requesting the next set of events if "has_more" is true.
         </description>
       </field>
-      <field name="events" type="message" rule="list">
+      <field name="events" type="message" rule="list" overridable="true">
         <any-of>
           <curie>gdbots:pbjx:mixin:event</curie>
         </any-of>

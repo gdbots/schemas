@@ -1,0 +1,30 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/get-user-response/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "node": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/user"
+        }
+      ],
+      "pbj": {
+        "type": "message",
+        "rule": "single"
+      }
+    }
+  },
+  "definitions": {
+    "user": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

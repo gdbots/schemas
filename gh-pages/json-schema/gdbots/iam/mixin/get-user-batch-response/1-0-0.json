@@ -1,0 +1,36 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/get-user-batch-response/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "object",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/user"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "pbj": {
+        "type": "message",
+        "rule": "map"
+      }
+    }
+  },
+  "definitions": {
+    "user": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-0.json#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

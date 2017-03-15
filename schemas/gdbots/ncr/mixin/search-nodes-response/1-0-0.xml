@@ -15,7 +15,7 @@
       <field name="max_score" type="float">
         <description>The maximum score of a matching node from the entire search.</description>
       </field>
-      <field name="nodes" type="message" rule="list">
+      <field name="nodes" type="message" rule="list" overridable="true">
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>

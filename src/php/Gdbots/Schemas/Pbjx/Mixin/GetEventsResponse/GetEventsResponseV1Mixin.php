@@ -35,6 +35,7 @@ final class GetEventsResponseV1Mixin extends AbstractMixin
             Fb::create('events', T\MessageType::create())
                 ->asAList()
                 ->className('Gdbots\Schemas\Pbjx\Mixin\Event\Event')
+                ->overridable(true)
                 ->build()
         ];
     }

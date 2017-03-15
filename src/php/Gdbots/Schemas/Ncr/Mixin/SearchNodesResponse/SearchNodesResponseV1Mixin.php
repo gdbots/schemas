@@ -43,6 +43,7 @@ final class SearchNodesResponseV1Mixin extends AbstractMixin
             Fb::create('nodes', T\MessageType::create())
                 ->asAList()
                 ->className('Gdbots\Schemas\Ncr\Mixin\Node\Node')
+                ->overridable(true)
                 ->build()
         ];
     }

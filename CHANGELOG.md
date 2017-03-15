@@ -16,6 +16,27 @@
   * `gdbots:common:mixin:taggable`
   * `gdbots:common:phone-type`
   * `gdbots:common:trinary`
+  * `gdbots:iam:mixin:create-user`
+  * `gdbots:iam:mixin:delete-user`
+  * `gdbots:iam:mixin:get-user-batch-request`
+  * `gdbots:iam:mixin:get-user-batch-response`
+  * `gdbots:iam:mixin:get-user-history-request`
+  * `gdbots:iam:mixin:get-user-history-response`
+  * `gdbots:iam:mixin:get-user-request`
+  * `gdbots:iam:mixin:get-user-response`
+  * `gdbots:iam:mixin:grant-roles-to-user`
+  * `gdbots:iam:mixin:revoke-roles-from-user`
+  * `gdbots:iam:mixin:role`
+  * `gdbots:iam:mixin:search-users-request`
+  * `gdbots:iam:mixin:search-users-response`
+  * `gdbots:iam:mixin:update-user`
+  * `gdbots:iam:mixin:user`
+  * `gdbots:iam:mixin:user-created`
+  * `gdbots:iam:mixin:user-deleted`
+  * `gdbots:iam:mixin:user-roles-granted`
+  * `gdbots:iam:mixin:user-roles-revoked`
+  * `gdbots:iam:mixin:user-updated`
+  * `gdbots:iam:search-sort`
   * `gdbots:ncr:mixin:search-nodes-request`
   * `gdbots:ncr:mixin:search-nodes-response`
   * `gdbots:pbjx:command:check-health`

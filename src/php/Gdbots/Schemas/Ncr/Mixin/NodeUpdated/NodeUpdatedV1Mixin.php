@@ -43,12 +43,14 @@ final class NodeUpdatedV1Mixin extends AbstractMixin
             Fb::create('new_node', T\MessageType::create())
                 ->required()
                 ->className('Gdbots\Schemas\Ncr\Mixin\Node\Node')
+                ->overridable(true)
                 ->build(),
             /*
              * The entire node, as it appeared before it was modified.
              */
             Fb::create('old_node', T\MessageType::create())
                 ->className('Gdbots\Schemas\Ncr\Mixin\Node\Node')
+                ->overridable(true)
                 ->build()
         ];
     }

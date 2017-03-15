@@ -27,6 +27,7 @@ final class GetNodeBatchResponseV1Mixin extends AbstractMixin
             Fb::create('nodes', T\MessageType::create())
                 ->asAMap()
                 ->className('Gdbots\Schemas\Ncr\Mixin\Node\Node')
+                ->overridable(true)
                 ->build(),
             /*
              * The "missing_node_refs" field contains a set of node_refs that

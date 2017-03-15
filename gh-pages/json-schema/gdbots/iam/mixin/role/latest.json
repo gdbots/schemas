@@ -1,0 +1,51 @@
+{
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/role/1-0-0.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "pbj": {
+        "type": "identifier",
+        "rule": "single"
+      }
+    },
+    "allowed": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9_\\*\\.:-]+$"
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "description": "The \"allowed\" field is a set of actions that a user will be granted. Although the string can be anything it is best practice to use the curies of the pbjx commands and requests from your application. E.g. \"acme:blog:command:publish-article\" or \"acme:blog:command:*\"",
+      "pbj": {
+        "type": "string",
+        "rule": "set"
+      }
+    },
+    "denied": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9_\\*\\.:-]+$"
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "description": "The \"denied\" field works just like the \"allowed\" field with the exception that these rules take precedence and deny a user's ability to perform the action.",
+      "pbj": {
+        "type": "string",
+        "rule": "set"
+      }
+    }
+  },
+  "required": [
+    "_id"
+  ],
+  "additionalProperties": true
+}
