@@ -16,8 +16,16 @@
   * `gdbots:common:mixin:taggable`
   * `gdbots:common:phone-type`
   * `gdbots:common:trinary`
+  * `gdbots:iam:mixin:create-role`
   * `gdbots:iam:mixin:create-user`
+  * `gdbots:iam:mixin:delete-role`
   * `gdbots:iam:mixin:delete-user`
+  * `gdbots:iam:mixin:get-role-batch-request`
+  * `gdbots:iam:mixin:get-role-batch-response`
+  * `gdbots:iam:mixin:get-role-history-request`
+  * `gdbots:iam:mixin:get-role-history-response`
+  * `gdbots:iam:mixin:get-role-request`
+  * `gdbots:iam:mixin:get-role-response`
   * `gdbots:iam:mixin:get-user-batch-request`
   * `gdbots:iam:mixin:get-user-batch-response`
   * `gdbots:iam:mixin:get-user-history-request`
@@ -25,10 +33,16 @@
   * `gdbots:iam:mixin:get-user-request`
   * `gdbots:iam:mixin:get-user-response`
   * `gdbots:iam:mixin:grant-roles-to-user`
+  * `gdbots:iam:mixin:list-all-roles-request`
+  * `gdbots:iam:mixin:list-all-roles-response`
   * `gdbots:iam:mixin:revoke-roles-from-user`
   * `gdbots:iam:mixin:role`
+  * `gdbots:iam:mixin:role-created`
+  * `gdbots:iam:mixin:role-deleted`
+  * `gdbots:iam:mixin:role-updated`
   * `gdbots:iam:mixin:search-users-request`
   * `gdbots:iam:mixin:search-users-response`
+  * `gdbots:iam:mixin:update-role`
   * `gdbots:iam:mixin:update-user`
   * `gdbots:iam:mixin:user`
   * `gdbots:iam:mixin:user-created`
