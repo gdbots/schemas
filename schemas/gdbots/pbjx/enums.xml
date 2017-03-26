@@ -91,7 +91,7 @@
       <option key="HTTP_NETWORK_AUTHENTICATION_REQUIRED" value="511"/>
     </enum>
 
-    <enum name="search-sort" type="string">
+    <enum name="search-events-sort" type="string">
       <option key="UNKNOWN" value="unknown"/>
       <option key="RELEVANCE" value="relevance"/>
       <option key="DATE_DESC" value="date-desc"/>

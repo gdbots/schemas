@@ -3,7 +3,7 @@
 namespace Gdbots\Schemas\Pbjx\Mixin\SearchEventsRequest;
 
 use Gdbots\Pbj\Schema;
-use Gdbots\Schemas\Pbjx\Enum\SearchSort;
+use Gdbots\Schemas\Pbjx\Enum\SearchEventsSort;
 
 /**
  * @method static Schema schema

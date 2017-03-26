@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/enums.xsd">
 
   <enums namespace="gdbots:iam">
-    <enum name="search-sort" type="string">
+    <enum name="search-users-sort" type="string">
       <option key="UNKNOWN" value="unknown"/>
       <option key="RELEVANCE" value="relevance"/>
       <option key="CREATED_AT_DESC" value="created-at-desc"/>

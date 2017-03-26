@@ -6,7 +6,7 @@ use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Pbjx\Enum\SearchSort;
+use Gdbots\Schemas\Pbjx\Enum\SearchEventsSort;
 
 final class SearchEventsRequestV1Mixin extends AbstractMixin
 {
@@ -37,8 +37,8 @@ final class SearchEventsRequestV1Mixin extends AbstractMixin
                 ->withDefault(1)
                 ->build(),
             Fb::create('sort', T\StringEnumType::create())
-                ->withDefault(SearchSort::RELEVANCE())
-                ->className('Gdbots\Schemas\Pbjx\Enum\SearchSort')
+                ->withDefault(SearchEventsSort::RELEVANCE())
+                ->className('Gdbots\Schemas\Pbjx\Enum\SearchEventsSort')
                 ->build(),
             Fb::create('occurred_after', T\DateTimeType::create())
                 ->build(),

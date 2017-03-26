@@ -3,7 +3,7 @@
 namespace Gdbots\Schemas\Iam\Mixin\SearchUsersRequest;
 
 use Gdbots\Pbj\Schema;
-use Gdbots\Schemas\Iam\Enum\SearchSort;
+use Gdbots\Schemas\Iam\Enum\SearchUsersSort;
 
 /**
  * @method static Schema schema

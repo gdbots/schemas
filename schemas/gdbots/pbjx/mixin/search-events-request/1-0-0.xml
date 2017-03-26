@@ -15,9 +15,9 @@
       </field>
       <field name="sort" type="string-enum">
         <default>relevance</default>
-        <enum id="gdbots:pbjx:search-sort"/>
+        <enum id="gdbots:pbjx:search-events-sort"/>
         <php-options>
-          <default>SearchSort::RELEVANCE()</default>
+          <default>SearchEventsSort::RELEVANCE()</default>
         </php-options>
       </field>
       <field name="occurred_after" type="date-time"/>
@@ -33,7 +33,7 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Schemas\Pbjx\Enum\SearchSort;
+use Gdbots\Schemas\Pbjx\Enum\SearchEventsSort;
             ]]>
         </imports>
         <methods/>

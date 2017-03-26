@@ -6,7 +6,7 @@ use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Iam\Enum\SearchSort;
+use Gdbots\Schemas\Iam\Enum\SearchUsersSort;
 
 final class SearchUsersRequestV1Mixin extends AbstractMixin
 {
@@ -25,8 +25,8 @@ final class SearchUsersRequestV1Mixin extends AbstractMixin
     {
         return [
             Fb::create('sort', T\StringEnumType::create())
-                ->withDefault(SearchSort::RELEVANCE())
-                ->className('Gdbots\Schemas\Iam\Enum\SearchSort')
+                ->withDefault(SearchUsersSort::RELEVANCE())
+                ->className('Gdbots\Schemas\Iam\Enum\SearchUsersSort')
                 ->build(),
             Fb::create('is_staff', T\TrinaryType::create())
                 ->build(),

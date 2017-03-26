@@ -50,7 +50,7 @@
   * `gdbots:iam:mixin:user-roles-granted`
   * `gdbots:iam:mixin:user-roles-revoked`
   * `gdbots:iam:mixin:user-updated`
-  * `gdbots:iam:search-sort`
+  * `gdbots:iam:search-users-sort`
   * `gdbots:ncr:mixin:search-nodes-request`
   * `gdbots:ncr:mixin:search-nodes-response`
   * `gdbots:pbjx:command:check-health`
@@ -62,6 +62,7 @@
   * `gdbots:pbjx:mixin:search-events-response`
   * `gdbots:pbjx:request:echo-request`
   * `gdbots:pbjx:request:echo-response`
+  * `gdbots:pbjx:search-events-sort`
 * __Modified Schemas:__
   * `gdbots:geo::address` new version `1-0-1`
     * Added `verified` boolean field to indicate whether or not the address was checked.
