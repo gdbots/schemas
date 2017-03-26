@@ -25,6 +25,7 @@ final class GetNodeResponseV1Mixin extends AbstractMixin
         return [
             Fb::create('node', T\MessageType::create())
                 ->className('Gdbots\Schemas\Ncr\Mixin\Node\Node')
+                ->overridable(true)
                 ->build()
         ];
     }

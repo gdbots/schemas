@@ -6,6 +6,7 @@ use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Ncr\NodeRef;
 
 final class GetNodeBatchResponseV1Mixin extends AbstractMixin
 {
@@ -24,8 +25,17 @@ final class GetNodeBatchResponseV1Mixin extends AbstractMixin
     {
         return [
             Fb::create('nodes', T\MessageType::create())
-                ->asAList()
+                ->asAMap()
                 ->className('Gdbots\Schemas\Ncr\Mixin\Node\Node')
+                ->overridable(true)
+                ->build(),
+            /*
+             * The "missing_node_refs" field contains a set of node_refs that
+             * the batch request failed to retrieve.
+             */
+            Fb::create('missing_node_refs', T\IdentifierType::create())
+                ->asASet()
+                ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build()
         ];
     }

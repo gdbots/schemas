@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <!-- Primarily a marker/tag interface which trackers can use for event subscribers. -->
+  <schema id="pbj:gdbots:analytics:mixin:tracked-message:1-0-0" mixin="true">
+    <php-options>
+      <namespace>Gdbots\Schemas\Analytics\Mixin\TrackedMessage</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

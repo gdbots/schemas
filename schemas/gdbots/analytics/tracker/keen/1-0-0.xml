@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:analytics:tracker:keen:1-0-0">
+    <fields>
+      <field name="project_id" type="string" pattern="^\w+$"/>
+      <field name="read_key" type="string" pattern="^\w+$"/>
+      <field name="write_key" type="string" pattern="^\w+$"/>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:analytics:mixin:tracker:v1</curie-major>
+    </mixins>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Analytics\Tracker</namespace>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->get('project_id'), $tag);
+}
+
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return [
+        'project_id' => $this->get('project_id'),
+        'read_key' => $this->get('read_key'),
+        'write_key' => $this->get('write_key'),
+    ];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>

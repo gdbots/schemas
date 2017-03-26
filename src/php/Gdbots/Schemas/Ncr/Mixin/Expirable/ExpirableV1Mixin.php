@@ -24,7 +24,6 @@ final class ExpirableV1Mixin extends AbstractMixin
     {
         return [
             Fb::create('expires_at', T\DateTimeType::create())
-                ->useTypeDefault(false)
                 ->build()
         ];
     }

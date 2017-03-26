@@ -6,11 +6,11 @@
   <schema id="pbj:gdbots:contexts::app:1-0-0">
     <fields>
       <field name="_id" type="uuid" use-type-default="false"/>
-      <field name="vendor" type="string" pattern="^[a-z0-9-]+$" max="50"/>
-      <field name="name" type="string" pattern="^[a-z0-9\.-]+$" max="50"/>
-      <field name="version" type="string" pattern="^[\w\.-]+$" max="10"/>
+      <field name="vendor" type="string" pattern="^[\w\.-]+$" max="50"/>
+      <field name="name" type="string" pattern="^[\w\.-]+$" max="50"/>
+      <field name="version" type="string" pattern="^[\w\.-]+$" max="20"/>
       <field name="build" type="string" pattern="^[\w\.-]+$" max="50"/>
-      <field name="variant" type="string" pattern="^[\w\.-]+$" max="10"/>
+      <field name="variant" type="string" pattern="^[\w\.-]+$" max="20"/>
     </fields>
 
     <php-options>

@@ -7,6 +7,7 @@ use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Ncr\NodeRef;
 
 final class NodeScheduledV1Mixin extends AbstractMixin
 {
@@ -24,13 +25,14 @@ final class NodeScheduledV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('node_ref', T\MessageRefType::create())
+            Fb::create('node_ref', T\IdentifierType::create())
+                ->required()
+                ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build(),
             Fb::create('slug', T\StringType::create())
                 ->format(Format::SLUG())
                 ->build(),
             Fb::create('publish_at', T\DateTimeType::create())
-                ->useTypeDefault(false)
                 ->build()
         ];
     }

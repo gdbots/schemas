@@ -30,6 +30,16 @@ final class ResponseV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('ctx_request_ref', T\MessageRefType::create())
                 ->build(),
+            /*
+             * The "ctx_request" is the actual request object that "ctx_request_ref" refers to.
+             * In some cases it's useful for request handlers to copy the request into the response
+             * so the requestor has everything in one message. This will NOT always be populated.
+             * A common use case is search request/response cycles where you want to know what the
+             * search criteria was so you can render that along with the results.
+             */
+            Fb::create('ctx_request', T\MessageType::create())
+                ->className('Gdbots\Schemas\Pbjx\Mixin\Request\Request')
+                ->build(),
             Fb::create('ctx_correlator_ref', T\MessageRefType::create())
                 ->build()
         ];

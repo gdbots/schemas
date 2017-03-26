@@ -7,6 +7,7 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Ncr\Enum\EdgeMultiplicity;
+use Gdbots\Schemas\Ncr\NodeRef;
 
 final class EdgeV1Mixin extends AbstractMixin
 {
@@ -24,9 +25,13 @@ final class EdgeV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('from_ref', T\MessageRefType::create())
+            Fb::create('from_ref', T\IdentifierType::create())
+                ->required()
+                ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build(),
-            Fb::create('to_ref', T\MessageRefType::create())
+            Fb::create('to_ref', T\IdentifierType::create())
+                ->required()
+                ->className('Gdbots\Schemas\Ncr\NodeRef')
                 ->build(),
             Fb::create('multiplicity', T\StringEnumType::create())
                 ->withDefault(EdgeMultiplicity::MULTI())

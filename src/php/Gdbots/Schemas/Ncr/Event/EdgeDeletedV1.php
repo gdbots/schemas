@@ -25,6 +25,7 @@ final class EdgeDeletedV1 extends AbstractMessage implements
         return new Schema('pbj:gdbots:ncr:event:edge-deleted:1-0-0', __CLASS__,
             [
                 Fb::create('edge', T\MessageType::create())
+                    ->required()
                     ->className('Gdbots\Schemas\Ncr\Mixin\Edge\Edge')
                     ->build()
             ],

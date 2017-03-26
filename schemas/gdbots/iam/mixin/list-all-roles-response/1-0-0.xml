@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:iam:mixin:list-all-roles-response:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:response:v1">
+    <fields>
+      <field name="roles" type="identifier" rule="set">
+        <php-options>
+          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+        </php-options>
+      </field>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Iam\Mixin\ListAllRolesResponse</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

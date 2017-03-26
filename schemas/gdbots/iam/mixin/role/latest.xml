@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:iam:mixin:role:1-0-0" mixin="true" extends="gdbots:ncr:mixin:node:v1">
+    <fields>
+      <field name="_id" type="identifier" required="true">
+        <php-options>
+          <classname>Gdbots\Schemas\Iam\RoleId</classname>
+        </php-options>
+      </field>
+      <field name="allowed" type="string" pattern="^[a-z0-9_\*\.:-]+$" rule="set">
+        <description>
+          The "allowed" field is a set of actions that a user will be granted.
+          Although the string can be anything it is best practice to use the
+          curies of the pbjx commands and requests from your application.
+          E.g. "acme:blog:command:publish-article" or "acme:blog:command:*"
+        </description>
+      </field>
+      <field name="denied" type="string" pattern="^[a-z0-9_\*\.:-]+$" rule="set">
+        <description>
+          The "denied" field works just like the "allowed" field with the
+          exception that these rules take precedence and deny a user's
+          ability to perform the action.
+        </description>
+      </field>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Iam\Mixin\Role</namespace>
+      <insertion-points>
+        <imports/>
+        <methods>
+          <![CDATA[
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return ['role_id' => (string)$this->get('_id')];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>

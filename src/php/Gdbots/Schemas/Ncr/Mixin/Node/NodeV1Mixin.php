@@ -2,11 +2,11 @@
 
 namespace Gdbots\Schemas\Ncr\Mixin\Node;
 
-use Gdbots\Identifiers\UuidIdentifier;
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Pbj\WellKnown\UuidIdentifier;
 use Gdbots\Schemas\Ncr\Enum\NodeStatus;
 
 final class NodeV1Mixin extends AbstractMixin
@@ -34,7 +34,7 @@ final class NodeV1Mixin extends AbstractMixin
             Fb::create('_id', T\IdentifierType::create())
                 ->required()
                 ->withDefault(function() { return UuidIdentifier::generate(); })
-                ->className('Gdbots\Identifiers\UuidIdentifier')
+                ->className('Gdbots\Pbj\WellKnown\UuidIdentifier')
                 ->overridable(true)
                 ->build(),
             Fb::create('status', T\StringEnumType::create())
@@ -59,7 +59,7 @@ final class NodeV1Mixin extends AbstractMixin
             /*
              * A fully qualified reference to what updated this node. This is intentionally a message-ref
              * and not a user id because it is often a program that updates nodes, not a user.
-             * E.g. "acme:apps:node:app:cli-scheduler" or "acme:users:node:user:60c71df0-fda8-11e5-bfb9-30342d363854"
+             * E.g. "acme:iam:node:app:cli-scheduler" or "acme:iam:node:user:60c71df0-fda8-11e5-bfb9-30342d363854"
              */
             Fb::create('updater_ref', T\MessageRefType::create())
                 ->build(),

@@ -16,6 +16,17 @@
       <option key="SUNDAY_TOO" value="7"/>
     </enum>
 
+    <!--
+      @link https://en.wikipedia.org/wiki/ISO/IEC_5218
+      @link http://www.datadictionary.nhs.uk/data_dictionary/attributes/p/person/person_gender_code_de.asp?shownav=1
+    -->
+    <enum name="gender" type="int">
+      <option key="UNKNOWN" value="0"/>
+      <option key="MALE" value="1"/>
+      <option key="FEMALE" value="2"/>
+      <option key="NOT_SPECIFIED" value="9"/>
+    </enum>
+
     <enum name="month" type="int">
       <option key="UNKNOWN" value="0"/>
       <option key="JANUARY" value="1"/>
@@ -30,6 +41,127 @@
       <option key="OCTOBER" value="10"/>
       <option key="NOVEMBER" value="11"/>
       <option key="DECEMBER" value="12"/>
+    </enum>
+
+    <enum name="phone-type" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="MOBILE" value="mobile"/>
+      <option key="HOME" value="home"/>
+      <option key="WORK" value="work"/>
+      <option key="FAX" value="fax"/>
+    </enum>
+
+    <!--
+      @link http://www.practicalecommerce.com/articles/86264-91-Leading-Social-Networks-Worldwide
+    -->
+    <enum name="social-network" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+
+      <!-- General Purpose Social Media Sites -->
+      <option key="FACEBOOK" value="facebook"/>
+      <option key="QQ" value="qq"/>
+      <option key="WHATSAPP" value="whatsapp"/>
+      <option key="QZONE" value="qzone"/>
+      <option key="WECHAT" value="wechat"/>
+      <option key="LINKEDIN" value="linkedin"/>
+      <option key="SKYPE" value="skype"/>
+      <option key="GOOGLEPLUS" value="googleplus"/>
+      <option key="INSTAGRAM" value="instagram"/>
+      <option key="BAIDUTIEBA" value="baidutieba"/>
+      <option key="TWITTER" value="twitter"/>
+      <option key="VIBER" value="viber"/>
+      <option key="TUMBLR" value="tumblr"/>
+      <option key="SNAPCHAT" value="snapchat"/>
+      <option key="LINE" value="line"/>
+      <option key="SINAWEIBO" value="sinaweibo"/>
+      <option key="VK" value="vk"/>
+      <option key="REDDIT" value="reddit"/>
+      <option key="YY" value="yy"/>
+      <option key="TARINGA" value="taringa"/>
+      <option key="TELEGRAM" value="telegram"/>
+      <option key="TAGGED" value="tagged"/>
+      <option key="MYSPACE" value="myspace"/>
+      <option key="BADOO" value="badoo"/>
+      <option key="STUMBLEUPON" value="stumbleupon"/>
+      <option key="FOURSQUARE" value="foursquare"/>
+      <option key="MEETME" value="meetme"/>
+      <option key="MEETUP" value="meetup"/>
+      <option key="SKYROCK" value="skyrock"/>
+      <option key="DELICIOUS" value="delicious"/>
+      <option key="KIWIBOX" value="kiwibox"/>
+
+      <!-- Photo Sharing Networks -->
+      <option key="SNAPFISH" value="snapfish"/>
+      <option key="FLICKR" value="flickr"/>
+      <option key="PHOTOBUCKET" value="photobucket"/>
+      <option key="DEVIANTART" value="deviantart"/>
+      <option key="FOTOLOG" value="fotolog"/>
+      <option key="PINTEREST" value="pinterest"/>
+      <option key="BUZZNET" value="buzznet"/>
+      <option key="WEHEARTIT" value="weheartit"/>
+      <option key="PATH" value="path"/>
+
+      <!-- Lifestyle Networks -->
+      <option key="LASTFM" value="lastfm"/>
+      <option key="REVERBNATION" value="reverbnation"/>
+      <option key="CROSSTV" value="crosstv"/>
+      <option key="FLIXSTER" value="flixster"/>
+      <option key="GAIAONLINE" value="gaiaonline"/>
+      <option key="BLACKPLANET" value="blackplanet"/>
+      <option key="CARE2" value="care2"/>
+      <option key="CARINGBRIDGE" value="caringbridge"/>
+      <option key="VAMPIREFREAKS" value="vampirefreaks"/>
+      <option key="CAFEMOM" value="cafemom"/>
+      <option key="RAVELRY" value="ravelry"/>
+      <option key="ASMALLWORLD" value="asmallworld"/>
+      <option key="NEXTDOOR" value="nextdoor"/>
+
+      <!-- Travel Networks -->
+      <option key="WAYN" value="wayn"/>
+      <option key="COUCHSURFING" value="couchsurfing"/>
+      <option key="TRAVBUDDY" value="travbuddy"/>
+
+      <!-- Mobile Networks -->
+      <option key="CELLUFUN" value="cellufun"/>
+      <option key="MOCOSPACE" value="mocospace"/>
+      <option key="ITSMY" value="itsmy"/>
+
+      <!-- Video Networks -->
+      <option key="YOUTUBE" value="youtube"/>
+      <option key="YOUKU" value="youku"/>
+      <option key="FUNNYORDIE" value="funnyordie"/>
+      <option key="TOUT" value="tout"/>
+      <option key="VINE" value="vine"/>
+
+      <!-- Reunion Networks -->
+      <option key="CLASSMATES" value="classmates"/>
+      <option key="MYLIFE" value="mylife"/>
+      <option key="MYHERITAGE" value="myheritage"/>
+
+      <!-- Business Networks -->
+      <option key="VIADEO" value="viadeo"/>
+      <option key="RYZE" value="ryze"/>
+      <option key="XING" value="xing"/>
+
+      <!-- Pre-teen, Teen, and Young Adult Networks -->
+      <option key="WEEWORLD" value="weeworld"/>
+      <option key="HABBO" value="habbo"/>
+      <option key="TUENTI" value="tuenti"/>
+
+      <!-- Blogging Related -->
+      <option key="XANGA" value="xanga"/>
+      <option key="SOLABORATE" value="solaborate"/>
+      <option key="PLURK" value="plurk"/>
+      <option key="LIVEJOURNAL" value="livejournal"/>
+    </enum>
+
+    <!--
+      @link https://en.wikipedia.org/wiki/Three-valued_logic
+    -->
+    <enum name="trinary" type="int">
+      <option key="UNKNOWN" value="0"/>
+      <option key="TRUE_VAL" value="1"/>
+      <option key="FALSE_VAL" value="2"/>
     </enum>
 
     <php-options>

@@ -5,10 +5,19 @@
 
   <schema id="pbj:gdbots:ncr:mixin:get-node-batch-response:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:response:v1">
     <fields>
-      <field name="nodes" type="message" rule="list">
+      <field name="nodes" type="message" rule="map" overridable="true">
         <any-of>
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>
+      </field>
+      <field name="missing_node_refs" type="identifier" rule="set">
+        <description>
+          The "missing_node_refs" field contains a set of node_refs that
+          the batch request failed to retrieve.
+        </description>
+        <php-options>
+          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+        </php-options>
       </field>
     </fields>
 
