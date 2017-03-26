@@ -19,7 +19,7 @@
     },
     "vendor": {
       "type": "string",
-      "pattern": "^[a-z0-9-]+$",
+      "pattern": "^[\\w\\.-]+$",
       "pbj": {
         "type": "string",
         "rule": "single"
@@ -27,7 +27,7 @@
     },
     "name": {
       "type": "string",
-      "pattern": "^[a-z0-9\\.-]+$",
+      "pattern": "^[\\w\\.-]+$",
       "pbj": {
         "type": "string",
         "rule": "single"

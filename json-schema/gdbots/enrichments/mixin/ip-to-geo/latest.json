@@ -32,6 +32,9 @@
       "anyOf": [
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-1.json#"
         }
       ]
     }
