@@ -7,21 +7,19 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Pbjx\Enum\Code;
-use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1;
-use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Mixin;
-use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Trait;
-use Gdbots\Schemas\Pbjx\Mixin\Indexed\IndexedV1;
-use Gdbots\Schemas\Pbjx\Mixin\Indexed\IndexedV1Mixin;
-use Gdbots\Schemas\Pbjx\Mixin\Indexed\IndexedV1Trait;
+use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1 as GdbotsPbjxEventV1;
+use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Mixin as GdbotsPbjxEventV1Mixin;
+use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Trait as GdbotsPbjxEventV1Trait;
+use Gdbots\Schemas\Pbjx\Mixin\Indexed\IndexedV1 as GdbotsPbjxIndexedV1;
+use Gdbots\Schemas\Pbjx\Mixin\Indexed\IndexedV1Mixin as GdbotsPbjxIndexedV1Mixin;
 
 final class EventExecutionFailedV1 extends AbstractMessage implements
     EventExecutionFailed,
-    EventV1,
-    IndexedV1
+    GdbotsPbjxEventV1,
+    GdbotsPbjxIndexedV1
   
 {
-    use EventV1Trait;
-    use IndexedV1Trait;
+    use GdbotsPbjxEventV1Trait;
 
     /**
      * @return Schema
@@ -47,8 +45,8 @@ final class EventExecutionFailedV1 extends AbstractMessage implements
                     ->build()
             ],
             [
-                EventV1Mixin::create(), 
-                IndexedV1Mixin::create()
+                GdbotsPbjxEventV1Mixin::create(), 
+                GdbotsPbjxIndexedV1Mixin::create()
             ]
         );
     }
