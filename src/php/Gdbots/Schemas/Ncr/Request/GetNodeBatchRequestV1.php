@@ -7,20 +7,18 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest\GetNodeBatchRequestV1 as GdbotsNcrGetNodeBatchRequestV1;
-use Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest\GetNodeBatchRequestV1Mixin;
-use Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest\GetNodeBatchRequestV1Trait;
-use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1;
-use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1Mixin;
-use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1Trait;
+use Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest\GetNodeBatchRequestV1Mixin as GdbotsNcrGetNodeBatchRequestV1Mixin;
+use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1 as GdbotsPbjxRequestV1;
+use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1Mixin as GdbotsPbjxRequestV1Mixin;
+use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1Trait as GdbotsPbjxRequestV1Trait;
 
 final class GetNodeBatchRequestV1 extends AbstractMessage implements
     GetNodeBatchRequest,
-    RequestV1,
+    GdbotsPbjxRequestV1,
     GdbotsNcrGetNodeBatchRequestV1
   
 {
-    use RequestV1Trait;
-    use GetNodeBatchRequestV1Trait;
+    use GdbotsPbjxRequestV1Trait;
 
     /**
      * @return Schema
@@ -39,8 +37,8 @@ final class GetNodeBatchRequestV1 extends AbstractMessage implements
                     ->build()
             ],
             [
-                RequestV1Mixin::create(), 
-                GetNodeBatchRequestV1Mixin::create()
+                GdbotsPbjxRequestV1Mixin::create(), 
+                GdbotsNcrGetNodeBatchRequestV1Mixin::create()
             ]
         );
     }

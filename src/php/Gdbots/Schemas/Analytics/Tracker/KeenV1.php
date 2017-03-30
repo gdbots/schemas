@@ -7,17 +7,14 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Analytics\Mixin\Tracker\TrackerV1;
-use Gdbots\Schemas\Analytics\Mixin\Tracker\TrackerV1Mixin;
-use Gdbots\Schemas\Analytics\Mixin\Tracker\TrackerV1Trait;
+use Gdbots\Schemas\Analytics\Mixin\Tracker\TrackerV1 as GdbotsAnalyticsTrackerV1;
+use Gdbots\Schemas\Analytics\Mixin\Tracker\TrackerV1Mixin as GdbotsAnalyticsTrackerV1Mixin;
 
 final class KeenV1 extends AbstractMessage implements
     Keen,
-    TrackerV1
+    GdbotsAnalyticsTrackerV1
   
 {
-    use TrackerV1Trait;
-
     /**
      * @return Schema
      */
@@ -36,7 +33,7 @@ final class KeenV1 extends AbstractMessage implements
                     ->build()
             ],
             [
-                TrackerV1Mixin::create()
+                GdbotsAnalyticsTrackerV1Mixin::create()
             ]
         );
     }
