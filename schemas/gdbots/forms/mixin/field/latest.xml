@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:mixin:field:1-0-0" mixin="true">
+    <fields>
+      <field name="name" type="string" pattern="^[a-zA-Z_]{1}[a-zA-Z0-9_-]$" max="100"/>
+      <field name="question" type="string"/>
+      <field name="placeholder" type="string"/>
+      <field name="description" type="text">
+        <description>A short description to better explain this question.</description>
+      </field>
+      <field name="is_required" type="boolean"/>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Forms\Mixin\Field</namespace>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->generateEtag(), $tag);
+}
+
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return ['name' => $this->get('name')];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+  </schema>
+</pbj-schema>

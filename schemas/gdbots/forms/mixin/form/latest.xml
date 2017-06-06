@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:mixin:form:1-0-0" mixin="true" extends="gdbots:ncr:mixin:node:v1">
+    <fields>
+      <field name="description" type="text">
+        <description>
+          A short description (a few sentences) about this form.  This field should
+          not have html as it is used in metadata.
+        </description>
+      </field>
+      <field name="fields" type="message" rule="list">
+        <any-of>
+          <curie>gdbots:forms:mixin:field</curie>
+        </any-of>
+      </field>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Forms\Mixin\Form</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>
