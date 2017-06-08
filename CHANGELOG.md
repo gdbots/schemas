@@ -2,9 +2,12 @@
 
 
 ## v1.2.0
-* issue #16: Add schemas for the form services.
+* issue #16: Added schemas for the form services.
 * __New Schemas:__
-  * `gdbots:forms:`
+  * `gdbots:forms:field:short-text-field`
+  * `gdbots:forms:mixin:field`
+  * `gdbots:forms:mixin:form`
+  * `gdbots:forms:mixin:send-submission`
 
 
 ## v1.1.1
