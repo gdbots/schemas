@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:mixin:send-submission:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:command:v1">
+    <fields>
+      <field name="form_ref" type="identifier" required="true">
+        <php-options>
+          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+        </php-options>
+      </field>
+      <field name="cf" type="dynamic-field" rule="list">
+        <description>Contains answers submitted from the fields on the form.</description>
+      </field>
+      <field name="file_ids" type="identifier" rule="set">
+        <description>
+          Any files uploaded should have the IDs copied here in addition to
+          being present in the "cf" field (or whereever they are mapped to).
+        </description>
+        <php-options>
+          <classname>Gdbots\Schemas\Files\FileId</classname>
+        </php-options>
+      </field>
+      <field name="ppid" type="string" pattern="^[\w\/\.:-]+$">
+        <description>Publisher provided identifier (PPID)</description>
+      </field>
+    </fields>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Forms\Mixin\SendSubmission</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

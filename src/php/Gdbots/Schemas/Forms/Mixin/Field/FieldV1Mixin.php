@@ -25,7 +25,7 @@ final class FieldV1Mixin extends AbstractMixin
         return [
             /*
              * A unique identifier (within the form) for the field. This value
-             * is not shown to the user.
+             * is not shown to the user and should NOT change once set.
              */
             Fb::create('name', T\StringType::create())
                 ->required()
@@ -35,7 +35,7 @@ final class FieldV1Mixin extends AbstractMixin
             /*
              * The name of the schema field the answer will map to. By default this
              * will go to the "cf" field which is a "dynamic-field" list containing
-             * all answers filled out on the form.
+             * all answers filled out on the form (ref "gdbots:forms:mixin:send-submission").
              */
             Fb::create('map_to', T\StringType::create())
                 ->maxLength(127)
