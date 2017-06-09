@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:field:address-field:1-0-0">
+    <fields>
+      <field name="default_country" type="string" pattern="^[A-Z]{2}$"/>
+      <field name="preferred_countries" type="string" pattern="^[A-Z]{2}$" rule="set"/>
+      <field name="included_countries" type="string" pattern="^[A-Z]{2}$" rule="set"/>
+      <field name="excluded_countries" type="string" pattern="^[A-Z]{2}$" rule="set"/>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:forms:mixin:field:v1</curie-major>
+    </mixins>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Forms\Field</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>

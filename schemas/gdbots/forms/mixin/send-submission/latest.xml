@@ -25,6 +25,7 @@
       <field name="ppid" type="string" pattern="^[\w\/\.:-]+$">
         <description>Publisher provided identifier (PPID)</description>
       </field>
+      <field name="hashtags" type="string" format="hashtag" rule="set"/>
     </fields>
 
     <php-options>

@@ -37,7 +37,7 @@ final class FieldV1Mixin extends AbstractMixin
              * will go to the "cf" field which is a "dynamic-field" list containing
              * all answers filled out on the form (ref "gdbots:forms:mixin:send-submission").
              */
-            Fb::create('map_to', T\StringType::create())
+            Fb::create('maps_to', T\StringType::create())
                 ->maxLength(127)
                 ->pattern('^[a-zA-Z_]{1}[a-zA-Z0-9_]$')
                 ->withDefault("cf")

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:field:yes-no-field:1-0-0">
+    <fields>
+      <field name="yes_label" type="string"/>
+      <field name="no_label" type="string"/>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:forms:mixin:field:v1</curie-major>
+    </mixins>
+
+    <php-options>
+      <namespace>Gdbots\Schemas\Forms\Field</namespace>
+    </php-options>
+  </schema>
+</pbj-schema>
