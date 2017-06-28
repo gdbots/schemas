@@ -5,13 +5,13 @@
 
   <schema id="pbj:gdbots:forms:mixin:field:1-0-0" mixin="true">
     <fields>
-      <field name="name" type="string" pattern="^[a-zA-Z_]{1}[a-zA-Z0-9_-]$" max="127" required="true">
+      <field name="name" type="string" pattern="^[a-zA-Z_]{1}[\w-]*$" max="127" required="true">
         <description>
           A unique identifier (within the form) for the field.  This value
           is not shown to the user and should NOT change once set.
         </description>
       </field>
-      <field name="maps_to" type="string" pattern="^[a-zA-Z_]{1}[a-zA-Z0-9_]$" max="127">
+      <field name="maps_to" type="string" pattern="^[a-zA-Z_]{1}\w*$" max="127">
         <description>
           The name of the schema field the answer will map to.  By default this
           will go to the "cf" field which is a "dynamic-field" list containing

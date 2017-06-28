@@ -2,9 +2,11 @@
 
 namespace Gdbots\Tests\Schemas;
 
+use Gdbots\Pbj\Message;
 use Gdbots\Pbj\MessageResolver;
+use PHPUnit\Framework\TestCase;
 
-class SchemaTest extends \PHPUnit_Framework_TestCase
+class SchemaTest extends TestCase
 {
     public function testCanCreateAllMessages()
     {
@@ -12,7 +14,7 @@ class SchemaTest extends \PHPUnit_Framework_TestCase
         foreach (MessageResolver::all() as $curie => $className) {
             $message = $className::create();
             $this->assertInstanceOf($className, $message);
-            $this->assertInstanceOf('Gdbots\Pbj\Message', $message);
+            $this->assertInstanceOf(Message::class, $message);
         }
     }
 }

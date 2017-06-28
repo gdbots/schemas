@@ -4,8 +4,9 @@ namespace Gdbots\Tests\Schemas\Files;
 
 use Gdbots\Pbj\WellKnown\UuidIdentifier;
 use Gdbots\Schemas\Files\FileId;
+use PHPUnit\Framework\TestCase;
 
-class FileIdTest extends \PHPUnit_Framework_TestCase
+class FileIdTest extends TestCase
 {
     public function testFromString()
     {
@@ -51,7 +52,7 @@ class FileIdTest extends \PHPUnit_Framework_TestCase
             ),
             $id->toFilePath()
         );
-        $this->assertInstanceOf('Gdbots\Pbj\WellKnown\UuidIdentifier', UuidIdentifier::fromString($id->getUuid(true)));
+        $this->assertInstanceOf(UuidIdentifier::class, UuidIdentifier::fromString($id->getUuid(true)));
     }
 
     /**

@@ -30,7 +30,7 @@ final class FieldV1Mixin extends AbstractMixin
             Fb::create('name', T\StringType::create())
                 ->required()
                 ->maxLength(127)
-                ->pattern('^[a-zA-Z_]{1}[a-zA-Z0-9_-]$')
+                ->pattern('^[a-zA-Z_]{1}[\w-]*$')
                 ->build(),
             /*
              * The name of the schema field the answer will map to. By default this
@@ -39,7 +39,7 @@ final class FieldV1Mixin extends AbstractMixin
              */
             Fb::create('maps_to', T\StringType::create())
                 ->maxLength(127)
-                ->pattern('^[a-zA-Z_]{1}[a-zA-Z0-9_]$')
+                ->pattern('^[a-zA-Z_]{1}\w*$')
                 ->withDefault("cf")
                 ->build(),
             /*
