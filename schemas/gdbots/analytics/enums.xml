@@ -52,9 +52,5 @@
       <option key="SEGMENT" value="segment"/>
       <option key="SNOWPLOW" value="snowplow"/>
     </enum>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Analytics\Enum</namespace>
-    </php-options>
   </enums>
 </pbj-enums>

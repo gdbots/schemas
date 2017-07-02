@@ -11,9 +11,5 @@
     <mixins>
       <curie-major>gdbots:pbjx:mixin:response:v1</curie-major>
     </mixins>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Pbjx\Request</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

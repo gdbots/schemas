@@ -7,8 +7,13 @@
     <fields>
       <field name="node_ref" type="identifier" required="true">
         <php-options>
-          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
+          <class-name>NodeRef::class</class-name>
         </php-options>
+        <js-options>
+          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
+          <class-proto>NodeRef</class-proto>
+        </js-options>
       </field>
       <field name="slug" type="string" format="slug"/>
       <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
@@ -27,9 +32,5 @@
         </any-of>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\NodeUpdated</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

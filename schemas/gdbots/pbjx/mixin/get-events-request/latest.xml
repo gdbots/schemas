@@ -7,8 +7,13 @@
     <fields>
       <field name="stream_id" type="identifier" required="true">
         <php-options>
-          <classname>Gdbots\Schemas\Pbjx\StreamId</classname>
+          <imports>use Gdbots\Schemas\Pbjx\StreamId;</imports>
+          <class-name>StreamId::class</class-name>
         </php-options>
+        <js-options>
+          <imports>import StreamId from '@gdbots/schemas/gdbots/pbjx/StreamId';</imports>
+          <class-proto>StreamId</class-proto>
+        </js-options>
       </field>
       <field name="since" type="microtime" use-type-default="false">
         <description>
@@ -25,9 +30,5 @@
         </description>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Pbjx\Mixin\GetEventsRequest</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

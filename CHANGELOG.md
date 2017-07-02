@@ -2,6 +2,7 @@
 
 
 ## v1.2.0
+* PHP 7.1 is now required.  All other project dependencies already have this requirement, e.g. __gdbots/pbjx__.
 * Added es6 compiling. PHP compiled files are moved but unchanged and composer autload
   config is updated so no changes are required if using php.
 

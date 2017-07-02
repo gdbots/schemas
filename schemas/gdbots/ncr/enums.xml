@@ -52,9 +52,5 @@
       <option key="EXPIRED" value="expired"/>
       <option key="DELETED" value="deleted"/>
     </enum>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Enum</namespace>
-    </php-options>
   </enums>
 </pbj-enums>

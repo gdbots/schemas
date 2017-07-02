@@ -13,9 +13,5 @@
         </description>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Common\Mixin\Taggable</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

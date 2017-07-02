@@ -16,9 +16,5 @@
     <mixins>
       <curie-major>gdbots:pbjx:mixin:event:v1</curie-major>
     </mixins>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Pbjx\Event</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

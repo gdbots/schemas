@@ -15,7 +15,6 @@
     </mixins>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Analytics\Tracker</namespace>
       <insertion-points>
         <imports>
           <![CDATA[
@@ -48,5 +47,37 @@ public function getUriTemplateVars()
         </methods>
       </insertion-points>
     </php-options>
+
+    <js-options>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+import MessageRef from '@gdbots/pbj/MessageRef';
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param {?string} tag
+ * @returns {MessageRef}
+ */
+generateMessageRef(tag = null) {
+  return new MessageRef(this.schema().getCurie(), this.get('project_id'), tag);
+}
+
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return {
+    project_id: this.get('project_id'),
+    read_key: this.get('read_key'),
+    write_key: this.get('write_key'),
+  };
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
   </schema>
 </pbj-schema>

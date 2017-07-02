@@ -15,9 +15,5 @@
     <mixins>
       <curie-major>gdbots:pbjx:mixin:command:v1</curie-major>
     </mixins>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Command</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

@@ -11,9 +11,5 @@
       <field name="utm_content" type="string" pattern="^[\w\/\.:-]+$" max="50"/>
       <field name="utm_campaign" type="string" pattern="^[\w\/\.:-]+$" max="50"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Enrichments\Mixin\Utm</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

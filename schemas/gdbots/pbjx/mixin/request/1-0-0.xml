@@ -41,7 +41,6 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Pbjx\Mixin\Request</namespace>
       <insertion-points>
         <imports>
           <![CDATA[
@@ -74,5 +73,37 @@ public function getUriTemplateVars()
         </methods>
       </insertion-points>
     </php-options>
+
+    <js-options>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+import MessageRef from '@gdbots/pbj/MessageRef';
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param {?string} tag
+ * @returns {MessageRef}
+ */
+generateMessageRef(tag = null) {
+  return new MessageRef(this.schema().getCurie(), this.get('request_id'), tag);
+},
+
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return {
+    request_id: `${this.get('request_id')}`,
+    occurred_at: `${this.get('occurred_at')}`,
+    ctx_user_ref: `${this.get('ctx_user_ref', '')}`,
+  };
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
   </schema>
 </pbj-schema>

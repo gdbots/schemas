@@ -14,7 +14,6 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Contexts</namespace>
       <insertion-points>
         <imports>
           <![CDATA[
@@ -50,5 +49,41 @@ public function getUriTemplateVars()
         </methods>
       </insertion-points>
     </php-options>
+
+    <js-options>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+import MessageRef from '@gdbots/pbj/MessageRef';
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param {?string} tag
+ * @returns {MessageRef}
+ */
+generateMessageRef(tag = null) {
+  const id = this.get('_id') || this.generateEtag();
+  return new MessageRef(this.schema().getCurie(), `${id}`, tag);
+}
+
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return {
+    app_id: `${this.get('_id', '')}`,
+    vendor: this.get('vendor'),
+    name: this.get('name'),
+    version: this.get('version'),
+    build: this.get('build'),
+    variant: this.get('variant'),
+  };
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
   </schema>
 </pbj-schema>

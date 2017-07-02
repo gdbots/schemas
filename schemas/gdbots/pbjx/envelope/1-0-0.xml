@@ -12,37 +12,25 @@
 
       <field name="code" type="small-int">
         <default>0</default>
-        <php-options>
-          <default>Code::OK</default>
-        </php-options>
       </field>
 
       <field name="http_code" type="int-enum">
         <default>200</default>
         <enum id="gdbots:pbjx:http-code"/>
-        <php-options>
-          <default>HttpCode::HTTP_OK()</default>
-        </php-options>
       </field>
 
       <field name="etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
       <field name="error_name" type="string" pattern="^[\w\/\.:-]+$"/>
       <field name="error_message" type="text"/>
       <field name="message_ref" type="message-ref"/>
-      <field name="message" type="message">
-        <php-options>
-          <classname>Gdbots\Pbj\Message</classname>
-        </php-options>
-      </field>
+      <field name="message" type="message"/>
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Pbjx</namespace>
       <insertion-points>
         <imports>
           <![CDATA[
 use Gdbots\Pbj\MessageRef;
-use Gdbots\Schemas\Pbjx\Enum\Code;
             ]]>
         </imports>
         <methods>
@@ -67,5 +55,33 @@ public function getUriTemplateVars()
         </methods>
       </insertion-points>
     </php-options>
+
+    <js-options>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+import MessageRef from '@gdbots/pbj/MessageRef';
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param {?string} tag
+ * @returns {MessageRef}
+ */
+generateMessageRef(tag = null) {
+  return new MessageRef(this.schema().getCurie(), this.get('envelope_id'), tag);
+}
+
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return { envelope_id: `${this.get('envelope_id')}` };
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
   </schema>
 </pbj-schema>

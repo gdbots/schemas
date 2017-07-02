@@ -97,9 +97,5 @@
       <option key="DATE_DESC" value="date-desc"/>
       <option key="DATE_ASC" value="date-asc"/>
     </enum>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Pbjx\Enum</namespace>
-    </php-options>
   </enums>
 </pbj-enums>
