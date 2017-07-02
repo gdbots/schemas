@@ -5,8 +5,9 @@ namespace Gdbots\Tests\Schemas\Ncr;
 use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\SchemaQName;
 use Gdbots\Schemas\Ncr\NodeRef;
+use PHPUnit\Framework\TestCase;
 
-class NodeRefTest extends \PHPUnit_Framework_TestCase
+class NodeRefTest extends TestCase
 {
     public function testEquals()
     {

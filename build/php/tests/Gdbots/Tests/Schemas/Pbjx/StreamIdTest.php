@@ -3,8 +3,9 @@
 namespace Gdbots\Tests\Schemas\Pbjx;
 
 use Gdbots\Schemas\Pbjx\StreamId;
+use PHPUnit\Framework\TestCase;
 
-class StreamIdTest extends \PHPUnit_Framework_TestCase
+class StreamIdTest extends TestCase
 {
     public function testTopic()
     {

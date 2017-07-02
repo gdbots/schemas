@@ -1,0 +1,30 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "document": true,
+    "window": true
+  },
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "rules": {
+    "class-methods-use-this": "off",
+    "comma-dangle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "max-len": "off",
+    "jsx-a11y/img-has-alt": "off",
+    "react/jsx-space-before-closing": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  }
+}

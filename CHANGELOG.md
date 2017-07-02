@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## v1.2.0
+* Added es6 compiling. PHP compiled files are moved but unchanged and composer autload
+  config is updated so no changes are required if using php.
+
+
 ## v1.1.1
 * issue #14: BUG :: Ensure use statements of mixins are scoped/unique.  No schema changes, just php improvements
   that ensure there will be no collisions of php class names when mixins/classes have the same name.
