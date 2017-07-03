@@ -1,14 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/envelope/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx;
 
 use Gdbots\Pbj\AbstractMessage;
 use Gdbots\Pbj\FieldBuilder as Fb;
-use Gdbots\Pbj\Message;
 use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Pbjx\Enum\Code;
 use Gdbots\Schemas\Pbjx\Enum\HttpCode;
 
 final class EnvelopeV1 extends AbstractMessage implements
@@ -28,11 +26,11 @@ final class EnvelopeV1 extends AbstractMessage implements
                     ->withDefault(true)
                     ->build(),
                 Fb::create('code', T\SmallIntType::create())
-                    ->withDefault(Code::OK)
+                    ->withDefault(0)
                     ->build(),
                 Fb::create('http_code', T\IntEnumType::create())
                     ->withDefault(HttpCode::HTTP_OK())
-                    ->className('Gdbots\Schemas\Pbjx\Enum\HttpCode')
+                    ->className(HttpCode::class)
                     ->build(),
                 Fb::create('etag', T\StringType::create())
                     ->maxLength(100)
@@ -46,8 +44,7 @@ final class EnvelopeV1 extends AbstractMessage implements
                 Fb::create('message_ref', T\MessageRefType::create())
                     ->build(),
                 Fb::create('message', T\MessageType::create())
-                    ->className('Gdbots\Pbj\Message')
-                    ->build()
+                    ->build(),
             ]
         );
     }

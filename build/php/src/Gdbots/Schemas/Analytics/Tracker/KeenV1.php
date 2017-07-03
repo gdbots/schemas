@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/analytics/tracker/keen/1-0-0.json#
 namespace Gdbots\Schemas\Analytics\Tracker;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -13,7 +13,6 @@ use Gdbots\Schemas\Analytics\Mixin\Tracker\TrackerV1Mixin as GdbotsAnalyticsTrac
 final class KeenV1 extends AbstractMessage implements
     Keen,
     GdbotsAnalyticsTrackerV1
-  
 {
     /**
      * @return Schema
@@ -30,10 +29,10 @@ final class KeenV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('write_key', T\StringType::create())
                     ->pattern('^\w+$')
-                    ->build()
+                    ->build(),
             ],
             [
-                GdbotsAnalyticsTrackerV1Mixin::create()
+                GdbotsAnalyticsTrackerV1Mixin::create(),
             ]
         );
     }

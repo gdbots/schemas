@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-1.json#
 namespace Gdbots\Schemas\Geo;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -67,7 +67,7 @@ final class AddressV1 extends AbstractMessage implements
                     ->pattern('^[A-Z]{2}$')
                     ->build(),
                 Fb::create('continent', T\StringType::create())
-                    ->build()
+                    ->build(),
             ]
         );
     }

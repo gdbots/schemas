@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/request/echo-request/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx\Request;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -13,7 +13,6 @@ use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1Trait as GdbotsPbjxRequestV1Trait
 final class EchoRequestV1 extends AbstractMessage implements
     EchoRequest,
     GdbotsPbjxRequestV1
-  
 {
     use GdbotsPbjxRequestV1Trait;
 
@@ -25,10 +24,10 @@ final class EchoRequestV1 extends AbstractMessage implements
         return new Schema('pbj:gdbots:pbjx:request:echo-request:1-0-0', __CLASS__,
             [
                 Fb::create('msg', T\StringType::create())
-                    ->build()
+                    ->build(),
             ],
             [
-                GdbotsPbjxRequestV1Mixin::create()
+                GdbotsPbjxRequestV1Mixin::create(),
             ]
         );
     }

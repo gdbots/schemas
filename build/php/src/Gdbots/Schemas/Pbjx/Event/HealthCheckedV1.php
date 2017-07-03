@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/event/health-checked/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx\Event;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -13,7 +13,6 @@ use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Trait as GdbotsPbjxEventV1Trait;
 final class HealthCheckedV1 extends AbstractMessage implements
     HealthChecked,
     GdbotsPbjxEventV1
-  
 {
     use GdbotsPbjxEventV1Trait;
 
@@ -29,10 +28,10 @@ final class HealthCheckedV1 extends AbstractMessage implements
                  * is later validated by whatever process initiated the health check.
                  */
                 Fb::create('msg', T\StringType::create())
-                    ->build()
+                    ->build(),
             ],
             [
-                GdbotsPbjxEventV1Mixin::create()
+                GdbotsPbjxEventV1Mixin::create(),
             ]
         );
     }

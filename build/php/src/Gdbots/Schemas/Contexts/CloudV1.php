@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/contexts/cloud/1-0-0.json#
 namespace Gdbots\Schemas\Contexts;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -38,7 +38,7 @@ final class CloudV1 extends AbstractMessage implements
                 Fb::create('instance_type', T\StringType::create())
                     ->maxLength(20)
                     ->pattern('^[\w\.-]+$')
-                    ->build()
+                    ->build(),
             ]
         );
     }

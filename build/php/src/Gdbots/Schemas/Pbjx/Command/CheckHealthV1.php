@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/command/check-health/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx\Command;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -13,7 +13,6 @@ use Gdbots\Schemas\Pbjx\Mixin\Command\CommandV1Trait as GdbotsPbjxCommandV1Trait
 final class CheckHealthV1 extends AbstractMessage implements
     CheckHealth,
     GdbotsPbjxCommandV1
-  
 {
     use GdbotsPbjxCommandV1Trait;
 
@@ -29,10 +28,10 @@ final class CheckHealthV1 extends AbstractMessage implements
                  * the event "health-checked" is triggered. (ping-pong)
                  */
                 Fb::create('msg', T\StringType::create())
-                    ->build()
+                    ->build(),
             ],
             [
-                GdbotsPbjxCommandV1Mixin::create()
+                GdbotsPbjxCommandV1Mixin::create(),
             ]
         );
     }

@@ -1,11 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/event/edge-deleted/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Event;
 
 use Gdbots\Pbj\AbstractMessage;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Ncr\Mixin\Edge\Edge as GdbotsNcrEdge;
 use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1 as GdbotsPbjxEventV1;
 use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Mixin as GdbotsPbjxEventV1Mixin;
 use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Trait as GdbotsPbjxEventV1Trait;
@@ -13,7 +14,6 @@ use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Trait as GdbotsPbjxEventV1Trait;
 final class EdgeDeletedV1 extends AbstractMessage implements
     EdgeDeleted,
     GdbotsPbjxEventV1
-  
 {
     use GdbotsPbjxEventV1Trait;
 
@@ -26,11 +26,13 @@ final class EdgeDeletedV1 extends AbstractMessage implements
             [
                 Fb::create('edge', T\MessageType::create())
                     ->required()
-                    ->className('Gdbots\Schemas\Ncr\Mixin\Edge\Edge')
-                    ->build()
+                    ->anyOfClassNames([
+                        GdbotsNcrEdge::class,
+                    ])
+                    ->build(),
             ],
             [
-                GdbotsPbjxEventV1Mixin::create()
+                GdbotsPbjxEventV1Mixin::create(),
             ]
         );
     }

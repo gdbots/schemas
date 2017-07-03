@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/contexts/user-agent/1-0-0.json#
 namespace Gdbots\Schemas\Contexts;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -40,7 +40,7 @@ final class UserAgentV1 extends AbstractMessage implements
                     ->build(),
                 Fb::create('dvce_family', T\StringType::create())
                     ->pattern('.+')
-                    ->build()
+                    ->build(),
             ]
         );
     }

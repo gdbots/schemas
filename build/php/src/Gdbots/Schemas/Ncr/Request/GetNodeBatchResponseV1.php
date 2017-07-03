@@ -1,11 +1,9 @@
 <?php
-
+w// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-batch-response/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Request;
 
 use Gdbots\Pbj\AbstractMessage;
-use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
-use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Ncr\Mixin\GetNodeBatchResponse\GetNodeBatchResponseV1 as GdbotsNcrGetNodeBatchResponseV1;
 use Gdbots\Schemas\Ncr\Mixin\GetNodeBatchResponse\GetNodeBatchResponseV1Mixin as GdbotsNcrGetNodeBatchResponseV1Mixin;
 use Gdbots\Schemas\Pbjx\Mixin\Response\ResponseV1 as GdbotsPbjxResponseV1;
@@ -16,7 +14,6 @@ final class GetNodeBatchResponseV1 extends AbstractMessage implements
     GetNodeBatchResponse,
     GdbotsPbjxResponseV1,
     GdbotsNcrGetNodeBatchResponseV1
-  
 {
     use GdbotsPbjxResponseV1Trait;
 
@@ -28,8 +25,8 @@ final class GetNodeBatchResponseV1 extends AbstractMessage implements
         return new Schema('pbj:gdbots:ncr:request:get-node-batch-response:1-0-0', __CLASS__,
             [],
             [
-                GdbotsPbjxResponseV1Mixin::create(), 
-                GdbotsNcrGetNodeBatchResponseV1Mixin::create()
+                GdbotsPbjxResponseV1Mixin::create(),
+                GdbotsNcrGetNodeBatchResponseV1Mixin::create(),
             ]
         );
     }

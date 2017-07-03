@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-batch-request/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Request;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -16,7 +16,6 @@ final class GetNodeBatchRequestV1 extends AbstractMessage implements
     GetNodeBatchRequest,
     GdbotsPbjxRequestV1,
     GdbotsNcrGetNodeBatchRequestV1
-  
 {
     use GdbotsPbjxRequestV1Trait;
 
@@ -34,11 +33,11 @@ final class GetNodeBatchRequestV1 extends AbstractMessage implements
                 Fb::create('context', T\StringType::create())
                     ->asAMap()
                     ->pattern('^[\w\/\.:-]+$')
-                    ->build()
+                    ->build(),
             ],
             [
-                GdbotsPbjxRequestV1Mixin::create(), 
-                GdbotsNcrGetNodeBatchRequestV1Mixin::create()
+                GdbotsPbjxRequestV1Mixin::create(),
+                GdbotsNcrGetNodeBatchRequestV1Mixin::create(),
             ]
         );
     }
