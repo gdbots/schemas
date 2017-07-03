@@ -1,5 +1,5 @@
 <?php
-w// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-batch-response/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-batch-response/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Request;
 
 use Gdbots\Pbj\AbstractMessage;
