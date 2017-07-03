@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/publish-node/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\PublishNode;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -26,10 +26,10 @@ final class PublishNodeV1Mixin extends AbstractMixin
         return [
             Fb::create('node_ref', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
+                ->className(NodeRef::class)
                 ->build(),
             Fb::create('publish_at', T\DateTimeType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

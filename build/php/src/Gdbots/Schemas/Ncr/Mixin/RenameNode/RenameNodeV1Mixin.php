@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/rename-node/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\RenameNode;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -28,17 +28,17 @@ final class RenameNodeV1Mixin extends AbstractMixin
         return [
             Fb::create('node_ref', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
+                ->className(NodeRef::class)
                 ->build(),
             Fb::create('node_status', T\StringEnumType::create())
-                ->className('Gdbots\Schemas\Ncr\Enum\NodeStatus')
+                ->className(NodeStatus::class)
                 ->build(),
             Fb::create('new_slug', T\StringType::create())
                 ->format(Format::SLUG())
                 ->build(),
             Fb::create('old_slug', T\StringType::create())
                 ->format(Format::SLUG())
-                ->build()
+                ->build(),
         ];
     }
 }

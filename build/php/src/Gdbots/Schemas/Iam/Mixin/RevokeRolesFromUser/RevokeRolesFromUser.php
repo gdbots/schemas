@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/revoke-roles-from-user/latest.json#
 namespace Gdbots\Schemas\Iam\Mixin\RevokeRolesFromUser;
 
-use Gdbots\Schemas\Pbjx\Mixin\Command\CommandV1;
+use Gdbots\Schemas\Pbjx\Mixin\Command\Command;
 
-interface RevokeRolesFromUser extends CommandV1
+interface RevokeRolesFromUser extends Command
 {
 }

@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/node-scheduled/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\NodeScheduled;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -27,13 +27,13 @@ final class NodeScheduledV1Mixin extends AbstractMixin
         return [
             Fb::create('node_ref', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
+                ->className(NodeRef::class)
                 ->build(),
             Fb::create('slug', T\StringType::create())
                 ->format(Format::SLUG())
                 ->build(),
             Fb::create('publish_at', T\DateTimeType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

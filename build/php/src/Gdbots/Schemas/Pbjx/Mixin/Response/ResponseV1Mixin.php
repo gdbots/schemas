@@ -1,11 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/response/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\Response;
 
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Pbjx\Mixin\Request\Request as GdbotsPbjxRequest;
 
 final class ResponseV1Mixin extends AbstractMixin
 {
@@ -38,10 +39,12 @@ final class ResponseV1Mixin extends AbstractMixin
              * search criteria was so you can render that along with the results.
              */
             Fb::create('ctx_request', T\MessageType::create())
-                ->className('Gdbots\Schemas\Pbjx\Mixin\Request\Request')
+                ->anyOfClassNames([
+                    GdbotsPbjxRequest::class,
+                ])
                 ->build(),
             Fb::create('ctx_correlator_ref', T\MessageRefType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

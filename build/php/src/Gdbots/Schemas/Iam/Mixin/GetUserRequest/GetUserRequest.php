@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/get-user-request/latest.json#
 namespace Gdbots\Schemas\Iam\Mixin\GetUserRequest;
 
-use Gdbots\Schemas\Ncr\Mixin\GetNodeRequest\GetNodeRequestV1;
+use Gdbots\Schemas\Ncr\Mixin\GetNodeRequest\GetNodeRequest;
 
-interface GetUserRequest extends GetNodeRequestV1
+interface GetUserRequest extends GetNodeRequest
 {
 }

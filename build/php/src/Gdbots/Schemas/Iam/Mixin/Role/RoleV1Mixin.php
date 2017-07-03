@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/role/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\Role;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -26,7 +26,7 @@ final class RoleV1Mixin extends AbstractMixin
         return [
             Fb::create('_id', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Iam\RoleId')
+                ->className(RoleId::class)
                 ->build(),
             /*
              * The "allowed" field is a set of actions that a user will be granted.
@@ -46,7 +46,7 @@ final class RoleV1Mixin extends AbstractMixin
             Fb::create('denied', T\StringType::create())
                 ->asASet()
                 ->pattern('^[a-z0-9_\*\.:-]+$')
-                ->build()
+                ->build(),
         ];
     }
 }

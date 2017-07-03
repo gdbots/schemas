@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/get-role-batch-request/latest.json#
 namespace Gdbots\Schemas\Iam\Mixin\GetRoleBatchRequest;
 
-use Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest\GetNodeBatchRequestV1;
+use Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest\GetNodeBatchRequest;
 
-interface GetRoleBatchRequest extends GetNodeBatchRequestV1
+interface GetRoleBatchRequest extends GetNodeBatchRequest
 {
 }

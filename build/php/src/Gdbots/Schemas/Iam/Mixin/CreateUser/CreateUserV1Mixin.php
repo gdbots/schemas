@@ -1,11 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/create-user/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\CreateUser;
 
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Iam\Mixin\User\User as GdbotsIamUser;
 
 final class CreateUserV1Mixin extends AbstractMixin
 {
@@ -25,8 +26,10 @@ final class CreateUserV1Mixin extends AbstractMixin
         return [
             Fb::create('node', T\MessageType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Iam\Mixin\User\User')
-                ->build()
+                ->anyOfClassNames([
+                    GdbotsIamUser::class,
+                ])
+                ->build(),
         ];
     }
 }

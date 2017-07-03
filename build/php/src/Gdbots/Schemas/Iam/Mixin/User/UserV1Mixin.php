@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\User;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -65,8 +65,8 @@ final class UserV1Mixin extends AbstractMixin
              */
             Fb::create('roles', T\IdentifierType::create())
                 ->asASet()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
-                ->build()
+                ->className(NodeRef::class)
+                ->build(),
         ];
     }
 }

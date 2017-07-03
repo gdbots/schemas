@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/analytics/mixin/tracker/1-0-0.json#
 namespace Gdbots\Schemas\Analytics\Mixin\Tracker;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -24,7 +24,7 @@ final class TrackerV1Mixin extends AbstractMixin
     {
         return [
             Fb::create('is_enabled', T\BooleanType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

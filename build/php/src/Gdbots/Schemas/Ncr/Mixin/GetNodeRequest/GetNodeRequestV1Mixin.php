@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/get-node-request/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\GetNodeRequest;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -37,7 +37,7 @@ final class GetNodeRequestV1Mixin extends AbstractMixin
              * ordered in this schema.
              */
             Fb::create('node_ref', T\IdentifierType::create())
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
+                ->className(NodeRef::class)
                 ->build(),
             /*
              * The "qname" field should be populated when the request is not
@@ -48,7 +48,7 @@ final class GetNodeRequestV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('slug', T\StringType::create())
                 ->format(Format::SLUG())
-                ->build()
+                ->build(),
         ];
     }
 }

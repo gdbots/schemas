@@ -1,11 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/get-node-batch-response/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\GetNodeBatchResponse;
 
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Ncr\Mixin\Node\Node as GdbotsNcrNode;
 use Gdbots\Schemas\Ncr\NodeRef;
 
 final class GetNodeBatchResponseV1Mixin extends AbstractMixin
@@ -26,7 +27,9 @@ final class GetNodeBatchResponseV1Mixin extends AbstractMixin
         return [
             Fb::create('nodes', T\MessageType::create())
                 ->asAMap()
-                ->className('Gdbots\Schemas\Ncr\Mixin\Node\Node')
+                ->anyOfClassNames([
+                    GdbotsNcrNode::class,
+                ])
                 ->overridable(true)
                 ->build(),
             /*
@@ -35,8 +38,8 @@ final class GetNodeBatchResponseV1Mixin extends AbstractMixin
              */
             Fb::create('missing_node_refs', T\IdentifierType::create())
                 ->asASet()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
-                ->build()
+                ->className(NodeRef::class)
+                ->build(),
         ];
     }
 }

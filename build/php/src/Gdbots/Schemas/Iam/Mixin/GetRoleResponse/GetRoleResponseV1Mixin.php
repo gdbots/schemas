@@ -1,11 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/get-role-response/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\GetRoleResponse;
 
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Iam\Mixin\Role\Role as GdbotsIamRole;
 
 final class GetRoleResponseV1Mixin extends AbstractMixin
 {
@@ -24,8 +25,10 @@ final class GetRoleResponseV1Mixin extends AbstractMixin
     {
         return [
             Fb::create('node', T\MessageType::create())
-                ->className('Gdbots\Schemas\Iam\Mixin\Role\Role')
-                ->build()
+                ->anyOfClassNames([
+                    GdbotsIamRole::class,
+                ])
+                ->build(),
         ];
     }
 }

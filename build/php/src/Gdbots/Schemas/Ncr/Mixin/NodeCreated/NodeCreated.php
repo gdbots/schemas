@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/node-created/latest.json#
 namespace Gdbots\Schemas\Ncr\Mixin\NodeCreated;
 
-use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1;
+use Gdbots\Schemas\Pbjx\Mixin\Event\Event;
 
-interface NodeCreated extends EventV1
+interface NodeCreated extends Event
 {
 }

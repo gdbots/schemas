@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/edge/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\Edge;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -27,19 +27,19 @@ final class EdgeV1Mixin extends AbstractMixin
         return [
             Fb::create('from_ref', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
+                ->className(NodeRef::class)
                 ->build(),
             Fb::create('to_ref', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
+                ->className(NodeRef::class)
                 ->build(),
             Fb::create('multiplicity', T\StringEnumType::create())
                 ->withDefault(EdgeMultiplicity::MULTI())
-                ->className('Gdbots\Schemas\Ncr\Enum\EdgeMultiplicity')
+                ->className(EdgeMultiplicity::class)
                 ->overridable(true)
                 ->build(),
             Fb::create('created_at', T\MicrotimeType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

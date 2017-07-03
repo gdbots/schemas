@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/enrichments/mixin/utm/1-0-0.json#
 namespace Gdbots\Schemas\Enrichments\Mixin\Utm;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -42,7 +42,7 @@ final class UtmV1Mixin extends AbstractMixin
             Fb::create('utm_campaign', T\StringType::create())
                 ->maxLength(50)
                 ->pattern('^[\w\/\.:-]+$')
-                ->build()
+                ->build(),
         ];
     }
 }

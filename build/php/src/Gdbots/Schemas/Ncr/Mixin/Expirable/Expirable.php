@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/expirable/latest.json#
 namespace Gdbots\Schemas\Ncr\Mixin\Expirable;
 
-use Gdbots\Schemas\Ncr\Mixin\Node\NodeV1;
+use Gdbots\Schemas\Ncr\Mixin\Node\Node;
 
-interface Expirable extends NodeV1
+interface Expirable extends Node
 {
 }

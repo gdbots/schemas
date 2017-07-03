@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/expirable/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\Expirable;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -24,7 +24,7 @@ final class ExpirableV1Mixin extends AbstractMixin
     {
         return [
             Fb::create('expires_at', T\DateTimeType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/enrichments/mixin/time-parting/1-0-0.json#
 namespace Gdbots\Schemas\Enrichments\Mixin\TimeParting;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -27,20 +27,20 @@ final class TimePartingV1Mixin extends AbstractMixin
         return [
             Fb::create('month_of_year', T\IntEnumType::create())
                 ->withDefault(Month::UNKNOWN())
-                ->className('Gdbots\Schemas\Common\Enum\Month')
+                ->className(Month::class)
                 ->build(),
             Fb::create('day_of_month', T\TinyIntType::create())
                 ->max(31)
                 ->build(),
             Fb::create('day_of_week', T\IntEnumType::create())
                 ->withDefault(DayOfWeek::UNKNOWN())
-                ->className('Gdbots\Schemas\Common\Enum\DayOfWeek')
+                ->className(DayOfWeek::class)
                 ->build(),
             Fb::create('is_weekend', T\BooleanType::create())
                 ->build(),
             Fb::create('hour_of_day', T\TinyIntType::create())
                 ->max(23)
-                ->build()
+                ->build(),
         ];
     }
 }

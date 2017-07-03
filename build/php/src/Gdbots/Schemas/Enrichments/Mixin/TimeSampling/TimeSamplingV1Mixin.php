@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/enrichments/mixin/time-sampling/1-0-0.json#
 namespace Gdbots\Schemas\Enrichments\Mixin\TimeSampling;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -28,7 +28,7 @@ final class TimeSamplingV1Mixin extends AbstractMixin
             Fb::create('ts_ymd', T\IntType::create())
                 ->build(),
             Fb::create('ts_ym', T\MediumIntType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

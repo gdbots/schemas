@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/search-events-request/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\SearchEventsRequest;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -24,7 +24,8 @@ final class SearchEventsRequestV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('q', T\StringType::create())
+            Fb::create('q', T\TextType::create())
+                ->maxLength(2000)
                 ->build(),
             /*
              * The number of results to return.
@@ -36,9 +37,15 @@ final class SearchEventsRequestV1Mixin extends AbstractMixin
                 ->min(1)
                 ->withDefault(1)
                 ->build(),
+            /*
+             * A cursor is a string (normally base64 encoded) which marks a specific item in a list of data.
+             * When cursor is present it should be used instead of "page".
+             */
+            Fb::create('cursor', T\StringType::create())
+                ->build(),
             Fb::create('sort', T\StringEnumType::create())
                 ->withDefault(SearchEventsSort::RELEVANCE())
-                ->className('Gdbots\Schemas\Pbjx\Enum\SearchEventsSort')
+                ->className(SearchEventsSort::class)
                 ->build(),
             Fb::create('occurred_after', T\DateTimeType::create())
                 ->build(),
@@ -52,7 +59,7 @@ final class SearchEventsRequestV1Mixin extends AbstractMixin
                 ->pattern('^[\w\.-]+$')
                 ->build(),
             Fb::create('parsed_query_json', T\TextType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/node/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\Node;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -34,12 +34,12 @@ final class NodeV1Mixin extends AbstractMixin
             Fb::create('_id', T\IdentifierType::create())
                 ->required()
                 ->withDefault(function() { return UuidIdentifier::generate(); })
-                ->className('Gdbots\Pbj\WellKnown\UuidIdentifier')
+                ->className(UuidIdentifier::class)
                 ->overridable(true)
                 ->build(),
             Fb::create('status', T\StringEnumType::create())
                 ->withDefault(NodeStatus::DRAFT())
-                ->className('Gdbots\Schemas\Ncr\Enum\NodeStatus')
+                ->className(NodeStatus::class)
                 ->build(),
             Fb::create('etag', T\StringType::create())
                 ->maxLength(100)
@@ -70,7 +70,7 @@ final class NodeV1Mixin extends AbstractMixin
             Fb::create('last_event_ref', T\MessageRefType::create())
                 ->build(),
             Fb::create('title', T\StringType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

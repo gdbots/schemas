@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/node-published/latest.json#
 namespace Gdbots\Schemas\Ncr\Mixin\NodePublished;
 
-use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1;
+use Gdbots\Schemas\Pbjx\Mixin\Event\Event;
 
-interface NodePublished extends EventV1
+interface NodePublished extends Event
 {
 }

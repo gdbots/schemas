@@ -1,11 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/role-updated/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\RoleUpdated;
 
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Iam\Mixin\Role\Role as GdbotsIamRole;
 
 final class RoleUpdatedV1Mixin extends AbstractMixin
 {
@@ -25,14 +26,18 @@ final class RoleUpdatedV1Mixin extends AbstractMixin
         return [
             Fb::create('new_node', T\MessageType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Iam\Mixin\Role\Role')
+                ->anyOfClassNames([
+                    GdbotsIamRole::class,
+                ])
                 ->build(),
             /*
              * The entire node, as it appeared before it was modified.
              */
             Fb::create('old_node', T\MessageType::create())
-                ->className('Gdbots\Schemas\Iam\Mixin\Role\Role')
-                ->build()
+                ->anyOfClassNames([
+                    GdbotsIamRole::class,
+                ])
+                ->build(),
         ];
     }
 }

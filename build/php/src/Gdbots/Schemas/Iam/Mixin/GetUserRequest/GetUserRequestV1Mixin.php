@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/get-user-request/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\GetUserRequest;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -26,7 +26,7 @@ final class GetUserRequestV1Mixin extends AbstractMixin
         return [
             Fb::create('email', T\StringType::create())
                 ->format(Format::EMAIL())
-                ->build()
+                ->build(),
         ];
     }
 }

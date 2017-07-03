@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/common/mixin/taggable/1-0-0.json#
 namespace Gdbots\Schemas\Common\Mixin\Taggable;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -31,7 +31,7 @@ final class TaggableV1Mixin extends AbstractMixin
             Fb::create('tags', T\StringType::create())
                 ->asAMap()
                 ->pattern('^[\w\/\.:-]+$')
-                ->build()
+                ->build(),
         ];
     }
 }

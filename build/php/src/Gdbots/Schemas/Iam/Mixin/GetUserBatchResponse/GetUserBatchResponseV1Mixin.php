@@ -1,11 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/get-user-batch-response/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\GetUserBatchResponse;
 
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Iam\Mixin\User\User as GdbotsIamUser;
 
 final class GetUserBatchResponseV1Mixin extends AbstractMixin
 {
@@ -25,8 +26,10 @@ final class GetUserBatchResponseV1Mixin extends AbstractMixin
         return [
             Fb::create('nodes', T\MessageType::create())
                 ->asAMap()
-                ->className('Gdbots\Schemas\Iam\Mixin\User\User')
-                ->build()
+                ->anyOfClassNames([
+                    GdbotsIamUser::class,
+                ])
+                ->build(),
         ];
     }
 }

@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/search-events-response/latest.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\SearchEventsResponse;
 
-use Gdbots\Schemas\Pbjx\Mixin\Response\ResponseV1;
+use Gdbots\Schemas\Pbjx\Mixin\Response\Response;
 
-interface SearchEventsResponse extends ResponseV1
+interface SearchEventsResponse extends Response
 {
 }

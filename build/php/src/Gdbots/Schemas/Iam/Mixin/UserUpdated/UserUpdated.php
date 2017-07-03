@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user-updated/latest.json#
 namespace Gdbots\Schemas\Iam\Mixin\UserUpdated;
 
-use Gdbots\Schemas\Ncr\Mixin\NodeUpdated\NodeUpdatedV1;
+use Gdbots\Schemas\Ncr\Mixin\NodeUpdated\NodeUpdated;
 
-interface UserUpdated extends NodeUpdatedV1
+interface UserUpdated extends NodeUpdated
 {
 }

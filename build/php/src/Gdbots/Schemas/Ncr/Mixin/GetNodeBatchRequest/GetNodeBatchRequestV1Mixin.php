@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/get-node-batch-request/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -37,8 +37,8 @@ final class GetNodeBatchRequestV1Mixin extends AbstractMixin
              */
             Fb::create('node_refs', T\IdentifierType::create())
                 ->asASet()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
-                ->build()
+                ->className(NodeRef::class)
+                ->build(),
         ];
     }
 }

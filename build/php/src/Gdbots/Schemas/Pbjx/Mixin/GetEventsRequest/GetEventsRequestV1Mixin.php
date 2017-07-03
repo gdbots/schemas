@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/get-events-request/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\GetEventsRequest;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -26,7 +26,7 @@ final class GetEventsRequestV1Mixin extends AbstractMixin
         return [
             Fb::create('stream_id', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Pbjx\StreamId')
+                ->className(StreamId::class)
                 ->build(),
             /*
              * Return events since this time (exclusive greater than if forward=true, less than if forward=false)
@@ -44,7 +44,7 @@ final class GetEventsRequestV1Mixin extends AbstractMixin
              * When true, the events are read from oldest to newest, otherwise newest to oldest.
              */
             Fb::create('forward', T\BooleanType::create())
-                ->build()
+                ->build(),
         ];
     }
 }

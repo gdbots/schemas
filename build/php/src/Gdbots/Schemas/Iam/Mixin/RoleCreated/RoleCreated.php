@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/role-created/latest.json#
 namespace Gdbots\Schemas\Iam\Mixin\RoleCreated;
 
-use Gdbots\Schemas\Ncr\Mixin\NodeCreated\NodeCreatedV1;
+use Gdbots\Schemas\Ncr\Mixin\NodeCreated\NodeCreated;
 
-interface RoleCreated extends NodeCreatedV1
+interface RoleCreated extends NodeCreated
 {
 }

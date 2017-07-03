@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user-roles-revoked/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\UserRolesRevoked;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -26,15 +26,15 @@ final class UserRolesRevokedV1Mixin extends AbstractMixin
         return [
             Fb::create('node_ref', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
+                ->className(NodeRef::class)
                 ->build(),
             /*
              * The roles revoked from the user.
              */
             Fb::create('roles', T\IdentifierType::create())
                 ->asASet()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
-                ->build()
+                ->className(NodeRef::class)
+                ->build(),
         ];
     }
 }

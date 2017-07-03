@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/enrichments/mixin/ip-to-geo/1-0-0.json#
 namespace Gdbots\Schemas\Enrichments\Mixin\IpToGeo;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -7,6 +7,7 @@ use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Geo\Address as GdbotsGeoAddress;
 
 final class IpToGeoV1Mixin extends AbstractMixin
 {
@@ -29,8 +30,10 @@ final class IpToGeoV1Mixin extends AbstractMixin
                 ->overridable(true)
                 ->build(),
             Fb::create('ctx_ip_geo', T\MessageType::create())
-                ->className('Gdbots\Schemas\Geo\Address')
-                ->build()
+                ->anyOfClassNames([
+                    GdbotsGeoAddress::class,
+                ])
+                ->build(),
         ];
     }
 }

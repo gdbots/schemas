@@ -1,11 +1,12 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/get-events-response/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\GetEventsResponse;
 
 use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Pbjx\Mixin\Event\Event as GdbotsPbjxEvent;
 
 final class GetEventsResponseV1Mixin extends AbstractMixin
 {
@@ -34,9 +35,11 @@ final class GetEventsResponseV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('events', T\MessageType::create())
                 ->asAList()
-                ->className('Gdbots\Schemas\Pbjx\Mixin\Event\Event')
+                ->anyOfClassNames([
+                    GdbotsPbjxEvent::class,
+                ])
                 ->overridable(true)
-                ->build()
+                ->build(),
         ];
     }
 }

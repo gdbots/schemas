@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/list-all-roles-response/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\ListAllRolesResponse;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -26,8 +26,8 @@ final class ListAllRolesResponseV1Mixin extends AbstractMixin
         return [
             Fb::create('roles', T\IdentifierType::create())
                 ->asASet()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
-                ->build()
+                ->className(NodeRef::class)
+                ->build(),
         ];
     }
 }

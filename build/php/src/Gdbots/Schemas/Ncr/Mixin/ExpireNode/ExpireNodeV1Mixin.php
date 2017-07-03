@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/expire-node/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\ExpireNode;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -26,8 +26,8 @@ final class ExpireNodeV1Mixin extends AbstractMixin
         return [
             Fb::create('node_ref', T\IdentifierType::create())
                 ->required()
-                ->className('Gdbots\Schemas\Ncr\NodeRef')
-                ->build()
+                ->className(NodeRef::class)
+                ->build(),
         ];
     }
 }

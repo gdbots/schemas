@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-0.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\Command;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -7,6 +7,8 @@ use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Contexts\App as GdbotsContextsApp;
+use Gdbots\Schemas\Contexts\Cloud as GdbotsContextsCloud;
 
 final class CommandV1Mixin extends AbstractMixin
 {
@@ -57,14 +59,18 @@ final class CommandV1Mixin extends AbstractMixin
              * is not necessarily the app used (cms, iOS app, website)
              */
             Fb::create('ctx_app', T\MessageType::create())
-                ->className('Gdbots\Schemas\Contexts\App')
+                ->anyOfClassNames([
+                    GdbotsContextsApp::class,
+                ])
                 ->build(),
             /*
              * The "ctx_cloud" is set by the server receiving the command and is generally
              * only used internally for tracking and performance monitoring.
              */
             Fb::create('ctx_cloud', T\MessageType::create())
-                ->className('Gdbots\Schemas\Contexts\Cloud')
+                ->anyOfClassNames([
+                    GdbotsContextsCloud::class,
+                ])
                 ->build(),
             Fb::create('ctx_ip', T\StringType::create())
                 ->format(Format::IPV4())
@@ -72,7 +78,7 @@ final class CommandV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('ctx_ua', T\TextType::create())
                 ->overridable(true)
-                ->build()
+                ->build(),
         ];
     }
 }

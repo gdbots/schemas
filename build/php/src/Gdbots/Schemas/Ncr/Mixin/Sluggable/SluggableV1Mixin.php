@@ -1,5 +1,5 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/sluggable/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\Sluggable;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -33,7 +33,7 @@ final class SluggableV1Mixin extends AbstractMixin
              */
             Fb::create('slug', T\StringType::create())
                 ->format(Format::SLUG())
-                ->build()
+                ->build(),
         ];
     }
 }

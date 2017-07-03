@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/latest.json#
 namespace Gdbots\Schemas\Ncr\Mixin\SearchNodesRequest;
 
-use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1;
+use Gdbots\Schemas\Pbjx\Mixin\Request\Request;
 
-interface SearchNodesRequest extends RequestV1
+interface SearchNodesRequest extends Request
 {
 }

@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user-roles-granted/latest.json#
 namespace Gdbots\Schemas\Iam\Mixin\UserRolesGranted;
 
-use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1;
+use Gdbots\Schemas\Pbjx\Mixin\Event\Event;
 
-interface UserRolesGranted extends EventV1
+interface UserRolesGranted extends Event
 {
 }

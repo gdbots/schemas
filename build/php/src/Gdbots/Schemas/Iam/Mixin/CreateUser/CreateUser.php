@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/create-user/latest.json#
 namespace Gdbots\Schemas\Iam\Mixin\CreateUser;
 
-use Gdbots\Schemas\Ncr\Mixin\CreateNode\CreateNodeV1;
+use Gdbots\Schemas\Ncr\Mixin\CreateNode\CreateNode;
 
-interface CreateUser extends CreateNodeV1
+interface CreateUser extends CreateNode
 {
 }

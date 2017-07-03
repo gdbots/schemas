@@ -1,9 +1,9 @@
 <?php
-
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/publishable/latest.json#
 namespace Gdbots\Schemas\Ncr\Mixin\Publishable;
 
-use Gdbots\Schemas\Ncr\Mixin\Node\NodeV1;
+use Gdbots\Schemas\Ncr\Mixin\Node\Node;
 
-interface Publishable extends NodeV1
+interface Publishable extends Node
 {
 }
