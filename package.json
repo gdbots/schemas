@@ -8,8 +8,8 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "build": "BABEL_ENV=es6 babel ./build/js/src --out-dir ./dist/",
-    "clean": "echo 'ok'",
+    "build": "BABEL_ENV=es6 babel ./build/js/src --out-dir ./build/js/dist",
+    "clean": "rimraf ./build/js/dist",
     "lint": "BABEL_ENV=cjs eslint ./build/js/src ./build/js/tests",
     "prepublish": "npm run clean && npm run lint && npm run test && npm run build",
     "test": "BABEL_ENV=cjs tape -r ./build/js/tests/babel-register.js './build/js/tests/**/*.test.js' | faucet"

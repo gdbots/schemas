@@ -19,6 +19,7 @@
     "comma-dangle": "off",
     "import/no-extraneous-dependencies": "off",
     "max-len": "off",
+    "no-trailing-spaces": "off",
     "jsx-a11y/img-has-alt": "off",
     "react/jsx-space-before-closing": "off"
   },
