@@ -11,6 +11,7 @@ use Gdbots\Pbj\Type as T;
 final class AddressV1 extends AbstractMessage implements
     Address
 {
+
     /**
      * @return Schema
      */

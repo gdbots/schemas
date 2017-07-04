@@ -12,6 +12,7 @@ use Gdbots\Pbj\Type as T;
 final class CloudV1 extends AbstractMessage implements
     Cloud
 {
+
     /**
      * @return Schema
      */

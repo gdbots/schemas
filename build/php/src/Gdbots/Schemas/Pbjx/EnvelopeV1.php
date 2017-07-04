@@ -12,6 +12,7 @@ use Gdbots\Schemas\Pbjx\Enum\HttpCode;
 final class EnvelopeV1 extends AbstractMessage implements
     Envelope
 {
+
     /**
      * @return Schema
      */

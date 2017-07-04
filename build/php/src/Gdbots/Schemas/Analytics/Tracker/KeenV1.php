@@ -14,6 +14,7 @@ final class KeenV1 extends AbstractMessage implements
     Keen,
     GdbotsAnalyticsTrackerV1
 {
+
     /**
      * @return Schema
      */

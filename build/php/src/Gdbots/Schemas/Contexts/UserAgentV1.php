@@ -11,6 +11,7 @@ use Gdbots\Pbj\Type as T;
 final class UserAgentV1 extends AbstractMessage implements
     UserAgent
 {
+
     /**
      * @return Schema
      */
