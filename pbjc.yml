@@ -5,8 +5,8 @@ namespaces:
   - gdbots:common
   - gdbots:contexts
   - gdbots:enrichments
-  - gdbots:iam
   - gdbots:geo
+  - gdbots:iam
   - gdbots:ncr
   - gdbots:pbjx
 
