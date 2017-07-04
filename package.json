@@ -17,8 +17,7 @@
   "module": "./index.js",
   "jsnext:main": "./index.js",
   "dependencies": {
-    "@gdbots/common": "^0.1.0",
-    "@gdbots/pbj": "git://github.com/gdbots/pbj-js.git#temp"
+    "@gdbots/pbj": "^0.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
