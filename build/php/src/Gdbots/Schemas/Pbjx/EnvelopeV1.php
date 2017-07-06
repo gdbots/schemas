@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/envelope/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/envelope/1-0-1.json#
 namespace Gdbots\Schemas\Pbjx;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -18,7 +18,7 @@ final class EnvelopeV1 extends AbstractMessage implements
      */
     protected static function defineSchema()
     {
-        return new Schema('pbj:gdbots:pbjx::envelope:1-0-0', __CLASS__,
+        return new Schema('pbj:gdbots:pbjx::envelope:1-0-1', __CLASS__,
             [
                 Fb::create('envelope_id', T\UuidType::create())
                     ->required()
@@ -45,6 +45,15 @@ final class EnvelopeV1 extends AbstractMessage implements
                 Fb::create('message_ref', T\MessageRefType::create())
                     ->build(),
                 Fb::create('message', T\MessageType::create())
+                    ->build(),
+                /*
+                 * Some pbjx operations (normally requests) can include "dereferenced"
+                 * messages on the envelope to prevent the consumer from needing to
+                 * make multiple HTTP requests. It is up to the consumer to make use
+                 * of the dereferenced messages if/when they are provided.
+                 */
+                Fb::create('derefs', T\MessageType::create())
+                    ->asAMap()
                     ->build(),
             ]
         );

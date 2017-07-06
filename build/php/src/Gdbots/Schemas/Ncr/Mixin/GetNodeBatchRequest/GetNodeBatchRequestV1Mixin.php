@@ -29,12 +29,6 @@ final class GetNodeBatchRequestV1Mixin extends AbstractMixin
              */
             Fb::create('consistent_read', T\BooleanType::create())
                 ->build(),
-            /*
-             * When "node_refs" is supplied it SHOULD be used to perform the request.
-             * The "node_refs" and "slugs" are analogous to protobuf unions in that
-             * only one of these should exist and the priority of selection is as
-             * ordered in this schema.
-             */
             Fb::create('node_refs', T\IdentifierType::create())
                 ->asASet()
                 ->className(NodeRef::class)

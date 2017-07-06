@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:pbjx::envelope:1-0-1">
+    <fields>
+      <field name="envelope_id" type="uuid" required="true"/>
+      <field name="ok" type="boolean">
+        <default>true</default>
+      </field>
+      <field name="code" type="small-int">
+        <default>0</default>
+      </field>
+      <field name="http_code" type="int-enum">
+        <default>200</default>
+        <enum id="gdbots:pbjx:http-code"/>
+      </field>
+      <field name="etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+      <field name="error_name" type="string" pattern="^[\w\/\.:-]+$"/>
+      <field name="error_message" type="text"/>
+      <field name="message_ref" type="message-ref"/>
+      <field name="message" type="message"/>
+      <field name="derefs" type="message" rule="map">
+        <description>
+          Some pbjx operations (normally requests) can include "dereferenced"
+          messages on the envelope to prevent the consumer from needing to
+          make multiple HTTP requests.  It is up to the consumer to make use
+          of the dereferenced messages if/when they are provided.
+        </description>
+      </field>
+    </fields>
+
+    <php-options>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+use Gdbots\Pbj\MessageRef;
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param string $tag
+ * @return MessageRef
+ */
+public function generateMessageRef($tag = null)
+{
+    return new MessageRef(static::schema()->getCurie(), $this->get('envelope_id'), $tag);
+}
+
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return ['envelope_id' => (string)$this->get('envelope_id')];
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+
+    <js-options>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+import MessageRef from '@gdbots/pbj/MessageRef';
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param {?string} tag
+ * @returns {MessageRef}
+ */
+generateMessageRef(tag = null) {
+  return new MessageRef(this.schema().getCurie(), this.get('envelope_id'), tag);
+}
+
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return { envelope_id: `${this.get('envelope_id')}` };
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
+  </schema>
+</pbj-schema>

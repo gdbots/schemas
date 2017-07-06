@@ -7,7 +7,7 @@
   config is updated so no changes are required if using php.
 * __Modified Schemas:__
   * `gdbots:pbjx::envelope` new version `1-0-1`
-    * Added `derefs` message map for including (aka eager fetching) messages
+    * Added `derefs` message map field for including (aka eager fetching) messages
       into the envelope to prevent needing to do multiple HTTP requests.  
 
 

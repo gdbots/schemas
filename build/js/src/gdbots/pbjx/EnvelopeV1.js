@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/envelope/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/envelope/1-0-1.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import HttpCode from '@gdbots/schemas/gdbots/pbjx/enums/HttpCode';
 import Message from '@gdbots/pbj/Message';
@@ -14,7 +14,7 @@ export default class EnvelopeV1 extends Message {
    * @returns {Schema}
    */
   static defineSchema() {
-    return new Schema('pbj:gdbots:pbjx::envelope:1-0-0', EnvelopeV1,
+    return new Schema('pbj:gdbots:pbjx::envelope:1-0-1', EnvelopeV1,
       [
         Fb.create('envelope_id', T.UuidType.create())
           .required()
@@ -41,6 +41,15 @@ export default class EnvelopeV1 extends Message {
         Fb.create('message_ref', T.MessageRefType.create())
           .build(),
         Fb.create('message', T.MessageType.create())
+          .build(),
+        /*
+         * Some pbjx operations (normally requests) can include "dereferenced"
+         * messages on the envelope to prevent the consumer from needing to
+         * make multiple HTTP requests. It is up to the consumer to make use
+         * of the dereferenced messages if/when they are provided.
+         */
+        Fb.create('derefs', T.MessageType.create())
+          .asAMap()
           .build(),
       ],
     );
