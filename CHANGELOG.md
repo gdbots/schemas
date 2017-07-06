@@ -5,6 +5,10 @@
 * PHP 7.1 is now required.  All other project dependencies already have this requirement, e.g. __gdbots/pbjx__.
 * Added es6 compiling. PHP compiled files are moved but unchanged and composer autload
   config is updated so no changes are required if using php.
+* __Modified Schemas:__
+  * `gdbots:pbjx::envelope` new version `1-0-1`
+    * Added `derefs` message map for including (aka eager fetching) messages
+      into the envelope to prevent needing to do multiple HTTP requests.  
 
 
 ## v1.1.1
