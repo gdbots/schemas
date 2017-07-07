@@ -17,9 +17,5 @@
       <field name="is_weekend" type="boolean"/>
       <field name="hour_of_day" type="tiny-int" max="23"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Enrichments\Mixin\TimeParting</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

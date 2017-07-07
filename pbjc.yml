@@ -5,15 +5,17 @@ namespaces:
   - gdbots:common
   - gdbots:contexts
   - gdbots:enrichments
-  - gdbots:iam
   - gdbots:geo
+  - gdbots:iam
   - gdbots:ncr
   - gdbots:pbjx
 
 languages:
   php:
-    output: ./src/php
-    manifest: ./pbj-schemas.php
+    output: ./build/php/src
+
+  js:
+    output: ./build/js/src
 
   json-schema:
     include_all: true

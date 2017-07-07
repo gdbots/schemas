@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v1.2.0
+* PHP 7.1 is now required.  All other project dependencies already have this requirement, e.g. __gdbots/pbjx__.
+* Added es6 compiling. PHP compiled files are moved but unchanged (except for minor improvements) and composer 
+  autoload config is updated so no changes are required if using php.
+* __Modified Schemas:__
+  * `gdbots:pbjx::envelope` new version `1-0-1`
+    * Added `derefs` message map field for including (aka eager fetching) messages
+      into the envelope to prevent needing to do multiple HTTP requests.  
+
+
 ## v1.1.1
 * issue #14: BUG :: Ensure use statements of mixins are scoped/unique.  No schema changes, just php improvements
   that ensure there will be no collisions of php class names when mixins/classes have the same name.

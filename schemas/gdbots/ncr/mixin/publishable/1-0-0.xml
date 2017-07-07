@@ -7,9 +7,5 @@
     <fields>
       <field name="published_at" type="date-time"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\Publishable</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

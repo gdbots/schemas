@@ -7,9 +7,5 @@
     <fields>
       <field name="expires_at" type="date-time"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\Expirable</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

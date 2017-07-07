@@ -11,20 +11,15 @@
         </description>
       </field>
       <field name="node_refs" type="identifier" rule="set">
-        <description>
-          When "node_refs" is supplied it SHOULD be used to perform the request.
-          The "node_refs" and "slugs" are analogous to protobuf unions in that
-          only one of these should exist and the priority of selection is as
-          ordered in this schema.
-        </description>
         <php-options>
-          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
+          <class-name>NodeRef::class</class-name>
         </php-options>
+        <js-options>
+          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
+          <class-proto>NodeRef</class-proto>
+        </js-options>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

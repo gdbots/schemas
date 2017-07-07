@@ -15,9 +15,5 @@
         </description>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\Sluggable</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

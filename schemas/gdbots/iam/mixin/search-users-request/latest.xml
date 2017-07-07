@@ -8,26 +8,11 @@
       <field name="sort" type="string-enum">
         <default>relevance</default>
         <enum id="gdbots:iam:search-users-sort"/>
-        <php-options>
-          <default>SearchUsersSort::RELEVANCE()</default>
-        </php-options>
       </field>
       <field name="is_staff" type="trinary"/>
       <field name="is_blocked" type="trinary">
         <default>2</default>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Iam\Mixin\SearchUsersRequest</namespace>
-      <insertion-points>
-        <imports>
-          <![CDATA[
-use Gdbots\Schemas\Iam\Enum\SearchUsersSort;
-            ]]>
-        </imports>
-        <methods/>
-      </insertion-points>
-    </php-options>
   </schema>
 </pbj-schema>

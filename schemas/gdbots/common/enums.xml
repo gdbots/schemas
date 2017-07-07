@@ -163,9 +163,5 @@
       <option key="TRUE_VAL" value="1"/>
       <option key="FALSE_VAL" value="2"/>
     </enum>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Common\Enum</namespace>
-    </php-options>
   </enums>
 </pbj-enums>

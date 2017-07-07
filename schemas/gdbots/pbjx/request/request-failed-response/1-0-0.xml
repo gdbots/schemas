@@ -7,11 +7,7 @@
     <fields>
       <field name="error_code" type="small-int">
         <default>2</default>
-        <php-options>
-          <default>Code::UNKNOWN</default>
-        </php-options>
       </field>
-
       <field name="error_name" type="string" pattern="^[\w\/\.:-]+$"/>
       <field name="error_message" type="text"/>
       <field name="prev_error_message" type="text"/>
@@ -21,17 +17,5 @@
     <mixins>
       <curie-major>gdbots:pbjx:mixin:response:v1</curie-major>
     </mixins>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Pbjx\Request</namespace>
-      <insertion-points>
-        <imports>
-          <![CDATA[
-use Gdbots\Schemas\Pbjx\Enum\Code;
-            ]]>
-        </imports>
-        <methods/>
-      </insertion-points>
-    </php-options>
   </schema>
 </pbj-schema>

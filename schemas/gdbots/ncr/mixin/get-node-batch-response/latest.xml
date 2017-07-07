@@ -16,13 +16,14 @@
           the batch request failed to retrieve.
         </description>
         <php-options>
-          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
+          <class-name>NodeRef::class</class-name>
         </php-options>
+        <js-options>
+          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
+          <class-proto>NodeRef</class-proto>
+        </js-options>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\GetNodeBatchResponse</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

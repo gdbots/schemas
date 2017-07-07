@@ -7,9 +7,5 @@
     <fields>
       <field name="email" type="string" format="email"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Iam\Mixin\GetUserRequest</namespace>
-    </php-options>
   </schema>
 </pbj-schema>
