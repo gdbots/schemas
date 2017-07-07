@@ -14,15 +14,13 @@
     "gdbots/pbjc": "~0.3"
   },
   "autoload": {
-    "files": [
-      "build/php/src/pbj-schemas.php"
-    ],
     "psr-0": {
       "": "build/php/src"
     }
   },
   "autoload-dev": {
     "files": [
+      "build/php/src/pbj-schemas.php",
       "pbj-schema-stores.php"
     ],
     "psr-0": {
