@@ -11,9 +11,5 @@
         </any-of>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\NodeCreated</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

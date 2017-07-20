@@ -19,9 +19,5 @@
         </any-of>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Iam\Mixin\UserUpdated</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

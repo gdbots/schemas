@@ -30,7 +30,6 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Forms\Mixin\Field</namespace>
       <insertion-points>
         <imports>
           <![CDATA[

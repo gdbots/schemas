@@ -5,13 +5,19 @@
 
   <schema id="pbj:gdbots:ncr:mixin:search-nodes-request:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:request:v1">
     <fields>
-      <field name="q" type="string"/>
+      <field name="q" type="text" max="2000"/>
       <field name="count" type="tiny-int">
         <description>The number of results to return.</description>
         <default>25</default>
       </field>
       <field name="page" type="tiny-int" min="1">
         <default>1</default>
+      </field>
+      <field name="cursor" type="string">
+        <description>
+          A cursor is a string (normally base64 encoded) which marks a specific item in a list of data.
+          When cursor is present it should be used instead of "page".
+        </description>
       </field>
       <field name="status" type="string-enum">
         <enum id="gdbots:ncr:node-status"/>
@@ -25,9 +31,5 @@
       </field>
       <field name="parsed_query_json" type="text"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\SearchNodesRequest</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

@@ -7,9 +7,5 @@
     <mixins>
       <curie-major>gdbots:forms:mixin:field:v1</curie-major>
     </mixins>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Forms\Field</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

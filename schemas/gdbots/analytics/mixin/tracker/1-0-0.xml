@@ -7,9 +7,5 @@
     <fields>
       <field name="is_enabled" type="boolean"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Analytics\Mixin\Tracker</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

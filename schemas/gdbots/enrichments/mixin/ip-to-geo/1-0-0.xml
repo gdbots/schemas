@@ -12,9 +12,5 @@
         </any-of>
       </field>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Enrichments\Mixin\IpToGeo</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

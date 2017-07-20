@@ -18,8 +18,13 @@
           ordered in this schema.
         </description>
         <php-options>
-          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
+          <class-name>NodeRef::class</class-name>
         </php-options>
+        <js-options>
+          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
+          <class-proto>NodeRef</class-proto>
+        </js-options>
       </field>
       <field name="qname" type="string" pattern="^[a-z0-9-]+:[a-z0-9-]+$">
         <description>
@@ -29,9 +34,5 @@
       </field>
       <field name="slug" type="string" format="slug"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\GetNodeRequest</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

@@ -7,13 +7,23 @@
     <fields>
       <field name="from_ref" type="identifier" required="true">
         <php-options>
-          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
+          <class-name>NodeRef::class</class-name>
         </php-options>
+        <js-options>
+          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
+          <class-proto>NodeRef</class-proto>
+        </js-options>
       </field>
       <field name="to_ref" type="identifier" required="true">
         <php-options>
-          <classname>Gdbots\Schemas\Ncr\NodeRef</classname>
+          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
+          <class-name>NodeRef::class</class-name>
         </php-options>
+        <js-options>
+          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
+          <class-proto>NodeRef</class-proto>
+        </js-options>
       </field>
       <field name="multiplicity" type="string-enum" overridable="true">
         <default>multi</default>
@@ -23,7 +33,6 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Ncr\Mixin\Edge</namespace>
       <insertion-points>
         <imports>
           <![CDATA[
@@ -60,5 +69,39 @@ public function getUriTemplateVars()
         </methods>
       </insertion-points>
     </php-options>
+
+    <js-options>
+      <insertion-points>
+        <imports>
+          <![CDATA[
+import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId';
+import MessageRef from '@gdbots/pbj/MessageRef';
+            ]]>
+        </imports>
+        <methods>
+          <![CDATA[
+/**
+ * @param {?string} tag
+ * @returns {MessageRef}
+ */
+generateMessageRef(tag = null) {
+  return new MessageRef(this.schema().getCurie(), EdgeId.fromEdge(this), tag);
+},
+
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return {
+    edge_id: `${EdgeId.fromEdge(this)}`,
+    from_ref: `${this.get('from_ref')}`,
+    to_ref: `${this.get('to_ref')}`,
+    created_at: `${this.get('created_at')}`,
+  };
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
   </schema>
 </pbj-schema>

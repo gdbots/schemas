@@ -7,8 +7,13 @@
     <fields>
       <field name="_id" type="identifier" required="true">
         <php-options>
-          <classname>Gdbots\Schemas\Iam\RoleId</classname>
+          <imports>use Gdbots\Schemas\Iam\RoleId;</imports>
+          <class-name>RoleId::class</class-name>
         </php-options>
+        <js-options>
+          <imports>import RoleId from '@gdbots/schemas/gdbots/iam/RoleId';</imports>
+          <class-proto>RoleId</class-proto>
+        </js-options>
       </field>
       <field name="allowed" type="string" pattern="^[a-z0-9_\*\.:-]+$" rule="set">
         <description>
@@ -28,9 +33,7 @@
     </fields>
 
     <php-options>
-      <namespace>Gdbots\Schemas\Iam\Mixin\Role</namespace>
       <insertion-points>
-        <imports/>
         <methods>
           <![CDATA[
 /**
@@ -44,5 +47,20 @@ public function getUriTemplateVars()
         </methods>
       </insertion-points>
     </php-options>
+
+    <js-options>
+      <insertion-points>
+        <methods>
+          <![CDATA[
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return { role_id: `${this.get('_id', '')}` };
+}
+            ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
   </schema>
 </pbj-schema>

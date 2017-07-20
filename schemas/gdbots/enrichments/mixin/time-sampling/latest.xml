@@ -9,9 +9,5 @@
       <field name="ts_ymd" type="int"/>
       <field name="ts_ym" type="medium-int"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Enrichments\Mixin\TimeSampling</namespace>
-    </php-options>
   </schema>
 </pbj-schema>

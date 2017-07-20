@@ -18,9 +18,5 @@
       </field>
       <field name="hashtags" type="string" format="hashtag" rule="set"/>
     </fields>
-
-    <php-options>
-      <namespace>Gdbots\Schemas\Forms\Mixin\Form</namespace>
-    </php-options>
   </schema>
 </pbj-schema>
