@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:field:number-field:1-0-0">
+    <fields>
+      <field name="min_value" type="int"/>
+      <field name="max_value" type="int"/>
+      <field name="decimals" type="tiny-int">
+        <description>Number of decimal places to show.  0 denotes this number field will be an integer</description>
+        <default>0</default>
+      </field>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:forms:mixin:field:v1</curie-major>
+    </mixins>
+  </schema>
+</pbj-schema>

@@ -1,6 +1,7 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/address-field/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import GdbotsFormsFieldV1Mixin from '@gdbots/schemas/gdbots/forms/mixin/field/FieldV1Mixin';
+import GdbotsFormsFieldV1Trait from '@gdbots/schemas/gdbots/forms/mixin/field/FieldV1Trait';
 import Message from '@gdbots/pbj/Message';
 import MessageResolver from '@gdbots/pbj/MessageResolver';
 import Schema from '@gdbots/pbj/Schema';
@@ -38,6 +39,7 @@ export default class AddressFieldV1 extends Message {
   }
 }
 
+GdbotsFormsFieldV1Trait(AddressFieldV1);
 MessageResolver.register('gdbots:forms:field:address-field', AddressFieldV1);
 Object.freeze(AddressFieldV1);
 Object.freeze(AddressFieldV1.prototype);
