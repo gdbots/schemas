@@ -1,5 +1,6 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/form/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
+import FileId from '@gdbots/schemas/gdbots/files/FileId';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
 import SchemaId from '@gdbots/pbj/SchemaId';
@@ -33,6 +34,11 @@ export default class FormV1Mixin extends Mixin {
       Fb.create('hashtags', T.StringType.create())
         .asASet()
         .format(Format.HASHTAG)
+        .build(),
+      Fb.create('disclaimer', T.TextType.create())
+        .build(),
+      Fb.create('image', T.IdentifierType.create())
+        .classProto(FileId)
         .build(),
     ];
   }

@@ -7,6 +7,7 @@ use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Files\FileId;
 use Gdbots\Schemas\Forms\Mixin\Field\Field as GdbotsFormsField;
 
 final class FormV1Mixin extends AbstractMixin
@@ -40,6 +41,11 @@ final class FormV1Mixin extends AbstractMixin
             Fb::create('hashtags', T\StringType::create())
                 ->asASet()
                 ->format(Format::HASHTAG())
+                ->build(),
+            Fb::create('disclaimer', T\TextType::create())
+                ->build(),
+            Fb::create('image', T\IdentifierType::create())
+                ->className(FileId::class)
                 ->build(),
         ];
     }
