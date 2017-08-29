@@ -34,6 +34,8 @@
   * `gdbots:forms:mixin:create-form`
   * `gdbots:forms:mixin:field`
   * `gdbots:forms:mixin:form`
+  * `gdbots:forms:mixin:form-published`
+  * `gdbots:forms:mixin:publish-form`
   * `gdbots:forms:mixin:search-forms-request`
   * `gdbots:forms:mixin:send-submission`
 * PHP 7.1 is now required.  All other project dependencies already have this requirement, e.g. __gdbots/pbjx__.
