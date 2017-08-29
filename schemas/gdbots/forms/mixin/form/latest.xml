@@ -18,7 +18,7 @@
       </field>
       <field name="hashtags" type="string" format="hashtag" rule="set"/>
       <field name="disclaimer" type="text"/>
-      <field name="image" type="identifier">
+      <field name="image_id" type="identifier">
         <php-options>
           <imports>use Gdbots\Schemas\Files\FileId;</imports>
           <class-name>FileId::class</class-name>

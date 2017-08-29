@@ -8,13 +8,13 @@ export default function FieldV1Trait(m) {
      */
     generateMessageRef(tag = null) {
       return new MessageRef(this.schema().getCurie(), this.get('name'), tag);
-    }
+    },
     
     /**
      * @returns {Object}
      */
     getUriTemplateVars() {
-      return { envelope_id: `${this.get('name')}` };
+      return { name: this.get('name') };
     }
   });
 }

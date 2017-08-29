@@ -7,9 +7,11 @@
     <fields>
       <field name="min_value" type="int"/>
       <field name="max_value" type="int"/>
-      <field name="decimals" type="tiny-int">
-        <description>Number of decimal places to show.  0 denotes this number field will be an integer</description>
-        <default>0</default>
+      <field name="decimals" type="tiny-int" max="6">
+        <description>
+          Number of decimal places to allow.  A "0" denotes this number field
+          will require an integer.
+        </description>
       </field>
     </fields>
 

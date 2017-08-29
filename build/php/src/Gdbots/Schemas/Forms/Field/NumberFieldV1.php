@@ -28,10 +28,11 @@ final class NumberFieldV1 extends AbstractMessage implements
                 Fb::create('max_value', T\IntType::create())
                     ->build(),
                 /*
-                 * Number of decimal places to show. 0 denotes this number field will be an integer
+                 * Number of decimal places to allow. A "0" denotes this number field
+                 * will require an integer.
                  */
                 Fb::create('decimals', T\TinyIntType::create())
-                    ->withDefault(0)
+                    ->max(6)
                     ->build(),
             ],
             [

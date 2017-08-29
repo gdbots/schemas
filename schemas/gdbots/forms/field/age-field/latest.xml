@@ -3,10 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:forms:field:select-field:1-0-0">
+  <schema id="pbj:gdbots:forms:field:age-field:1-0-0">
     <fields>
-      <field name="option_labels" type="string" rule="list"/>
-      <field name="option_values" type="string" rule="list"/>
+      <field name="min_age" type="tiny-int"/>
+      <field name="max_age" type="tiny-int"/>
     </fields>
 
     <mixins>

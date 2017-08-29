@@ -37,7 +37,7 @@ export default class FormV1Mixin extends Mixin {
         .build(),
       Fb.create('disclaimer', T.TextType.create())
         .build(),
-      Fb.create('image', T.IdentifierType.create())
+      Fb.create('image_id', T.IdentifierType.create())
         .classProto(FileId)
         .build(),
     ];

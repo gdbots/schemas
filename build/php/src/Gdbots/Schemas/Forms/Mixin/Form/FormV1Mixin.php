@@ -44,7 +44,7 @@ final class FormV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('disclaimer', T\TextType::create())
                 ->build(),
-            Fb::create('image', T\IdentifierType::create())
+            Fb::create('image_id', T\IdentifierType::create())
                 ->className(FileId::class)
                 ->build(),
         ];

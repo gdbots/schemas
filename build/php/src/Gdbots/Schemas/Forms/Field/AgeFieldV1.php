@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/select-field/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/age-field/1-0-0.json#
 namespace Gdbots\Schemas\Forms\Field;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -10,8 +10,8 @@ use Gdbots\Schemas\Forms\Mixin\Field\FieldV1 as GdbotsFormsFieldV1;
 use Gdbots\Schemas\Forms\Mixin\Field\FieldV1Mixin as GdbotsFormsFieldV1Mixin;
 use Gdbots\Schemas\Forms\Mixin\Field\FieldV1Trait as GdbotsFormsFieldV1Trait;
 
-final class SelectFieldV1 extends AbstractMessage implements
-    SelectField,
+final class AgeFieldV1 extends AbstractMessage implements
+    AgeField,
     GdbotsFormsFieldV1
 {
     use GdbotsFormsFieldV1Trait;
@@ -21,13 +21,11 @@ final class SelectFieldV1 extends AbstractMessage implements
      */
     protected static function defineSchema()
     {
-        return new Schema('pbj:gdbots:forms:field:select-field:1-0-0', __CLASS__,
+        return new Schema('pbj:gdbots:forms:field:age-field:1-0-0', __CLASS__,
             [
-                Fb::create('option_labels', T\StringType::create())
-                    ->asAList()
+                Fb::create('min_age', T\TinyIntType::create())
                     ->build(),
-                Fb::create('option_values', T\StringType::create())
-                    ->asAList()
+                Fb::create('max_age', T\TinyIntType::create())
                     ->build(),
             ],
             [

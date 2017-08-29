@@ -7,13 +7,13 @@
     <fields>
       <field name="name" type="string" pattern="^[a-zA-Z_]{1}[\w-]*$" max="127" required="true">
         <description>
-          A unique identifier (within the form) for the field.  This value
+          A unique identifier (within the form) for the field. This value
           is not shown to the user and should NOT change once set.
         </description>
       </field>
       <field name="maps_to" type="string" pattern="^[a-zA-Z_]{1}\w*$" max="127">
         <description>
-          The name of the schema field the answer will map to.  By default this
+          The name of the schema field the answer will map to. By default this
           will go to the "cf" field which is a "dynamic-field" list containing
           all answers filled out on the form (ref "gdbots:forms:mixin:send-submission").
         </description>
@@ -74,13 +74,13 @@ import MessageRef from '@gdbots/pbj/MessageRef';
  */
 generateMessageRef(tag = null) {
   return new MessageRef(this.schema().getCurie(), this.get('name'), tag);
-}
+},
 
 /**
  * @returns {Object}
  */
 getUriTemplateVars() {
-  return { envelope_id: `${this.get('name')}` };
+  return { name: this.get('name') };
 }
             ]]>
         </methods>

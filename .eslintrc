@@ -19,7 +19,8 @@
     "comma-dangle": "off",
     "import/no-extraneous-dependencies": "off",
     "max-len": "off",
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "quotes": "off"
   },
   "settings": {
     "import/resolver": {

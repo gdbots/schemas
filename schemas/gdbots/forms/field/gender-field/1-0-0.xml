@@ -3,12 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:forms:field:select-field:1-0-0">
-    <fields>
-      <field name="option_labels" type="string" rule="list"/>
-      <field name="option_values" type="string" rule="list"/>
-    </fields>
-
+  <schema id="pbj:gdbots:forms:field:gender-field:1-0-0">
     <mixins>
       <curie-major>gdbots:forms:mixin:field:v1</curie-major>
     </mixins>
