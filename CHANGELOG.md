@@ -31,8 +31,10 @@
   * `gdbots:forms:field:yes-no-field`
   * `gdbots:forms:field:youtube-user-field`
   * `gdbots:forms:field:youtube-video-field`
+  * `gdbots:forms:mixin:create-form`
   * `gdbots:forms:mixin:field`
   * `gdbots:forms:mixin:form`
+  * `gdbots:forms:mixin:search-forms-request`
   * `gdbots:forms:mixin:send-submission`
 * PHP 7.1 is now required.  All other project dependencies already have this requirement, e.g. __gdbots/pbjx__.
 * Add es6 compiling. PHP compiled files are moved but unchanged (except for minor improvements) and composer 
