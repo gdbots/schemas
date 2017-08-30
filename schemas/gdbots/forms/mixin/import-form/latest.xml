@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:mixin:import-form:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:command:v1">
+    <fields>
+      <field name="description" type="text">
+        <description>
+          A short description (a few sentences) about this form.  This field should
+          not have html as it is used in metadata.
+        </description>
+      </field>
+      <field name="fields" type="message" rule="list">
+        <any-of>
+          <curie>gdbots:forms:mixin:field</curie>
+        </any-of>
+      </field>
+      <field name="hashtags" type="string" format="hashtag" rule="set"/>
+      <field name="disclaimer" type="text"/>
+      <field name="image_id" type="identifier">
+        <php-options>
+          <imports>use Gdbots\Schemas\Files\FileId;</imports>
+          <class-name>FileId::class</class-name>
+        </php-options>
+        <js-options>
+          <imports>import FileId from '@gdbots/schemas/gdbots/files/FileId';</imports>
+          <class-proto>FileId</class-proto>
+        </js-options>
+      </field>
+    </fields>
+  </schema>
+</pbj-schema>
