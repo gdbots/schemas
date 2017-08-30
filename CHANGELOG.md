@@ -31,7 +31,6 @@
   * `gdbots:forms:field:yes-no-field`
   * `gdbots:forms:field:youtube-user-field`
   * `gdbots:forms:field:youtube-video-field`
-  * `gdbots:forms:mixin:add-note-to-submission`
   * `gdbots:forms:mixin:create-form`
   * `gdbots:forms:mixin:delete-form`
   * `gdbots:forms:mixin:expire-form`
