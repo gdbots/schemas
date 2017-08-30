@@ -32,12 +32,25 @@
   * `gdbots:forms:field:youtube-user-field`
   * `gdbots:forms:field:youtube-video-field`
   * `gdbots:forms:mixin:create-form`
+  * `gdbots:forms:mixin:delete-form`
   * `gdbots:forms:mixin:field`
   * `gdbots:forms:mixin:form`
+  * `gdbots:forms:mixin:form-created`
+  * `gdbots:forms:mixin:form-deleted`
   * `gdbots:forms:mixin:form-published`
+  * `gdbots:forms:mixin:form-unpublished`
+  * `gdbots:forms:mixin:get-form-history-request`
+  * `gdbots:forms:mixin:get-form-history-response`
+  * `gdbots:forms:mixin:get-form-request`
+  * `gdbots:forms:mixin:get-form-response`
+  * `gdbots:forms:mixin:form-updated`
   * `gdbots:forms:mixin:publish-form`
   * `gdbots:forms:mixin:search-forms-request`
+  * `gdbots:forms:mixin:search-forms-response`
   * `gdbots:forms:mixin:send-submission`
+  * `gdbots:forms:mixin:unpublish-form`
+  * `gdbots:forms:mixin:update-form`
+  * `gdbots:forms:search-forms-sort`
 * PHP 7.1 is now required.  All other project dependencies already have this requirement, e.g. __gdbots/pbjx__.
 * Add es6 compiling. PHP compiled files are moved but unchanged (except for minor improvements) and composer 
   autoload config is updated so no changes are required if using php.
