@@ -5,6 +5,7 @@ namespaces:
   - gdbots:common
   - gdbots:contexts
   - gdbots:enrichments
+  - gdbots:forms
   - gdbots:geo
   - gdbots:iam
   - gdbots:ncr

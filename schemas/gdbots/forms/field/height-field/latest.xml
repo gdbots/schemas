@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:field:height-field:1-0-0">
+    <fields>
+      <field name="min_height" type="tiny-int">
+        <description>The person's minimum physical height recorded in inches.</description>
+      </field>
+      <field name="max_height" type="tiny-int">
+        <description>The person's maximum physical height recorded in inches.</description>
+      </field>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:forms:mixin:field:v1</curie-major>
+    </mixins>
+  </schema>
+</pbj-schema>

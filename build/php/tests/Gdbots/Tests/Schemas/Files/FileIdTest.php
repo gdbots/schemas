@@ -52,7 +52,7 @@ class FileIdTest extends TestCase
             ),
             $id->toFilePath()
         );
-        $this->assertInstanceOf('Gdbots\Pbj\WellKnown\UuidIdentifier', UuidIdentifier::fromString($id->getUuid(true)));
+        $this->assertInstanceOf(UuidIdentifier::class, UuidIdentifier::fromString($id->getUuid(true)));
     }
 
     /**
