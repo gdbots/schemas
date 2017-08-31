@@ -1,8 +1,7 @@
 # CHANGELOG
 
 
-## v1.2.0
-
+## v1.3.0
 * issue #16: Add schemas for the form services.
 * __Add Schemas:__
   * `gdbots:forms:field:address-field`
@@ -55,6 +54,9 @@
   * `gdbots:forms:mixin:send-submission`
   * `gdbots:forms:mixin:unpublish-form`
   * `gdbots:forms:mixin:update-form`
+
+
+## v1.2.0
 * PHP 7.1 is now required.  All other project dependencies already have this requirement, e.g. __gdbots/pbjx__.
 * Add es6 compiling. PHP compiled files are moved but unchanged (except for minor improvements) and composer 
   autoload config is updated so no changes are required if using php.
