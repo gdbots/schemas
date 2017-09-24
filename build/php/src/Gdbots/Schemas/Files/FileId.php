@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Files;
 
@@ -34,6 +35,19 @@ final class FileId implements Identifier
      */
     const VALID_PATTERN = '/^([a-z0-9]{1,12})_([a-z0-9]{1,10})_([0-9]{8})_([a-f0-9]{32})$/';
 
+    /**
+     * Earlier versions of the "toFilePath" put the hash after the date:
+     * - image/250x/2015/12/01/27/27ca03c7b490460992a78692aca42b10_n.jpg
+     * in the above example, the "/27/" is the first two characters of the uuid.
+     *
+     * In the new version, the hash is stored directly after that type to ensure
+     * maximum throughput when reading/writing files to S3 and similar services.
+     * - image/27/250x/2015/12/01/27ca03c7b490460992a78692aca42b10_n.jpg
+     *
+     * @var bool
+     */
+    private static $useLegacyFilePath = false;
+
     /** @var string */
     private $id;
 
@@ -55,7 +69,7 @@ final class FileId implements Identifier
      * @param string $date
      * @param string $uuid
      */
-    private function __construct($type, $ext, $date, $uuid)
+    private function __construct(string $type, string $ext, string $date, string $uuid)
     {
         $this->type = $type;
         $this->ext = $ext;
@@ -89,17 +103,21 @@ final class FileId implements Identifier
     }
 
     /**
-     * @param string $type          The primary type for this file. e.g. image, video, audio.
-     * @param string $ext           Extension of the file.  jpg, gif, mp4, txt, pdf
-     * @param \DateTime $date
-     * @param UuidIdentifier $uuid  Uuid for the file, if not supplied a v4 uuid will be created.
+     * @param string         $type The primary type for this file. e.g. image, video, audio.
+     * @param string         $ext  Extension of the file.  jpg, gif, mp4, txt, pdf
+     * @param \DateTime      $date
+     * @param UuidIdentifier $uuid Uuid for the file, if not supplied a v4 uuid will be created.
      *
      * @return FileId
      *
      * @throws AssertionFailed
      */
-    public static function create($type, $ext, \DateTime $date = null, UuidIdentifier $uuid = null)
-    {
+    public static function create(
+        string $type,
+        string $ext,
+        ?\DateTime $date = null,
+        ?UuidIdentifier $uuid = null
+    ): self {
         $date = $date ?: new \DateTime('now', new \DateTimeZone('UTC'));
         $uuid = $uuid ?: UuidIdentifier::generate();
         $fileId = new self($type, $ext, $date->format('Ymd'), $uuid->toString());
@@ -122,7 +140,7 @@ final class FileId implements Identifier
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -130,17 +148,17 @@ final class FileId implements Identifier
     /**
      * @return string
      */
-    public function getExt()
+    public function getExt(): string
     {
         return $this->ext;
     }
 
     /**
-     * @param bool $asObject    Returns the date as a \DateTime instead of Ymd string.
+     * @param bool $asObject Returns the date as a \DateTime instead of Ymd string.
      *
      * @return \DateTime|string
      */
-    public function getDate($asObject = false)
+    public function getDate(bool $asObject = false)
     {
         if (true === $asObject) {
             return \DateTime::createFromFormat('!Ymd', $this->date, new \DateTimeZone('UTC'));
@@ -150,11 +168,11 @@ final class FileId implements Identifier
     }
 
     /**
-     * @param bool $asObject    Returns the uuid as a UuidIdentifier instead of formatted uuid string (all lowercase, no dashes)
+     * @param bool $asObject Returns the uuid as a UuidIdentifier instead of formatted uuid string (all lowercase, no dashes)
      *
      * @return UuidIdentifier|string
      */
-    public function getUuid($asObject = false)
+    public function getUuid(bool $asObject = false)
     {
         if (true === $asObject) {
             return UuidIdentifier::fromString($this->uuid);
@@ -203,26 +221,49 @@ final class FileId implements Identifier
      * For example, for the file id 'image_jpg_20151201_27ca03c7b490460992a78692aca42b10'
      *  $fileId->toFilePath('250x', 'n')
      * would return:
-     *  'image/250x/2015/12/01/27/27ca03c7b490460992a78692aca42b10_n.jpg'
+     *  'image/27/250x/2015/12/01/27ca03c7b490460992a78692aca42b10_n.jpg'
      *
-     * @param string $version   An identifier for the version, e.g. "o" for original or "250x" for a thumbnail size.
-     * @param string $quality   If applicable, a quality setting like "n" for normal or "high", "low", etc.
+     * @param string $version An identifier for the version, e.g. "o" for original or "250x" for a thumbnail size.
+     * @param string $quality If applicable, a quality setting like "n" for normal or "high", "low", etc.
      *
      * @return string
      */
-    public function toFilePath($version = null, $quality = null)
+    public function toFilePath(?string $version = null, ?string $quality = null): string
     {
+        if (self::$useLegacyFilePath) {
+            return sprintf(
+                '%s/%s%s/%s/%s/%s/%s%s.%s',
+                $this->type, // image, video, document, etc.
+                null === $version ? '' : $version . '/', // o, 250x, hls, etc.
+                substr($this->date, 0, 4), // yyyy
+                substr($this->date, 4, 2), // mm
+                substr($this->date, 6, 2), // dd
+                substr($this->uuid, 0, 2),
+                $this->uuid,
+                null === $quality ? '' : '_' . $quality,
+                $this->ext
+            );
+        }
+
         return sprintf(
-            '%s/%s%s/%s/%s/%s/%s%s.%s',
+            '%s/%s/%s%s/%s/%s/%s%s.%s',
             $this->type, // image, video, document, etc.
-            null === $version ? '' : $version.'/', // o, 250x, hls, etc.
+            substr($this->uuid, 0, 2),
+            null === $version ? '' : $version . '/', // o, 250x, hls, etc.
             substr($this->date, 0, 4), // yyyy
             substr($this->date, 4, 2), // mm
             substr($this->date, 6, 2), // dd
-            substr($this->uuid, 0, 2),
             $this->uuid,
-            null === $quality ? '' : '_'.$quality,
+            null === $quality ? '' : '_' . $quality,
             $this->ext
         );
+    }
+
+    /**
+     * @param bool $option
+     */
+    public static function useLegacyFilePath(bool $option = true): void
+    {
+        self::$useLegacyFilePath = $option;
     }
 }

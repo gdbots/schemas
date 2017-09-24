@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v1.4.0
+* Change `FileId::toFilePath` method to move the shard after the type to eliminate S3 rate limiting.
+* __Modify Schemas:__
+  * `gdbots:forms:mixin:field` new version `1-0-1`
+    * Add `link_text` string field which will be used to replace a token `{link}` 
+      within a field label or description.
+    * Add `link_url` string field with URL format which will be used for the URL of
+      the replaced token `{link}` within a field label or description.
+
+
 ## v1.3.0
 * issue #16: Add schemas for the form services.
 * __Add Schemas:__
