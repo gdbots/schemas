@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Tests\Schemas\Files;
 
@@ -18,8 +19,13 @@ class FileIdTest extends TestCase
             UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(),
             UuidIdentifier::fromString($id->getUuid())->toString()
         );
+        $this->assertSame('image/cb/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
+        $this->assertSame('image/cb/o/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath('o'));
+
+        FileId::useLegacyFilePath();
         $this->assertSame('image/2015/12/01/cb/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
         $this->assertSame('image/o/2015/12/01/cb/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath('o'));
+        FileId::useLegacyFilePath(false);
     }
 
     public function testCreate()
@@ -32,8 +38,13 @@ class FileIdTest extends TestCase
             UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(),
             UuidIdentifier::fromString($id->getUuid())->toString()
         );
+        $this->assertSame('image/cb/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
+        $this->assertSame('image/cb/250x/2015/12/01/cb9c3c8c5c88453b960933a59ede6505_n.jpg', $id->toFilePath('250x', 'n'));
+
+        FileId::useLegacyFilePath();
         $this->assertSame('image/2015/12/01/cb/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
         $this->assertSame('image/250x/2015/12/01/cb/cb9c3c8c5c88453b960933a59ede6505_n.jpg', $id->toFilePath('250x', 'n'));
+        FileId::useLegacyFilePath(false);
     }
 
     public function testGenerate()
@@ -46,12 +57,25 @@ class FileIdTest extends TestCase
         $this->assertSame(
             sprintf(
                 'image/%s/%s/%s.jpg',
+                substr($id->getUuid(), 0, 2),
+                $date->format('Y/m/d'),
+                $id->getUuid()
+            ),
+            $id->toFilePath()
+        );
+
+        FileId::useLegacyFilePath();
+        $this->assertSame(
+            sprintf(
+                'image/%s/%s/%s.jpg',
                 $date->format('Y/m/d'),
                 substr($id->getUuid(), 0, 2),
                 $id->getUuid()
             ),
             $id->toFilePath()
         );
+        FileId::useLegacyFilePath(false);
+
         $this->assertInstanceOf(UuidIdentifier::class, UuidIdentifier::fromString($id->getUuid(true)));
     }
 

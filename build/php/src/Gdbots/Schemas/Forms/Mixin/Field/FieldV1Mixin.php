@@ -1,8 +1,9 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/field/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/field/1-0-1.json#
 namespace Gdbots\Schemas\Forms\Mixin\Field;
 
 use Gdbots\Pbj\AbstractMixin;
+use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
@@ -14,7 +15,7 @@ final class FieldV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:forms:mixin:field:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:forms:mixin:field:1-0-1');
     }
 
     /**
@@ -55,6 +56,17 @@ final class FieldV1Mixin extends AbstractMixin
             Fb::create('description', T\TextType::create())
                 ->build(),
             Fb::create('is_required', T\BooleanType::create())
+                ->build(),
+            /*
+             * The text that will replace the token "{link}" within the label or description.
+             */
+            Fb::create('link_text', T\StringType::create())
+                ->build(),
+            /*
+             * The URL to use for the replaced token "{link}" within the label or description.
+             */
+            Fb::create('link_url', T\StringType::create())
+                ->format(Format::URL())
                 ->build(),
         ];
     }

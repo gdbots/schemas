@@ -13,8 +13,8 @@ test('FileId tests', (t) => {
   t.same(id.getDate(true), new Date(Date.UTC(2015, 11, 1)));
   t.same(id.getUuid(), 'cb9c3c8c5c88453b960933a59ede6505');
   t.true(id.getUuid(true).equals(UuidIdentifier.fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')));
-  t.same(id.toFilePath(), 'image/2015/12/01/cb/cb9c3c8c5c88453b960933a59ede6505.jpg');
-  t.same(id.toFilePath('o'), 'image/o/2015/12/01/cb/cb9c3c8c5c88453b960933a59ede6505.jpg');
+  t.same(id.toFilePath(), 'image/cb/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg');
+  t.same(id.toFilePath('o'), 'image/cb/o/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg');
 
   try {
     id.test = 1;
@@ -39,8 +39,8 @@ test('FileId create tests', (t) => {
   t.same(id.getDate(true), new Date(Date.UTC(2015, 11, 1)));
   t.same(id.getUuid(), 'cb9c3c8c5c88453b960933a59ede6505');
   t.true(id.getUuid(true).equals(UuidIdentifier.fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')));
-  t.same(id.toFilePath(), 'image/2015/12/01/cb/cb9c3c8c5c88453b960933a59ede6505.jpg');
-  t.same(id.toFilePath('250x', 'n'), 'image/250x/2015/12/01/cb/cb9c3c8c5c88453b960933a59ede6505_n.jpg');
+  t.same(id.toFilePath(), 'image/cb/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg');
+  t.same(id.toFilePath('250x', 'n'), 'image/cb/250x/2015/12/01/cb9c3c8c5c88453b960933a59ede6505_n.jpg');
 
   t.end();
 });
@@ -58,7 +58,7 @@ test('FileId generate tests', (t) => {
   t.true(id.getUuid(true) instanceof UuidIdentifier);
   t.same(
     id.toFilePath(),
-    `image/${date.toISOString().replace(/-/g, '/').substr(0, 10)}/${uuid.toString().substr(0, 2)}/${uuid}.jpg`
+    `image/${uuid.toString().substr(0, 2)}/${date.toISOString().replace(/-/g, '/').substr(0, 10)}/${uuid}.jpg`
   );
 
   t.end();

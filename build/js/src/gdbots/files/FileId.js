@@ -126,7 +126,7 @@ export default class FileId extends Identifier {
    * For example, for the file id 'image_jpg_20151201_27ca03c7b490460992a78692aca42b10'
    *  fileId.toFilePath('250x', 'n')
    * would return:
-   *  'image/250x/2015/12/01/27/27ca03c7b490460992a78692aca42b10_n.jpg'
+   *  'image/27/250x/2015/12/01/27ca03c7b490460992a78692aca42b10_n.jpg'
    *
    * @param {?string} version - An identifier for the version, e.g. "o" for original or "250x" for a thumbnail size.
    * @param {?string} quality - If applicable, a quality setting like "n" for normal or "high", "low", etc.
@@ -134,7 +134,7 @@ export default class FileId extends Identifier {
    * @returns {string}
    */
   toFilePath(version = null, quality = null) {
-    const p = [this.type];
+    const p = [this.type, this.uuid.substr(0, 2)];
 
     if (version) {
       p.push(version);
@@ -143,7 +143,6 @@ export default class FileId extends Identifier {
     p.push(this.date.substr(0, 4));
     p.push(this.date.substr(4, 2));
     p.push(this.date.substr(6, 2));
-    p.push(this.uuid.substr(0, 2));
     p.push(this.uuid);
 
     if (quality) {

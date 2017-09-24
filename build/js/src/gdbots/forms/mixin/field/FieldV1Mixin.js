@@ -1,5 +1,6 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/field/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/field/1-0-1.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
+import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
@@ -9,7 +10,7 @@ export default class FieldV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:forms:mixin:field:1-0-0');
+    return SchemaId.fromString('pbj:gdbots:forms:mixin:field:1-0-1');
   }
 
   /**
@@ -49,6 +50,17 @@ export default class FieldV1Mixin extends Mixin {
       Fb.create('description', T.TextType.create())
         .build(),
       Fb.create('is_required', T.BooleanType.create())
+        .build(),
+      /*
+       * The text that will replace the token "{link}" within the label or description.
+       */
+      Fb.create('link_text', T.StringType.create())
+        .build(),
+      /*
+       * The URL to use for the replaced token "{link}" within the label or description.
+       */
+      Fb.create('link_url', T.StringType.create())
+        .format(Format.URL)
         .build(),
     ];
   }

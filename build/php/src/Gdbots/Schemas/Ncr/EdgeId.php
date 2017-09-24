@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Ncr;
 
@@ -45,9 +46,10 @@ final class EdgeId implements Identifier
 
     /**
      * @param Edge $edge
+     *
      * @return static
      */
-    public static function fromEdge(Edge $edge)
+    public static function fromEdge(Edge $edge): self
     {
         $schemaId = $edge::schema()->getId();
         $vendor = $schemaId->getVendor();
