@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/field/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/field/1-0-2.json#
 namespace Gdbots\Schemas\Forms\Mixin\Field;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -7,6 +7,7 @@ use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Forms\Enum\PiiImpact;
 
 final class FieldV1Mixin extends AbstractMixin
 {
@@ -15,7 +16,7 @@ final class FieldV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:forms:mixin:field:1-0-1');
+        return SchemaId::fromString('pbj:gdbots:forms:mixin:field:1-0-2');
     }
 
     /**
@@ -67,6 +68,9 @@ final class FieldV1Mixin extends AbstractMixin
              */
             Fb::create('link_url', T\StringType::create())
                 ->format(Format::URL())
+                ->build(),
+            Fb::create('pii_impact', T\StringEnumType::create())
+                ->className(PiiImpact::class)
                 ->build(),
         ];
     }

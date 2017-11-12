@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v1.4.1
+* Change composer version constraint for `gdbots/pbj` to `~1.1|~2.0`.
+* __Add Schemas:__
+  * `gdbots:forms:pii-impact`
+  * `gdbots:ncr:mixin:mark-node-as-draft`
+  * `gdbots:ncr:mixin:mark-node-as-pending`
+  * `gdbots:ncr:mixin:node-marked-as-draft`
+  * `gdbots:ncr:mixin:node-marked-as-pending`
+* __Modify Schemas:__
+  * `gdbots:forms:mixin:field` new version `1-0-2`
+    * Add `pii_impact` string-enum field using enum `gdbots:forms:pii-impact`. 
+  * `gdbots:forms:mixin:form` new version `1-0-1`
+    * Add `pii_impact` string-enum field using enum `gdbots:forms:pii-impact`.
+  * Add new options to enum `gdbots:ncr:node-status`
+    * `<option key="PENDING" value="pending"/>`
+    * `<option key="ARCHIVED" value="archived"/>`
+
+
 ## v1.4.0
 * Change `FileId::toFilePath` method to move the shard after the type to eliminate S3 rate limiting.
 * __Modify Schemas:__

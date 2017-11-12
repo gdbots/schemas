@@ -4,6 +4,24 @@
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/enums.xsd">
 
   <enums namespace="gdbots:forms">
+    <!--
+      @link https://csrc.nist.gov/csrc/media/publications/shared/documents/itl-bulletin/itlbul2010-04.pdf
+      ref section "Categorize all PII by the PII confidentiality impact level."
+
+      All PII should be evaluated to determine the PII confidentiality impact level.
+      This assessment helps the organization apply appropriate safeguards for PII. The PII
+      confidentiality impact level (low, moderate, or high) indicates the potential harm
+      that could result to the subject individuals and/or the organization if PII were
+      inappropriately accessed, used, or disclosed, and may be different from the
+      confidentiality impact levels that are determined by the application of FIPS 199.
+    -->
+    <enum name="pii-impact" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="HIGH" value="high"/>
+      <option key="MODERATE" value="moderate"/>
+      <option key="LOW" value="low"/>
+    </enum>
+
     <enum name="search-forms-sort" type="string">
       <option key="UNKNOWN" value="unknown"/>
       <option key="RELEVANCE" value="relevance"/>
