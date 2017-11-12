@@ -48,8 +48,10 @@
       <option key="UNKNOWN" value="unknown"/>
       <option key="PUBLISHED" value="published"/>
       <option key="SCHEDULED" value="scheduled"/>
+      <option key="PENDING" value="pending"/>
       <option key="DRAFT" value="draft"/>
       <option key="EXPIRED" value="expired"/>
+      <option key="ARCHIVED" value="archived"/>
       <option key="DELETED" value="deleted"/>
     </enum>
   </enums>
