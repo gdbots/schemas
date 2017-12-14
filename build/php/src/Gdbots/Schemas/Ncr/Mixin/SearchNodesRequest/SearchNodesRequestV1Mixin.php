@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-1.json#
 namespace Gdbots\Schemas\Ncr\Mixin\SearchNodesRequest;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -15,7 +15,7 @@ final class SearchNodesRequestV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:ncr:mixin:search-nodes-request:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:ncr:mixin:search-nodes-request:1-0-1');
     }
 
     /**
@@ -43,7 +43,17 @@ final class SearchNodesRequestV1Mixin extends AbstractMixin
              */
             Fb::create('cursor', T\StringType::create())
                 ->build(),
+            /*
+             * The status a node must be in to match the search request.
+             */
             Fb::create('status', T\StringEnumType::create())
+                ->className(NodeStatus::class)
+                ->build(),
+            /*
+             * A set of statuses (node must match at least one) to include in the search results.
+             */
+            Fb::create('statuses', T\StringEnumType::create())
+                ->asASet()
                 ->className(NodeStatus::class)
                 ->build(),
             Fb::create('created_after', T\DateTimeType::create())

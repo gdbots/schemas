@@ -4,7 +4,7 @@ export default function RoleV1Trait(m) {
      * @returns {Object}
      */
     getUriTemplateVars() {
-      return { role_id: `${this.get('_id', '')}` };
+      return { _id: `${this.get('_id', '')}` };
     }
   });
 }

@@ -56,7 +56,7 @@ export default class AppV1 extends Message {
    */
   getUriTemplateVars() {
     return {
-      app_id: `${this.get('_id', '')}`,
+      _id: `${this.get('_id', '')}`,
       vendor: this.get('vendor'),
       name: this.get('name'),
       version: this.get('version'),
