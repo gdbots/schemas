@@ -6,11 +6,10 @@
   "license": "Apache-2.0",
   "require": {
     "php": ">=7.1",
-    "gdbots/pbj": "~1.1|~2.0"
+    "gdbots/pbj": "^1.1|^2.0"
   },
   "require-dev": {
-    "composer/composer": "1.0.*@dev",
-    "phpunit/phpunit": "~6.4",
+    "phpunit/phpunit": "^6.4",
     "gdbots/pbjc": "~0.3"
   },
   "autoload": {

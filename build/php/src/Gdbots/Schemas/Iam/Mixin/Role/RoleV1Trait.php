@@ -15,6 +15,6 @@ trait RoleV1Trait
      */
     public function getUriTemplateVars()
     {
-        return ['role_id' => (string)$this->get('_id')];
+        return ['_id' => (string)$this->get('_id')];
     }
 }

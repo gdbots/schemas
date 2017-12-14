@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v1.4.2
+* Change all `getUriTemplateVars` methods to use field name in returned object rather than some using a different name.  For example, returning `user_id` on user object instead of `_id` which is the actual field.
+* __Modify Schemas:__
+  * `gdbots:ncr:mixin:search-nodes-request` patch revision `1-0-1`
+    * Add `statuses` string-enum set field using enum `gdbots:ncr:node-status`.
+
+
 ## v1.4.1
 * Change composer version constraint for `gdbots/pbj` to `~1.1|~2.0`.
 * __Add Schemas:__
@@ -10,9 +17,9 @@
   * `gdbots:ncr:mixin:node-marked-as-draft`
   * `gdbots:ncr:mixin:node-marked-as-pending`
 * __Modify Schemas:__
-  * `gdbots:forms:mixin:field` new version `1-0-2`
+  * `gdbots:forms:mixin:field` patch revision `1-0-2`
     * Add `pii_impact` string-enum field using enum `gdbots:forms:pii-impact`. 
-  * `gdbots:forms:mixin:form` new version `1-0-1`
+  * `gdbots:forms:mixin:form` patch revision `1-0-1`
     * Add `pii_impact` string-enum field using enum `gdbots:forms:pii-impact`.
   * Add new options to enum `gdbots:ncr:node-status`
     * `<option key="PENDING" value="pending"/>`
@@ -22,7 +29,7 @@
 ## v1.4.0
 * Change `FileId::toFilePath` method to move the shard after the type to eliminate S3 rate limiting.
 * __Modify Schemas:__
-  * `gdbots:forms:mixin:field` new version `1-0-1`
+  * `gdbots:forms:mixin:field` patch revision `1-0-1`
     * Add `link_text` string field which will be used to replace a token `{link}` 
       within a field label or description.
     * Add `link_url` string field with URL format which will be used for the URL of
@@ -89,7 +96,7 @@
 * Add es6 compiling. PHP compiled files are moved but unchanged (except for minor improvements) and composer 
   autoload config is updated so no changes are required if using php.
 * __Modify Schemas:__
-  * `gdbots:pbjx::envelope` new version `1-0-1`
+  * `gdbots:pbjx::envelope` patch revision `1-0-1`
     * Add `derefs` message map field for including (aka eager fetching) messages
       into the envelope to prevent needing to do multiple HTTP requests.  
 
@@ -162,9 +169,9 @@
   * `gdbots:pbjx:request:echo-response`
   * `gdbots:pbjx:search-events-sort`
 * __Modify Schemas:__
-  * `gdbots:geo::address` new version `1-0-1`
+  * `gdbots:geo::address` patch revision `1-0-1`
     * Add `verified` boolean field to indicate whether or not the address was checked.
-  * `gdbots:pbjx:event:event-execution-failed` new version `1-0-1`
+  * `gdbots:pbjx:event:event-execution-failed` patch revision `1-0-1`
     * Add `gdbots:pbjx:mixin:indexed:v1` mixin so failures will be indexed and searchable.
   * `gdbots:contexts::app` version remains `1-0-0` due to no use in production yet.
     * Modify `version` field max increased from 10 to 20.

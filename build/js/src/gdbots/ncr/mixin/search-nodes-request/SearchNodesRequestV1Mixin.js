@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-1.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
 import NodeStatus from '@gdbots/schemas/gdbots/ncr/enums/NodeStatus';
@@ -10,7 +10,7 @@ export default class SearchNodesRequestV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:ncr:mixin:search-nodes-request:1-0-0');
+    return SchemaId.fromString('pbj:gdbots:ncr:mixin:search-nodes-request:1-0-1');
   }
 
   /**
@@ -37,7 +37,17 @@ export default class SearchNodesRequestV1Mixin extends Mixin {
        */
       Fb.create('cursor', T.StringType.create())
         .build(),
+      /*
+       * The status a node must be in to match the search request.
+       */
       Fb.create('status', T.StringEnumType.create())
+        .classProto(NodeStatus)
+        .build(),
+      /*
+       * A set of statuses (node must match at least one) to include in the search results.
+       */
+      Fb.create('statuses', T.StringEnumType.create())
+        .asASet()
         .classProto(NodeStatus)
         .build(),
       Fb.create('created_after', T.DateTimeType.create())

@@ -15,6 +15,6 @@ trait UserV1Trait
      */
     public function getUriTemplateVars()
     {
-        return ['user_id' => (string)$this->get('_id')];
+        return ['_id' => (string)$this->get('_id')];
     }
 }

@@ -4,7 +4,7 @@ export default function UserV1Trait(m) {
      * @returns {Object}
      */
     getUriTemplateVars() {
-      return { user_id: `${this.get('_id', '')}` };
+      return { _id: `${this.get('_id', '')}` };
     }
   });
 }

@@ -41,7 +41,7 @@
  */
 public function getUriTemplateVars()
 {
-    return ['role_id' => (string)$this->get('_id')];
+    return ['_id' => (string)$this->get('_id')];
 }
             ]]>
         </methods>
@@ -56,7 +56,7 @@ public function getUriTemplateVars()
  * @returns {Object}
  */
 getUriTemplateVars() {
-  return { role_id: `${this.get('_id', '')}` };
+  return { _id: `${this.get('_id', '')}` };
 }
             ]]>
         </methods>
