@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v1.4.3
+* __Add Schemas:__
+  * `gdbots:ncr:mixin:lock-node`
+  * `gdbots:ncr:mixin:lockable`
+  * `gdbots:ncr:mixin:node-locked`
+  * `gdbots:ncr:mixin:node-unlocked`
+  * `gdbots:ncr:mixin:unlock-node`
+
+
 ## v1.4.2
 * Change all `getUriTemplateVars` methods to use field name in returned object rather than some using a different name.  For example, returning `user_id` on user object instead of `_id` which is the actual field.
 * __Modify Schemas:__
