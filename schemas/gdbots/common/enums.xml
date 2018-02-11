@@ -19,12 +19,26 @@
     <!--
       @link https://en.wikipedia.org/wiki/ISO/IEC_5218
       @link http://www.datadictionary.nhs.uk/data_dictionary/attributes/p/person/person_gender_code_de.asp?shownav=1
+      @link http://www.datadictionary.nhs.uk/data_dictionary/attributes/p/person/person_stated_gender_code_de.asp?shownav=1
     -->
     <enum name="gender" type="int">
       <option key="UNKNOWN" value="0"/>
       <option key="MALE" value="1"/>
       <option key="FEMALE" value="2"/>
       <option key="NOT_SPECIFIED" value="9"/>
+    </enum>
+
+    <!--
+      @link http://www.datadictionary.nhs.uk/data_dictionary/attributes/p/person/person_stated_sexual_orientation_code_de.asp?shownav=1
+    -->
+    <enum name="sexual-orientation" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="HETEROSEXUAL" value="1"/>
+      <option key="HOMOSEXUAL" value="2"/>
+      <option key="BISEXUAL" value="3"/>
+      <option key="OTHER" value="4"/>
+      <option key="NOT_SURE" value="U"/>
+      <option key="NOT_SPECIFIED" value="Z"/>
     </enum>
 
     <enum name="month" type="int">

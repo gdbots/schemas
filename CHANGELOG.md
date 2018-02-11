@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v1.4.4
+* __Add Schemas:__
+  * `gdbots:common:sexual-orientation`
+  * `gdbots:forms:field:sexual-orientation-field`
+* __Modify Schemas:__
+  * `gdbots:geo::address` patch revision `1-0-2`
+    * Add `county` string field.
+
+
 ## v1.4.3
 * __Add Schemas:__
   * `gdbots:ncr:mixin:lock-node`

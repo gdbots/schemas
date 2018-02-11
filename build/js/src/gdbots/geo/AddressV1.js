@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-2.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Message from '@gdbots/pbj/Message';
 import MessageRef from '@gdbots/pbj/MessageRef';
@@ -13,7 +13,7 @@ export default class AddressV1 extends Message {
    * @returns {Schema}
    */
   static defineSchema() {
-    return new Schema('pbj:gdbots:geo::address:1-0-1', AddressV1,
+    return new Schema('pbj:gdbots:geo::address:1-0-2', AddressV1,
       [
         Fb.create('geo_hash', T.StringType.create())
           .maxLength(20)
@@ -41,6 +41,9 @@ export default class AddressV1 extends Message {
           .maxLength(20)
           .build(),
         Fb.create('city', T.StringType.create())
+          .maxLength(100)
+          .build(),
+        Fb.create('county', T.StringType.create())
           .maxLength(100)
           .build(),
         /*
