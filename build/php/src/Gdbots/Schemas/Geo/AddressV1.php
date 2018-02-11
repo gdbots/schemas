@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-2.json#
 namespace Gdbots\Schemas\Geo;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -17,7 +17,7 @@ final class AddressV1 extends AbstractMessage implements
      */
     protected static function defineSchema()
     {
-        return new Schema('pbj:gdbots:geo::address:1-0-1', __CLASS__,
+        return new Schema('pbj:gdbots:geo::address:1-0-2', __CLASS__,
             [
                 Fb::create('geo_hash', T\StringType::create())
                     ->maxLength(20)
@@ -45,6 +45,9 @@ final class AddressV1 extends AbstractMessage implements
                     ->maxLength(20)
                     ->build(),
                 Fb::create('city', T\StringType::create())
+                    ->maxLength(100)
+                    ->build(),
+                Fb::create('county', T\StringType::create())
                     ->maxLength(100)
                     ->build(),
                 /*
