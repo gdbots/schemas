@@ -8,7 +8,7 @@
       <field name="msg" type="string">
         <description>
           A random string that will be validated to match after
-          the event "health-checked" is triggered.  (ping-pong)
+          the event "health-checked" is triggered. (ping-pong)
         </description>
       </field>
     </fields>

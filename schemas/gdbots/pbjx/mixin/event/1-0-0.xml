@@ -22,7 +22,7 @@
       <field name="ctx_cloud" type="message">
         <description>
           The "ctx_cloud" is usually copied from the command that resulted in this
-          event being published.  This means the value most likely refers to the cloud
+          event being published. This means the value most likely refers to the cloud
           that received the command originally, not the machine processing the event.
         </description>
         <any-of>

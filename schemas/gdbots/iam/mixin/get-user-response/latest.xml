@@ -3,7 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:iam:mixin:get-user-response:1-0-0" mixin="true" extends="gdbots:ncr:mixin:get-node-response:v1">
+  <schema id="pbj:gdbots:iam:mixin:get-user-response:1-0-0" mixin="true"
+      extends="gdbots:ncr:mixin:get-node-response:v1">
     <fields>
       <field name="node" type="message">
         <any-of>

@@ -25,7 +25,7 @@
         <description>
           Some pbjx operations (normally requests) can include "dereferenced"
           messages on the envelope to prevent the consumer from needing to
-          make multiple HTTP requests.  It is up to the consumer to make use
+          make multiple HTTP requests. It is up to the consumer to make use
           of the dereferenced messages if/when they are provided.
         </description>
       </field>

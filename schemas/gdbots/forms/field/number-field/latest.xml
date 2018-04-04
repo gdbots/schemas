@@ -9,7 +9,7 @@
       <field name="max_value" type="int"/>
       <field name="decimals" type="tiny-int" max="6">
         <description>
-          Number of decimal places to allow.  A "0" denotes this number field
+          Number of decimal places to allow. A "0" denotes this number field
           will require an integer.
         </description>
       </field>

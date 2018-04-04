@@ -10,7 +10,7 @@
       <field name="ctx_retries" type="tiny-int">
         <description>
           The "ctx_retries" field is used to keep track of how many attempts were
-          made to handle this request.  In some cases, the service or transport
+          made to handle this request. In some cases, the service or transport
           that handles the request may be down or over capacity and is being retried.
         </description>
       </field>
@@ -19,7 +19,7 @@
       <field name="ctx_user_ref" type="message-ref"/>
       <field name="ctx_app" type="message">
         <description>
-          The "ctx_app" refers to the application used to make the request.  This is
+          The "ctx_app" refers to the application used to make the request. This is
           different from ctx_ua (user_agent) because the agent used (Safari, Firefox)
           is not necessarily the app used (cms, iOS app, website)
         </description>
