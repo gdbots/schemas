@@ -1,6 +1,63 @@
 # CHANGELOG
 
 
+## v1.5.0
+__POSSIBLE BREAKING CHANGES__
+
+Any apps using the mixins/marker interfaces for Ncr crud-like operations (e.g. `gdbots:forms:mixin:create-form`) should now use your own concrete messages or the abstract schemas provided by `gdbots:ncr:mixin:*`.  Having the additional layer was useful type hints in php and the message resolution but not worth the added code for javascript applications (even with bundling).  Libraries can use convention based resolution in its place, ref `triniti/news-php` for an example.
+* __Delete Schemas:__
+  * `gdbots:forms:mixin:create-form`
+  * `gdbots:forms:mixin:delete-form`
+  * `gdbots:forms:mixin:expire-form`
+  * `gdbots:forms:mixin:form-created`
+  * `gdbots:forms:mixin:form-deleted`
+  * `gdbots:forms:mixin:form-expired`
+  * `gdbots:forms:mixin:form-published`
+  * `gdbots:forms:mixin:form-scheduled`
+  * `gdbots:forms:mixin:form-unpublished`
+  * `gdbots:forms:mixin:form-updated`
+  * `gdbots:forms:mixin:get-form-batch-request`
+  * `gdbots:forms:mixin:get-form-batch-response`
+  * `gdbots:forms:mixin:get-form-history-request`
+  * `gdbots:forms:mixin:get-form-history-response`
+  * `gdbots:forms:mixin:get-form-request`
+  * `gdbots:forms:mixin:get-form-response`
+  * `gdbots:forms:mixin:publish-form`
+  * `gdbots:forms:mixin:unpublish-form`
+  * `gdbots:forms:mixin:update-form`
+  * `gdbots:iam:mixin:create-role`
+  * `gdbots:iam:mixin:create-user`
+  * `gdbots:iam:mixin:delete-role`
+  * `gdbots:iam:mixin:delete-user`
+  * `gdbots:iam:mixin:get-role-batch-request`
+  * `gdbots:iam:mixin:get-role-batch-response`
+  * `gdbots:iam:mixin:get-role-history-request`
+  * `gdbots:iam:mixin:get-role-history-response`
+  * `gdbots:iam:mixin:get-role-request`
+  * `gdbots:iam:mixin:get-role-response`
+  * `gdbots:iam:mixin:get-user-batch-request`
+  * `gdbots:iam:mixin:get-user-batch-response`
+  * `gdbots:iam:mixin:get-user-history-request`
+  * `gdbots:iam:mixin:get-user-history-response`
+  * `gdbots:iam:mixin:role-created`
+  * `gdbots:iam:mixin:role-deleted`
+  * `gdbots:iam:mixin:role-updated`
+  * `gdbots:iam:mixin:update-role`
+  * `gdbots:iam:mixin:update-user`
+  * `gdbots:iam:mixin:user-created`
+  * `gdbots:iam:mixin:user-deleted`
+  * `gdbots:iam:mixin:user-updated`
+* __Modify Schemas:__
+  * `gdbots:forms:field:yes-no-field` patch revision `1-0-2`
+    * Add `is_consent` boolean field.
+  * `gdbots:forms:mixin:form` patch revision `1-0-2`
+    * Add `thank_you_header` string field.
+    * Add `thank_you_text` text field.
+    * Add `thank_you_url` string field with url format.
+  * `gdbots:iam:mixin:user` patch revision `1-0-1`
+    * Redefine `_id` field and use UserId identifier.  Same type of identifier as previous version.
+
+
 ## v1.4.4
 * __Add Schemas:__
   * `gdbots:common:sexual-orientation`

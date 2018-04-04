@@ -14,7 +14,7 @@
       </field>
       <field name="is_verified" type="boolean">
         <description>
-          Indicates if this is a valid adddress or not.  Generally only true if the
+          Indicates if this is a valid adddress or not. Generally only true if the
           verified field is also true.
         </description>
       </field>

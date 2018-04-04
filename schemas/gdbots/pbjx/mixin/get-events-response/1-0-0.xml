@@ -8,7 +8,7 @@
       <field name="has_more" type="boolean"/>
       <field name="last_occurred_at" type="microtime" use-type-default="false">
         <description>
-          The last "occurred_at" value from the last event in the "events" list.  This can be
+          The last "occurred_at" value from the last event in the "events" list. This can be
           used as "since" when requesting the next set of events if "has_more" is true.
         </description>
       </field>

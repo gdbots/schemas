@@ -18,7 +18,7 @@
       <field name="cursors" type="string" rule="map">
         <description>
           Cursors are optionally provided by the underlying search system to allow for efficient
-          pagination.  In the absense of cursors, paging is done using count and page number.
+          pagination. In the absense of cursors, paging is done using count and page number.
         </description>
       </field>
       <field name="events" type="message" rule="list" overridable="true">
