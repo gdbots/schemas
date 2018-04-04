@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/form/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/form/1-0-2.json#
 namespace Gdbots\Schemas\Forms\Mixin\Form;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -18,7 +18,7 @@ final class FormV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:forms:mixin:form:1-0-1');
+        return SchemaId::fromString('pbj:gdbots:forms:mixin:form:1-0-2');
     }
 
     /**
@@ -32,6 +32,18 @@ final class FormV1Mixin extends AbstractMixin
              * not have html as it is used in metadata.
              */
             Fb::create('description', T\TextType::create())
+                ->build(),
+            Fb::create('thank_you_header', T\StringType::create())
+                ->build(),
+            /*
+             * A short thank you message (a few sentences) a user will see after
+             * they submit this form. This field should have little to no html
+             * as it can be used in various contexts.
+             */
+            Fb::create('thank_you_text', T\TextType::create())
+                ->build(),
+            Fb::create('thank_you_url', T\StringType::create())
+                ->format(Format::URL())
                 ->build(),
             Fb::create('fields', T\MessageType::create())
                 ->asAList()

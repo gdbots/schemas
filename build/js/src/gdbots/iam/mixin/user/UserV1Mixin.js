@@ -1,17 +1,18 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-1.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
 import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
+import UserId from '@gdbots/schemas/gdbots/iam/UserId';
 
 export default class UserV1Mixin extends Mixin {
   /**
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:iam:mixin:user:1-0-0');
+    return SchemaId.fromString('pbj:gdbots:iam:mixin:user:1-0-1');
   }
 
   /**
@@ -19,6 +20,12 @@ export default class UserV1Mixin extends Mixin {
    */
   getFields() {
     return [
+      Fb.create('_id', T.IdentifierType.create())
+        .required()
+        .withDefault(() => UserId.generate())
+        .classProto(UserId)
+        .overridable(true)
+        .build(),
       Fb.create('first_name', T.StringType.create())
         .build(),
       Fb.create('last_name', T.StringType.create())

@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/yes-no-field/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/yes-no-field/1-0-1.json#
 namespace Gdbots\Schemas\Forms\Field;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -21,11 +21,18 @@ final class YesNoFieldV1 extends AbstractMessage implements
      */
     protected static function defineSchema()
     {
-        return new Schema('pbj:gdbots:forms:field:yes-no-field:1-0-0', __CLASS__,
+        return new Schema('pbj:gdbots:forms:field:yes-no-field:1-0-1', __CLASS__,
             [
                 Fb::create('yes_label', T\StringType::create())
                     ->build(),
                 Fb::create('no_label', T\StringType::create())
+                    ->build(),
+                /*
+                 * If this field relates to acquiring a user's consent,
+                 * e.g. subscribing to a newsletter, then this field can
+                 * be used to ensure that consent is tracked.
+                 */
+                Fb::create('is_consent', T\BooleanType::create())
                     ->build(),
             ],
             [

@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/user/1-0-1.json#
 namespace Gdbots\Schemas\Iam\Mixin\User;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -7,6 +7,7 @@ use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Iam\UserId;
 use Gdbots\Schemas\Ncr\NodeRef;
 
 final class UserV1Mixin extends AbstractMixin
@@ -16,7 +17,7 @@ final class UserV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:iam:mixin:user:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:iam:mixin:user:1-0-1');
     }
 
     /**
@@ -25,6 +26,12 @@ final class UserV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
+            Fb::create('_id', T\IdentifierType::create())
+                ->required()
+                ->withDefault(function() { return UserId::generate(); })
+                ->className(UserId::class)
+                ->overridable(true)
+                ->build(),
             Fb::create('first_name', T\StringType::create())
                 ->build(),
             Fb::create('last_name', T\StringType::create())
