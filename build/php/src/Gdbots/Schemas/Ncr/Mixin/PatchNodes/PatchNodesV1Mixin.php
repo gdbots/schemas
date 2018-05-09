@@ -24,21 +24,17 @@ final class PatchNodesV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            /*
-             * The "node_refs" field contains a set of node_refs that
-             * the batch request will update.
-             */
             Fb::create('node_refs', T\IdentifierType::create())
                 ->asASet()
                 ->className(NodeRef::class)
                 ->build(),
             /*
-             * The names of the fields this patch event should apply changes to. Sub paths can be pointed to
-             * using dot notation.
+             * The names of the fields this patch command should apply changes to.
+             * Nested paths can be referenced using dot notation.
              */
             Fb::create('paths', T\StringType::create())
                 ->asASet()
-                ->pattern('^[a-zA-Z_]{1}[a-zA-Z0-9_\.]*$')
+                ->pattern('^[a-zA-Z_]{1}[\w\.]*$')
                 ->build(),
         ];
     }

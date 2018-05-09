@@ -23,12 +23,12 @@ export default class PatchNodeV1Mixin extends Mixin {
         .classProto(NodeRef)
         .build(),
       /*
-       * The names of the fields this patch event should apply changes to. Sub paths can be pointed to
-       * using dot notation.
+       * The names of the fields this patch command should apply changes to.
+       * Nested paths can be referenced using dot notation.
        */
       Fb.create('paths', T.StringType.create())
         .asASet()
-        .pattern('^[a-zA-Z_]{1}[a-zA-Z0-9_\\.]*$')
+        .pattern('^[a-zA-Z_]{1}[\\w\\.]*$')
         .build(),
     ];
   }
