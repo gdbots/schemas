@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.5.1
+* __Add Schemas:__
+  * `gdbots:ncr:mixin:node-patched`
+  * `gdbots:ncr:mixin:patch-nodes`
+  * `gdbots:ncr:mixin:patch-node`
 
 ## v1.5.0
 __POSSIBLE BREAKING CHANGES__
