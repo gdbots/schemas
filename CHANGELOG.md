@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v1.5.1
+* __Add Schemas:__
+  * `gdbots:forms:field:skype-user-field`
+  * `gdbots:ncr:mixin:node-patched`
+  * `gdbots:ncr:mixin:patch-node`
+  * `gdbots:ncr:mixin:patch-nodes`
+* __Modify Schemas:__
+  * `gdbots:forms:field:select-field` patch revision `1-0-1`
+    * Add `allow_other` boolean field.
+
+
 ## v1.5.0
 __POSSIBLE BREAKING CHANGES__
 
