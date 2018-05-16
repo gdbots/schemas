@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:iam:mixin:app:1-0-0" mixin="true" extends="gdbots:ncr:mixin:node:v1">
+    <fields>
+      <field name="_id" type="identifier" required="true" overridable="true">
+        <php-options>
+          <imports>use Gdbots\Schemas\Iam\AppId;</imports>
+          <class-name>AppId::class</class-name>
+          <default>function() { return AppId::generate(); }</default>
+        </php-options>
+        <js-options>
+          <imports>import AppId from '@gdbots/schemas/gdbots/iam/AppId';</imports>
+          <class-proto>AppId</class-proto>
+          <default>() => AppId.generate()</default>
+        </js-options>
+      </field>
+      <field name="description" type="text" max="5000">
+        <description>
+          A description of the app (usually a few sentences). It should typically
+          not have HTML as it is used in metadata, feeds, SERP and social.
+        </description>
+      </field>
+    </fields>
+  </schema>
+</pbj-schema>
