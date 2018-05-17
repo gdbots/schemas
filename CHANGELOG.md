@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v1.5.2
+* __Add Schemas:__
+  * `gdbots:iam:mixin:alexa-app`
+  * `gdbots:iam:mixin:android-app`
+  * `gdbots:iam:mixin:app`
+  * `gdbots:iam:mixin:app-roles-granted`
+  * `gdbots:iam:mixin:app-roles-revoked`
+  * `gdbots:iam:mixin:apple-news-app`
+  * `gdbots:iam:mixin:browser-app`
+  * `gdbots:iam:mixin:grant-roles-to-app`
+  * `gdbots:iam:mixin:ios-app`
+  * `gdbots:iam:mixin:list-all-apps-request`
+  * `gdbots:iam:mixin:list-all-apps-response`
+  * `gdbots:iam:mixin:revoke-roles-from-app`
+  * `gdbots:iam:mixin:slack-app`
+  * `gdbots:iam:mixin:sms-app`
+
+
 ## v1.5.1
 * __Add Schemas:__
   * `gdbots:forms:field:skype-user-field`

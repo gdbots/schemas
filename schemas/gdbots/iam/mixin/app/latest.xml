@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:iam:mixin:app:1-0-0" mixin="true" extends="gdbots:ncr:mixin:node:v1">
+    <fields>
+      <field name="_id" type="identifier" required="true">
+        <php-options>
+          <imports>use Gdbots\Schemas\Iam\AppId;</imports>
+          <class-name>AppId::class</class-name>
+          <default>function() { return AppId::generate(); }</default>
+        </php-options>
+        <js-options>
+          <imports>import AppId from '@gdbots/schemas/gdbots/iam/AppId';</imports>
+          <class-proto>AppId</class-proto>
+          <default>() => AppId.generate()</default>
+        </js-options>
+      </field>
+      <field name="roles" type="identifier" rule="set">
+        <description>
+          The roles determine what permissions this app will have when using the system.
+          The role itself is a node which has a set of "allow" and "deny" rules.
+        </description>
+        <php-options>
+          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
+          <class-name>NodeRef::class</class-name>
+        </php-options>
+        <js-options>
+          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
+          <class-proto>NodeRef</class-proto>
+        </js-options>
+      </field>
+    </fields>
+  </schema>
+</pbj-schema>
