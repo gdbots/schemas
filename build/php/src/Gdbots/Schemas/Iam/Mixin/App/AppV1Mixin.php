@@ -30,13 +30,6 @@ final class AppV1Mixin extends AbstractMixin
                 ->className(AppId::class)
                 ->overridable(true)
                 ->build(),
-            /*
-             * A description of the app (usually a few sentences). It should typically
-             * not have HTML as it is used in metadata, feeds, SERP and social.
-             */
-            Fb::create('description', T\TextType::create())
-                ->maxLength(5000)
-                ->build(),
         ];
     }
 }
