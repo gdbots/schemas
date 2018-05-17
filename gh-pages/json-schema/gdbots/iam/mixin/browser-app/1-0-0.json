@@ -8,8 +8,7 @@
       "pattern": "^[\\w\\/\\.:-]+$",
       "pbj": {
         "type": "identifier",
-        "rule": "single",
-        "overridable": true
+        "rule": "single"
       }
     },
     "status": {
@@ -161,6 +160,22 @@
       "pbj": {
         "type": "string",
         "rule": "single"
+      }
+    },
+    "roles": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string",
+          "pattern": "^[\\w\\/\\.:-]+$"
+        }
+      ],
+      "uniqueItems": true,
+      "additionalProperties": false,
+      "description": "The roles determine what permissions this app will have when using the system. The role itself is a node which has a set of \"allow\" and \"deny\" rules.",
+      "pbj": {
+        "type": "identifier",
+        "rule": "set"
       }
     }
   },

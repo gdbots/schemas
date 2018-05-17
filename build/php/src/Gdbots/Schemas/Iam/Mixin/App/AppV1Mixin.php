@@ -7,6 +7,7 @@ use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Iam\AppId;
+use Gdbots\Schemas\Ncr\NodeRef;
 
 final class AppV1Mixin extends AbstractMixin
 {
@@ -28,7 +29,14 @@ final class AppV1Mixin extends AbstractMixin
                 ->required()
                 ->withDefault(function() { return AppId::generate(); })
                 ->className(AppId::class)
-                ->overridable(true)
+                ->build(),
+            /*
+             * The roles determine what permissions this app will have when using the system.
+             * The role itself is a node which has a set of "allow" and "deny" rules.
+             */
+            Fb::create('roles', T\IdentifierType::create())
+                ->asASet()
+                ->className(NodeRef::class)
                 ->build(),
         ];
     }
