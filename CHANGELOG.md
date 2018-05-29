@@ -1,6 +1,9 @@
 # CHANGELOG
 
 
+## v1.5.3
+* `gdbots:iam:mixin:list-all-apps-response` now returns a list of nodes (Message).
+
 ## v1.5.2
 * __Add Schemas:__
   * `gdbots:iam:mixin:alexa-app`
