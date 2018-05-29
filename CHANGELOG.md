@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v1.5.3
+* __Add Schemas:__
+  * `gdbots:iam:mixin:get-all-apps-request`
+  * `gdbots:iam:mixin:get-all-apps-response`
+* __Delete Schemas:__ _(we actually need the full node, not just node ref so changed message, no use in any known universe so deleting)
+  * `gdbots:iam:mixin:list-all-apps-request`
+  * `gdbots:iam:mixin:list-all-apps-response`
+
+
 ## v1.5.2
 * __Add Schemas:__
   * `gdbots:iam:mixin:alexa-app`
