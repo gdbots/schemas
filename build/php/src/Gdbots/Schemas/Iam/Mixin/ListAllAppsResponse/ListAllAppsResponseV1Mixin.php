@@ -6,7 +6,7 @@ use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Ncr\NodeRef;
+use Gdbots\Schemas\Iam\Mixin\App\App as GdbotsIamApp;
 
 final class ListAllAppsResponseV1Mixin extends AbstractMixin
 {
@@ -24,9 +24,11 @@ final class ListAllAppsResponseV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('apps', T\IdentifierType::create())
-                ->asASet()
-                ->className(NodeRef::class)
+            Fb::create('nodes', T\MessageType::create())
+                ->asAList()
+                ->anyOfClassNames([
+                    GdbotsIamApp::class,
+                ])
                 ->build(),
         ];
     }

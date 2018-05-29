@@ -96,19 +96,17 @@
         "rule": "single"
       }
     },
-    "apps": {
+    "nodes": {
       "type": "array",
       "items": [
         {
-          "type": "string",
-          "pattern": "^[\\w\\/\\.:-]+$"
+          "$ref": "#/definitions/app"
         }
       ],
-      "uniqueItems": true,
       "additionalProperties": false,
       "pbj": {
-        "type": "identifier",
-        "rule": "set"
+        "type": "message",
+        "rule": "list"
       }
     }
   },
@@ -121,6 +119,14 @@
       "anyOf": [
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-0.json#"
+        }
+      ]
+    },
+    "app": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/app/1-0-0.json#"
         }
       ]
     }

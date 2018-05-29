@@ -1,7 +1,6 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/list-all-apps-response/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 
@@ -18,9 +17,11 @@ export default class ListAllAppsResponseV1Mixin extends Mixin {
    */
   getFields() {
     return [
-      Fb.create('apps', T.IdentifierType.create())
-        .asASet()
-        .classProto(NodeRef)
+      Fb.create('nodes', T.MessageType.create())
+        .asAList()
+        .anyOfCuries([
+          'gdbots:iam:mixin:app',
+        ])
         .build(),
     ];
   }
