@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## v1.5.4
+* __Add Schemas:__
+  * `gdbots:iam:mixin:email-app`
+
+
 ## v1.5.3
 * __Add Schemas:__
   * `gdbots:iam:mixin:get-all-apps-request`
