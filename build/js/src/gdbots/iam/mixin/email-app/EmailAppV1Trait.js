@@ -6,6 +6,7 @@ export default function EmailAppV1Trait(m) {
     getUriTemplateVars() {
       return {
         _id: `${this.get('_id', '')}`,
+        sendgrid_api_key: `${this.get('sendgrid_api_key', '')}`,
       };
     }
   });
