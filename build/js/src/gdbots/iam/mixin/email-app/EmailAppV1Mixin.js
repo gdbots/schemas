@@ -18,7 +18,8 @@ export default class EmailAppV1Mixin extends Mixin {
   getFields() {
     return [
       Fb.create('sendgrid_api_key', T.StringType.create())
-        .pattern('^[a-zA-Z0-9.-]+$')
+        .maxLength(512)
+        .pattern('^[a-z0-9]+$')
         .build(),
     ];
   }

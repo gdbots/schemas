@@ -180,7 +180,7 @@
     },
     "sendgrid_api_key": {
       "type": "string",
-      "pattern": "^[a-zA-Z0-9.-]+$",
+      "pattern": "^[a-z0-9]+$",
       "pbj": {
         "type": "string",
         "rule": "single"

@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:iam:mixin:email-app:1-0-0" mixin="true" extends="gdbots:iam:mixin:app:v1">
     <fields>
-      <field name="sendgrid_api_key" type="string" pattern="^[a-zA-Z0-9.-]+$"/>
+      <field name="sendgrid_api_key" type="string" pattern="^[a-z0-9]+$" max="512"/>
     </fields>
     <php-options>
       <insertion-points>
