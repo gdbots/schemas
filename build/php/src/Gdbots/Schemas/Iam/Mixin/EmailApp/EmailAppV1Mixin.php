@@ -23,9 +23,7 @@ final class EmailAppV1Mixin extends AbstractMixin
     public function getFields()
     {
         return [
-            Fb::create('sendgrid_api_key', T\StringType::create())
-                ->maxLength(512)
-                ->pattern('^[a-z0-9]+$')
+            Fb::create('sendgrid_api_key', T\TextType::create())
                 ->build(),
         ];
     }

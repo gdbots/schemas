@@ -180,17 +180,19 @@
     },
     "api_key": {
       "type": "string",
-      "pattern": "^[a-z0-9]+$",
+      "minLength": 0,
+      "maxLength": 65535,
       "pbj": {
-        "type": "string",
+        "type": "text",
         "rule": "single"
       }
     },
     "api_secret": {
       "type": "string",
-      "pattern": "^[a-z0-9]+$",
+      "minLength": 0,
+      "maxLength": 65535,
       "pbj": {
-        "type": "string",
+        "type": "text",
         "rule": "single"
       }
     },

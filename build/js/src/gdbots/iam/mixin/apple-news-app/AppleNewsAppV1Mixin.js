@@ -17,13 +17,9 @@ export default class AppleNewsAppV1Mixin extends Mixin {
    */
   getFields() {
     return [
-      Fb.create('api_key', T.StringType.create())
-        .maxLength(512)
-        .pattern('^[a-z0-9]+$')
+      Fb.create('api_key', T.TextType.create())
         .build(),
-      Fb.create('api_secret', T.StringType.create())
-        .maxLength(512)
-        .pattern('^[a-z0-9]+$')
+      Fb.create('api_secret', T.TextType.create())
         .build(),
       Fb.create('channel_id', T.StringType.create())
         .pattern('^[a-z0-9-]+$')
