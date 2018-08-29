@@ -4,11 +4,6 @@
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
   <schema id="pbj:gdbots:iam:mixin:apple-news-app:1-0-0" mixin="true" extends="gdbots:iam:mixin:app:v1">
-    <fields>
-      <field name="api_key" type="text"/>
-      <field name="api_secret" type="text"/>
-      <field name="channel_id" type="string" pattern="^[a-z0-9-]+$"/>
-    </fields>
     <php-options>
       <insertion-points>
         <imports/>
@@ -21,9 +16,6 @@ public function getUriTemplateVars()
 {
     return [
         '_id' => (string)$this->get('_id'),
-        'api_key' => (string)$this->get('api_key'),
-        'api_secret' => (string)$this->get('api_secret'),
-        'channel_id' => (string)$this->get('channel_id'),
     ];
 }
           ]]>
@@ -41,9 +33,6 @@ public function getUriTemplateVars()
 getUriTemplateVars() {
   return {
     _id: `${this.get('_id', '')}`,
-    api_key: `${this.get('api_key', '')}`,
-    api_secret: `${this.get('api_secret', '')}`,
-    channel_id: `${this.get('channel_id', '')}`,
   };
 }
           ]]>

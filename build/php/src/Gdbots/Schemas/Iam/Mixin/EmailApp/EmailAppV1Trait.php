@@ -17,7 +17,6 @@ trait EmailAppV1Trait
     {
         return [
             '_id' => (string)$this->get('_id'),
-            'sendgrid_api_key' => (string)$this->get('sendgrid_api_key'),
         ];
     }
 }

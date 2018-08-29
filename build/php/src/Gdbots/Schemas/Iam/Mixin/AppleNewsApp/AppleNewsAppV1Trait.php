@@ -17,9 +17,8 @@ trait AppleNewsAppV1Trait
     {
         return [
             '_id' => (string)$this->get('_id'),
-            'api_key' => (string)$this->get('api_key'),
-            'api_secret' => (string)$this->get('api_secret'),
-            'channel_id' => (string)$this->get('channel_id'),
+            'channel_id' => $this->get('channel_id'),
+            'api_key' => $this->get('api_key'),
         ];
     }
 }
