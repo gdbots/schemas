@@ -20,7 +20,7 @@ export default class AppleNewsAppV1Mixin extends Mixin {
       /*
        * The "channel_id" comes from Apple News and is not a secret so it does
        * not require encryption. It is usually a version 4 uuid.
-       * https://developer.apple.com/documentation/apple_news/apple_news_api/about_the_news_security_model
+       * @link https://developer.apple.com/documentation/apple_news/apple_news_api/about_the_news_security_model
        */
       Fb.create('channel_id', T.StringType.create())
         .pattern('^[\\w-]+$')
