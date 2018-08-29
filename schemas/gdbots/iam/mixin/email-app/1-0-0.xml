@@ -4,6 +4,9 @@
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
   <schema id="pbj:gdbots:iam:mixin:email-app:1-0-0" mixin="true" extends="gdbots:iam:mixin:app:v1">
+    <fields>
+      <field name="sendgrid_api_key" type="text"/>
+    </fields>
     <php-options>
       <insertion-points>
         <imports/>
@@ -16,6 +19,7 @@ public function getUriTemplateVars()
 {
     return [
         '_id' => (string)$this->get('_id'),
+        'sendgrid_api_key' => (string)$this->get('sendgrid_api_key'),
     ];
 }
           ]]>
@@ -33,6 +37,7 @@ public function getUriTemplateVars()
 getUriTemplateVars() {
   return {
     _id: `${this.get('_id', '')}`,
+    sendgrid_api_key: `${this.get('sendgrid_api_key', '')}`,
   };
 }
           ]]>

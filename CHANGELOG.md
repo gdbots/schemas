@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v1.5.5
+* __Modify Schemas:__
+  * `gdbots:iam:mixin:apple-news-app` patch revision `1-0-1`
+    * Add `channel_id` string field with pattern `^[\w-]+$`.
+    * Add `api_key` string field with pattern `^[\w-]+$`.
+    * Add `api_secret` text field.
+  * `gdbots:iam:mixin:email-app` patch revision `1-0-1`
+    * Add `sendgrid_api_key` text field.
+
+
 ## v1.5.4
 * __Add Schemas:__
   * `gdbots:iam:mixin:email-app`
