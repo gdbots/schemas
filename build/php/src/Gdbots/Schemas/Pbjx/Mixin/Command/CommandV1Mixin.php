@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-1.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\Command;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -17,7 +17,7 @@ final class CommandV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:pbjx:mixin:command:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:pbjx:mixin:command:1-0-1');
     }
 
     /**
@@ -46,6 +46,16 @@ final class CommandV1Mixin extends AbstractMixin
              * and is being retried.
              */
             Fb::create('ctx_retries', T\TinyIntType::create())
+                ->build(),
+            /*
+             * The "ctx_causator" is the actual causator object that "ctx_causator_ref"
+             * refers to. In some cases it's useful for command handlers to copy the
+             * causator into the command. For example, when a node is being updated we
+             * may want to know what the node will be after the update. We can derive
+             * this via the causator instead of requesting the node and engaging a race
+             * condition.
+             */
+            Fb::create('ctx_causator', T\MessageType::create())
                 ->build(),
             Fb::create('ctx_causator_ref', T\MessageRefType::create())
                 ->build(),
