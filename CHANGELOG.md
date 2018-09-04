@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## v1.5.6
+* __Modify Schemas:__
+  * `gdbots:pbjx:mixin:command` patch revision `1-0-1`
+    * Add `ctx_causator` message field.
+
+
 ## v1.5.5
 * __Modify Schemas:__
   * `gdbots:iam:mixin:apple-news-app` patch revision `1-0-1`
@@ -146,7 +152,7 @@ Any apps using the mixins/marker interfaces for Ncr crud-like operations (e.g. `
   * `gdbots:ncr:mixin:node-marked-as-pending`
 * __Modify Schemas:__
   * `gdbots:forms:mixin:field` patch revision `1-0-2`
-    * Add `pii_impact` string-enum field using enum `gdbots:forms:pii-impact`. 
+    * Add `pii_impact` string-enum field using enum `gdbots:forms:pii-impact`.
   * `gdbots:forms:mixin:form` patch revision `1-0-1`
     * Add `pii_impact` string-enum field using enum `gdbots:forms:pii-impact`.
   * Add new options to enum `gdbots:ncr:node-status`
@@ -158,7 +164,7 @@ Any apps using the mixins/marker interfaces for Ncr crud-like operations (e.g. `
 * Change `FileId::toFilePath` method to move the shard after the type to eliminate S3 rate limiting.
 * __Modify Schemas:__
   * `gdbots:forms:mixin:field` patch revision `1-0-1`
-    * Add `link_text` string field which will be used to replace a token `{link}` 
+    * Add `link_text` string field which will be used to replace a token `{link}`
       within a field label or description.
     * Add `link_url` string field with URL format which will be used for the URL of
       the replaced token `{link}` within a field label or description.
@@ -221,12 +227,12 @@ Any apps using the mixins/marker interfaces for Ncr crud-like operations (e.g. `
 
 ## v1.2.0
 * PHP 7.1 is now required.  All other project dependencies already have this requirement, e.g. __gdbots/pbjx__.
-* Add es6 compiling. PHP compiled files are moved but unchanged (except for minor improvements) and composer 
+* Add es6 compiling. PHP compiled files are moved but unchanged (except for minor improvements) and composer
   autoload config is updated so no changes are required if using php.
 * __Modify Schemas:__
   * `gdbots:pbjx::envelope` patch revision `1-0-1`
     * Add `derefs` message map field for including (aka eager fetching) messages
-      into the envelope to prevent needing to do multiple HTTP requests.  
+      into the envelope to prevent needing to do multiple HTTP requests.
 
 
 ## v1.1.1
