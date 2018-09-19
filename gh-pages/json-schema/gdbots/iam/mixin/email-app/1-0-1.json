@@ -187,6 +187,23 @@
         "type": "text",
         "rule": "single"
       }
+    },
+    "sendgrid_senders": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      },
+      "additionalProperties": false,
+      "description": "keys are emails, e.g. \"sender-email@tmz.com\". used to lookup the sendgrid Ids needed when posting to their API.",
+      "pbj": {
+        "type": "int",
+        "rule": "map"
+      }
     }
   },
   "required": [

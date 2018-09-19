@@ -24,6 +24,13 @@ export default class EmailAppV1Mixin extends Mixin {
        */
       Fb.create('sendgrid_api_key', T.TextType.create())
         .build(),
+      /*
+       * keys are emails, e.g. "sender-email@tmz.com".
+       * used to lookup the sendgrid Ids needed when posting to their API.
+       */
+      Fb.create('sendgrid_senders', T.IntType.create())
+        .asAMap()
+        .build(),
     ];
   }
 }
