@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pbj-schema xmlns="http://gdbots.io/pbj/xsd"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
   <schema id="pbj:gdbots:iam:mixin:email-app:1-0-1" mixin="true" extends="gdbots:iam:mixin:app:v1">
     <fields>
       <field name="sendgrid_api_key" type="text">
         <description>
           This field contains an access token (used as bearer token) and
-          in some cases SMTP username and password.  It should be encrypted.
+          in some cases SMTP username and password. It should be encrypted.
           @link https://sendgrid.com/docs/ui/account-and-settings/api-keys/
         </description>
       </field>
       <field name="sendgrid_senders" type="int" rule="map">
         <description>
           keys are emails, e.g. "sender-email@tmz.com".
-          used to lookup the sendgrid Ids needed when posting to their API.
+          used to lookup the sendgrid sender Ids needed when posting to their API.
+        </description>
+      </field>
+      <field name="sendgrid_lists" type="int" rule="map">
+        <description>
+          keys are list slugs, e.g. "newsletter-subscribers".
+          used to lookup the sendgrid list Ids needed when posting to their API.
         </description>
       </field>
     </fields>

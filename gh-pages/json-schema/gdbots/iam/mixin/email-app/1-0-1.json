@@ -199,7 +199,24 @@
         }
       },
       "additionalProperties": false,
-      "description": "keys are emails, e.g. \"sender-email@tmz.com\". used to lookup the sendgrid Ids needed when posting to their API.",
+      "description": "keys are emails, e.g. \"sender-email@tmz.com\". used to lookup the sendgrid sender Ids needed when posting to their API.",
+      "pbj": {
+        "type": "int",
+        "rule": "map"
+      }
+    },
+    "sendgrid_lists": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      },
+      "additionalProperties": false,
+      "description": "keys are list slugs, e.g. \"newsletter-subscribers\". used to lookup the sendgrid list Ids needed when posting to their API.",
       "pbj": {
         "type": "int",
         "rule": "map"
