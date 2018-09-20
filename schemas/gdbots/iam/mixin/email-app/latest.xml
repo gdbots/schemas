@@ -15,7 +15,13 @@
       <field name="sendgrid_senders" type="int" rule="map">
         <description>
           keys are emails, e.g. "sender-email@tmz.com".
-          used to lookup the sendgrid Ids needed when posting to their API.
+          used to lookup the sendgrid sender Ids needed when posting to their API.
+        </description>
+      </field>
+      <field name="sendgrid_lists" type="int" rule="map">
+        <description>
+          keys are list slugs, e.g. "newsletter-subscribers".
+          used to lookup the sendgrid list Ids needed when posting to their API.
         </description>
       </field>
     </fields>
