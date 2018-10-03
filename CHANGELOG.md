@@ -5,6 +5,7 @@
   * `gdbots:iam:mixin:email-app` patch revision `1-0-1`
     * Add `sendgrid_senders` map field used to lookup the sendgrid sender Ids needed when posting to their API.
     * Add `sendgrid_lists` map field used to lookup the sendgrid list Ids needed when posting to their API. 
+    * Add `sendgrid_suppression_group_id` int field.
     
      
 ## v1.5.6

@@ -221,6 +221,17 @@
         "type": "int",
         "rule": "map"
       }
+    },
+    "sendgrid_suppression_group_id": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 4294967295,
+      "description": "also called as unsubscribe list ID, sendgrid specifically calls this list as suppression list",
+      "pbj": {
+        "type": "int",
+        "rule": "single"
+      }
     }
   },
   "required": [

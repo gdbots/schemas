@@ -24,6 +24,11 @@
           used to lookup the sendgrid list Ids needed when posting to their API.
         </description>
       </field>
+      <field name="sendgrid_suppression_group_id" type="int">
+        <description>
+          also called as unsubscribe list ID, sendgrid specifically calls this list as suppression list
+        </description>
+      </field>
     </fields>
     <php-options>
       <insertion-points>

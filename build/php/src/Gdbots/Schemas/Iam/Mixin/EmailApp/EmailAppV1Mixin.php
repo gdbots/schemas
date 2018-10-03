@@ -44,6 +44,11 @@ final class EmailAppV1Mixin extends AbstractMixin
             Fb::create('sendgrid_lists', T\IntType::create())
                 ->asAMap()
                 ->build(),
+            /*
+             * also called as unsubscribe list ID, sendgrid specifically calls this list as suppression list
+             */
+            Fb::create('sendgrid_suppression_group_id', T\IntType::create())
+                ->build(),
         ];
     }
 }
