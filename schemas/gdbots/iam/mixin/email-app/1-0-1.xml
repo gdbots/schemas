@@ -8,7 +8,7 @@
       <field name="sendgrid_api_key" type="text">
         <description>
           This field contains an access token (used as bearer token) and
-          in some cases SMTP username and password.  It should be encrypted.
+          in some cases SMTP username and password. It should be encrypted.
           @link https://sendgrid.com/docs/ui/account-and-settings/api-keys/
         </description>
       </field>
