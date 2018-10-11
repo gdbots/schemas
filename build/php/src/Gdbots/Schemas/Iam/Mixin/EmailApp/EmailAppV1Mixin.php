@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/email-app/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/email-app/1-0-2.json#
 namespace Gdbots\Schemas\Iam\Mixin\EmailApp;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -14,7 +14,7 @@ final class EmailAppV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:iam:mixin:email-app:1-0-1');
+        return SchemaId::fromString('pbj:gdbots:iam:mixin:email-app:1-0-2');
     }
 
     /**
