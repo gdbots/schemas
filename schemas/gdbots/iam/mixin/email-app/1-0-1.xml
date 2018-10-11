@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pbj-schema xmlns="http://gdbots.io/pbj/xsd"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
   <schema id="pbj:gdbots:iam:mixin:email-app:1-0-1" mixin="true" extends="gdbots:iam:mixin:app:v1">
     <fields>
@@ -12,22 +12,20 @@
           @link https://sendgrid.com/docs/ui/account-and-settings/api-keys/
         </description>
       </field>
-      <field name="sendgrid_senders" type="int" rule="map">
-        <description>
-          keys are emails, e.g. "sender-email@tmz.com".
-          used to lookup the sendgrid sender Ids needed when posting to their API.
-        </description>
-      </field>
       <field name="sendgrid_lists" type="int" rule="map">
         <description>
-          keys are list slugs, e.g. "newsletter-subscribers".
-          used to lookup the sendgrid list Ids needed when posting to their API.
+          Keys are list slugs, e.g. "newsletter-subscribers" and values are sendgrid list ids.
+          @link https://sendgrid.api-docs.io/v3.0/contacts-api-lists/create-a-list
+        </description>
+      </field>
+      <field name="sendgrid_senders" type="int" rule="map">
+        <description>
+          Keys are emails and values are sendgrid sender ids.
+          @link https://sendgrid.api-docs.io/v3.0/sender-identities-api/create-a-sender-identity
         </description>
       </field>
       <field name="sendgrid_suppression_group_id" type="int">
-        <description>
-          also called as unsubscribe list ID, sendgrid specifically calls this list as suppression list
-        </description>
+        <description>The default sendgrid suppression group id.</description>
       </field>
     </fields>
     <php-options>

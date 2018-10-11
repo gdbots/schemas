@@ -31,21 +31,21 @@ final class EmailAppV1Mixin extends AbstractMixin
             Fb::create('sendgrid_api_key', T\TextType::create())
                 ->build(),
             /*
-             * keys are emails, e.g. "sender-email@tmz.com".
-             * used to lookup the sendgrid sender Ids needed when posting to their API.
-             */
-            Fb::create('sendgrid_senders', T\IntType::create())
-                ->asAMap()
-                ->build(),
-            /*
-             * keys are list slugs, e.g. "newsletter-subscribers".
-             * used to lookup the sendgrid list Ids needed when posting to their API.
+             * Keys are list slugs, e.g. "newsletter-subscribers" and values are sendgrid list ids.
+             * @link https://sendgrid.api-docs.io/v3.0/contacts-api-lists/create-a-list
              */
             Fb::create('sendgrid_lists', T\IntType::create())
                 ->asAMap()
                 ->build(),
             /*
-             * also called as unsubscribe list ID, sendgrid specifically calls this list as suppression list
+             * Keys are emails and values are sendgrid sender ids.
+             * @link https://sendgrid.api-docs.io/v3.0/sender-identities-api/create-a-sender-identity
+             */
+            Fb::create('sendgrid_senders', T\IntType::create())
+                ->asAMap()
+                ->build(),
+            /*
+             * The default sendgrid suppression group id.
              */
             Fb::create('sendgrid_suppression_group_id', T\IntType::create())
                 ->build(),
