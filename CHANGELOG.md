@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v1.5.8
+__Modify Schemas:__
+  * `gdbots:iam:mixin:android-app` patch revision `1-0-1`
+    * Add `azure_notification_hub_connection` text field.
+    * Add `azure_notification_hub_name` string field with pattern `^[\w-]+$`.
+  * `gdbots:iam:mixin:ios-app` patch revision `1-0-1`
+    * Add `azure_notification_hub_connection` text field.
+    * Add `azure_notification_hub_name` string field with pattern `^[\w-]+$`.
+
+
 ## v1.5.7
 * __Modify Schemas:__
   * `gdbots:iam:mixin:email-app` patch revision `1-0-2`
