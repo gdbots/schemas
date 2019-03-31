@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/ios-app/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/ios-app/1-0-1.json#
 namespace Gdbots\Schemas\Iam\Mixin\IosApp;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -14,7 +14,7 @@ final class IosAppV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:iam:mixin:ios-app:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:iam:mixin:ios-app:1-0-1');
     }
 
     /**
@@ -30,7 +30,7 @@ final class IosAppV1Mixin extends AbstractMixin
             Fb::create('azure_notification_hub_connection', T\TextType::create())
                 ->build(),
             Fb::create('azure_notification_hub_name', T\StringType::create())
-                ->pattern('^[\w-]+$')
+                ->pattern('^[\w\.-]+$')
                 ->build(),
         ];
     }
