@@ -20,7 +20,7 @@ test('StreamId topic tests', (t) => {
   }
 
   try {
-    StreamId.fromString('a'.repeat(146));
+    StreamId.fromString('a'.repeat(256));
     t.fail('created invalid StreamId (too long)');
   } catch (e) {
     t.pass('unable to create invalid StreamId (too long)');

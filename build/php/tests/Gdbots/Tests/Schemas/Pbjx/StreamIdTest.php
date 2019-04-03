@@ -93,7 +93,7 @@ class StreamIdTest extends TestCase
      */
     public function testTooLong()
     {
-        StreamId::fromString(str_repeat('a', 146));
+        StreamId::fromString(str_repeat('a', 256));
     }
 
     /**

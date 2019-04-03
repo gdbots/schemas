@@ -88,8 +88,8 @@ final class StreamId implements Identifier
      */
     public static function fromString($string)
     {
-        $okay = strlen($string) < 146;
-        Assertion::true($okay, 'StreamId cannot be greater than 145 chars.', 'StreamId');
+        $okay = strlen($string) < 256;
+        Assertion::true($okay, 'StreamId cannot be greater than 255 chars.', 'StreamId');
         if (!preg_match(self::VALID_PATTERN, $string, $matches)) {
             throw new InvalidArgumentException(
                 sprintf(

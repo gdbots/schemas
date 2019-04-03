@@ -66,8 +66,8 @@ export default class StreamId extends Identifier {
     this.partition = partition;
     this.subPartition = subPartition;
 
-    if (this.value.length > 145) {
-      throw new AssertionFailed('StreamId cannot be greater than 145 chars.');
+    if (this.value.length > 255) {
+      throw new AssertionFailed('StreamId cannot be greater than 255 chars.');
     }
 
     if (!VALID_PATTERN.test(this.value)) {

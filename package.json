@@ -1,6 +1,6 @@
 {
   "name": "@gdbots/schemas",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "Schemas for common Gdbots apps and components.",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@gdbots/common": "^0.1.1",
-    "@gdbots/pbj": "^0.2.5",
+    "@gdbots/pbj": "^0.2.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-plugin-lodash": "^3.3.4",

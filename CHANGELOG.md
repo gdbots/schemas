@@ -1,6 +1,10 @@
 # CHANGELOG
 
 
+## v1.5.9
+* Allow StreamId to be up to 255 chars.
+
+
 ## v1.5.8
 __Modify Schemas:__
   * `gdbots:iam:mixin:android-app` patch revision `1-0-1`
