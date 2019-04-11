@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## v1.5.10
+* Use `DateTimeInterface` in `FileId` for php language.
+* Use `gdbots/pbjc` v0.4.0 with optimized manifest for php.
+
+
 ## v1.5.9
 * Allow StreamId to be up to 255 chars.
 

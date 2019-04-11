@@ -8,7 +8,7 @@ use Gdbots\Schemas\Ncr\Mixin\Edge\Edge;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
-final class EdgeId implements Identifier
+class EdgeId implements Identifier
 {
     /**
      * For each vendor namespace we create version 5 uuid so

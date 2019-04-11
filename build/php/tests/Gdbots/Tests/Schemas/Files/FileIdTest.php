@@ -30,7 +30,7 @@ class FileIdTest extends TestCase
 
     public function testCreate()
     {
-        $id = FileId::create('image', 'jpg', \DateTime::createFromFormat('Ymd', '20151201'), UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505'));
+        $id = FileId::create('image', 'jpg', \DateTimeImmutable::createFromFormat('Ymd', '20151201'), UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505'));
 
         $this->assertSame('image', $id->getType());
         $this->assertSame('jpg', $id->getExt());
@@ -49,7 +49,7 @@ class FileIdTest extends TestCase
 
     public function testGenerate()
     {
-        $date = new \DateTime();
+        $date = new \DateTimeImmutable();
         $id = FileId::create('image', 'jpg');
 
         $this->assertSame('image', $id->getType());

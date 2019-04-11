@@ -28,7 +28,7 @@ use Gdbots\Schemas\Ncr\Mixin\Node\Node;
  *  youtube:video:EG0wQRsXLi4
  *
  */
-final class NodeRef implements Identifier
+class NodeRef implements Identifier
 {
     /** @var SchemaQName */
     private $qname;

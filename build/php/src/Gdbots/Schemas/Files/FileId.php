@@ -103,10 +103,10 @@ final class FileId implements Identifier
     }
 
     /**
-     * @param string         $type The primary type for this file. e.g. image, video, audio.
-     * @param string         $ext  Extension of the file.  jpg, gif, mp4, txt, pdf
-     * @param \DateTime      $date
-     * @param UuidIdentifier $uuid Uuid for the file, if not supplied a v4 uuid will be created.
+     * @param string             $type The primary type for this file. e.g. image, video, audio.
+     * @param string             $ext  Extension of the file.  jpg, gif, mp4, txt, pdf
+     * @param \DateTimeInterface $date
+     * @param UuidIdentifier     $uuid Uuid for the file, if not supplied a v4 uuid will be created.
      *
      * @return FileId
      *
@@ -115,10 +115,10 @@ final class FileId implements Identifier
     public static function create(
         string $type,
         string $ext,
-        ?\DateTime $date = null,
+        ?\DateTimeInterface $date = null,
         ?UuidIdentifier $uuid = null
     ): self {
-        $date = $date ?: new \DateTime('now', new \DateTimeZone('UTC'));
+        $date = $date ?: new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
         $uuid = $uuid ?: UuidIdentifier::generate();
         $fileId = new self($type, $ext, $date->format('Ymd'), $uuid->toString());
         if (!preg_match(self::VALID_PATTERN, $fileId->id)) {
@@ -154,14 +154,14 @@ final class FileId implements Identifier
     }
 
     /**
-     * @param bool $asObject Returns the date as a \DateTime instead of Ymd string.
+     * @param bool $asObject Returns the date as a \DateTimeInterface instead of Ymd string.
      *
-     * @return \DateTime|string
+     * @return \DateTimeInterface|string
      */
     public function getDate(bool $asObject = false)
     {
         if (true === $asObject) {
-            return \DateTime::createFromFormat('!Ymd', $this->date, new \DateTimeZone('UTC'));
+            return \DateTimeImmutable::createFromFormat('!Ymd', $this->date, new \DateTimeZone('UTC'));
         }
 
         return $this->date;
