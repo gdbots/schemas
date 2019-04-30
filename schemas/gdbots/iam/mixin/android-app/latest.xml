@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
 
-  <schema id="pbj:gdbots:iam:mixin:android-app:1-0-1" mixin="true" extends="gdbots:iam:mixin:app:v1">
+  <schema id="pbj:gdbots:iam:mixin:android-app:1-0-2" mixin="true" extends="gdbots:iam:mixin:app:v1">
     <fields>
       <field name="azure_notification_hub_connection" type="text">
         <description>
@@ -12,6 +12,12 @@
         </description>
       </field>
       <field name="azure_notification_hub_name" type="string" pattern="^[\w\.-]+$"/>
+      <field name="fcm_api_key" type="text">
+        <description>
+          An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase console.
+          @link https://firebase.google.com/docs/cloud-messaging/auth-server
+        </description>
+      </field>
     </fields>
 
     <php-options>
