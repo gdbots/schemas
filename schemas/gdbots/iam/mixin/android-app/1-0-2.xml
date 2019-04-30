@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:iam:mixin:android-app:1-0-2" mixin="true" extends="gdbots:iam:mixin:app:v1">
+    <fields>
+      <field name="azure_notification_hub_connection" type="text">
+        <description>
+          An encrypted value of connection-string (starts with Endpoint=sb://) that can be obtained from Azure portal.
+          @link https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-nodejs-push-notification-tutorial
+        </description>
+      </field>
+      <field name="azure_notification_hub_name" type="string" pattern="^[\w\.-]+$"/>
+      <field name="fcm_api_key" type="text">
+        <description>
+          An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase console.
+          @link https://firebase.google.com/docs/cloud-messaging/auth-server
+        </description>
+      </field>
+    </fields>
+
+    <php-options>
+      <insertion-points>
+        <imports/>
+        <methods>
+          <![CDATA[
+/**
+ * @return array
+ */
+public function getUriTemplateVars()
+{
+    return [
+        '_id' => (string)$this->get('_id'),
+    ];
+}
+          ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+
+    <js-options>
+      <insertion-points>
+        <methods>
+          <![CDATA[
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return {
+    _id: `${this.get('_id', '')}`,
+  };
+}
+          ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
+  </schema>
+</pbj-schema>
