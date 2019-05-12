@@ -1,8 +1,9 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/envelope/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/envelope/1-0-2.json#
 namespace Gdbots\Schemas\Pbjx;
 
 use Gdbots\Pbj\AbstractMessage;
+use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
@@ -18,7 +19,7 @@ final class EnvelopeV1 extends AbstractMessage implements
      */
     protected static function defineSchema()
     {
-        return new Schema('pbj:gdbots:pbjx::envelope:1-0-1', __CLASS__,
+        return new Schema('pbj:gdbots:pbjx::envelope:1-0-2', __CLASS__,
             [
                 Fb::create('envelope_id', T\UuidType::create())
                     ->required()
@@ -54,6 +55,13 @@ final class EnvelopeV1 extends AbstractMessage implements
                  */
                 Fb::create('derefs', T\MessageType::create())
                     ->asAMap()
+                    ->build(),
+                /*
+                 * @link https://en.wikipedia.org/wiki/HATEOAS
+                 */
+                Fb::create('links', T\TextType::create())
+                    ->asAMap()
+                    ->format(Format::URL())
                     ->build(),
             ]
         );

@@ -7,8 +7,10 @@ __Modify Schemas:__
     * Add `fcm_api_key` text field.
   * `gdbots:iam:mixin:ios-app` patch revision `1-0-2`
     * Add `fcm_api_key` text field.
-    
-    
+  * `gdbots:pbjx::envelope` patch revision `1-0-2`
+    * Add `links` text map field with format url.
+
+
 ## v1.5.10
 * Use `DateTimeInterface` in `FileId` for php language.
 * Use `gdbots/pbjc` v0.4.0 with optimized manifest for php.

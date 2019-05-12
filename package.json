@@ -1,6 +1,6 @@
 {
   "name": "@gdbots/schemas",
-  "version": "1.5.10",
+  "version": "1.5.11",
   "description": "Schemas for common Gdbots apps and components.",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "@gdbots/common": "^0.1.1",
+    "@gdbots/common": "^0.1.2",
     "@gdbots/pbj": "^0.2.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -40,9 +40,9 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-import-resolver-babel-module": "^4.0.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react": "^7.13.0",
     "faucet": "^0.0.1",
     "lodash": "^4.17.11",
     "lodash-es": "^4.17.11",
