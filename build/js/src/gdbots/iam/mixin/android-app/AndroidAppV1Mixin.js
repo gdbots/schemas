@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/android-app/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/android-app/1-0-2.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
 import SchemaId from '@gdbots/pbj/SchemaId';
@@ -9,7 +9,7 @@ export default class AndroidAppV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:iam:mixin:android-app:1-0-1');
+    return SchemaId.fromString('pbj:gdbots:iam:mixin:android-app:1-0-2');
   }
 
   /**
@@ -25,6 +25,12 @@ export default class AndroidAppV1Mixin extends Mixin {
         .build(),
       Fb.create('azure_notification_hub_name', T.StringType.create())
         .pattern('^[\\w\\.-]+$')
+        .build(),
+      /*
+       * An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase console.
+       * @link https://firebase.google.com/docs/cloud-messaging/auth-server
+       */
+      Fb.create('fcm_api_key', T.TextType.create())
         .build(),
     ];
   }

@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/android-app/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/android-app/1-0-2.json#
 namespace Gdbots\Schemas\Iam\Mixin\AndroidApp;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -14,7 +14,7 @@ final class AndroidAppV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:iam:mixin:android-app:1-0-1');
+        return SchemaId::fromString('pbj:gdbots:iam:mixin:android-app:1-0-2');
     }
 
     /**
@@ -31,6 +31,12 @@ final class AndroidAppV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('azure_notification_hub_name', T\StringType::create())
                 ->pattern('^[\w\.-]+$')
+                ->build(),
+            /*
+             * An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase console.
+             * @link https://firebase.google.com/docs/cloud-messaging/auth-server
+             */
+            Fb::create('fcm_api_key', T\TextType::create())
                 ->build(),
         ];
     }
