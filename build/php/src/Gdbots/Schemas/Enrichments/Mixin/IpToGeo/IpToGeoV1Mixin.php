@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/enrichments/mixin/ip-to-geo/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/enrichments/mixin/ip-to-geo/1-0-1.json#
 namespace Gdbots\Schemas\Enrichments\Mixin\IpToGeo;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -16,7 +16,7 @@ final class IpToGeoV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:enrichments:mixin:ip-to-geo:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:enrichments:mixin:ip-to-geo:1-0-1');
     }
 
     /**
@@ -27,6 +27,10 @@ final class IpToGeoV1Mixin extends AbstractMixin
         return [
             Fb::create('ctx_ip', T\StringType::create())
                 ->format(Format::IPV4())
+                ->overridable(true)
+                ->build(),
+            Fb::create('ctx_ipv6', T\StringType::create())
+                ->format(Format::IPV6())
                 ->overridable(true)
                 ->build(),
             Fb::create('ctx_ip_geo', T\MessageType::create())

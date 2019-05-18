@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-2.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
@@ -10,7 +10,7 @@ export default class CommandV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:command:1-0-1');
+    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:command:1-0-2');
   }
 
   /**
@@ -76,6 +76,10 @@ export default class CommandV1Mixin extends Mixin {
         .build(),
       Fb.create('ctx_ip', T.StringType.create())
         .format(Format.IPV4)
+        .overridable(true)
+        .build(),
+      Fb.create('ctx_ipv6', T.StringType.create())
+        .format(Format.IPV6)
         .overridable(true)
         .build(),
       Fb.create('ctx_ua', T.TextType.create())

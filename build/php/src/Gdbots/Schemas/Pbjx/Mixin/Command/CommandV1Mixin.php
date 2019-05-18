@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-2.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\Command;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -17,7 +17,7 @@ final class CommandV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:pbjx:mixin:command:1-0-1');
+        return SchemaId::fromString('pbj:gdbots:pbjx:mixin:command:1-0-2');
     }
 
     /**
@@ -84,6 +84,10 @@ final class CommandV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('ctx_ip', T\StringType::create())
                 ->format(Format::IPV4())
+                ->overridable(true)
+                ->build(),
+            Fb::create('ctx_ipv6', T\StringType::create())
+                ->format(Format::IPV6())
                 ->overridable(true)
                 ->build(),
             Fb::create('ctx_ua', T\TextType::create())

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Gdbots\Schemas\Ncr;
 
+use Gdbots\Pbj\Message;
 use Gdbots\Pbj\WellKnown\Identifier;
-use Gdbots\Schemas\Ncr\Mixin\Edge\Edge;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
@@ -45,11 +45,11 @@ class EdgeId implements Identifier
     }
 
     /**
-     * @param Edge $edge
+     * @param Message $edge
      *
      * @return static
      */
-    public static function fromEdge(Edge $edge): self
+    public static function fromEdge(Message $edge): self
     {
         $schemaId = $edge::schema()->getId();
         $vendor = $schemaId->getVendor();

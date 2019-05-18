@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v1.5.12
+__Modify Schemas:__
+  * `gdbots:enrichments:mixin:ip-to-geo` patch revision `1-0-1`
+    * Add `ctx_ipv6` string field with format ipv6.
+  * `gdbots:pbjx:mixin:command` patch revision `1-0-2`
+    * Add `ctx_ipv6` string field with format ipv6.
+  * `gdbots:pbjx:mixin:event` patch revision `1-0-1`
+    * Add `ctx_ipv6` string field with format ipv6.
+
+
 ## v1.5.11
 __Modify Schemas:__
   * `gdbots:iam:mixin:android-app` patch revision `1-0-2`

@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace Gdbots\Schemas\Ncr;
 
 use Gdbots\Pbj\Assertion;
+use Gdbots\Pbj\Message;
 use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\SchemaQName;
 use Gdbots\Pbj\WellKnown\Identifier;
-use Gdbots\Schemas\Ncr\Mixin\Node\Node;
 
 /**
  * A NodeRef is a qualified identifier to a node/vertex.  It is less verbose than a MessageRef
@@ -67,11 +67,11 @@ class NodeRef implements Identifier
     }
 
     /**
-     * @param Node $node
+     * @param Message $node
      *
      * @return self
      */
-    public static function fromNode(Node $node): self
+    public static function fromNode(Message $node): self
     {
         return new self($node::schema()->getQName(), (string)$node->get('_id'));
     }
