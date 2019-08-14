@@ -1,6 +1,31 @@
 # CHANGELOG
 
 
+## v1.5.13
+__Modify Schemas:__
+  * `gdbots:iam:mixin:android-app` patch revision `1-0-3`
+    * Add `fcm_project_id` string field with format slug.
+    * Add `fcm_sender_id` string field with pattern `^\d+$`.
+    * Add `fcm_web_api_key` string field with pattern `^[\w\.-]+$`.
+  * `gdbots:iam:mixin:browser-app` patch revision `1-0-1`
+    * Add `fcm_api_key` text field.
+    * Add `fcm_project_id` string field with format slug.
+    * Add `fcm_sender_id` string field with pattern `^\d+$`.
+    * Add `fcm_web_api_key` string field with pattern `^[\w\.-]+$`.
+  * `gdbots:iam:mixin:ios-app` patch revision `1-0-3`
+    * Add `fcm_project_id` string field with format slug.
+    * Add `fcm_sender_id` string field with pattern `^\d+$`.
+    * Add `fcm_web_api_key` string field with pattern `^[\w\.-]+$`.
+  * `gdbots:ncr:mixin:get-node-batch-request` patch revision `1-0-1`
+    * Add `derefs` string set field with pattern `^[\w\.-]+$`.
+  * `gdbots:ncr:mixin:get-node-request` patch revision `1-0-1`
+    * Add `derefs` string set field with pattern `^[\w\.-]+$`.
+  * `gdbots:ncr:mixin:search-nodes-request` patch revision `1-0-2`
+    * Add `published_after` date-time field.
+    * Add `published_before` date-time field.
+    * Add `derefs` string set field with pattern `^[\w\.-]+$`.
+
+
 ## v1.5.12
 __Modify Schemas:__
   * `gdbots:enrichments:mixin:ip-to-geo` patch revision `1-0-1`

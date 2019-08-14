@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-2.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
 import NodeStatus from '@gdbots/schemas/gdbots/ncr/enums/NodeStatus';
@@ -10,7 +10,7 @@ export default class SearchNodesRequestV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:ncr:mixin:search-nodes-request:1-0-1');
+    return SchemaId.fromString('pbj:gdbots:ncr:mixin:search-nodes-request:1-0-2');
   }
 
   /**
@@ -58,6 +58,10 @@ export default class SearchNodesRequestV1Mixin extends Mixin {
         .build(),
       Fb.create('updated_before', T.DateTimeType.create())
         .build(),
+      Fb.create('published_after', T.DateTimeType.create())
+        .build(),
+      Fb.create('published_before', T.DateTimeType.create())
+        .build(),
       /*
        * The fields that are being queried as determined by parsing the "q" field.
        */
@@ -66,6 +70,15 @@ export default class SearchNodesRequestV1Mixin extends Mixin {
         .pattern('^[\\w\\.-]+$')
         .build(),
       Fb.create('parsed_query_json', T.TextType.create())
+        .build(),
+      /*
+       * Field names to dereference, this serves as a hint to the server and is not
+       * necessarily gauranteed since authorization, availability, etc. are determined
+       * by the server not the client.
+       */
+      Fb.create('derefs', T.StringType.create())
+        .asASet()
+        .pattern('^[\\w\\.-]+$')
         .build(),
     ];
   }

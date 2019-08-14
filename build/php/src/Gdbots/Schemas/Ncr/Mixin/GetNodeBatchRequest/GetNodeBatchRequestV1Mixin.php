@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/get-node-batch-request/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/get-node-batch-request/1-0-1.json#
 namespace Gdbots\Schemas\Ncr\Mixin\GetNodeBatchRequest;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -15,7 +15,7 @@ final class GetNodeBatchRequestV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:ncr:mixin:get-node-batch-request:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:ncr:mixin:get-node-batch-request:1-0-1');
     }
 
     /**
@@ -32,6 +32,15 @@ final class GetNodeBatchRequestV1Mixin extends AbstractMixin
             Fb::create('node_refs', T\IdentifierType::create())
                 ->asASet()
                 ->className(NodeRef::class)
+                ->build(),
+            /*
+             * Field names to dereference, this serves as a hint to the server and is not
+             * necessarily gauranteed since authorization, availability, etc. are determined
+             * by the server not the client.
+             */
+            Fb::create('derefs', T\StringType::create())
+                ->asASet()
+                ->pattern('^[\w\.-]+$')
                 ->build(),
         ];
     }

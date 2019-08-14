@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/get-node-request/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/get-node-request/1-0-1.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
@@ -11,7 +11,7 @@ export default class GetNodeRequestV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:ncr:mixin:get-node-request:1-0-0');
+    return SchemaId.fromString('pbj:gdbots:ncr:mixin:get-node-request:1-0-1');
   }
 
   /**
@@ -42,6 +42,15 @@ export default class GetNodeRequestV1Mixin extends Mixin {
         .build(),
       Fb.create('slug', T.StringType.create())
         .format(Format.SLUG)
+        .build(),
+      /*
+       * Field names to dereference, this serves as a hint to the server and is not
+       * necessarily gauranteed since authorization, availability, etc. are determined
+       * by the server not the client.
+       */
+      Fb.create('derefs', T.StringType.create())
+        .asASet()
+        .pattern('^[\\w\\.-]+$')
         .build(),
     ];
   }
