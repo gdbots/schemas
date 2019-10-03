@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v1.6.0
+__Modify Schemas:__
+  * `gdbots:pbjx::envelope` minor revision `1-1-0`
+    * Add `meta` text map field.
+    * Remove format url from `links` text map field.  Need to allow for uri templates which contain `{}`.
+
+
 ## v1.5.13
 __Modify Schemas:__
   * `gdbots:iam:mixin:android-app` patch revision `1-0-3`
