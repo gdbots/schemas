@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-2.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
@@ -10,7 +10,7 @@ export default class RequestV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:request:1-0-1');
+    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:request:1-0-2');
   }
 
   /**
@@ -65,6 +65,15 @@ export default class RequestV1Mixin extends Mixin {
         .build(),
       Fb.create('ctx_ua', T.TextType.create())
         .overridable(true)
+        .build(),
+      /*
+       * Field names to dereference, this serves as a hint to the server and is not
+       * necessarily gauranteed since authorization, availability, etc. are determined
+       * by the server not the client.
+       */
+      Fb.create('derefs', T.StringType.create())
+        .asASet()
+        .pattern('^[\\w\\.-]+$')
         .build(),
     ];
   }

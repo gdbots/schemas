@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/update-node/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/update-node/1-0-1.json#
 namespace Gdbots\Schemas\Ncr\Mixin\UpdateNode;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -16,7 +16,7 @@ final class UpdateNodeV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:ncr:mixin:update-node:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:ncr:mixin:update-node:1-0-1');
     }
 
     /**
@@ -44,6 +44,14 @@ final class UpdateNodeV1Mixin extends AbstractMixin
                     GdbotsNcrNode::class,
                 ])
                 ->overridable(true)
+                ->build(),
+            /*
+             * The names of the fields this update command should apply changes to.
+             * Nested paths can be referenced using dot notation.
+             */
+            Fb::create('paths', T\StringType::create())
+                ->asASet()
+                ->pattern('^[a-zA-Z_]{1}[\w\.]*$')
                 ->build(),
         ];
     }

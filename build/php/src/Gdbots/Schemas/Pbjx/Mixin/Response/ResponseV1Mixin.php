@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/response/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/response/1-0-1.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\Response;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -15,7 +15,7 @@ final class ResponseV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:pbjx:mixin:response:1-0-0');
+        return SchemaId::fromString('pbj:gdbots:pbjx:mixin:response:1-0-1');
     }
 
     /**
@@ -44,6 +44,24 @@ final class ResponseV1Mixin extends AbstractMixin
                 ])
                 ->build(),
             Fb::create('ctx_correlator_ref', T\MessageRefType::create())
+                ->build(),
+            /*
+             * Responses can include "dereferenced" messages to prevent
+             * the consumer from needing to make multiple HTTP requests.
+             * It is up to the consumer to make use of the dereferenced
+             * messages if/when they are provided.
+             */
+            Fb::create('derefs', T\MessageType::create())
+                ->asAMap()
+                ->build(),
+            /*
+             * @link https://en.wikipedia.org/wiki/HATEOAS
+             */
+            Fb::create('links', T\TextType::create())
+                ->asAMap()
+                ->build(),
+            Fb::create('metas', T\TextType::create())
+                ->asAMap()
                 ->build(),
         ];
     }

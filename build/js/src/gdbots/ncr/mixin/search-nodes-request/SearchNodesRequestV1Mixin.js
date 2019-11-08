@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-2.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/search-nodes-request/1-0-3.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
 import NodeStatus from '@gdbots/schemas/gdbots/ncr/enums/NodeStatus';
@@ -10,7 +10,7 @@ export default class SearchNodesRequestV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:ncr:mixin:search-nodes-request:1-0-2');
+    return SchemaId.fromString('pbj:gdbots:ncr:mixin:search-nodes-request:1-0-3');
   }
 
   /**
@@ -30,6 +30,8 @@ export default class SearchNodesRequestV1Mixin extends Mixin {
       Fb.create('page', T.TinyIntType.create())
         .min(1)
         .withDefault(1)
+        .build(),
+      Fb.create('autocomplete', T.BooleanType.create())
         .build(),
       /*
        * A cursor is a string (normally base64 encoded) which marks a specific item in a list of data.
@@ -70,15 +72,6 @@ export default class SearchNodesRequestV1Mixin extends Mixin {
         .pattern('^[\\w\\.-]+$')
         .build(),
       Fb.create('parsed_query_json', T.TextType.create())
-        .build(),
-      /*
-       * Field names to dereference, this serves as a hint to the server and is not
-       * necessarily gauranteed since authorization, availability, etc. are determined
-       * by the server not the client.
-       */
-      Fb.create('derefs', T.StringType.create())
-        .asASet()
-        .pattern('^[\\w\\.-]+$')
         .build(),
     ];
   }

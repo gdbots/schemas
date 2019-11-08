@@ -1,10 +1,29 @@
 # CHANGELOG
 
 
+## v1.6.1
+__Modify Schemas:__
+  * `gdbots:ncr:mixin:get-node-batch-request` patch revision `1-0-2`
+    * Remove `derefs` field since it's now in the `gdbots:pbjx:mixin:request` which this message extends.
+  * `gdbots:ncr:mixin:node-updated` patch revision `1-0-1`
+    * Add `paths` string set field with pattern `^[a-zA-Z_]{1}[\w\.]*$`.
+  * `gdbots:ncr:mixin:search-nodes-request` patch revision `1-0-3`
+    * Add `autocomplete` boolean field.
+    * Remove `derefs` field since it's now in the `gdbots:pbjx:mixin:request` which this message extends.
+  * `gdbots:ncr:mixin:update-node` patch revision `1-0-1`
+    * Add `paths` string set field with pattern `^[a-zA-Z_]{1}[\w\.]*$`.
+  * `gdbots:pbjx:mixin:request` patch revision `1-0-2`
+    * Add `derefs` string set field with pattern `^[\w\.-]+$`.
+  * `gdbots:pbjx:mixin:response` patch revision `1-0-1`
+    * Add `derefs` message map field for including (aka eager fetching).
+    * Add `links` text map field.
+    * Add `metas` text map field.
+
+
 ## v1.6.0
 __Modify Schemas:__
   * `gdbots:pbjx::envelope` minor revision `1-1-0`
-    * Add `meta` text map field.
+    * Add `metas` text map field.
     * Remove format url from `links` text map field.  Need to allow for uri templates which contain `{}`.
 
 
