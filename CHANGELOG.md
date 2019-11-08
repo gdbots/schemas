@@ -1,8 +1,14 @@
 # CHANGELOG
 
 
+## v1.6.2
+* __Modify Schemas:__
+  * `gdbots:ncr:mixin:get-node-request` patch revision `1-0-2`
+    * Remove `derefs` field since it's now in the `gdbots:pbjx:mixin:request` which this message extends.
+
+
 ## v1.6.1
-__Modify Schemas:__
+* __Modify Schemas:__
   * `gdbots:ncr:mixin:get-node-batch-request` patch revision `1-0-2`
     * Remove `derefs` field since it's now in the `gdbots:pbjx:mixin:request` which this message extends.
   * `gdbots:ncr:mixin:node-updated` patch revision `1-0-1`
@@ -21,14 +27,14 @@ __Modify Schemas:__
 
 
 ## v1.6.0
-__Modify Schemas:__
+* __Modify Schemas:__
   * `gdbots:pbjx::envelope` minor revision `1-1-0`
     * Add `metas` text map field.
     * Remove format url from `links` text map field.  Need to allow for uri templates which contain `{}`.
 
 
 ## v1.5.13
-__Modify Schemas:__
+* __Modify Schemas:__
   * `gdbots:iam:mixin:android-app` patch revision `1-0-3`
     * Add `fcm_project_id` string field with format slug.
     * Add `fcm_sender_id` string field with pattern `^\d+$`.
@@ -63,7 +69,7 @@ __Modify Schemas:__
 
 
 ## v1.5.11
-__Modify Schemas:__
+* __Modify Schemas:__
   * `gdbots:iam:mixin:android-app` patch revision `1-0-2`
     * Add `fcm_api_key` text field.
   * `gdbots:iam:mixin:ios-app` patch revision `1-0-2`
@@ -82,7 +88,7 @@ __Modify Schemas:__
 
 
 ## v1.5.8
-__Modify Schemas:__
+* __Modify Schemas:__
   * `gdbots:iam:mixin:android-app` patch revision `1-0-1`
     * Add `azure_notification_hub_connection` text field.
     * Add `azure_notification_hub_name` string field with pattern `^[\w-]+$`.
