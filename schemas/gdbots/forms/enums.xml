@@ -5,6 +5,24 @@
 
   <enums namespace="gdbots:forms">
     <!--
+      For GDPR and CCPA IIR (individual rights request)
+
+      - Know what personal information is being collected about them.
+      - Access personal information that has been collected about them.
+      - Request the deletion of their personal information, subject to certain restrictions.
+      - Prevent the sharing or sale of their personal information to third parties.
+      - Sue or join class-action suits against erring businesses.
+      - Receive equal service and price even if they exercise privacy rights.
+    -->
+    <enum name="irr-type" type="string">
+      <option key="UNKNOWN" value="unknown"/>
+      <option key="ACCESS_DATA" value="access-data"/>
+      <option key="DELETE_DATA" value="delete-data"/>
+      <option key="DO_NOT_SELL" value="do-not-sell"/>
+      <option key="OPTOUT" value="optout"/>
+    </enum>
+
+    <!--
       @link https://csrc.nist.gov/csrc/media/publications/shared/documents/itl-bulletin/itlbul2010-04.pdf
       ref section "Categorize all PII by the PII confidentiality impact level."
 

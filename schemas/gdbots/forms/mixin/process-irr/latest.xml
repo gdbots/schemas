@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:mixin:process-irr:1-0-0" mixin="true" extends="gdbots:pbjx:mixin:command:v1">
+    <fields>
+      <field name="type" type="string-enum" required="true">
+        <enum id="gdbots:forms:irr-type"/>
+      </field>
+      <field name="email" type="string" format="email"/>
+    </fields>
+  </schema>
+</pbj-schema>

@@ -4,8 +4,10 @@
 ## v1.6.3
 * __Add Schemas:__
   * `gdbots:forms:field:document-field`
+  * `gdbots:forms:irr-type`
   * `gdbots:forms:mixin:get-upload-url-request`
   * `gdbots:forms:mixin:get-upload-url-response`
+  * `gdbots:forms:mixin:process-irr`
 * __Modify Schemas:__
   * `gdbots:forms:mixin:form` patch revision `1-0-3`
     * Add `template` string field with format slug.
