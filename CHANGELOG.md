@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## v1.6.3
+* __Add Schemas:__
+  * `gdbots:forms:field:document-field`
+
+
 ## v1.6.2
 * __Modify Schemas:__
   * `gdbots:ncr:mixin:get-node-request` patch revision `1-0-2`
