@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/form/1-0-2.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/form/1-0-3.json#
 namespace Gdbots\Schemas\Forms\Mixin\Form;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -18,7 +18,7 @@ final class FormV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:forms:mixin:form:1-0-2');
+        return SchemaId::fromString('pbj:gdbots:forms:mixin:form:1-0-3');
     }
 
     /**
@@ -44,6 +44,16 @@ final class FormV1Mixin extends AbstractMixin
                 ->build(),
             Fb::create('thank_you_url', T\StringType::create())
                 ->format(Format::URL())
+                ->build(),
+            Fb::create('template', T\StringType::create())
+                ->format(Format::SLUG())
+                ->build(),
+            /*
+             * A map containing (HTML, JavaScript, CSS, etc.) that is injected into
+             * a template at a named insertion point, e.g. "html_head" or "footer".
+             */
+            Fb::create('custom_code', T\TextType::create())
+                ->asAMap()
                 ->build(),
             Fb::create('fields', T\MessageType::create())
                 ->asAList()

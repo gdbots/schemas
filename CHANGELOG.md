@@ -4,6 +4,12 @@
 ## v1.6.3
 * __Add Schemas:__
   * `gdbots:forms:field:document-field`
+  * `gdbots:forms:mixin:get-upload-url-request`
+  * `gdbots:forms:mixin:get-upload-url-response`
+* __Modify Schemas:__
+  * `gdbots:forms:mixin:form` patch revision `1-0-3`
+    * Add `template` string field with format slug.
+    * Add `custom_code` text map field.
 
 
 ## v1.6.2
