@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/form/1-0-2.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/form/1-0-3.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import FileId from '@gdbots/schemas/gdbots/files/FileId';
 import Format from '@gdbots/pbj/enums/Format';
@@ -12,7 +12,7 @@ export default class FormV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:forms:mixin:form:1-0-2');
+    return SchemaId.fromString('pbj:gdbots:forms:mixin:form:1-0-3');
   }
 
   /**
@@ -37,6 +37,16 @@ export default class FormV1Mixin extends Mixin {
         .build(),
       Fb.create('thank_you_url', T.StringType.create())
         .format(Format.URL)
+        .build(),
+      Fb.create('template', T.StringType.create())
+        .format(Format.SLUG)
+        .build(),
+      /*
+       * A map containing (HTML, JavaScript, CSS, etc.) that is injected into
+       * a template at a named insertion point, e.g. "html_head" or "footer".
+       */
+      Fb.create('custom_code', T.TextType.create())
+        .asAMap()
         .build(),
       Fb.create('fields', T.MessageType.create())
         .asAList()

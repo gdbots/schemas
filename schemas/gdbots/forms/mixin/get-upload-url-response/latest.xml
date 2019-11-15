@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:forms:mixin:get-upload-url-response:1-0-0" mixin="true"
+      extends="gdbots:pbjx:mixin:response:v1">
+    <fields>
+      <field name="file_id" type="identifier" required="true">
+        <description>
+          The id to use when sending the submission.
+        </description>
+        <php-options>
+          <imports>use Gdbots\Schemas\Files\FileId;</imports>
+          <class-name>FileId::class</class-name>
+        </php-options>
+        <js-options>
+          <imports>import FileId from '@gdbots/schemas/gdbots/files/FileId';</imports>
+          <class-proto>FileId</class-proto>
+        </js-options>
+      </field>
+      <field name="s3_presigned_url" type="text" format="url">
+        <description>
+          An S3 presigned URL where the client can upload the file.
+        </description>
+      </field>
+    </fields>
+  </schema>
+</pbj-schema>
