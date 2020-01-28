@@ -40,6 +40,14 @@ class NodeRef implements Identifier
     private $id;
 
     /**
+     * When serialized we store the qname as a string so we can
+     * restore the singleton instance upon wakeup.
+     *
+     * @var string
+     */
+    private $qn;
+
+    /**
      * @param SchemaQName $qname
      * @param string      $id
      *
@@ -187,5 +195,23 @@ class NodeRef implements Identifier
             substr($hash, 2, 2),
             str_replace(['/', ':'], ['__FS__', '__CLN__'], $this->id)
         ), '/');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __sleep()
+    {
+        $this->qn = $this->qname->toString();
+        return ['qn', 'id'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __wakeup()
+    {
+        $this->qname = SchemaQName::fromString($this->qn);
+        $this->qn = null;
     }
 }

@@ -1,6 +1,10 @@
 # CHANGELOG
 
 
+## v1.6.4
+* Optimize PHP NodeRef identifier so it properly uses one static SchemaQName instance when (un)serialized.
+
+
 ## v1.6.3
 * __Add Schemas:__
   * `gdbots:forms:field:document-field`
@@ -114,7 +118,7 @@ __Modify Schemas:__
 * __Modify Schemas:__
   * `gdbots:iam:mixin:email-app` patch revision `1-0-2`
     * Add `sendgrid_lists` int map field.
-    * Add `sendgrid_senders` int map field. 
+    * Add `sendgrid_senders` int map field.
     * Add `sendgrid_suppression_group_id` int field.
 
 

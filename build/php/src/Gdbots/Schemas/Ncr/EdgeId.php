@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Gdbots\Schemas\Ncr;
 
+use Gdbots\Pbj\Assertion;
 use Gdbots\Pbj\Message;
 use Gdbots\Pbj\WellKnown\Identifier;
 use Ramsey\Uuid\Uuid;
@@ -18,21 +19,25 @@ class EdgeId implements Identifier
      */
     private static $namespaces = [];
 
-    /** @var UuidInterface */
+    /** @var string */
     private $uuid;
 
     /**
-     * @param UuidInterface $uuid
+     * @param string $uuid
      */
-    private function __construct(UuidInterface $uuid)
+    private function __construct(string $uuid)
     {
-        $this->uuid = $uuid;
+        Assertion::uuid($uuid);
+        /*
         $version = $uuid->getVersion();
         if ($version !== 5) {
             throw new \InvalidArgumentException(
                 sprintf('A name based (version 5) uuid is required.  Version provided [%s].', $version)
             );
         }
+        */
+
+        $this->uuid = $uuid;
     }
 
     /**
@@ -41,7 +46,7 @@ class EdgeId implements Identifier
      */
     public static function fromString($string)
     {
-        return new static(Uuid::fromString($string));
+        return new static($string);
     }
 
     /**
@@ -65,7 +70,7 @@ class EdgeId implements Identifier
             (string)$edge->get('to_ref')
         );
 
-        return new static(Uuid::uuid5(self::$namespaces[$vendor], $id));
+        return new static(Uuid::uuid5(self::$namespaces[$vendor], $id)->toString());
     }
 
     /**
@@ -73,7 +78,7 @@ class EdgeId implements Identifier
      */
     public function toString()
     {
-        return $this->uuid->toString();
+        return $this->uuid;
     }
 
     /**
