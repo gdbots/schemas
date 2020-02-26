@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/browser-app/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/browser-app/1-0-2.json#
 namespace Gdbots\Schemas\Iam\Mixin\BrowserApp;
 
 use Gdbots\Pbj\AbstractMixin;
@@ -15,7 +15,7 @@ final class BrowserAppV1Mixin extends AbstractMixin
      */
     public function getId()
     {
-        return SchemaId::fromString('pbj:gdbots:iam:mixin:browser-app:1-0-1');
+        return SchemaId::fromString('pbj:gdbots:iam:mixin:browser-app:1-0-2');
     }
 
     /**
@@ -29,6 +29,14 @@ final class BrowserAppV1Mixin extends AbstractMixin
              * @link https://firebase.google.com/docs/cloud-messaging/auth-server
              */
             Fb::create('fcm_api_key', T\TextType::create())
+                ->build(),
+            /*
+             * A unique identifier used to identify an app within a Firebase project that can be obtained
+             * from the Firebase console.
+             * @link https://firebase.google.com/docs/web/setup?authuser=0#config-object
+             */
+            Fb::create('fcm_app_id', T\StringType::create())
+                ->pattern('^[\w:]+$')
                 ->build(),
             /*
              * A unique identifier for your Firebase project, used in requests to the FCM v1 HTTP endpoint.

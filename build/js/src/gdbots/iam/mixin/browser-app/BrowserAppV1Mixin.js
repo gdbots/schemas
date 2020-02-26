@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/browser-app/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/browser-app/1-0-2.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
@@ -10,7 +10,7 @@ export default class BrowserAppV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:iam:mixin:browser-app:1-0-1');
+    return SchemaId.fromString('pbj:gdbots:iam:mixin:browser-app:1-0-2');
   }
 
   /**
@@ -23,6 +23,14 @@ export default class BrowserAppV1Mixin extends Mixin {
        * @link https://firebase.google.com/docs/cloud-messaging/auth-server
        */
       Fb.create('fcm_api_key', T.TextType.create())
+        .build(),
+      /*
+       * A unique identifier used to identify an app within a Firebase project that can be obtained
+       * from the Firebase console.
+       * @link https://firebase.google.com/docs/web/setup?authuser=0#config-object
+       */
+      Fb.create('fcm_app_id', T.StringType.create())
+        .pattern('^[\\w:]+$')
         .build(),
       /*
        * A unique identifier for your Firebase project, used in requests to the FCM v1 HTTP endpoint.
