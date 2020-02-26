@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## v1.6.5
+* __Modify Schemas:__
+    * `gdbots:iam:mixin:browser-app` patch revision `1-0-2`
+        * Add `fcm_app_id` string field.
+
+
 ## v1.6.4
 * Optimize PHP NodeRef identifier so it properly uses one static SchemaQName instance when (un)serialized.
 
