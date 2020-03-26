@@ -1,5 +1,5 @@
 <?php
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/select-field/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/select-field/1-0-2.json#
 namespace Gdbots\Schemas\Forms\Field;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -21,7 +21,7 @@ final class SelectFieldV1 extends AbstractMessage implements
      */
     protected static function defineSchema()
     {
-        return new Schema('pbj:gdbots:forms:field:select-field:1-0-1', __CLASS__,
+        return new Schema('pbj:gdbots:forms:field:select-field:1-0-2', __CLASS__,
             [
                 Fb::create('option_labels', T\StringType::create())
                     ->asAList()
@@ -30,6 +30,8 @@ final class SelectFieldV1 extends AbstractMessage implements
                     ->asAList()
                     ->build(),
                 Fb::create('allow_other', T\BooleanType::create())
+                    ->build(),
+                Fb::create('allow_multiple', T\BooleanType::create())
                     ->build(),
             ],
             [

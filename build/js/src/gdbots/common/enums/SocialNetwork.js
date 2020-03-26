@@ -68,6 +68,7 @@ SocialNetwork.configure({
   YOUKU: 'youku',
   FUNNYORDIE: 'funnyordie',
   TOUT: 'tout',
+  TIKTOK: 'tiktok',
   VINE: 'vine',
   CLASSMATES: 'classmates',
   MYLIFE: 'mylife',

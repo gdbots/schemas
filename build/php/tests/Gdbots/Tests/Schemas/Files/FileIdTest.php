@@ -6,6 +6,7 @@ namespace Gdbots\Tests\Schemas\Files;
 use Gdbots\Pbj\WellKnown\UuidIdentifier;
 use Gdbots\Schemas\Files\FileId;
 use PHPUnit\Framework\TestCase;
+use Ramsey\Uuid\Uuid;
 
 class FileIdTest extends TestCase
 {
@@ -17,7 +18,7 @@ class FileIdTest extends TestCase
         $this->assertSame('jpg', $id->getExt());
         $this->assertSame(
             UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(),
-            UuidIdentifier::fromString($id->getUuid())->toString()
+            UuidIdentifier::fromString(Uuid::fromString($id->getUuid()))->toString()
         );
         $this->assertSame('image/cb/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
         $this->assertSame('image/cb/o/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath('o'));
@@ -36,7 +37,7 @@ class FileIdTest extends TestCase
         $this->assertSame('jpg', $id->getExt());
         $this->assertSame(
             UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(),
-            UuidIdentifier::fromString($id->getUuid())->toString()
+            UuidIdentifier::fromString(Uuid::fromString($id->getUuid()))->toString()
         );
         $this->assertSame('image/cb/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
         $this->assertSame('image/cb/250x/2015/12/01/cb9c3c8c5c88453b960933a59ede6505_n.jpg', $id->toFilePath('250x', 'n'));
@@ -76,7 +77,7 @@ class FileIdTest extends TestCase
         );
         FileId::useLegacyFilePath(false);
 
-        $this->assertInstanceOf(UuidIdentifier::class, UuidIdentifier::fromString($id->getUuid(true)));
+        $this->assertInstanceOf(UuidIdentifier::class, UuidIdentifier::fromString(Uuid::fromString($id->getUuid())));
     }
 
     /**
