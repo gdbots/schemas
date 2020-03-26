@@ -2,9 +2,16 @@
 
 
 ## v1.6.5
+* __Add Schemas:__
+  * Add new options to enum `gdbots:common:social-network`
+    * `<option key="TIKTOK" value="tiktok"/>`
+  * `gdbots:forms:field:signature-field`
+  * `gdbots:forms:field:weight-field`
 * __Modify Schemas:__
-    * `gdbots:iam:mixin:browser-app` patch revision `1-0-2`
-        * Add `fcm_app_id` string field.
+  * `gdbots:forms:field:select-field` patch revision `1-0-2`
+    * Add `allow_multiple` boolean field.
+  * `gdbots:iam:mixin:browser-app` patch revision `1-0-2`
+    * Add `fcm_app_id` string field with pattern `^[\w:]+$`.
 
 
 ## v1.6.4
