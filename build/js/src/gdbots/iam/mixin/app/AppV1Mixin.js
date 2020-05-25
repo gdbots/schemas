@@ -1,5 +1,4 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/app/1-0-0.json#
-import AppId from '@gdbots/schemas/gdbots/iam/AppId';
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
 import SchemaId from '@gdbots/pbj/SchemaId';
@@ -18,11 +17,6 @@ export default class AppV1Mixin extends Mixin {
    */
   getFields() {
     return [
-      Fb.create('_id', T.IdentifierType.create())
-        .required()
-        .withDefault(() => AppId.generate())
-        .classProto(AppId)
-        .build(),
       /*
        * The roles determine what permissions this app will have when using the system.
        * The role itself is a node which has a set of "allow" and "deny" rules.

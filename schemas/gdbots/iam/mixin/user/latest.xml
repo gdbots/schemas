@@ -5,18 +5,6 @@
 
   <schema id="pbj:gdbots:iam:mixin:user:1-0-1" mixin="true" extends="gdbots:ncr:mixin:node:v1">
     <fields>
-      <field name="_id" type="identifier" required="true" overridable="true">
-        <php-options>
-          <imports>use Gdbots\Schemas\Iam\UserId;</imports>
-          <class-name>UserId::class</class-name>
-          <default>function() { return UserId::generate(); }</default>
-        </php-options>
-        <js-options>
-          <imports>import UserId from '@gdbots/schemas/gdbots/iam/UserId';</imports>
-          <class-proto>UserId</class-proto>
-          <default>() => UserId.generate()</default>
-        </js-options>
-      </field>
       <field name="first_name" type="string"/>
       <field name="last_name" type="string"/>
       <field name="email" type="string" format="email"/>

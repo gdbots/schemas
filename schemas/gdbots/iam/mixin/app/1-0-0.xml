@@ -5,18 +5,6 @@
 
   <schema id="pbj:gdbots:iam:mixin:app:1-0-0" mixin="true" extends="gdbots:ncr:mixin:node:v1">
     <fields>
-      <field name="_id" type="identifier" required="true">
-        <php-options>
-          <imports>use Gdbots\Schemas\Iam\AppId;</imports>
-          <class-name>AppId::class</class-name>
-          <default>function() { return AppId::generate(); }</default>
-        </php-options>
-        <js-options>
-          <imports>import AppId from '@gdbots/schemas/gdbots/iam/AppId';</imports>
-          <class-proto>AppId</class-proto>
-          <default>() => AppId.generate()</default>
-        </js-options>
-      </field>
       <field name="roles" type="node-ref" rule="set">
         <description>
           The roles determine what permissions this app will have when using the system.

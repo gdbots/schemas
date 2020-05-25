@@ -20,7 +20,7 @@
         <js-options>
           <imports>import UuidIdentifier from '@gdbots/pbj/well-known/UuidIdentifier';</imports>
           <class-proto>UuidIdentifier</class-proto>
-          <default>() => UuidIdentifier.generate()</default>
+          <default>UuidIdentifier.generate</default>
         </js-options>
       </field>
       <field name="status" type="string-enum">

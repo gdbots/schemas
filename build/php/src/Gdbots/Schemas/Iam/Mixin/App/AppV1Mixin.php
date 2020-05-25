@@ -8,7 +8,6 @@ use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Iam\AppId;
 
 final class AppV1Mixin
 {
@@ -16,11 +15,9 @@ final class AppV1Mixin
     const SCHEMA_CURIE = 'gdbots:iam:mixin:app';
     const SCHEMA_CURIE_MAJOR = 'gdbots:iam:mixin:app:v1';
 
-    const _ID_FIELD = '_id';
     const ROLES_FIELD = 'roles';
 
     const FIELDS = [
-      self::_ID_FIELD,
       self::ROLES_FIELD,
     ];
 
@@ -42,11 +39,6 @@ final class AppV1Mixin
     public static function getFields(): array
     {
         return [
-            Fb::create(self::_ID_FIELD, T\IdentifierType::create())
-                ->required()
-                ->withDefault(function() { return AppId::generate(); })
-                ->className(AppId::class)
-                ->build(),
             /*
              * The roles determine what permissions this app will have when using the system.
              * The role itself is a node which has a set of "allow" and "deny" rules.

@@ -9,7 +9,6 @@ use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Iam\UserId;
 
 final class UserV1Mixin
 {
@@ -17,7 +16,6 @@ final class UserV1Mixin
     const SCHEMA_CURIE = 'gdbots:iam:mixin:user';
     const SCHEMA_CURIE_MAJOR = 'gdbots:iam:mixin:user:v1';
 
-    const _ID_FIELD = '_id';
     const FIRST_NAME_FIELD = 'first_name';
     const LAST_NAME_FIELD = 'last_name';
     const EMAIL_FIELD = 'email';
@@ -29,7 +27,6 @@ final class UserV1Mixin
     const ROLES_FIELD = 'roles';
 
     const FIELDS = [
-      self::_ID_FIELD,
       self::FIRST_NAME_FIELD,
       self::LAST_NAME_FIELD,
       self::EMAIL_FIELD,
@@ -59,12 +56,6 @@ final class UserV1Mixin
     public static function getFields(): array
     {
         return [
-            Fb::create(self::_ID_FIELD, T\IdentifierType::create())
-                ->required()
-                ->withDefault(function() { return UserId::generate(); })
-                ->className(UserId::class)
-                ->overridable(true)
-                ->build(),
             Fb::create(self::FIRST_NAME_FIELD, T\StringType::create())
                 ->build(),
             Fb::create(self::LAST_NAME_FIELD, T\StringType::create())

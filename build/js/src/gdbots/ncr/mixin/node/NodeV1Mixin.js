@@ -27,7 +27,7 @@ export default class NodeV1Mixin extends Mixin {
        */
       Fb.create('_id', T.IdentifierType.create())
         .required()
-        .withDefault(() => UuidIdentifier.generate())
+        .withDefault(UuidIdentifier.generate)
         .classProto(UuidIdentifier)
         .overridable(true)
         .build(),

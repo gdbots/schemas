@@ -4,7 +4,6 @@ import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
-import UserId from '@gdbots/schemas/gdbots/iam/UserId';
 
 export default class UserV1Mixin extends Mixin {
   /**
@@ -19,12 +18,6 @@ export default class UserV1Mixin extends Mixin {
    */
   getFields() {
     return [
-      Fb.create('_id', T.IdentifierType.create())
-        .required()
-        .withDefault(() => UserId.generate())
-        .classProto(UserId)
-        .overridable(true)
-        .build(),
       Fb.create('first_name', T.StringType.create())
         .build(),
       Fb.create('last_name', T.StringType.create())
