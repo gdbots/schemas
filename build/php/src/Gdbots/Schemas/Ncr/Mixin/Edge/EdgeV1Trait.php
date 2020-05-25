@@ -9,22 +9,22 @@ use Gdbots\Schemas\Ncr\EdgeId;
 
 /**
  * @method static Schema schema
- * @method mixed get($fieldName, $default = null)
+ * @method mixed fget($fieldName, $default = null)
  */
 trait EdgeV1Trait
 {
     public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), EdgeId::fromEdge($this)->toString(), $tag);
+        return new MessageRef(self::schema()->getCurie(), EdgeId::fromEdge($this)->toString(), $tag);
     }
     
     public function getUriTemplateVars(): array
     {
         return [
             'edge_id' => EdgeId::fromEdge($this)->toString(),
-            'from_ref' => $this->fget('from_ref'),
-            'to_ref' => $this->fget('to_ref'),
-            'created_at' => $this->fget('created_at'),
+            'from_ref' => $this->fget(self::FROM_REF_FIELD),
+            'to_ref' => $this->fget(self::TO_REF_FIELD),
+            'created_at' => $this->fget(self::CREATED_AT_FIELD),
         ];
     }
 }

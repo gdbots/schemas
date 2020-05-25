@@ -24,18 +24,18 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->fget('_id') ?: $this->generateEtag(), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget(self::_ID_FIELD) ?: $this->generateEtag(), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
     return [
-      '_id' => $this->fget('_id'),
-      'vendor' => $this->fget('vendor'),
-      'name' => $this->fget('name'),
-      'version' => $this->fget('version'),
-      'build' => $this->fget('build'),
-      'variant' => $this->fget('variant'),
+      '_id' => $this->fget(self::_ID_FIELD),
+      'vendor' => $this->fget(self::VENDOR_FIELD),
+      'name' => $this->fget(self::NAME_FIELD),
+      'version' => $this->fget(self::VERSION_FIELD),
+      'build' => $this->fget(self::BUILD_FIELD),
+      'variant' => $this->fget(self::VARIANT_FIELD),
     ];
 }
             ]]>

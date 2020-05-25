@@ -102,11 +102,11 @@ final class EnvelopeV1 extends AbstractMessage
 
     public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->fget('envelope_id'), $tag);
+        return new MessageRef(self::schema()->getCurie(), $this->fget(self::ENVELOPE_ID_FIELD), $tag);
     }
     
     public function getUriTemplateVars(): array
     {
-        return ['envelope_id' => $this->fget('envelope_id')];
+        return ['envelope_id' => $this->fget(self::ENVELOPE_ID_FIELD)];
     }
 }

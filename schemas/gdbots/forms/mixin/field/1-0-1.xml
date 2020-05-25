@@ -50,12 +50,12 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->fget('name'), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget(self::NAME_FIELD), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
-    return ['name' => $this->fget('name')];
+    return ['name' => $this->fget(self::NAME_FIELD)];
 }
             ]]>
         </methods>

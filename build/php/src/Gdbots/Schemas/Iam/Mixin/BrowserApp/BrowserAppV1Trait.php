@@ -7,14 +7,14 @@ use Gdbots\Pbj\Schema;
 
 /**
  * @method static Schema schema
- * @method mixed get($fieldName, $default = null)
+ * @method mixed fget($fieldName, $default = null)
  */
 trait BrowserAppV1Trait
 {
     public function getUriTemplateVars(): array
     {
         return [
-            '_id' => $this->fget('_id'),
+            '_id' => $this->fget(self::_ID_FIELD),
         ];
     }
 }

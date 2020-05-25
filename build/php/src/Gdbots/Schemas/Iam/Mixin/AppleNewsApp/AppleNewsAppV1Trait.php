@@ -7,16 +7,16 @@ use Gdbots\Pbj\Schema;
 
 /**
  * @method static Schema schema
- * @method mixed get($fieldName, $default = null)
+ * @method mixed fget($fieldName, $default = null)
  */
 trait AppleNewsAppV1Trait
 {
     public function getUriTemplateVars(): array
     {
         return [
-            '_id' => $this->fget('_id'),
-            'channel_id' => $this->fget('channel_id'),
-            'api_key' => $this->fget('api_key'),
+            '_id' => $this->fget(self::_ID_FIELD),
+            'channel_id' => $this->fget(self::CHANNEL_ID_FIELD),
+            'api_key' => $this->fget(self::API_KEY_FIELD),
         ];
     }
 }

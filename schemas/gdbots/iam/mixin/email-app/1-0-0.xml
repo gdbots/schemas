@@ -15,8 +15,8 @@
 public function getUriTemplateVars(): array
 {
     return [
-        '_id' => $this->fget('_id'),
-        'sendgrid_api_key' => $this->fget('sendgrid_api_key'),
+        '_id' => $this->fget(self::_ID_FIELD),
+        'sendgrid_api_key' => $this->fget(self::SENDGRID_API_KEY_FIELD),
     ];
 }
           ]]>

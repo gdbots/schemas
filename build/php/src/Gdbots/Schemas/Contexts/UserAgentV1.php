@@ -76,7 +76,7 @@ final class UserAgentV1 extends AbstractMessage
 
     public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->generateEtag(), $tag);
+        return new MessageRef(self::schema()->getCurie(), $this->generateEtag(), $tag);
     }
     
     public function getUriTemplateVars(): array

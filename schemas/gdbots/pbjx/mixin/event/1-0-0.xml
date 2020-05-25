@@ -44,15 +44,15 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->fget('event_id'), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget(self::EVENT_ID_FIELD), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
     return [
-        'event_id' => $this->fget('event_id'),
-        'occurred_at' => $this->fget('occurred_at'),
-        'ctx_user_ref' => $this->fget('ctx_user_ref'),
+        'event_id' => $this->fget(self::EVENT_ID_FIELD),
+        'occurred_at' => $this->fget(self::OCCURRED_AT_FIELD),
+        'ctx_user_ref' => $this->fget(self::CTX_USER_REF_FIELD),
     ];
 }
             ]]>

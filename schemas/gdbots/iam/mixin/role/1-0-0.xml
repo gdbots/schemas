@@ -38,7 +38,7 @@
           <![CDATA[
 public function getUriTemplateVars(): array
 {
-    return ['_id' => $this->fget('_id')];
+    return ['_id' => $this->fget(self::_ID_FIELD)];
 }
             ]]>
         </methods>

@@ -25,15 +25,15 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->fget('project_id'), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget(self::PROJECT_ID_FIELD), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
     return [
-        'project_id' => $this->fget('project_id'),
-        'read_key' => $this->fget('read_key'),
-        'write_key' => $this->fget('write_key'),
+        'project_id' => $this->fget(self::PROJECT_ID_FIELD),
+        'read_key' => $this->fget(self::READ_KEY_FIELD),
+        'write_key' => $this->fget(self::WRITE_KEY_FIELD),
     ];
 }
             ]]>

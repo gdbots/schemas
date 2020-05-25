@@ -114,13 +114,13 @@ final class AddressV1 extends AbstractMessage
 
     public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->fget('geo_hash'), $tag);
+        return new MessageRef(self::schema()->getCurie(), $this->fget(self::GEO_HASH_FIELD), $tag);
     }
     
     public function getUriTemplateVars(): array
     {
         return [
-            'geo_hash' => $this->fget('geo_hash'),
+            'geo_hash' => $this->fget(self::GEO_HASH_FIELD),
         ];
     }
 }

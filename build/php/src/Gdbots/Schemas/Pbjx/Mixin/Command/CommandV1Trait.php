@@ -8,21 +8,21 @@ use Gdbots\Pbj\WellKnown\MessageRef;
 
 /**
  * @method static Schema schema
- * @method mixed get($fieldName, $default = null)
+ * @method mixed fget($fieldName, $default = null)
  */
 trait CommandV1Trait
 {
     public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->fget('command_id'), $tag);
+        return new MessageRef(self::schema()->getCurie(), $this->fget(self::COMMAND_ID_FIELD), $tag);
     }
     
     public function getUriTemplateVars(): array
     {
         return [
-            'command_id' => $this->fget('command_id'),
-            'occurred_at' => $this->fget('occurred_at'),
-            'ctx_user_ref' => $this->fget('ctx_user_ref'),
+            'command_id' => $this->fget(self::COMMAND_ID_FIELD),
+            'occurred_at' => $this->fget(self::OCCURRED_AT_FIELD),
+            'ctx_user_ref' => $this->fget(self::CTX_USER_REF_FIELD),
         ];
     }
 }
