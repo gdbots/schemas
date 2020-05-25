@@ -8,7 +8,6 @@ __BREAKING CHANGES__
 * Replace all identifier fields using NodeRef with new node-ref type.
 * Use PHP7 typehinting in all insertion points for php.
 * Use new fget method where possible in insertion points.
-* Deprecate all ncr mixins that represent commands/events, use the new `gdbots:ncr:command:*` and `gdbots:ncr:event:*` unless you really need your own messages.
 * Remove use of identifier classes where uuid or time-uuid can be used, e.g. UserId, AppId.
 
 

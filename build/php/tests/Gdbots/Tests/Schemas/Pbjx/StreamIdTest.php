@@ -12,8 +12,8 @@ class StreamIdTest extends TestCase
 {
     public function testTopic(): void
     {
-        $id = StreamId::fromString('acme:health-checks');
-        $this->assertSame('acme', $id->getVendor());
+        $id = StreamId::fromString('health-checks');
+
         $this->assertSame('health-checks', $id->getTopic());
         $this->assertFalse($id->hasPartition(), 'hasPartition should be false.');
         $this->assertNull($id->getPartition(), 'getPartition should be null.');
@@ -23,8 +23,8 @@ class StreamIdTest extends TestCase
 
     public function testPartition(): void
     {
-        $id = StreamId::fromString('acme:bank-account:homer-simpson');
-        $this->assertSame('acme', $id->getVendor());
+        $id = StreamId::fromString('bank-account:homer-simpson');
+
         $this->assertSame('bank-account', $id->getTopic());
         $this->assertTrue($id->hasPartition(), 'hasPartition should be true.');
         $this->assertSame('homer-simpson', $id->getPartition());
@@ -34,8 +34,8 @@ class StreamIdTest extends TestCase
 
     public function testAllParts(): void
     {
-        $id = StreamId::fromString('acme:poll.votes:batman-vs-superman:20160301.c2');
-        $this->assertSame('acme', $id->getVendor());
+        $id = StreamId::fromString('poll.votes:batman-vs-superman:20160301.c2');
+
         $this->assertSame('poll.votes', $id->getTopic());
         $this->assertTrue($id->hasPartition(), 'hasPartition should be true.');
         $this->assertSame('batman-vs-superman', $id->getPartition());
@@ -45,8 +45,8 @@ class StreamIdTest extends TestCase
 
     public function testCaseSensitive(): void
     {
-        $id = StreamId::fromString('acme:My-Topic:IS_COOL:BR0.T33n');
-        $this->assertSame('acme', $id->getVendor());
+        $id = StreamId::fromString('My-Topic:IS_COOL:BR0.T33n');
+
         $this->assertSame('My-Topic', $id->getTopic());
         $this->assertTrue($id->hasPartition(), 'hasPartition should be true.');
         $this->assertSame('IS_COOL', $id->getPartition());
@@ -56,40 +56,36 @@ class StreamIdTest extends TestCase
 
     public function testToSnsTopicName(): void
     {
-        $id = StreamId::fromString('acme:My-Topic:IS_COOL:BR0.T33n');
-        $this->assertSame('acme', $id->getVendor());
-        $this->assertSame('acme__My-Topic__IS_COOL__BR0--T33n', $id->toSnsTopicName());
+        $id = StreamId::fromString('My-Topic:IS_COOL:BR0.T33n');
+
+        $this->assertSame('My-Topic__IS_COOL__BR0--T33n', $id->toSnsTopicName());
         $this->assertTrue($id->equals(StreamId::fromSnsTopicName($id->toSnsTopicName())));
         $this->assertSame($id->toString(), StreamId::fromSnsTopicName($id->toSnsTopicName())->toString());
     }
 
     public function testToFilePath(): void
     {
-        $id = StreamId::fromString('acme:My-Topic:IS_COOL:BR0.T33n');
-        $this->assertSame('acme', $id->getVendor());
-        $this->assertSame('acme:My-Topic:IS_COOL:BR0.T33n', $id->toString());
-        $this->assertSame('acme/My-Topic/8a/9f/IS_COOL/BR0.T33n', $id->toFilePath());
+        $id = StreamId::fromString('My-Topic:IS_COOL:BR0.T33n');
+        $this->assertSame('My-Topic:IS_COOL:BR0.T33n', $id->toString());
+        $this->assertSame('My-Topic/8a/9f/IS_COOL/BR0.T33n', $id->toFilePath());
         $this->assertTrue($id->equals(StreamId::fromFilePath($id->toFilePath())));
         $this->assertSame($id->toString(), StreamId::fromFilePath($id->toFilePath())->toString());
 
-        $id = StreamId::fromString('acme:My-Topic:IS_COOL');
-        $this->assertSame('acme', $id->getVendor());
-        $this->assertSame('acme:My-Topic:IS_COOL', $id->toString());
-        $this->assertSame('acme/My-Topic/8a/9f/IS_COOL', $id->toFilePath());
+        $id = StreamId::fromString('My-Topic:IS_COOL');
+        $this->assertSame('My-Topic:IS_COOL', $id->toString());
+        $this->assertSame('My-Topic/8a/9f/IS_COOL', $id->toFilePath());
         $this->assertTrue($id->equals(StreamId::fromFilePath($id->toFilePath())));
         $this->assertSame($id->toString(), StreamId::fromFilePath($id->toFilePath())->toString());
 
-        $id = StreamId::fromString('acme:My-Topic');
-        $this->assertSame('acme', $id->getVendor());
-        $this->assertSame('acme:My-Topic', $id->toString());
-        $this->assertSame('acme/My-Topic', $id->toFilePath());
+        $id = StreamId::fromString('My-Topic');
+        $this->assertSame('My-Topic', $id->toString());
+        $this->assertSame('My-Topic', $id->toFilePath());
         $this->assertTrue($id->equals(StreamId::fromFilePath($id->toFilePath())));
         $this->assertSame($id->toString(), StreamId::fromFilePath($id->toFilePath())->toString());
 
-        $id = StreamId::fromString('acme:My-Topic:IS_COOL:0');
-        $this->assertSame('acme', $id->getVendor());
-        $this->assertSame('acme:My-Topic:IS_COOL:0', $id->toString());
-        $this->assertSame('acme/My-Topic/8a/9f/IS_COOL/0', $id->toFilePath());
+        $id = StreamId::fromString('My-Topic:IS_COOL:0');
+        $this->assertSame('My-Topic:IS_COOL:0', $id->toString());
+        $this->assertSame('My-Topic/8a/9f/IS_COOL/0', $id->toFilePath());
         $this->assertTrue($id->equals(StreamId::fromFilePath($id->toFilePath())));
         $this->assertSame($id->toString(), StreamId::fromFilePath($id->toFilePath())->toString());
     }
