@@ -46,29 +46,14 @@ final class FileId implements Identifier
      *
      * @var bool
      */
-    private static $useLegacyFilePath = false;
+    private static bool $useLegacyFilePath = false;
 
-    /** @var string */
-    private $id;
+    private string $id;
+    private string $type;
+    private string $ext;
+    private string $date;
+    private string $uuid;
 
-    /** @var string */
-    private $type;
-
-    /** @var string */
-    private $ext;
-
-    /** @var string */
-    private $date;
-
-    /** @var string */
-    private $uuid;
-
-    /**
-     * @param string $type
-     * @param string $ext
-     * @param string $date
-     * @param string $uuid
-     */
     private function __construct(string $type, string $ext, string $date, string $uuid)
     {
         $this->type = $type;
@@ -78,13 +63,7 @@ final class FileId implements Identifier
         $this->id = sprintf('%s_%s_%s_%s', $type, $ext, $this->date, $this->uuid);
     }
 
-    /**
-     * {@inheritdoc}
-     * @return static
-     *
-     * @throws AssertionFailed
-     */
-    public static function fromString($string)
+    public static function fromString(string $string): self
     {
         if (!preg_match(self::VALID_PATTERN, $string, $matches)) {
             throw new AssertionFailed(
@@ -108,7 +87,7 @@ final class FileId implements Identifier
      * @param \DateTimeInterface $date
      * @param UuidIdentifier     $uuid Uuid for the file, if not supplied a v4 uuid will be created.
      *
-     * @return FileId
+     * @return self
      *
      * @throws AssertionFailed
      */
@@ -137,17 +116,11 @@ final class FileId implements Identifier
         return $fileId;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
     public function getExt(): string
     {
         return $this->ext;
@@ -160,7 +133,7 @@ final class FileId implements Identifier
      */
     public function getDate(bool $asObject = false)
     {
-        if (true === $asObject) {
+        if ($asObject) {
             return \DateTimeImmutable::createFromFormat('!Ymd', $this->date, new \DateTimeZone('UTC'));
         }
 
@@ -174,41 +147,36 @@ final class FileId implements Identifier
      */
     public function getUuid(bool $asObject = false)
     {
-        if (true === $asObject) {
-            return UuidIdentifier::fromString($this->uuid);
+        if ($asObject) {
+            $uuid = [
+                substr($this->uuid, 0, 8),
+                substr($this->uuid, 8, 4),
+                substr($this->uuid, 12, 4),
+                substr($this->uuid, 16, 4),
+                substr($this->uuid, 20, 12),
+            ];
+            return UuidIdentifier::fromString(implode('-', $uuid));
         }
 
         return $this->uuid;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function toString()
+    public function toString(): string
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __toString()
     {
         return $this->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize()
     {
         return $this->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function equals(Identifier $other)
+    public function equals(Identifier $other): bool
     {
         return $this == $other;
     }
@@ -259,9 +227,6 @@ final class FileId implements Identifier
         );
     }
 
-    /**
-     * @param bool $option
-     */
     public static function useLegacyFilePath(bool $option = true): void
     {
         self::$useLegacyFilePath = $option;

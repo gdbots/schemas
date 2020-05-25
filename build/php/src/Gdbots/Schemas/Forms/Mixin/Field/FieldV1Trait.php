@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Forms\Mixin\Field;
 
-use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
+use Gdbots\Pbj\WellKnown\MessageRef;
 
 /**
  * @method static Schema schema
@@ -11,20 +12,13 @@ use Gdbots\Pbj\Schema;
  */
 trait FieldV1Trait
 {
-    /**
-     * @param string $tag
-     * @return MessageRef
-     */
-    public function generateMessageRef($tag = null)
+    public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->get('name'), $tag);
+        return new MessageRef(static::schema()->getCurie(), $this->fget('name'), $tag);
     }
     
-    /**
-     * @return array
-     */
-    public function getUriTemplateVars()
+    public function getUriTemplateVars(): array
     {
-        return ['name' => $this->get('name')];
+        return ['name' => $this->fget('name')];
     }
 }

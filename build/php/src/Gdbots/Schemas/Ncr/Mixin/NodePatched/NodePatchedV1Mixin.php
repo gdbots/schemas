@@ -1,38 +1,54 @@
 <?php
+declare(strict_types=1);
+
 // @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/node-patched/1-0-0.json#
 namespace Gdbots\Schemas\Ncr\Mixin\NodePatched;
 
-use Gdbots\Pbj\AbstractMixin;
+use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Ncr\NodeRef;
 
-final class NodePatchedV1Mixin extends AbstractMixin
+final class NodePatchedV1Mixin
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
+    const SCHEMA_ID = 'pbj:gdbots:ncr:mixin:node-patched:1-0-0';
+    const SCHEMA_CURIE = 'gdbots:ncr:mixin:node-patched';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:ncr:mixin:node-patched:v1';
+
+    const NODE_REF_FIELD = 'node_ref';
+    const PATHS_FIELD = 'paths';
+
+    const FIELDS = [
+      self::NODE_REF_FIELD,
+      self::PATHS_FIELD,
+    ];
+
+    final private function __construct() {}
+
+    public static function getId(): SchemaId
     {
-        return SchemaId::fromString('pbj:gdbots:ncr:mixin:node-patched:1-0-0');
+        return SchemaId::fromString(self::SCHEMA_ID);
+    }
+
+    public static function hasField(string $name): bool
+    {
+        return in_array($name, self::FIELDS, true);
     }
 
     /**
-     * {@inheritdoc}
+     * @return Field[]
      */
-    public function getFields()
+    public static function getFields(): array
     {
         return [
-            Fb::create('node_ref', T\IdentifierType::create())
+            Fb::create(self::NODE_REF_FIELD, T\NodeRefType::create())
                 ->required()
-                ->className(NodeRef::class)
                 ->build(),
             /*
              * The names of the fields this patch event should apply changes to.
              * Nested paths can be referenced using dot notation.
              */
-            Fb::create('paths', T\StringType::create())
+            Fb::create(self::PATHS_FIELD, T\StringType::create())
                 ->asASet()
                 ->pattern('^[a-zA-Z_]{1}[\w\.]*$')
                 ->build(),

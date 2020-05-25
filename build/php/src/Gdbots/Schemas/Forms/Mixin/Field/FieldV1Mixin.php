@@ -1,35 +1,67 @@
 <?php
+declare(strict_types=1);
+
 // @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/field/1-0-2.json#
 namespace Gdbots\Schemas\Forms\Mixin\Field;
 
-use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\Enum\Format;
+use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Forms\Enum\PiiImpact;
 
-final class FieldV1Mixin extends AbstractMixin
+final class FieldV1Mixin
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
+    const SCHEMA_ID = 'pbj:gdbots:forms:mixin:field:1-0-2';
+    const SCHEMA_CURIE = 'gdbots:forms:mixin:field';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:forms:mixin:field:v1';
+
+    const NAME_FIELD = 'name';
+    const MAPS_TO_FIELD = 'maps_to';
+    const LABEL_FIELD = 'label';
+    const PLACEHOLDER_FIELD = 'placeholder';
+    const DESCRIPTION_FIELD = 'description';
+    const IS_REQUIRED_FIELD = 'is_required';
+    const LINK_TEXT_FIELD = 'link_text';
+    const LINK_URL_FIELD = 'link_url';
+    const PII_IMPACT_FIELD = 'pii_impact';
+
+    const FIELDS = [
+      self::NAME_FIELD,
+      self::MAPS_TO_FIELD,
+      self::LABEL_FIELD,
+      self::PLACEHOLDER_FIELD,
+      self::DESCRIPTION_FIELD,
+      self::IS_REQUIRED_FIELD,
+      self::LINK_TEXT_FIELD,
+      self::LINK_URL_FIELD,
+      self::PII_IMPACT_FIELD,
+    ];
+
+    final private function __construct() {}
+
+    public static function getId(): SchemaId
     {
-        return SchemaId::fromString('pbj:gdbots:forms:mixin:field:1-0-2');
+        return SchemaId::fromString(self::SCHEMA_ID);
+    }
+
+    public static function hasField(string $name): bool
+    {
+        return in_array($name, self::FIELDS, true);
     }
 
     /**
-     * {@inheritdoc}
+     * @return Field[]
      */
-    public function getFields()
+    public static function getFields(): array
     {
         return [
             /*
              * A unique identifier (within the form) for the field. This value
              * is not shown to the user and should NOT change once set.
              */
-            Fb::create('name', T\StringType::create())
+            Fb::create(self::NAME_FIELD, T\StringType::create())
                 ->required()
                 ->maxLength(127)
                 ->pattern('^[a-zA-Z_]{1}[\w-]*$')
@@ -39,7 +71,7 @@ final class FieldV1Mixin extends AbstractMixin
              * will go to the "cf" field which is a "dynamic-field" list containing
              * all answers filled out on the form (ref "gdbots:forms:mixin:send-submission").
              */
-            Fb::create('maps_to', T\StringType::create())
+            Fb::create(self::MAPS_TO_FIELD, T\StringType::create())
                 ->maxLength(127)
                 ->pattern('^[a-zA-Z_]{1}\w*$')
                 ->withDefault("cf")
@@ -47,29 +79,29 @@ final class FieldV1Mixin extends AbstractMixin
             /*
              * The main text for the question/field.
              */
-            Fb::create('label', T\StringType::create())
+            Fb::create(self::LABEL_FIELD, T\StringType::create())
                 ->build(),
-            Fb::create('placeholder', T\StringType::create())
+            Fb::create(self::PLACEHOLDER_FIELD, T\StringType::create())
                 ->build(),
             /*
              * A short description to better explain this field.
              */
-            Fb::create('description', T\TextType::create())
+            Fb::create(self::DESCRIPTION_FIELD, T\TextType::create())
                 ->build(),
-            Fb::create('is_required', T\BooleanType::create())
+            Fb::create(self::IS_REQUIRED_FIELD, T\BooleanType::create())
                 ->build(),
             /*
              * The text that will replace the token "{link}" within the label or description.
              */
-            Fb::create('link_text', T\StringType::create())
+            Fb::create(self::LINK_TEXT_FIELD, T\StringType::create())
                 ->build(),
             /*
              * The URL to use for the replaced token "{link}" within the label or description.
              */
-            Fb::create('link_url', T\StringType::create())
+            Fb::create(self::LINK_URL_FIELD, T\StringType::create())
                 ->format(Format::URL())
                 ->build(),
-            Fb::create('pii_impact', T\StringEnumType::create())
+            Fb::create(self::PII_IMPACT_FIELD, T\StringEnumType::create())
                 ->className(PiiImpact::class)
                 ->build(),
         ];

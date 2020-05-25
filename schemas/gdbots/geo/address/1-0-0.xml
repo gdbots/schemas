@@ -32,28 +32,20 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->get('geo_hash'), $tag);
+    return new MessageRef(static::schema()->getCurie(), $this->fget('geo_hash'), $tag);
 }
 
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
     return [
-        'geo_hash' => $this->get('geo_hash'),
-        'geo_point' => (string)$this->get('geo_point'),
+        'geo_hash' => $this->fget('geo_hash'),
     ];
 }
             ]]>
@@ -84,7 +76,6 @@ generateMessageRef(tag = null) {
 getUriTemplateVars() {
   return {
     geo_hash: this.get('geo_hash'),
-    geo_point: `${this.get('geo_point', '')}`,
   };
 }
             ]]>

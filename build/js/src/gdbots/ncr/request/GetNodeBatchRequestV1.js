@@ -1,7 +1,5 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-batch-request/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import GdbotsNcrGetNodeBatchRequestV1Mixin from '@gdbots/schemas/gdbots/ncr/mixin/get-node-batch-request/GetNodeBatchRequestV1Mixin';
-import GdbotsPbjxRequestV1Mixin from '@gdbots/schemas/gdbots/pbjx/mixin/request/RequestV1Mixin';
 import GdbotsPbjxRequestV1Trait from '@gdbots/schemas/gdbots/pbjx/mixin/request/RequestV1Trait';
 import Message from '@gdbots/pbj/Message';
 import MessageResolver from '@gdbots/pbj/MessageResolver';

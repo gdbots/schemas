@@ -5,10 +5,11 @@ namespace Gdbots\Schemas\Ncr;
 
 use Gdbots\Pbj\Message;
 use Gdbots\Pbj\WellKnown\Identifier;
+use Ramsey\Uuid\Rfc4122\UuidV5;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
-class EdgeId implements Identifier
+final class EdgeId implements Identifier
 {
     /**
      * For each vendor namespace we create version 5 uuid so
@@ -16,39 +17,23 @@ class EdgeId implements Identifier
      *
      * @var UuidInterface[]
      */
-    private static $namespaces = [];
+    private static array $namespaces = [];
 
-    /** @var UuidInterface */
-    private $uuid;
+    private UuidInterface $uuid;
 
-    /**
-     * @param UuidInterface $uuid
-     */
     private function __construct(UuidInterface $uuid)
     {
         $this->uuid = $uuid;
-        $version = $uuid->getVersion();
-        if ($version !== 5) {
-            throw new \InvalidArgumentException(
-                sprintf('A name based (version 5) uuid is required.  Version provided [%s].', $version)
-            );
+        if (!$uuid instanceof UuidV5) {
+            throw new \InvalidArgumentException('A name based (version 5) uuid is required.');
         }
     }
 
-    /**
-     * {@inheritdoc}
-     * @return static
-     */
-    public static function fromString($string)
+    public static function fromString($string): self
     {
         return new static(Uuid::fromString($string));
     }
 
-    /**
-     * @param Message $edge
-     *
-     * @return static
-     */
     public static function fromEdge(Message $edge): self
     {
         $schemaId = $edge::schema()->getId();
@@ -60,42 +45,30 @@ class EdgeId implements Identifier
 
         $id = sprintf(
             '%s~%s~%s',
-            (string)$edge->get('from_ref'),
+            (string)$edge->fget('from_ref'),
             $schemaId->getMessage(),
-            (string)$edge->get('to_ref')
+            (string)$edge->fget('to_ref')
         );
 
         return new static(Uuid::uuid5(self::$namespaces[$vendor], $id));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function toString()
+    public function toString(): string
     {
         return $this->uuid->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __toString()
     {
         return $this->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize()
     {
         return $this->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function equals(Identifier $other)
+    public function equals(Identifier $other): bool
     {
         return $this == $other;
     }

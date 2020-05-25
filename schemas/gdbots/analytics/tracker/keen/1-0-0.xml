@@ -18,29 +18,22 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->get('project_id'), $tag);
+    return new MessageRef(static::schema()->getCurie(), $this->fget('project_id'), $tag);
 }
 
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
     return [
-        'project_id' => $this->get('project_id'),
-        'read_key' => $this->get('read_key'),
-        'write_key' => $this->get('write_key'),
+        'project_id' => $this->fget('project_id'),
+        'read_key' => $this->fget('read_key'),
+        'write_key' => $this->fget('write_key'),
     ];
 }
             ]]>

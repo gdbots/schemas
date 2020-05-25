@@ -3,7 +3,6 @@ import Fb from '@gdbots/pbj/FieldBuilder';
 import FileId from '@gdbots/schemas/gdbots/files/FileId';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 
@@ -20,9 +19,8 @@ export default class SendSubmissionV1Mixin extends Mixin {
    */
   getFields() {
     return [
-      Fb.create('form_ref', T.IdentifierType.create())
+      Fb.create('form_ref', T.NodeRefType.create())
         .required()
-        .classProto(NodeRef)
         .build(),
       /*
        * Contains answers submitted from the fields on the form.

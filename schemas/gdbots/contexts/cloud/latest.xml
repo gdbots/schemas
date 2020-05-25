@@ -16,31 +16,24 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
     return new MessageRef(static::schema()->getCurie(), $this->generateEtag(), $tag);
 }
 
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
     return [
-      'provider' => $this->get('provider'),
-      'region' => $this->get('region'),
-      'zone' => $this->get('zone'),
-      'instance_id' => $this->get('instance_id'),
-      'instance_type' => $this->get('instance_type'),
+      'provider' => $this->fget('provider'),
+      'region' => $this->fget('region'),
+      'zone' => $this->fget('zone'),
+      'instance_id' => $this->fget('instance_id'),
+      'instance_type' => $this->fget('instance_type'),
     ];
 }
             ]]>

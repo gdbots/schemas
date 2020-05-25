@@ -1,7 +1,6 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/lockable/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 
@@ -27,8 +26,7 @@ export default class LockableV1Mixin extends Mixin {
       /*
        * The user (or app) that has "locked" the node.
        */
-      Fb.create('locked_by_ref', T.IdentifierType.create())
-        .classProto(NodeRef)
+      Fb.create('locked_by_ref', T.NodeRefType.create())
         .build(),
     ];
   }

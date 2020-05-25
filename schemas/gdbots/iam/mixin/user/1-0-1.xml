@@ -39,19 +39,11 @@
           Indicates that the user is a staff member and has access to the cms, dashboard, etc.
         </description>
       </field>
-      <field name="roles" type="identifier" rule="set">
+      <field name="roles" type="node-ref" rule="set">
         <description>
           A user's roles determine what permissions they'll have when using the system.
           The role itself is a node which has a set of "allow" and "deny" rules.
         </description>
-        <php-options>
-          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
-          <class-name>NodeRef::class</class-name>
-        </php-options>
-        <js-options>
-          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
-          <class-proto>NodeRef</class-proto>
-        </js-options>
       </field>
     </fields>
 
@@ -60,12 +52,9 @@
         <imports/>
         <methods>
           <![CDATA[
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
-    return ['_id' => (string)$this->get('_id')];
+    return ['_id' => $this->fget('_id')];
 }
             ]]>
         </methods>

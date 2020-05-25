@@ -1,32 +1,46 @@
 <?php
+declare(strict_types=1);
+
 // @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/list-all-roles-response/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\ListAllRolesResponse;
 
-use Gdbots\Pbj\AbstractMixin;
+use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Ncr\NodeRef;
 
-final class ListAllRolesResponseV1Mixin extends AbstractMixin
+final class ListAllRolesResponseV1Mixin
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
+    const SCHEMA_ID = 'pbj:gdbots:iam:mixin:list-all-roles-response:1-0-0';
+    const SCHEMA_CURIE = 'gdbots:iam:mixin:list-all-roles-response';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:iam:mixin:list-all-roles-response:v1';
+
+    const ROLES_FIELD = 'roles';
+
+    const FIELDS = [
+      self::ROLES_FIELD,
+    ];
+
+    final private function __construct() {}
+
+    public static function getId(): SchemaId
     {
-        return SchemaId::fromString('pbj:gdbots:iam:mixin:list-all-roles-response:1-0-0');
+        return SchemaId::fromString(self::SCHEMA_ID);
+    }
+
+    public static function hasField(string $name): bool
+    {
+        return in_array($name, self::FIELDS, true);
     }
 
     /**
-     * {@inheritdoc}
+     * @return Field[]
      */
-    public function getFields()
+    public static function getFields(): array
     {
         return [
-            Fb::create('roles', T\IdentifierType::create())
+            Fb::create(self::ROLES_FIELD, T\NodeRefType::create())
                 ->asASet()
-                ->className(NodeRef::class)
                 ->build(),
         ];
     }

@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Pbjx\Mixin\Request;
 
-use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
+use Gdbots\Pbj\WellKnown\MessageRef;
 
 /**
  * @method static Schema schema
@@ -11,24 +12,17 @@ use Gdbots\Pbj\Schema;
  */
 trait RequestV1Trait
 {
-    /**
-     * @param string $tag
-     * @return MessageRef
-     */
-    public function generateMessageRef($tag = null)
+    public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->get('request_id'), $tag);
+        return new MessageRef(static::schema()->getCurie(), $this->fget('request_id'), $tag);
     }
     
-    /**
-     * @return array
-     */
-    public function getUriTemplateVars()
+    public function getUriTemplateVars(): array
     {
         return [
-            'request_id' => (string)$this->get('request_id'),
-            'occurred_at' => (string)$this->get('occurred_at'),
-            'ctx_user_ref' => (string)$this->get('ctx_user_ref'),
+            'request_id' => $this->fget('request_id'),
+            'occurred_at' => $this->fget('occurred_at'),
+            'ctx_user_ref' => $this->fget('ctx_user_ref'),
         ];
     }
 }

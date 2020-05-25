@@ -40,26 +40,19 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->get('envelope_id'), $tag);
+    return new MessageRef(static::schema()->getCurie(), $this->fget('envelope_id'), $tag);
 }
 
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
-    return ['envelope_id' => (string)$this->get('envelope_id')];
+    return ['envelope_id' => $this->fget('envelope_id')];
 }
             ]]>
         </methods>

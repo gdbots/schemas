@@ -86,7 +86,6 @@ export default class AddressV1 extends Message {
   getUriTemplateVars() {
     return {
       geo_hash: this.get('geo_hash'),
-      geo_point: `${this.get('geo_point', '')}`,
     };
   }
 }

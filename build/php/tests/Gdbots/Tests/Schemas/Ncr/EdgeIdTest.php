@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Tests\Schemas\Ncr;
 
+use Gdbots\Pbj\WellKnown\NodeRef;
 use Gdbots\Schemas\Ncr\EdgeId;
-use Gdbots\Schemas\Ncr\NodeRef;
 use Gdbots\Tests\Schemas\Ncr\Fixtures\SampleEdge;
 use PHPUnit\Framework\TestCase;
 

@@ -2,7 +2,6 @@
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 import UserId from '@gdbots/schemas/gdbots/iam/UserId';
@@ -64,9 +63,8 @@ export default class UserV1Mixin extends Mixin {
        * A user's roles determine what permissions they'll have when using the system.
        * The role itself is a node which has a set of "allow" and "deny" rules.
        */
-      Fb.create('roles', T.IdentifierType.create())
+      Fb.create('roles', T.NodeRefType.create())
         .asASet()
-        .classProto(NodeRef)
         .build(),
     ];
   }

@@ -1,6 +1,5 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/request/echo-request/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import GdbotsPbjxRequestV1Mixin from '@gdbots/schemas/gdbots/pbjx/mixin/request/RequestV1Mixin';
 import GdbotsPbjxRequestV1Trait from '@gdbots/schemas/gdbots/pbjx/mixin/request/RequestV1Trait';
 import Message from '@gdbots/pbj/Message';
 import MessageResolver from '@gdbots/pbj/MessageResolver';

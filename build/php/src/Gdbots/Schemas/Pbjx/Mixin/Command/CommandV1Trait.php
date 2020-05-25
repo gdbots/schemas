@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Pbjx\Mixin\Command;
 
-use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
+use Gdbots\Pbj\WellKnown\MessageRef;
 
 /**
  * @method static Schema schema
@@ -11,24 +12,17 @@ use Gdbots\Pbj\Schema;
  */
 trait CommandV1Trait
 {
-    /**
-     * @param string $tag
-     * @return MessageRef
-     */
-    public function generateMessageRef($tag = null)
+    public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->get('command_id'), $tag);
+        return new MessageRef(static::schema()->getCurie(), $this->fget('command_id'), $tag);
     }
     
-    /**
-     * @return array
-     */
-    public function getUriTemplateVars()
+    public function getUriTemplateVars(): array
     {
         return [
-            'command_id' => (string)$this->get('command_id'),
-            'occurred_at' => (string)$this->get('occurred_at'),
-            'ctx_user_ref' => (string)$this->get('ctx_user_ref'),
+            'command_id' => $this->fget('command_id'),
+            'occurred_at' => $this->fget('occurred_at'),
+            'ctx_user_ref' => $this->fget('ctx_user_ref'),
         ];
     }
 }

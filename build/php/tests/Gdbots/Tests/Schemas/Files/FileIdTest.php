@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace Gdbots\Tests\Schemas\Files;
 
+use Gdbots\Pbj\Exception\AssertionFailed;
 use Gdbots\Pbj\WellKnown\UuidIdentifier;
 use Gdbots\Schemas\Files\FileId;
 use PHPUnit\Framework\TestCase;
 
 class FileIdTest extends TestCase
 {
-    public function testFromString()
+    public function testFromString(): void
     {
         $id = FileId::fromString('image_jpg_20151201_cb9c3c8c5c88453b960933a59ede6505');
 
@@ -17,7 +18,7 @@ class FileIdTest extends TestCase
         $this->assertSame('jpg', $id->getExt());
         $this->assertSame(
             UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(),
-            UuidIdentifier::fromString($id->getUuid())->toString()
+            UuidIdentifier::fromString($id->getUuid(true)->toString())->toString()
         );
         $this->assertSame('image/cb/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
         $this->assertSame('image/cb/o/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath('o'));
@@ -28,7 +29,7 @@ class FileIdTest extends TestCase
         FileId::useLegacyFilePath(false);
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $id = FileId::create('image', 'jpg', \DateTimeImmutable::createFromFormat('Ymd', '20151201'), UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505'));
 
@@ -36,7 +37,7 @@ class FileIdTest extends TestCase
         $this->assertSame('jpg', $id->getExt());
         $this->assertSame(
             UuidIdentifier::fromString('cb9c3c8c-5c88-453b-9609-33a59ede6505')->toString(),
-            UuidIdentifier::fromString($id->getUuid())->toString()
+            UuidIdentifier::fromString($id->getUuid(true)->toString())->toString()
         );
         $this->assertSame('image/cb/2015/12/01/cb9c3c8c5c88453b960933a59ede6505.jpg', $id->toFilePath());
         $this->assertSame('image/cb/250x/2015/12/01/cb9c3c8c5c88453b960933a59ede6505_n.jpg', $id->toFilePath('250x', 'n'));
@@ -47,7 +48,7 @@ class FileIdTest extends TestCase
         FileId::useLegacyFilePath(false);
     }
 
-    public function testGenerate()
+    public function testGenerate(): void
     {
         $date = new \DateTimeImmutable();
         $id = FileId::create('image', 'jpg');
@@ -76,24 +77,21 @@ class FileIdTest extends TestCase
         );
         FileId::useLegacyFilePath(false);
 
-        $this->assertInstanceOf(UuidIdentifier::class, UuidIdentifier::fromString($id->getUuid(true)));
+        $this->assertInstanceOf(UuidIdentifier::class, UuidIdentifier::fromString($id->getUuid(true)->toString()));
     }
 
     /**
      * @dataProvider getInvalidIds
-     * @expectedException \Gdbots\Pbj\Exception\AssertionFailed
      *
      * @param string $string
      */
-    public function testInvalid($string)
+    public function testInvalid(string $string): void
     {
+        $this->expectException(AssertionFailed::class);
         FileId::fromString($string);
     }
 
-    /**
-     * @return array
-     */
-    public function getInvalidIds()
+    public function getInvalidIds(): array
     {
         return [
             ['test::what'],

@@ -1,5 +1,4 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/gender-field/1-0-0.json#
-import GdbotsFormsFieldV1Mixin from '@gdbots/schemas/gdbots/forms/mixin/field/FieldV1Mixin';
 import GdbotsFormsFieldV1Trait from '@gdbots/schemas/gdbots/forms/mixin/field/FieldV1Trait';
 import Message from '@gdbots/pbj/Message';
 import MessageResolver from '@gdbots/pbj/MessageResolver';

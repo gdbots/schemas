@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Iam\Mixin\AppleNewsApp;
 
@@ -10,15 +11,12 @@ use Gdbots\Pbj\Schema;
  */
 trait AppleNewsAppV1Trait
 {
-    /**
-     * @return array
-     */
-    public function getUriTemplateVars()
+    public function getUriTemplateVars(): array
     {
         return [
-            '_id' => (string)$this->get('_id'),
-            'channel_id' => $this->get('channel_id'),
-            'api_key' => $this->get('api_key'),
+            '_id' => $this->fget('_id'),
+            'channel_id' => $this->fget('channel_id'),
+            'api_key' => $this->fget('api_key'),
         ];
     }
 }

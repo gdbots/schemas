@@ -1,35 +1,64 @@
 <?php
+declare(strict_types=1);
+
 // @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/response/1-0-1.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\Response;
 
-use Gdbots\Pbj\AbstractMixin;
+use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Pbjx\Mixin\Request\Request as GdbotsPbjxRequest;
 
-final class ResponseV1Mixin extends AbstractMixin
+final class ResponseV1Mixin
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
+    const SCHEMA_ID = 'pbj:gdbots:pbjx:mixin:response:1-0-1';
+    const SCHEMA_CURIE = 'gdbots:pbjx:mixin:response';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:pbjx:mixin:response:v1';
+
+    const RESPONSE_ID_FIELD = 'response_id';
+    const CREATED_AT_FIELD = 'created_at';
+    const CTX_REQUEST_REF_FIELD = 'ctx_request_ref';
+    const CTX_REQUEST_FIELD = 'ctx_request';
+    const CTX_CORRELATOR_REF_FIELD = 'ctx_correlator_ref';
+    const DEREFS_FIELD = 'derefs';
+    const LINKS_FIELD = 'links';
+    const METAS_FIELD = 'metas';
+
+    const FIELDS = [
+      self::RESPONSE_ID_FIELD,
+      self::CREATED_AT_FIELD,
+      self::CTX_REQUEST_REF_FIELD,
+      self::CTX_REQUEST_FIELD,
+      self::CTX_CORRELATOR_REF_FIELD,
+      self::DEREFS_FIELD,
+      self::LINKS_FIELD,
+      self::METAS_FIELD,
+    ];
+
+    final private function __construct() {}
+
+    public static function getId(): SchemaId
     {
-        return SchemaId::fromString('pbj:gdbots:pbjx:mixin:response:1-0-1');
+        return SchemaId::fromString(self::SCHEMA_ID);
+    }
+
+    public static function hasField(string $name): bool
+    {
+        return in_array($name, self::FIELDS, true);
     }
 
     /**
-     * {@inheritdoc}
+     * @return Field[]
      */
-    public function getFields()
+    public static function getFields(): array
     {
         return [
-            Fb::create('response_id', T\UuidType::create())
+            Fb::create(self::RESPONSE_ID_FIELD, T\UuidType::create())
                 ->required()
                 ->build(),
-            Fb::create('created_at', T\MicrotimeType::create())
+            Fb::create(self::CREATED_AT_FIELD, T\MicrotimeType::create())
                 ->build(),
-            Fb::create('ctx_request_ref', T\MessageRefType::create())
+            Fb::create(self::CTX_REQUEST_REF_FIELD, T\MessageRefType::create())
                 ->build(),
             /*
              * The "ctx_request" is the actual request object that "ctx_request_ref" refers to.
@@ -38,12 +67,12 @@ final class ResponseV1Mixin extends AbstractMixin
              * A common use case is search request/response cycles where you want to know what the
              * search criteria was so you can render that along with the results.
              */
-            Fb::create('ctx_request', T\MessageType::create())
-                ->anyOfClassNames([
-                    GdbotsPbjxRequest::class,
+            Fb::create(self::CTX_REQUEST_FIELD, T\MessageType::create())
+                ->anyOfCuries([
+                    'gdbots:pbjx:mixin:request',
                 ])
                 ->build(),
-            Fb::create('ctx_correlator_ref', T\MessageRefType::create())
+            Fb::create(self::CTX_CORRELATOR_REF_FIELD, T\MessageRefType::create())
                 ->build(),
             /*
              * Responses can include "dereferenced" messages to prevent
@@ -51,16 +80,16 @@ final class ResponseV1Mixin extends AbstractMixin
              * It is up to the consumer to make use of the dereferenced
              * messages if/when they are provided.
              */
-            Fb::create('derefs', T\MessageType::create())
+            Fb::create(self::DEREFS_FIELD, T\MessageType::create())
                 ->asAMap()
                 ->build(),
             /*
              * @link https://en.wikipedia.org/wiki/HATEOAS
              */
-            Fb::create('links', T\TextType::create())
+            Fb::create(self::LINKS_FIELD, T\TextType::create())
                 ->asAMap()
                 ->build(),
-            Fb::create('metas', T\TextType::create())
+            Fb::create(self::METAS_FIELD, T\TextType::create())
                 ->asAMap()
                 ->build(),
         ];

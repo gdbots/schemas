@@ -2,7 +2,6 @@
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import NodeStatus from '@gdbots/schemas/gdbots/ncr/enums/NodeStatus';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
@@ -20,9 +19,8 @@ export default class NodeRenamedV1Mixin extends Mixin {
    */
   getFields() {
     return [
-      Fb.create('node_ref', T.IdentifierType.create())
+      Fb.create('node_ref', T.NodeRefType.create())
         .required()
-        .classProto(NodeRef)
         .build(),
       Fb.create('node_status', T.StringEnumType.create())
         .classProto(NodeStatus)

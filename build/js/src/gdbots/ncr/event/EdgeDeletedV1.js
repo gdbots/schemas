@@ -1,6 +1,5 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/ncr/event/edge-deleted/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import GdbotsPbjxEventV1Mixin from '@gdbots/schemas/gdbots/pbjx/mixin/event/EventV1Mixin';
 import GdbotsPbjxEventV1Trait from '@gdbots/schemas/gdbots/pbjx/mixin/event/EventV1Trait';
 import Message from '@gdbots/pbj/Message';
 import MessageResolver from '@gdbots/pbj/MessageResolver';

@@ -3,12 +3,14 @@ declare(strict_types=1);
 
 namespace Gdbots\Tests\Schemas\Pbjx;
 
+use Gdbots\Pbj\Exception\AssertionFailed;
+use Gdbots\Pbj\Exception\InvalidArgumentException;
 use Gdbots\Schemas\Pbjx\StreamId;
 use PHPUnit\Framework\TestCase;
 
 class StreamIdTest extends TestCase
 {
-    public function testTopic()
+    public function testTopic(): void
     {
         $id = StreamId::fromString('health-checks');
 
@@ -19,7 +21,7 @@ class StreamIdTest extends TestCase
         $this->assertNull($id->getSubPartition(), 'getSubPartition should be null.');
     }
 
-    public function testPartition()
+    public function testPartition(): void
     {
         $id = StreamId::fromString('bank-account:homer-simpson');
 
@@ -30,7 +32,7 @@ class StreamIdTest extends TestCase
         $this->assertNull($id->getSubPartition(), 'getSubPartition should be null.');
     }
 
-    public function testAllParts()
+    public function testAllParts(): void
     {
         $id = StreamId::fromString('poll.votes:batman-vs-superman:20160301.c2');
 
@@ -41,7 +43,7 @@ class StreamIdTest extends TestCase
         $this->assertSame('20160301.c2', $id->getSubPartition());
     }
 
-    public function testCaseSensitive()
+    public function testCaseSensitive(): void
     {
         $id = StreamId::fromString('My-Topic:IS_COOL:BR0.T33n');
 
@@ -52,7 +54,7 @@ class StreamIdTest extends TestCase
         $this->assertSame('BR0.T33n', $id->getSubPartition());
     }
 
-    public function testToSnsTopicName()
+    public function testToSnsTopicName(): void
     {
         $id = StreamId::fromString('My-Topic:IS_COOL:BR0.T33n');
 
@@ -61,7 +63,7 @@ class StreamIdTest extends TestCase
         $this->assertSame($id->toString(), StreamId::fromSnsTopicName($id->toSnsTopicName())->toString());
     }
 
-    public function testToFilePath()
+    public function testToFilePath(): void
     {
         $id = StreamId::fromString('My-Topic:IS_COOL:BR0.T33n');
         $this->assertSame('My-Topic:IS_COOL:BR0.T33n', $id->toString());
@@ -88,29 +90,24 @@ class StreamIdTest extends TestCase
         $this->assertSame($id->toString(), StreamId::fromFilePath($id->toFilePath())->toString());
     }
 
-    /**
-     * @expectedException \Gdbots\Pbj\Exception\AssertionFailed
-     */
-    public function testTooLong()
+    public function testTooLong(): void
     {
+        $this->expectException(AssertionFailed::class);
         StreamId::fromString(str_repeat('a', 256));
     }
 
     /**
      * @dataProvider getInvalidIds
-     * @expectedException \Gdbots\Pbj\Exception\InvalidArgumentException
      *
      * @param string $string
      */
-    public function testInvalid($string)
+    public function testInvalid(string $string): void
     {
+        $this->expectException(InvalidArgumentException::class);
         StreamId::fromString($string);
     }
 
-    /**
-     * @return array
-     */
-    public function getInvalidIds()
+    public function getInvalidIds(): array
     {
         return [
             ['test::what'],

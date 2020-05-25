@@ -1,6 +1,5 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/analytics/tracker/keen/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import GdbotsAnalyticsTrackerV1Mixin from '@gdbots/schemas/gdbots/analytics/mixin/tracker/TrackerV1Mixin';
 import Message from '@gdbots/pbj/Message';
 import MessageRef from '@gdbots/pbj/MessageRef';
 import MessageResolver from '@gdbots/pbj/MessageResolver';

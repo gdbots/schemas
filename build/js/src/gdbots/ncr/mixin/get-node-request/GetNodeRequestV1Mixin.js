@@ -2,7 +2,6 @@
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 
@@ -30,8 +29,7 @@ export default class GetNodeRequestV1Mixin extends Mixin {
        * only one of these should exist and the priority of selection is as
        * ordered in this schema.
        */
-      Fb.create('node_ref', T.IdentifierType.create())
-        .classProto(NodeRef)
+      Fb.create('node_ref', T.NodeRefType.create())
         .build(),
       /*
        * The "qname" field should be populated when the request is not

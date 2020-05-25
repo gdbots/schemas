@@ -2,7 +2,6 @@
 import EdgeMultiplicity from '@gdbots/schemas/gdbots/ncr/enums/EdgeMultiplicity';
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 
@@ -19,13 +18,11 @@ export default class EdgeV1Mixin extends Mixin {
    */
   getFields() {
     return [
-      Fb.create('from_ref', T.IdentifierType.create())
+      Fb.create('from_ref', T.NodeRefType.create())
         .required()
-        .classProto(NodeRef)
         .build(),
-      Fb.create('to_ref', T.IdentifierType.create())
+      Fb.create('to_ref', T.NodeRefType.create())
         .required()
-        .classProto(NodeRef)
         .build(),
       Fb.create('multiplicity', T.StringEnumType.create())
         .withDefault(EdgeMultiplicity.MULTI)

@@ -1,8 +1,6 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/event/event-execution-failed/1-0-1.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import GdbotsPbjxEventV1Mixin from '@gdbots/schemas/gdbots/pbjx/mixin/event/EventV1Mixin';
 import GdbotsPbjxEventV1Trait from '@gdbots/schemas/gdbots/pbjx/mixin/event/EventV1Trait';
-import GdbotsPbjxIndexedV1Mixin from '@gdbots/schemas/gdbots/pbjx/mixin/indexed/IndexedV1Mixin';
 import Message from '@gdbots/pbj/Message';
 import MessageResolver from '@gdbots/pbj/MessageResolver';
 import Schema from '@gdbots/pbj/Schema';

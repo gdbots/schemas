@@ -11,16 +11,8 @@
           general idea is that only the user who locked it can modify it.
         </description>
       </field>
-      <field name="locked_by_ref" type="identifier">
+      <field name="locked_by_ref" type="node-ref">
         <description>The user (or app) that has "locked" the node.</description>
-        <php-options>
-          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
-          <class-name>NodeRef::class</class-name>
-        </php-options>
-        <js-options>
-          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
-          <class-proto>NodeRef</class-proto>
-        </js-options>
       </field>
     </fields>
   </schema>

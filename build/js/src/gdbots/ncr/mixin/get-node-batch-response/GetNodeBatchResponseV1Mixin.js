@@ -1,7 +1,6 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/get-node-batch-response/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 
@@ -29,9 +28,8 @@ export default class GetNodeBatchResponseV1Mixin extends Mixin {
        * The "missing_node_refs" field contains a set of node_refs that
        * the batch request failed to retrieve.
        */
-      Fb.create('missing_node_refs', T.IdentifierType.create())
+      Fb.create('missing_node_refs', T.NodeRefType.create())
         .asASet()
-        .classProto(NodeRef)
         .build(),
     ];
   }

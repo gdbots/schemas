@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Iam\Mixin\BrowserApp;
 
@@ -10,13 +11,10 @@ use Gdbots\Pbj\Schema;
  */
 trait BrowserAppV1Trait
 {
-    /**
-     * @return array
-     */
-    public function getUriTemplateVars()
+    public function getUriTemplateVars(): array
     {
         return [
-            '_id' => (string)$this->get('_id'),
+            '_id' => $this->fget('_id'),
         ];
     }
 }

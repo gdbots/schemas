@@ -1,6 +1,5 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/command/check-health/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import GdbotsPbjxCommandV1Mixin from '@gdbots/schemas/gdbots/pbjx/mixin/command/CommandV1Mixin';
 import GdbotsPbjxCommandV1Trait from '@gdbots/schemas/gdbots/pbjx/mixin/command/CommandV1Trait';
 import Message from '@gdbots/pbj/Message';
 import MessageResolver from '@gdbots/pbj/MessageResolver';
