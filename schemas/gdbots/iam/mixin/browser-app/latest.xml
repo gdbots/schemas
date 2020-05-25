@@ -7,8 +7,7 @@
     <fields>
       <field name="fcm_api_key" type="text">
         <description>
-          An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase
-          console.
+          An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase console.
           @link https://firebase.google.com/docs/cloud-messaging/auth-server
         </description>
       </field>
