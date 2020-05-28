@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/response/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/response/1-0-2.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Mixin from '@gdbots/pbj/Mixin';
 import SchemaId from '@gdbots/pbj/SchemaId';
@@ -9,7 +9,7 @@ export default class ResponseV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:response:1-0-1');
+    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:response:1-0-2');
   }
 
   /**
@@ -21,6 +21,12 @@ export default class ResponseV1Mixin extends Mixin {
         .required()
         .build(),
       Fb.create('created_at', T.MicrotimeType.create())
+        .build(),
+      /*
+       * Multi-tenant apps can use this field to track the tenant id.
+       */
+      Fb.create('ctx_tenant_id', T.StringType.create())
+        .pattern('^[\\w\\/\\.:-]+$')
         .build(),
       Fb.create('ctx_request_ref', T.MessageRefType.create())
         .build(),

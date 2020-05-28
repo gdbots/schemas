@@ -7,4 +7,7 @@
  */
 
 export default [
+  'gdbots:iam:request:search-apps-response:v1',
+  'gdbots:iam:request:search-roles-response:v1',
+  'gdbots:iam:request:search-users-response:v1',
 ];

@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-2.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-3.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
@@ -10,7 +10,7 @@ export default class RequestV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:request:1-0-2');
+    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:request:1-0-3');
   }
 
   /**
@@ -22,6 +22,12 @@ export default class RequestV1Mixin extends Mixin {
         .required()
         .build(),
       Fb.create('occurred_at', T.MicrotimeType.create())
+        .build(),
+      /*
+       * Multi-tenant apps can use this field to track the tenant id.
+       */
+      Fb.create('ctx_tenant_id', T.StringType.create())
+        .pattern('^[\\w\\/\\.:-]+$')
         .build(),
       /*
        * The "ctx_retries" field is used to keep track of how many attempts were

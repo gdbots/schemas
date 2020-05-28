@@ -16,6 +16,11 @@
       "type": "string",
       "pattern": "^[1-9]{1}[0-9]{12,15}$"
     },
+    "ctx_tenant_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "Multi-tenant apps can use this field to track the tenant id."
+    },
     "ctx_causator_ref": {
       "type": "object",
       "properties": {
@@ -130,6 +135,12 @@
       "type": "string",
       "minLength": 0,
       "maxLength": 65535
+    },
+    "ctx_msg": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "description": "An optional message/reason for the event being created. Consider this like a git commit message."
     },
     "msg": {
       "type": "string",

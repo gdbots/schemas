@@ -26,6 +26,7 @@ final class GetNodeBatchRequestV1 extends AbstractMessage
 
     const REQUEST_ID_FIELD = 'request_id';
     const OCCURRED_AT_FIELD = 'occurred_at';
+    const CTX_TENANT_ID_FIELD = 'ctx_tenant_id';
     const CTX_RETRIES_FIELD = 'ctx_retries';
     const CTX_CAUSATOR_REF_FIELD = 'ctx_causator_ref';
     const CTX_CORRELATOR_REF_FIELD = 'ctx_correlator_ref';
@@ -43,6 +44,7 @@ final class GetNodeBatchRequestV1 extends AbstractMessage
     const FIELDS = [
       self::REQUEST_ID_FIELD,
       self::OCCURRED_AT_FIELD,
+      self::CTX_TENANT_ID_FIELD,
       self::CTX_RETRIES_FIELD,
       self::CTX_CAUSATOR_REF_FIELD,
       self::CTX_CORRELATOR_REF_FIELD,
@@ -60,7 +62,6 @@ final class GetNodeBatchRequestV1 extends AbstractMessage
 
     use GdbotsPbjxRequestV1Trait;
 
-
     protected static function defineSchema(): Schema
     {
         return new Schema(self::SCHEMA_ID, __CLASS__,
@@ -69,6 +70,12 @@ final class GetNodeBatchRequestV1 extends AbstractMessage
                     ->required()
                     ->build(),
                 Fb::create(self::OCCURRED_AT_FIELD, T\MicrotimeType::create())
+                    ->build(),
+                /*
+                 * Multi-tenant apps can use this field to track the tenant id.
+                 */
+                Fb::create(self::CTX_TENANT_ID_FIELD, T\StringType::create())
+                    ->pattern('^[\w\/\.:-]+$')
                     ->build(),
                 /*
                  * The "ctx_retries" field is used to keep track of how many attempts were

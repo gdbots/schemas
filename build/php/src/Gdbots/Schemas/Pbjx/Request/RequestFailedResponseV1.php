@@ -23,6 +23,7 @@ final class RequestFailedResponseV1 extends AbstractMessage
 
     const RESPONSE_ID_FIELD = 'response_id';
     const CREATED_AT_FIELD = 'created_at';
+    const CTX_TENANT_ID_FIELD = 'ctx_tenant_id';
     const CTX_REQUEST_REF_FIELD = 'ctx_request_ref';
     const CTX_REQUEST_FIELD = 'ctx_request';
     const CTX_CORRELATOR_REF_FIELD = 'ctx_correlator_ref';
@@ -38,6 +39,7 @@ final class RequestFailedResponseV1 extends AbstractMessage
     const FIELDS = [
       self::RESPONSE_ID_FIELD,
       self::CREATED_AT_FIELD,
+      self::CTX_TENANT_ID_FIELD,
       self::CTX_REQUEST_REF_FIELD,
       self::CTX_REQUEST_FIELD,
       self::CTX_CORRELATOR_REF_FIELD,
@@ -61,6 +63,12 @@ final class RequestFailedResponseV1 extends AbstractMessage
                     ->required()
                     ->build(),
                 Fb::create(self::CREATED_AT_FIELD, T\MicrotimeType::create())
+                    ->build(),
+                /*
+                 * Multi-tenant apps can use this field to track the tenant id.
+                 */
+                Fb::create(self::CTX_TENANT_ID_FIELD, T\StringType::create())
+                    ->pattern('^[\w\/\.:-]+$')
                     ->build(),
                 Fb::create(self::CTX_REQUEST_REF_FIELD, T\MessageRefType::create())
                     ->build(),

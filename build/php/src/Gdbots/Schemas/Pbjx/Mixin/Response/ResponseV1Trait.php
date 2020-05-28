@@ -22,6 +22,7 @@ trait ResponseV1Trait
         return [
             'response_id' => $this->fget(self::RESPONSE_ID_FIELD),
             'created_at' => $this->fget(self::CREATED_AT_FIELD),
+            'ctx_tenant_id' => $this->fget(self::CTX_TENANT_ID_FIELD),
         ];
     }
 }

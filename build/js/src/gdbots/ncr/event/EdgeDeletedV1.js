@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/event/edge-deleted/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/event/edge-deleted/1-0-1.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import GdbotsPbjxEventV1Trait from '@gdbots/schemas/gdbots/pbjx/mixin/event/EventV1Trait';
 import Message from '@gdbots/pbj/Message';
@@ -13,7 +13,7 @@ export default class EdgeDeletedV1 extends Message {
    * @returns {Schema}
    */
   static defineSchema() {
-    return new Schema('pbj:gdbots:ncr:event:edge-deleted:1-0-0', EdgeDeletedV1,
+    return new Schema('pbj:gdbots:ncr:event:edge-deleted:1-0-1', EdgeDeletedV1,
       [
         Fb.create('edge', T.MessageType.create())
           .required()
@@ -24,6 +24,12 @@ export default class EdgeDeletedV1 extends Message {
       ],
       [
         GdbotsPbjxEventV1Mixin.create(),
+        GdbotsAnalyticsTrackedMessageV1Mixin.create(),
+        GdbotsCommonTaggableV1Mixin.create(),
+        GdbotsEnrichmentsIpToGeoV1Mixin.create(),
+        GdbotsEnrichmentsTimePartingV1Mixin.create(),
+        GdbotsEnrichmentsTimeSamplingV1Mixin.create(),
+        GdbotsEnrichmentsUaParserV1Mixin.create(),
       ],
     );
   }

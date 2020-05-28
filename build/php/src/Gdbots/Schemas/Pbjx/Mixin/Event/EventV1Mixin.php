@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-2.json#
 namespace Gdbots\Schemas\Pbjx\Mixin\Event;
 
 use Gdbots\Pbj\Enum\Format;
@@ -12,12 +12,13 @@ use Gdbots\Pbj\Type as T;
 
 final class EventV1Mixin
 {
-    const SCHEMA_ID = 'pbj:gdbots:pbjx:mixin:event:1-0-1';
+    const SCHEMA_ID = 'pbj:gdbots:pbjx:mixin:event:1-0-2';
     const SCHEMA_CURIE = 'gdbots:pbjx:mixin:event';
     const SCHEMA_CURIE_MAJOR = 'gdbots:pbjx:mixin:event:v1';
 
     const EVENT_ID_FIELD = 'event_id';
     const OCCURRED_AT_FIELD = 'occurred_at';
+    const CTX_TENANT_ID_FIELD = 'ctx_tenant_id';
     const CTX_CAUSATOR_REF_FIELD = 'ctx_causator_ref';
     const CTX_CORRELATOR_REF_FIELD = 'ctx_correlator_ref';
     const CTX_USER_REF_FIELD = 'ctx_user_ref';
@@ -26,10 +27,12 @@ final class EventV1Mixin
     const CTX_IP_FIELD = 'ctx_ip';
     const CTX_IPV6_FIELD = 'ctx_ipv6';
     const CTX_UA_FIELD = 'ctx_ua';
+    const CTX_MSG_FIELD = 'ctx_msg';
 
     const FIELDS = [
       self::EVENT_ID_FIELD,
       self::OCCURRED_AT_FIELD,
+      self::CTX_TENANT_ID_FIELD,
       self::CTX_CAUSATOR_REF_FIELD,
       self::CTX_CORRELATOR_REF_FIELD,
       self::CTX_USER_REF_FIELD,
@@ -38,6 +41,7 @@ final class EventV1Mixin
       self::CTX_IP_FIELD,
       self::CTX_IPV6_FIELD,
       self::CTX_UA_FIELD,
+      self::CTX_MSG_FIELD,
     ];
 
     final private function __construct() {}
@@ -62,6 +66,12 @@ final class EventV1Mixin
                 ->required()
                 ->build(),
             Fb::create(self::OCCURRED_AT_FIELD, T\MicrotimeType::create())
+                ->build(),
+            /*
+             * Multi-tenant apps can use this field to track the tenant id.
+             */
+            Fb::create(self::CTX_TENANT_ID_FIELD, T\StringType::create())
+                ->pattern('^[\w\/\.:-]+$')
                 ->build(),
             Fb::create(self::CTX_CAUSATOR_REF_FIELD, T\MessageRefType::create())
                 ->build(),
@@ -98,6 +108,12 @@ final class EventV1Mixin
                 ->build(),
             Fb::create(self::CTX_UA_FIELD, T\TextType::create())
                 ->overridable(true)
+                ->build(),
+            /*
+             * An optional message/reason for the event being created.
+             * Consider this like a git commit message.
+             */
+            Fb::create(self::CTX_MSG_FIELD, T\TextType::create())
                 ->build(),
         ];
     }

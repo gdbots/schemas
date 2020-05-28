@@ -10,4 +10,5 @@ declare(strict_types=1);
  */
 
 return [
+    'gdbots:pbjx:event:event-execution-failed:v1',
 ];

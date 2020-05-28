@@ -7,4 +7,5 @@
  */
 
 export default [
+  'gdbots:pbjx:event:event-execution-failed:v1',
 ];

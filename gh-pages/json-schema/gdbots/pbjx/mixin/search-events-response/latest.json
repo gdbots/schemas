@@ -11,6 +11,11 @@
       "type": "string",
       "pattern": "^[1-9]{1}[0-9]{12,15}$"
     },
+    "ctx_tenant_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "Multi-tenant apps can use this field to track the tenant id."
+    },
     "ctx_request_ref": {
       "type": "object",
       "properties": {
@@ -168,6 +173,9 @@
         },
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-2.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-3.json#"
         }
       ]
     },
@@ -179,6 +187,9 @@
         },
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-2.json#"
         }
       ]
     }

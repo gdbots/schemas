@@ -125,6 +125,9 @@
         },
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-2.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-3.json#"
         }
       ]
     }

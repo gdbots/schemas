@@ -19,7 +19,8 @@ export default class BrowserAppV1Mixin extends Mixin {
   getFields() {
     return [
       /*
-       * An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase console.
+       * An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase
+       * console.
        * @link https://firebase.google.com/docs/cloud-messaging/auth-server
        */
       Fb.create('fcm_api_key', T.TextType.create())

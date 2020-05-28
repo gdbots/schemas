@@ -16,6 +16,11 @@
       "pattern": "^[\\w\\.:-]+$",
       "description": "Used to perform optimistic concurrency control. @link https://en.wikipedia.org/wiki/HTTP_ETag"
     },
+    "ctx_tenant_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "Multi-tenant apps can use this field to track the tenant id."
+    },
     "ctx_retries": {
       "type": "integer",
       "default": 0,
@@ -141,6 +146,12 @@
       "type": "string",
       "minLength": 0,
       "maxLength": 65535
+    },
+    "ctx_msg": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "description": "An optional message/reason for the command being sent. Consider this like a git commit message."
     },
     "type": {
       "type": "string",

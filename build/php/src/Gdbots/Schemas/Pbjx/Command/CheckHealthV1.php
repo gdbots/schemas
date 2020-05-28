@@ -25,6 +25,7 @@ final class CheckHealthV1 extends AbstractMessage
     const COMMAND_ID_FIELD = 'command_id';
     const OCCURRED_AT_FIELD = 'occurred_at';
     const EXPECTED_ETAG_FIELD = 'expected_etag';
+    const CTX_TENANT_ID_FIELD = 'ctx_tenant_id';
     const CTX_RETRIES_FIELD = 'ctx_retries';
     const CTX_CAUSATOR_FIELD = 'ctx_causator';
     const CTX_CAUSATOR_REF_FIELD = 'ctx_causator_ref';
@@ -35,12 +36,14 @@ final class CheckHealthV1 extends AbstractMessage
     const CTX_IP_FIELD = 'ctx_ip';
     const CTX_IPV6_FIELD = 'ctx_ipv6';
     const CTX_UA_FIELD = 'ctx_ua';
+    const CTX_MSG_FIELD = 'ctx_msg';
     const MSG_FIELD = 'msg';
 
     const FIELDS = [
       self::COMMAND_ID_FIELD,
       self::OCCURRED_AT_FIELD,
       self::EXPECTED_ETAG_FIELD,
+      self::CTX_TENANT_ID_FIELD,
       self::CTX_RETRIES_FIELD,
       self::CTX_CAUSATOR_FIELD,
       self::CTX_CAUSATOR_REF_FIELD,
@@ -51,6 +54,7 @@ final class CheckHealthV1 extends AbstractMessage
       self::CTX_IP_FIELD,
       self::CTX_IPV6_FIELD,
       self::CTX_UA_FIELD,
+      self::CTX_MSG_FIELD,
       self::MSG_FIELD,
     ];
 
@@ -72,6 +76,12 @@ final class CheckHealthV1 extends AbstractMessage
                 Fb::create(self::EXPECTED_ETAG_FIELD, T\StringType::create())
                     ->maxLength(100)
                     ->pattern('^[\w\.:-]+$')
+                    ->build(),
+                /*
+                 * Multi-tenant apps can use this field to track the tenant id.
+                 */
+                Fb::create(self::CTX_TENANT_ID_FIELD, T\StringType::create())
+                    ->pattern('^[\w\/\.:-]+$')
                     ->build(),
                 /*
                  * The "ctx_retries" field is used to keep track of how many attempts were
@@ -126,6 +136,12 @@ final class CheckHealthV1 extends AbstractMessage
                     ->build(),
                 Fb::create(self::CTX_UA_FIELD, T\TextType::create())
                     ->overridable(true)
+                    ->build(),
+                /*
+                 * An optional message/reason for the command being sent.
+                 * Consider this like a git commit message.
+                 */
+                Fb::create(self::CTX_MSG_FIELD, T\TextType::create())
                     ->build(),
                 /*
                  * A random string that will be validated to match after

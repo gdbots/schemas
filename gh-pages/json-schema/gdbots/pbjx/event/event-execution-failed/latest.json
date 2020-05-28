@@ -16,6 +16,11 @@
       "type": "string",
       "pattern": "^[1-9]{1}[0-9]{12,15}$"
     },
+    "ctx_tenant_id": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$",
+      "description": "Multi-tenant apps can use this field to track the tenant id."
+    },
     "ctx_causator_ref": {
       "type": "object",
       "properties": {
@@ -131,6 +136,12 @@
       "minLength": 0,
       "maxLength": 65535
     },
+    "ctx_msg": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 65535,
+      "description": "An optional message/reason for the event being created. Consider this like a git commit message."
+    },
     "event": {
       "type": "object",
       "anyOf": [
@@ -194,6 +205,9 @@
         },
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/event/1-0-2.json#"
         }
       ]
     }

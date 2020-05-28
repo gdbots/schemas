@@ -22,6 +22,7 @@ trait CommandV1Trait
         return [
             'command_id' => $this->fget(self::COMMAND_ID_FIELD),
             'occurred_at' => $this->fget(self::OCCURRED_AT_FIELD),
+            'ctx_tenant_id' => $this->fget(self::CTX_TENANT_ID_FIELD),
             'ctx_user_ref' => $this->fget(self::CTX_USER_REF_FIELD),
         ];
     }

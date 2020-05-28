@@ -10,4 +10,6 @@ declare(strict_types=1);
  */
 
 return [
+    'gdbots:iam:request:get-user-response:v1',
+    'gdbots:ncr:request:get-node-response:v1',
 ];

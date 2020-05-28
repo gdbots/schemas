@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-2.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-3.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import Mixin from '@gdbots/pbj/Mixin';
@@ -10,7 +10,7 @@ export default class CommandV1Mixin extends Mixin {
    * @returns {SchemaId}
    */
   getId() {
-    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:command:1-0-2');
+    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:command:1-0-3');
   }
 
   /**
@@ -30,6 +30,12 @@ export default class CommandV1Mixin extends Mixin {
       Fb.create('expected_etag', T.StringType.create())
         .maxLength(100)
         .pattern('^[\\w\\.:-]+$')
+        .build(),
+      /*
+       * Multi-tenant apps can use this field to track the tenant id.
+       */
+      Fb.create('ctx_tenant_id', T.StringType.create())
+        .pattern('^[\\w\\/\\.:-]+$')
         .build(),
       /*
        * The "ctx_retries" field is used to keep track of how many attempts were
@@ -84,6 +90,12 @@ export default class CommandV1Mixin extends Mixin {
         .build(),
       Fb.create('ctx_ua', T.TextType.create())
         .overridable(true)
+        .build(),
+      /*
+       * An optional message/reason for the command being sent.
+       * Consider this like a git commit message.
+       */
+      Fb.create('ctx_msg', T.TextType.create())
         .build(),
     ];
   }

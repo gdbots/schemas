@@ -47,7 +47,8 @@ final class BrowserAppV1Mixin
     {
         return [
             /*
-             * An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase console.
+             * An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase
+             * console.
              * @link https://firebase.google.com/docs/cloud-messaging/auth-server
              */
             Fb::create(self::FCM_API_KEY_FIELD, T\TextType::create())

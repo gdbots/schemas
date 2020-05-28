@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:ncr:request:get-node-batch-request:1-0-0">
     <fields>
-      <field name="context" type="string" pattern="^[\w\/\.:-]+$" rule="map">
+      <field name="context" type="string" pattern="^[\w\/\.:-]+$" rule="map" deprecated="true">
         <description>
           Context is a map of data that helps the NCR decide where to read/write data from.
           A common use case is multi-tenant applications.

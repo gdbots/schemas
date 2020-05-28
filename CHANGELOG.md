@@ -8,7 +8,103 @@ __BREAKING CHANGES__
 * Replace all identifier fields using NodeRef with new node-ref type.
 * Use PHP7 typehinting in all insertion points for php.
 * Use new fget method where possible in insertion points.
-* Remove use of identifier classes where uuid or time-uuid can be used, e.g. UserId, AppId.
+* Remove use of identifier classes where uuid can be used, e.g. UserId, AppId.
+* Change format of StreamId (added vendor prefix).  Old format `topic:partition:sub-partition` to `vendor:topic:partition:sub-partition`.
+* __Deprecated Schemas:__ (these will be removed in 3.x)
+  * `gdbots:iam:mixin:app-roles-granted`
+  * `gdbots:iam:mixin:app-roles-revoked`
+  * `gdbots:iam:mixin:get-all-apps-request`
+  * `gdbots:iam:mixin:get-all-apps-response`
+  * `gdbots:iam:mixin:get-user-request`
+  * `gdbots:iam:mixin:get-user-response`
+  * `gdbots:iam:mixin:grant-roles-to-app`
+  * `gdbots:iam:mixin:grant-roles-to-user`
+  * `gdbots:iam:mixin:list-all-roles-request`
+  * `gdbots:iam:mixin:list-all-roles-response`
+  * `gdbots:iam:mixin:revoke-roles-from-app`
+  * `gdbots:iam:mixin:revoke-roles-from-user`
+  * `gdbots:iam:mixin:search-users-request`
+  * `gdbots:iam:mixin:search-users-response`
+  * `gdbots:iam:mixin:user-roles-granted`
+  * `gdbots:iam:mixin:user-roles-revoked`
+  * `gdbots:ncr:mixin:create-node`
+  * `gdbots:ncr:mixin:delete-node`
+  * `gdbots:ncr:mixin:expire-node`
+  * `gdbots:ncr:mixin:indexed`
+  * `gdbots:ncr:mixin:lock-node`
+  * `gdbots:ncr:mixin:mark-node-as-draft`
+  * `gdbots:ncr:mixin:mark-node-as-pending`
+  * `gdbots:ncr:mixin:node-created`
+  * `gdbots:ncr:mixin:node-deleted`
+  * `gdbots:ncr:mixin:node-expired`
+  * `gdbots:ncr:mixin:node-locked`
+  * `gdbots:ncr:mixin:node-marked-as-draft`
+  * `gdbots:ncr:mixin:node-marked-as-pending`
+  * `gdbots:ncr:mixin:node-published`
+  * `gdbots:ncr:mixin:node-renamed`
+  * `gdbots:ncr:mixin:node-scheduled`
+  * `gdbots:ncr:mixin:node-unlocked`
+  * `gdbots:ncr:mixin:node-unpublished`
+  * `gdbots:ncr:mixin:node-updated`
+  * `gdbots:ncr:mixin:publish-node`
+  * `gdbots:ncr:mixin:rename-node`
+  * `gdbots:ncr:mixin:unlock-node`
+  * `gdbots:ncr:mixin:unpublish-node`
+  * `gdbots:ncr:mixin:update-node`
+* __Add Schemas:__
+  * `gdbots:iam:command:grant-roles-to-app`
+  * `gdbots:iam:command:grant-roles-to-user`
+  * `gdbots:iam:command:revoke-roles-from-app`
+  * `gdbots:iam:command:revoke-roles-from-user`
+  * `gdbots:iam:event:app-roles-granted`
+  * `gdbots:iam:event:user-roles-granted`
+  * `gdbots:iam:event:app-roles-revoked`
+  * `gdbots:iam:event:user-roles-revoked`
+  * `gdbots:iam:request:search-apps-request`
+  * `gdbots:iam:request:search-apps-response`
+  * `gdbots:iam:request:search-roles-request`
+  * `gdbots:iam:request:search-roles-response`
+  * `gdbots:iam:request:search-users-request`
+  * `gdbots:iam:request:search-users-response`
+  * `gdbots:iam:search-apps-sort`
+  * `gdbots:iam:search-roles-sort`
+  * `gdbots:ncr:command:create-node`
+  * `gdbots:ncr:command:delete-node`
+  * `gdbots:ncr:command:expire-node`
+  * `gdbots:ncr:command:lock-node`
+  * `gdbots:ncr:command:mark-node-as-draft`
+  * `gdbots:ncr:command:mark-node-as-pending`
+  * `gdbots:ncr:command:publish-node`
+  * `gdbots:ncr:command:rename-node`
+  * `gdbots:ncr:command:unlock-node`
+  * `gdbots:ncr:command:unpublish-node`
+  * `gdbots:ncr:event:node-created`
+  * `gdbots:ncr:event:node-deleted`
+  * `gdbots:ncr:event:node-expired`
+  * `gdbots:ncr:event:node-locked`
+  * `gdbots:ncr:event:node-marked-as-draft`
+  * `gdbots:ncr:event:node-marked-as-pending`
+  * `gdbots:ncr:event:node-published`
+  * `gdbots:ncr:event:node-renamed`
+  * `gdbots:ncr:event:node-scheduled`
+  * `gdbots:ncr:event:node-unlocked`
+  * `gdbots:ncr:event:node-unpublished`
+  * `gdbots:ncr:event:node-updated`
+  * `gdbots:ncr:request:get-node-history-request`
+  * `gdbots:ncr:request:get-node-history-response`
+  * `gdbots:ncr:request:get-node-request`
+  * `gdbots:ncr:request:get-node-response`
+* __Modify Schemas:__
+  * `gdbots:pbjx:mixin:command` patch revision `1-0-3`
+    * Add `ctx_tenant_id` string field with pattern `^[\w\/\.:-]+$`.
+    * Add `ctx_msg` text field.
+  * `gdbots:pbjx:mixin:event` patch revision `1-0-2`
+    * Add `ctx_tenant_id` string field with pattern `^[\w\/\.:-]+$`.
+    * Add `ctx_msg` text field.
+  * `gdbots:pbjx:mixin:request` patch revision `1-0-3`
+    * Add `ctx_tenant_id` string field with pattern `^[\w\/\.:-]+$`.
+  * `gdbots:pbjx:mixin:response` patch revision `1-0-2`
+    * Add `ctx_tenant_id` string field with pattern `^[\w\/\.:-]+$`.
 
 
 ## v1.6.3

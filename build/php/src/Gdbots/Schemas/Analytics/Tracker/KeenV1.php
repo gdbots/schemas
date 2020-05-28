@@ -33,7 +33,6 @@ final class KeenV1 extends AbstractMessage
       self::WRITE_KEY_FIELD,
     ];
 
-
     protected static function defineSchema(): Schema
     {
         return new Schema(self::SCHEMA_ID, __CLASS__,

@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/command/create-edge/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/command/create-edge/1-0-1.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import GdbotsPbjxCommandV1Trait from '@gdbots/schemas/gdbots/pbjx/mixin/command/CommandV1Trait';
 import Message from '@gdbots/pbj/Message';
@@ -13,7 +13,7 @@ export default class CreateEdgeV1 extends Message {
    * @returns {Schema}
    */
   static defineSchema() {
-    return new Schema('pbj:gdbots:ncr:command:create-edge:1-0-0', CreateEdgeV1,
+    return new Schema('pbj:gdbots:ncr:command:create-edge:1-0-1', CreateEdgeV1,
       [
         Fb.create('edge', T.MessageType.create())
           .required()
@@ -24,6 +24,7 @@ export default class CreateEdgeV1 extends Message {
       ],
       [
         GdbotsPbjxCommandV1Mixin.create(),
+        GdbotsCommonTaggableV1Mixin.create(),
       ],
     );
   }
