@@ -6,6 +6,7 @@ namespace Gdbots\Schemas\Pbjx;
 use Gdbots\Pbj\Assertion;
 use Gdbots\Pbj\Exception\InvalidArgumentException;
 use Gdbots\Pbj\WellKnown\Identifier;
+use Gdbots\Pbj\WellKnown\NodeRef;
 
 /**
  * A stream id represents a stream of events.  The parts of the id are delimited by a colon
@@ -143,6 +144,11 @@ final class StreamId implements Identifier
     public function equals(Identifier $other): bool
     {
         return $this == $other;
+    }
+
+    public static function fromNodeRef(NodeRef $nodeRef): self
+    {
+        return new self($nodeRef->getVendor(), $nodeRef->getLabel(), $nodeRef->getId());
     }
 
     /**

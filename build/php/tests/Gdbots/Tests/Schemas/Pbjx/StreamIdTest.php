@@ -5,6 +5,7 @@ namespace Gdbots\Tests\Schemas\Pbjx;
 
 use Gdbots\Pbj\Exception\AssertionFailed;
 use Gdbots\Pbj\Exception\InvalidArgumentException;
+use Gdbots\Pbj\WellKnown\NodeRef;
 use Gdbots\Schemas\Pbjx\StreamId;
 use PHPUnit\Framework\TestCase;
 
@@ -52,6 +53,15 @@ class StreamIdTest extends TestCase
         $this->assertSame('IS_COOL', $id->getPartition());
         $this->assertTrue($id->hasSubPartition(), 'hasSubPartition should be true.');
         $this->assertSame('BR0.T33n', $id->getSubPartition());
+    }
+
+    public function testFromNodeRef(): void
+    {
+        $nodeRef = NodeRef::fromString('acme:article:123');
+        $id = StreamId::fromNodeRef($nodeRef);
+        $this->assertSame($nodeRef->getVendor(), $id->getVendor());
+        $this->assertSame($nodeRef->getLabel(), $id->getTopic());
+        $this->assertSame($nodeRef->getId(), $id->getPartition());
     }
 
     public function testToSnsTopicName(): void
