@@ -1,32 +1,39 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/request/1-0-3.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
-import Mixin from '@gdbots/pbj/Mixin';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 
-export default class RequestV1Mixin extends Mixin {
+export default class RequestV1Mixin {
   /**
    * @returns {SchemaId}
    */
-  getId() {
-    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:request:1-0-3');
+  static getId() {
+    return SchemaId.fromString(this.SCHEMA_ID);
+  }
+
+  /**
+   * @param {string} name
+   * @returns {boolean}
+   */
+  static hasField(name) {
+    return this.FIELDS.includes(name);
   }
 
   /**
    * @returns {Field[]}
    */
-  getFields() {
+  static getFields() {
     return [
-      Fb.create('request_id', T.UuidType.create())
+      Fb.create(this.REQUEST_ID_FIELD, T.UuidType.create())
         .required()
         .build(),
-      Fb.create('occurred_at', T.MicrotimeType.create())
+      Fb.create(this.OCCURRED_AT_FIELD, T.MicrotimeType.create())
         .build(),
       /*
        * Multi-tenant apps can use this field to track the tenant id.
        */
-      Fb.create('ctx_tenant_id', T.StringType.create())
+      Fb.create(this.CTX_TENANT_ID_FIELD, T.StringType.create())
         .pattern('^[\\w\\/\\.:-]+$')
         .build(),
       /*
@@ -34,20 +41,20 @@ export default class RequestV1Mixin extends Mixin {
        * made to handle this request. In some cases, the service or transport
        * that handles the request may be down or over capacity and is being retried.
        */
-      Fb.create('ctx_retries', T.TinyIntType.create())
+      Fb.create(this.CTX_RETRIES_FIELD, T.TinyIntType.create())
         .build(),
-      Fb.create('ctx_causator_ref', T.MessageRefType.create())
+      Fb.create(this.CTX_CAUSATOR_REF_FIELD, T.MessageRefType.create())
         .build(),
-      Fb.create('ctx_correlator_ref', T.MessageRefType.create())
+      Fb.create(this.CTX_CORRELATOR_REF_FIELD, T.MessageRefType.create())
         .build(),
-      Fb.create('ctx_user_ref', T.MessageRefType.create())
+      Fb.create(this.CTX_USER_REF_FIELD, T.MessageRefType.create())
         .build(),
       /*
        * The "ctx_app" refers to the application used to make the request. This is
        * different from ctx_ua (user_agent) because the agent used (Safari, Firefox)
        * is not necessarily the app used (cms, iOS app, website)
        */
-      Fb.create('ctx_app', T.MessageType.create())
+      Fb.create(this.CTX_APP_FIELD, T.MessageType.create())
         .anyOfCuries([
           'gdbots:contexts::app',
         ])
@@ -56,20 +63,20 @@ export default class RequestV1Mixin extends Mixin {
        * The "ctx_cloud" is set by the server making the request and is generally
        * only used internally for tracking and performance monitoring.
        */
-      Fb.create('ctx_cloud', T.MessageType.create())
+      Fb.create(this.CTX_CLOUD_FIELD, T.MessageType.create())
         .anyOfCuries([
           'gdbots:contexts::cloud',
         ])
         .build(),
-      Fb.create('ctx_ip', T.StringType.create())
+      Fb.create(this.CTX_IP_FIELD, T.StringType.create())
         .format(Format.IPV4)
         .overridable(true)
         .build(),
-      Fb.create('ctx_ipv6', T.StringType.create())
+      Fb.create(this.CTX_IPV6_FIELD, T.StringType.create())
         .format(Format.IPV6)
         .overridable(true)
         .build(),
-      Fb.create('ctx_ua', T.TextType.create())
+      Fb.create(this.CTX_UA_FIELD, T.TextType.create())
         .overridable(true)
         .build(),
       /*
@@ -77,10 +84,45 @@ export default class RequestV1Mixin extends Mixin {
        * necessarily gauranteed since authorization, availability, etc. are determined
        * by the server not the client.
        */
-      Fb.create('derefs', T.StringType.create())
+      Fb.create(this.DEREFS_FIELD, T.StringType.create())
         .asASet()
         .pattern('^[\\w\\.-]+$')
         .build(),
     ];
   }
 }
+
+const M = RequestV1Mixin;
+M.SCHEMA_ID = 'pbj:gdbots:pbjx:mixin:request:1-0-3';
+M.SCHEMA_CURIE = 'gdbots:pbjx:mixin:request';
+M.SCHEMA_CURIE_MAJOR = 'gdbots:pbjx:mixin:request:v1';
+
+M.REQUEST_ID_FIELD = 'request_id';
+M.OCCURRED_AT_FIELD = 'occurred_at';
+M.CTX_TENANT_ID_FIELD = 'ctx_tenant_id';
+M.CTX_RETRIES_FIELD = 'ctx_retries';
+M.CTX_CAUSATOR_REF_FIELD = 'ctx_causator_ref';
+M.CTX_CORRELATOR_REF_FIELD = 'ctx_correlator_ref';
+M.CTX_USER_REF_FIELD = 'ctx_user_ref';
+M.CTX_APP_FIELD = 'ctx_app';
+M.CTX_CLOUD_FIELD = 'ctx_cloud';
+M.CTX_IP_FIELD = 'ctx_ip';
+M.CTX_IPV6_FIELD = 'ctx_ipv6';
+M.CTX_UA_FIELD = 'ctx_ua';
+M.DEREFS_FIELD = 'derefs';
+
+M.FIELDS = [
+  M.REQUEST_ID_FIELD,
+  M.OCCURRED_AT_FIELD,
+  M.CTX_TENANT_ID_FIELD,
+  M.CTX_RETRIES_FIELD,
+  M.CTX_CAUSATOR_REF_FIELD,
+  M.CTX_CORRELATOR_REF_FIELD,
+  M.CTX_USER_REF_FIELD,
+  M.CTX_APP_FIELD,
+  M.CTX_CLOUD_FIELD,
+  M.CTX_IP_FIELD,
+  M.CTX_IPV6_FIELD,
+  M.CTX_UA_FIELD,
+  M.DEREFS_FIELD,
+];

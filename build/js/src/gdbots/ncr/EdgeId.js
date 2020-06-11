@@ -1,4 +1,4 @@
-import uuidv5 from 'uuid/v5';
+import { v5 as uuidv5 } from 'uuid';
 import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
 import Identifier from '@gdbots/pbj/well-known/Identifier';
 

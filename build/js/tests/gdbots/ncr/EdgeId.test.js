@@ -1,8 +1,9 @@
 import test from 'tape';
 import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
 import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId';
-import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';
+import NodeRef from '@gdbots/pbj/well-known/NodeRef';
 import SampleEdge from './fixtures/SampleEdge';
+
 
 test('EdgeId tests', (t) => {
   const edge = SampleEdge.create()

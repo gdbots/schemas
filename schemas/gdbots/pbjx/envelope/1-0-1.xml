@@ -58,7 +58,7 @@ public function getUriTemplateVars(): array
       <insertion-points>
         <imports>
           <![CDATA[
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -68,14 +68,14 @@ import MessageRef from '@gdbots/pbj/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  return new MessageRef(this.schema().getCurie(), this.get('envelope_id'), tag);
+  return new MessageRef(this.schema().getCurie(), this.get(this.ENVELOPE_ID_FIELD), tag);
 }
 
 /**
  * @returns {Object}
  */
 getUriTemplateVars() {
-  return { envelope_id: `${this.get('envelope_id')}` };
+  return { envelope_id: `${this.get(this.ENVELOPE_ID_FIELD)}` };
 }
             ]]>
         </methods>

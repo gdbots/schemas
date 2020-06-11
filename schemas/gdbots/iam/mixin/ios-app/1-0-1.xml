@@ -40,7 +40,7 @@ public function getUriTemplateVars(): array
  */
 getUriTemplateVars() {
   return {
-    _id: `${this.get('_id', '')}`,
+    _id: `${this.get(this._ID_FIELD)}`,
   };
 }
           ]]>

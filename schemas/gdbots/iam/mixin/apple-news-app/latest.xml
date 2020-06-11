@@ -51,9 +51,9 @@ public function getUriTemplateVars(): array
  */
 getUriTemplateVars() {
   return {
-    _id: `${this.get('_id', '')}`,
-    channel_id: this.get('channel_id'),
-    api_key: this.get('api_key'),
+    _id: `${this.get(this._ID_FIELD)}`,
+    channel_id: this.get(this.CHANNEL_ID_FIELD),
+    api_key: this.get(this.API_KEY_FIELD),
   };
 }
           ]]>

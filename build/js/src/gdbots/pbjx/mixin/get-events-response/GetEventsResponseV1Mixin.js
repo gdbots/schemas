@@ -1,32 +1,39 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/get-events-response/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import Mixin from '@gdbots/pbj/Mixin';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
 
-export default class GetEventsResponseV1Mixin extends Mixin {
+export default class GetEventsResponseV1Mixin {
   /**
    * @returns {SchemaId}
    */
-  getId() {
-    return SchemaId.fromString('pbj:gdbots:pbjx:mixin:get-events-response:1-0-0');
+  static getId() {
+    return SchemaId.fromString(this.SCHEMA_ID);
+  }
+
+  /**
+   * @param {string} name
+   * @returns {boolean}
+   */
+  static hasField(name) {
+    return this.FIELDS.includes(name);
   }
 
   /**
    * @returns {Field[]}
    */
-  getFields() {
+  static getFields() {
     return [
-      Fb.create('has_more', T.BooleanType.create())
+      Fb.create(this.HAS_MORE_FIELD, T.BooleanType.create())
         .build(),
       /*
        * The last "occurred_at" value from the last event in the "events" list. This can be
        * used as "since" when requesting the next set of events if "has_more" is true.
        */
-      Fb.create('last_occurred_at', T.MicrotimeType.create())
+      Fb.create(this.LAST_OCCURRED_AT_FIELD, T.MicrotimeType.create())
         .useTypeDefault(false)
         .build(),
-      Fb.create('events', T.MessageType.create())
+      Fb.create(this.EVENTS_FIELD, T.MessageType.create())
         .asAList()
         .anyOfCuries([
           'gdbots:pbjx:mixin:event',
@@ -36,3 +43,18 @@ export default class GetEventsResponseV1Mixin extends Mixin {
     ];
   }
 }
+
+const M = GetEventsResponseV1Mixin;
+M.SCHEMA_ID = 'pbj:gdbots:pbjx:mixin:get-events-response:1-0-0';
+M.SCHEMA_CURIE = 'gdbots:pbjx:mixin:get-events-response';
+M.SCHEMA_CURIE_MAJOR = 'gdbots:pbjx:mixin:get-events-response:v1';
+
+M.HAS_MORE_FIELD = 'has_more';
+M.LAST_OCCURRED_AT_FIELD = 'last_occurred_at';
+M.EVENTS_FIELD = 'events';
+
+M.FIELDS = [
+  M.HAS_MORE_FIELD,
+  M.LAST_OCCURRED_AT_FIELD,
+  M.EVENTS_FIELD,
+];

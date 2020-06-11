@@ -45,7 +45,7 @@ public function getUriTemplateVars(): array
       <insertion-points>
         <imports>
           <![CDATA[
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -63,11 +63,11 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    provider: this.get('provider'),
-    region: this.get('region'),
-    zone: this.get('zone'),
-    instance_id: this.get('instance_id'),
-    instance_type: this.get('instance_type'),
+    provider: this.get(this.PROVIDER_FIELD),
+    region: this.get(this.REGION_FIELD),
+    zone: this.get(this.ZONE_FIELD),
+    instance_id: this.get(this.INSTANCE_ID_FIELD),
+    instance_type: this.get(this.INSTANCE_TYPE_FIELD),
   };
 }
             ]]>

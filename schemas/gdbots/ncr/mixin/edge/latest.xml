@@ -48,7 +48,7 @@ public function getUriTemplateVars(): array
         <imports>
           <![CDATA[
 import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId';
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -67,9 +67,9 @@ generateMessageRef(tag = null) {
 getUriTemplateVars() {
   return {
     edge_id: `${EdgeId.fromEdge(this)}`,
-    from_ref: `${this.get('from_ref')}`,
-    to_ref: `${this.get('to_ref')}`,
-    created_at: `${this.get('created_at')}`,
+    from_ref: `${this.get(this.FROM_REF_FIELD)}`,
+    to_ref: `${this.get(this.TO_REF_FIELD)}`,
+    created_at: `${this.get(this.CREATED_AT_FIELD)}`,
   };
 }
             ]]>

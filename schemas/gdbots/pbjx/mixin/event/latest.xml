@@ -77,7 +77,7 @@ public function getUriTemplateVars(): array
       <insertion-points>
         <imports>
           <![CDATA[
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -87,7 +87,7 @@ import MessageRef from '@gdbots/pbj/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  return new MessageRef(this.schema().getCurie(), this.get('event_id'), tag);
+  return new MessageRef(this.schema().getCurie(), this.get(this.EVENT_ID_FIELD), tag);
 },
 
 /**
@@ -95,9 +95,10 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    event_id: `${this.get('event_id')}`,
-    occurred_at: `${this.get('occurred_at')}`,
-    ctx_user_ref: `${this.get('ctx_user_ref', '')}`,
+    event_id: `${this.get(this.EVENT_ID_FIELD)}`,
+    occurred_at: `${this.get(this.OCCURRED_AT_FIELD)}`,
+    ctx_tenant_id: this.get(this.CTX_TENANT_ID_FIELD),
+    ctx_user_ref: `${this.get(this.CTX_USER_REF_FIELD, '')}`,
   };
 }
             ]]>

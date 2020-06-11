@@ -1,8 +1,8 @@
 import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId';
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
 
-export default function EdgeV1Trait(m) {
-  Object.assign(m.prototype, {
+export default function EdgeV1Trait(M) {
+  Object.assign(M.prototype, {
     /**
      * @param {?string} tag
      * @returns {MessageRef}
@@ -17,9 +17,9 @@ export default function EdgeV1Trait(m) {
     getUriTemplateVars() {
       return {
         edge_id: `${EdgeId.fromEdge(this)}`,
-        from_ref: `${this.get('from_ref')}`,
-        to_ref: `${this.get('to_ref')}`,
-        created_at: `${this.get('created_at')}`,
+        from_ref: `${this.get(this.FROM_REF_FIELD)}`,
+        to_ref: `${this.get(this.TO_REF_FIELD)}`,
+        created_at: `${this.get(this.CREATED_AT_FIELD)}`,
       };
     }
   });
