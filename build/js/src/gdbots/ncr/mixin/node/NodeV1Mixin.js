@@ -34,7 +34,7 @@ export default class NodeV1Mixin {
        */
       Fb.create(this._ID_FIELD, T.IdentifierType.create())
         .required()
-        .withDefault(UuidIdentifier.generate)
+        .withDefault(() => UuidIdentifier.generate())
         .classProto(UuidIdentifier)
         .overridable(true)
         .build(),
