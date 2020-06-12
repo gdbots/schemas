@@ -70,6 +70,7 @@ use Gdbots\Pbj\Enum;
  * @method static SocialNetwork YOUKU()
  * @method static SocialNetwork FUNNYORDIE()
  * @method static SocialNetwork TOUT()
+ * @method static SocialNetwork TIKTOK()
  * @method static SocialNetwork VINE()
  * @method static SocialNetwork CLASSMATES()
  * @method static SocialNetwork MYLIFE()
@@ -151,6 +152,7 @@ final class SocialNetwork extends Enum
     const YOUKU = 'youku';
     const FUNNYORDIE = 'funnyordie';
     const TOUT = 'tout';
+    const TIKTOK = 'tiktok';
     const VINE = 'vine';
     const CLASSMATES = 'classmates';
     const MYLIFE = 'mylife';

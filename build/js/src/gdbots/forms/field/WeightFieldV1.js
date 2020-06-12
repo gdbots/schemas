@@ -1,4 +1,4 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/select-field/1-0-2.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/weight-field/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
 import Format from '@gdbots/pbj/enums/Format';
 import GdbotsFormsFieldV1Trait from '@gdbots/schemas/gdbots/forms/mixin/field/FieldV1Trait';
@@ -7,7 +7,7 @@ import PiiImpact from '@gdbots/schemas/gdbots/forms/enums/PiiImpact';
 import Schema from '@gdbots/pbj/Schema';
 import T from '@gdbots/pbj/types';
 
-export default class SelectFieldV1 extends Message {
+export default class WeightFieldV1 extends Message {
   /**
    * @private
    *
@@ -63,15 +63,19 @@ export default class SelectFieldV1 extends Message {
         Fb.create(this.PII_IMPACT_FIELD, T.StringEnumType.create())
           .classProto(PiiImpact)
           .build(),
-        Fb.create(this.OPTION_LABELS_FIELD, T.StringType.create())
-          .asAList()
+        Fb.create(this.WEIGHT_UNITS_FIELD, T.StringType.create())
+          .pattern('^(kilograms|pounds)$')
+          .withDefault("pounds")
           .build(),
-        Fb.create(this.OPTION_VALUES_FIELD, T.StringType.create())
-          .asAList()
+        /*
+         * The person's minimum physical weight recorded in pounds or kilograms.
+         */
+        Fb.create(this.MIN_WEIGHT_FIELD, T.SmallIntType.create())
           .build(),
-        Fb.create(this.ALLOW_OTHER_FIELD, T.BooleanType.create())
-          .build(),
-        Fb.create(this.ALLOW_MULTIPLE_FIELD, T.BooleanType.create())
+        /*
+         * The person's maximum physical weight recorded in pounds or kilograms.
+         */
+        Fb.create(this.MAX_WEIGHT_FIELD, T.SmallIntType.create())
           .build(),
       ],
       this.MIXINS,
@@ -79,10 +83,10 @@ export default class SelectFieldV1 extends Message {
   }
 }
 
-const M = SelectFieldV1;
-M.prototype.SCHEMA_ID = M.SCHEMA_ID = 'pbj:gdbots:forms:field:select-field:1-0-2';
-M.prototype.SCHEMA_CURIE = M.SCHEMA_CURIE = 'gdbots:forms:field:select-field';
-M.prototype.SCHEMA_CURIE_MAJOR = M.SCHEMA_CURIE_MAJOR = 'gdbots:forms:field:select-field:v1';
+const M = WeightFieldV1;
+M.prototype.SCHEMA_ID = M.SCHEMA_ID = 'pbj:gdbots:forms:field:weight-field:1-0-0';
+M.prototype.SCHEMA_CURIE = M.SCHEMA_CURIE = 'gdbots:forms:field:weight-field';
+M.prototype.SCHEMA_CURIE_MAJOR = M.SCHEMA_CURIE_MAJOR = 'gdbots:forms:field:weight-field:v1';
 
 M.prototype.MIXINS = M.MIXINS = [
   'gdbots:forms:mixin:field:v1',
@@ -98,10 +102,9 @@ M.prototype.IS_REQUIRED_FIELD = M.IS_REQUIRED_FIELD = 'is_required';
 M.prototype.LINK_TEXT_FIELD = M.LINK_TEXT_FIELD = 'link_text';
 M.prototype.LINK_URL_FIELD = M.LINK_URL_FIELD = 'link_url';
 M.prototype.PII_IMPACT_FIELD = M.PII_IMPACT_FIELD = 'pii_impact';
-M.prototype.OPTION_LABELS_FIELD = M.OPTION_LABELS_FIELD = 'option_labels';
-M.prototype.OPTION_VALUES_FIELD = M.OPTION_VALUES_FIELD = 'option_values';
-M.prototype.ALLOW_OTHER_FIELD = M.ALLOW_OTHER_FIELD = 'allow_other';
-M.prototype.ALLOW_MULTIPLE_FIELD = M.ALLOW_MULTIPLE_FIELD = 'allow_multiple';
+M.prototype.WEIGHT_UNITS_FIELD = M.WEIGHT_UNITS_FIELD = 'weight_units';
+M.prototype.MIN_WEIGHT_FIELD = M.MIN_WEIGHT_FIELD = 'min_weight';
+M.prototype.MAX_WEIGHT_FIELD = M.MAX_WEIGHT_FIELD = 'max_weight';
 
 M.prototype.FIELDS = M.FIELDS = [
   M.NAME_FIELD,
@@ -113,10 +116,9 @@ M.prototype.FIELDS = M.FIELDS = [
   M.LINK_TEXT_FIELD,
   M.LINK_URL_FIELD,
   M.PII_IMPACT_FIELD,
-  M.OPTION_LABELS_FIELD,
-  M.OPTION_VALUES_FIELD,
-  M.ALLOW_OTHER_FIELD,
-  M.ALLOW_MULTIPLE_FIELD,
+  M.WEIGHT_UNITS_FIELD,
+  M.MIN_WEIGHT_FIELD,
+  M.MAX_WEIGHT_FIELD,
 ];
 
 GdbotsFormsFieldV1Trait(M);

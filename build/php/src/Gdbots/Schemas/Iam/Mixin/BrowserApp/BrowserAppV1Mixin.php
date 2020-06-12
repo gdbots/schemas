@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/browser-app/1-0-1.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/browser-app/1-0-2.json#
 namespace Gdbots\Schemas\Iam\Mixin\BrowserApp;
 
 use Gdbots\Pbj\Enum\Format;
@@ -12,17 +12,19 @@ use Gdbots\Pbj\Type as T;
 
 final class BrowserAppV1Mixin
 {
-    const SCHEMA_ID = 'pbj:gdbots:iam:mixin:browser-app:1-0-1';
+    const SCHEMA_ID = 'pbj:gdbots:iam:mixin:browser-app:1-0-2';
     const SCHEMA_CURIE = 'gdbots:iam:mixin:browser-app';
     const SCHEMA_CURIE_MAJOR = 'gdbots:iam:mixin:browser-app:v1';
 
     const FCM_API_KEY_FIELD = 'fcm_api_key';
+    const FCM_APP_ID_FIELD = 'fcm_app_id';
     const FCM_PROJECT_ID_FIELD = 'fcm_project_id';
     const FCM_SENDER_ID_FIELD = 'fcm_sender_id';
     const FCM_WEB_API_KEY_FIELD = 'fcm_web_api_key';
 
     const FIELDS = [
       self::FCM_API_KEY_FIELD,
+      self::FCM_APP_ID_FIELD,
       self::FCM_PROJECT_ID_FIELD,
       self::FCM_SENDER_ID_FIELD,
       self::FCM_WEB_API_KEY_FIELD,
@@ -52,6 +54,14 @@ final class BrowserAppV1Mixin
              * @link https://firebase.google.com/docs/cloud-messaging/auth-server
              */
             Fb::create(self::FCM_API_KEY_FIELD, T\TextType::create())
+                ->build(),
+            /*
+             * A unique identifier used to identify an app within a Firebase project that can be obtained
+             * from the Firebase console.
+             * @link https://firebase.google.com/docs/web/setup?authuser=0#config-object
+             */
+            Fb::create(self::FCM_APP_ID_FIELD, T\StringType::create())
+                ->pattern('^[\w:]+$')
                 ->build(),
             /*
              * A unique identifier for your Firebase project, used in requests to the FCM v1 HTTP endpoint.

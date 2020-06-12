@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/select-field/1-0-2.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/signature-field/1-0-0.json#
 namespace Gdbots\Schemas\Forms\Field;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -12,11 +12,11 @@ use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Forms\Enum\PiiImpact;
 use Gdbots\Schemas\Forms\Mixin\Field\FieldV1Trait as GdbotsFormsFieldV1Trait;
 
-final class SelectFieldV1 extends AbstractMessage
+final class SignatureFieldV1 extends AbstractMessage
 {
-    const SCHEMA_ID = 'pbj:gdbots:forms:field:select-field:1-0-2';
-    const SCHEMA_CURIE = 'gdbots:forms:field:select-field';
-    const SCHEMA_CURIE_MAJOR = 'gdbots:forms:field:select-field:v1';
+    const SCHEMA_ID = 'pbj:gdbots:forms:field:signature-field:1-0-0';
+    const SCHEMA_CURIE = 'gdbots:forms:field:signature-field';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:forms:field:signature-field:v1';
 
     const MIXINS = [
       'gdbots:forms:mixin:field:v1',
@@ -32,10 +32,6 @@ final class SelectFieldV1 extends AbstractMessage
     const LINK_TEXT_FIELD = 'link_text';
     const LINK_URL_FIELD = 'link_url';
     const PII_IMPACT_FIELD = 'pii_impact';
-    const OPTION_LABELS_FIELD = 'option_labels';
-    const OPTION_VALUES_FIELD = 'option_values';
-    const ALLOW_OTHER_FIELD = 'allow_other';
-    const ALLOW_MULTIPLE_FIELD = 'allow_multiple';
 
     const FIELDS = [
       self::NAME_FIELD,
@@ -47,10 +43,6 @@ final class SelectFieldV1 extends AbstractMessage
       self::LINK_TEXT_FIELD,
       self::LINK_URL_FIELD,
       self::PII_IMPACT_FIELD,
-      self::OPTION_LABELS_FIELD,
-      self::OPTION_VALUES_FIELD,
-      self::ALLOW_OTHER_FIELD,
-      self::ALLOW_MULTIPLE_FIELD,
     ];
 
     use GdbotsFormsFieldV1Trait;
@@ -105,16 +97,6 @@ final class SelectFieldV1 extends AbstractMessage
                     ->build(),
                 Fb::create(self::PII_IMPACT_FIELD, T\StringEnumType::create())
                     ->className(PiiImpact::class)
-                    ->build(),
-                Fb::create(self::OPTION_LABELS_FIELD, T\StringType::create())
-                    ->asAList()
-                    ->build(),
-                Fb::create(self::OPTION_VALUES_FIELD, T\StringType::create())
-                    ->asAList()
-                    ->build(),
-                Fb::create(self::ALLOW_OTHER_FIELD, T\BooleanType::create())
-                    ->build(),
-                Fb::create(self::ALLOW_MULTIPLE_FIELD, T\BooleanType::create())
                     ->build(),
             ],
             self::MIXINS
