@@ -7,7 +7,8 @@
     <fields>
       <field name="fcm_api_key" type="text">
         <description>
-          An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase console.
+          An encrypted value of legacy-server-key that can be obtained from the cloud messaging tab of the Firebase
+          console.
           @link https://firebase.google.com/docs/cloud-messaging/auth-server
         </description>
       </field>
@@ -35,13 +36,10 @@
         <imports/>
         <methods>
           <![CDATA[
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
     return [
-        '_id' => (string)$this->get('_id'),
+        '_id' => $this->fget(self::_ID_FIELD),
     ];
 }
           ]]>
@@ -58,7 +56,7 @@ public function getUriTemplateVars()
  */
 getUriTemplateVars() {
   return {
-    _id: `${this.get('_id', '')}`,
+    _id: `${this.get(this._ID_FIELD)}`,
   };
 }
           ]]>

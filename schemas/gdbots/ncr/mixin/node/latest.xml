@@ -20,7 +20,7 @@
         <js-options>
           <imports>import UuidIdentifier from '@gdbots/pbj/well-known/UuidIdentifier';</imports>
           <class-proto>UuidIdentifier</class-proto>
-          <default>() => UuidIdentifier.generate()</default>
+          <default>UuidIdentifier.generate</default>
         </js-options>
       </field>
       <field name="status" type="string-enum">
@@ -56,18 +56,14 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->get('_id'), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget(self::_ID_FIELD), $tag);
 }
             ]]>
         </methods>
@@ -78,7 +74,7 @@ public function generateMessageRef($tag = null)
       <insertion-points>
         <imports>
           <![CDATA[
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -88,7 +84,7 @@ import MessageRef from '@gdbots/pbj/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  return new MessageRef(this.schema().getCurie(), this.get('_id'), tag);
+  return new MessageRef(this.schema().getCurie(), this.get(this._ID_FIELD), tag);
 }
             ]]>
         </methods>

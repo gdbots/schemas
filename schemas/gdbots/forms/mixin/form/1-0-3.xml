@@ -36,11 +36,11 @@
       <field name="disclaimer" type="text"/>
       <field name="image_id" type="identifier">
         <php-options>
-          <imports>use Gdbots\Schemas\Files\FileId;</imports>
+          <imports>use Gdbots\Schemas\Common\FileId;</imports>
           <class-name>FileId::class</class-name>
         </php-options>
         <js-options>
-          <imports>import FileId from '@gdbots/schemas/gdbots/files/FileId';</imports>
+          <imports>import FileId from '@gdbots/schemas/gdbots/common/FileId';</imports>
           <class-proto>FileId</class-proto>
         </js-options>
       </field>

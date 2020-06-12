@@ -1,9 +1,7 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/analytics/tracker/keen/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import GdbotsAnalyticsTrackerV1Mixin from '@gdbots/schemas/gdbots/analytics/mixin/tracker/TrackerV1Mixin';
 import Message from '@gdbots/pbj/Message';
-import MessageRef from '@gdbots/pbj/MessageRef';
-import MessageResolver from '@gdbots/pbj/MessageResolver';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
 import Schema from '@gdbots/pbj/Schema';
 import T from '@gdbots/pbj/types';
 
@@ -14,21 +12,21 @@ export default class KeenV1 extends Message {
    * @returns {Schema}
    */
   static defineSchema() {
-    return new Schema('pbj:gdbots:analytics:tracker:keen:1-0-0', KeenV1,
+    return new Schema(this.SCHEMA_ID, this,
       [
-        Fb.create('project_id', T.StringType.create())
+        Fb.create(this.IS_ENABLED_FIELD, T.BooleanType.create())
+          .build(),
+        Fb.create(this.PROJECT_ID_FIELD, T.StringType.create())
           .pattern('^\\w+$')
           .build(),
-        Fb.create('read_key', T.StringType.create())
+        Fb.create(this.READ_KEY_FIELD, T.StringType.create())
           .pattern('^\\w+$')
           .build(),
-        Fb.create('write_key', T.StringType.create())
+        Fb.create(this.WRITE_KEY_FIELD, T.StringType.create())
           .pattern('^\\w+$')
           .build(),
       ],
-      [
-        GdbotsAnalyticsTrackerV1Mixin.create(),
-      ],
+      this.MIXINS,
     );
   }
 
@@ -37,7 +35,7 @@ export default class KeenV1 extends Message {
    * @returns {MessageRef}
    */
   generateMessageRef(tag = null) {
-    return new MessageRef(this.schema().getCurie(), this.get('project_id'), tag);
+    return new MessageRef(this.schema().getCurie(), this.get(this.PROJECT_ID_FIELD), tag);
   }
   
   /**
@@ -45,13 +43,34 @@ export default class KeenV1 extends Message {
    */
   getUriTemplateVars() {
     return {
-      project_id: this.get('project_id'),
-      read_key: this.get('read_key'),
-      write_key: this.get('write_key'),
+      project_id: this.get(this.PROJECT_ID_FIELD),
+      read_key: this.get(this.READ_KEY_FIELD),
+      write_key: this.get(this.WRITE_KEY_FIELD),
     };
   }
 }
 
-MessageResolver.register('gdbots:analytics:tracker:keen', KeenV1);
-Object.freeze(KeenV1);
-Object.freeze(KeenV1.prototype);
+const M = KeenV1;
+M.prototype.SCHEMA_ID = M.SCHEMA_ID = 'pbj:gdbots:analytics:tracker:keen:1-0-0';
+M.prototype.SCHEMA_CURIE = M.SCHEMA_CURIE = 'gdbots:analytics:tracker:keen';
+M.prototype.SCHEMA_CURIE_MAJOR = M.SCHEMA_CURIE_MAJOR = 'gdbots:analytics:tracker:keen:v1';
+
+M.prototype.MIXINS = M.MIXINS = [
+  'gdbots:analytics:mixin:tracker:v1',
+  'gdbots:analytics:mixin:tracker',
+];
+
+M.prototype.IS_ENABLED_FIELD = M.IS_ENABLED_FIELD = 'is_enabled';
+M.prototype.PROJECT_ID_FIELD = M.PROJECT_ID_FIELD = 'project_id';
+M.prototype.READ_KEY_FIELD = M.READ_KEY_FIELD = 'read_key';
+M.prototype.WRITE_KEY_FIELD = M.WRITE_KEY_FIELD = 'write_key';
+
+M.prototype.FIELDS = M.FIELDS = [
+  M.IS_ENABLED_FIELD,
+  M.PROJECT_ID_FIELD,
+  M.READ_KEY_FIELD,
+  M.WRITE_KEY_FIELD,
+];
+
+Object.freeze(M);
+Object.freeze(M.prototype);

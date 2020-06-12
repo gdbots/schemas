@@ -1,47 +1,128 @@
 <?php
+declare(strict_types=1);
+
 // @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/address-field/1-0-0.json#
 namespace Gdbots\Schemas\Forms\Field;
 
 use Gdbots\Pbj\AbstractMessage;
+use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Forms\Mixin\Field\FieldV1 as GdbotsFormsFieldV1;
-use Gdbots\Schemas\Forms\Mixin\Field\FieldV1Mixin as GdbotsFormsFieldV1Mixin;
+use Gdbots\Schemas\Forms\Enum\PiiImpact;
 use Gdbots\Schemas\Forms\Mixin\Field\FieldV1Trait as GdbotsFormsFieldV1Trait;
 
-final class AddressFieldV1 extends AbstractMessage implements
-    AddressField,
-    GdbotsFormsFieldV1
+final class AddressFieldV1 extends AbstractMessage
 {
+    const SCHEMA_ID = 'pbj:gdbots:forms:field:address-field:1-0-0';
+    const SCHEMA_CURIE = 'gdbots:forms:field:address-field';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:forms:field:address-field:v1';
+
+    const MIXINS = [
+      'gdbots:forms:mixin:field:v1',
+      'gdbots:forms:mixin:field',
+    ];
+
+    const NAME_FIELD = 'name';
+    const MAPS_TO_FIELD = 'maps_to';
+    const LABEL_FIELD = 'label';
+    const PLACEHOLDER_FIELD = 'placeholder';
+    const DESCRIPTION_FIELD = 'description';
+    const IS_REQUIRED_FIELD = 'is_required';
+    const LINK_TEXT_FIELD = 'link_text';
+    const LINK_URL_FIELD = 'link_url';
+    const PII_IMPACT_FIELD = 'pii_impact';
+    const DEFAULT_COUNTRY_FIELD = 'default_country';
+    const PREFERRED_COUNTRIES_FIELD = 'preferred_countries';
+    const INCLUDED_COUNTRIES_FIELD = 'included_countries';
+    const EXCLUDED_COUNTRIES_FIELD = 'excluded_countries';
+
+    const FIELDS = [
+      self::NAME_FIELD,
+      self::MAPS_TO_FIELD,
+      self::LABEL_FIELD,
+      self::PLACEHOLDER_FIELD,
+      self::DESCRIPTION_FIELD,
+      self::IS_REQUIRED_FIELD,
+      self::LINK_TEXT_FIELD,
+      self::LINK_URL_FIELD,
+      self::PII_IMPACT_FIELD,
+      self::DEFAULT_COUNTRY_FIELD,
+      self::PREFERRED_COUNTRIES_FIELD,
+      self::INCLUDED_COUNTRIES_FIELD,
+      self::EXCLUDED_COUNTRIES_FIELD,
+    ];
+
     use GdbotsFormsFieldV1Trait;
 
-    /**
-     * @return Schema
-     */
-    protected static function defineSchema()
+    protected static function defineSchema(): Schema
     {
-        return new Schema('pbj:gdbots:forms:field:address-field:1-0-0', __CLASS__,
+        return new Schema(self::SCHEMA_ID, __CLASS__,
             [
-                Fb::create('default_country', T\StringType::create())
+                /*
+                 * A unique identifier (within the form) for the field. This value
+                 * is not shown to the user and should NOT change once set.
+                 */
+                Fb::create(self::NAME_FIELD, T\StringType::create())
+                    ->required()
+                    ->maxLength(127)
+                    ->pattern('^[a-zA-Z_]{1}[\w-]*$')
+                    ->build(),
+                /*
+                 * The name of the schema field the answer will map to. By default this
+                 * will go to the "cf" field which is a "dynamic-field" list containing
+                 * all answers filled out on the form (ref "gdbots:forms:mixin:send-submission").
+                 */
+                Fb::create(self::MAPS_TO_FIELD, T\StringType::create())
+                    ->maxLength(127)
+                    ->pattern('^[a-zA-Z_]{1}\w*$')
+                    ->withDefault("cf")
+                    ->build(),
+                /*
+                 * The main text for the question/field.
+                 */
+                Fb::create(self::LABEL_FIELD, T\StringType::create())
+                    ->build(),
+                Fb::create(self::PLACEHOLDER_FIELD, T\StringType::create())
+                    ->build(),
+                /*
+                 * A short description to better explain this field.
+                 */
+                Fb::create(self::DESCRIPTION_FIELD, T\TextType::create())
+                    ->build(),
+                Fb::create(self::IS_REQUIRED_FIELD, T\BooleanType::create())
+                    ->build(),
+                /*
+                 * The text that will replace the token "{link}" within the label or description.
+                 */
+                Fb::create(self::LINK_TEXT_FIELD, T\StringType::create())
+                    ->build(),
+                /*
+                 * The URL to use for the replaced token "{link}" within the label or description.
+                 */
+                Fb::create(self::LINK_URL_FIELD, T\StringType::create())
+                    ->format(Format::URL())
+                    ->build(),
+                Fb::create(self::PII_IMPACT_FIELD, T\StringEnumType::create())
+                    ->className(PiiImpact::class)
+                    ->build(),
+                Fb::create(self::DEFAULT_COUNTRY_FIELD, T\StringType::create())
                     ->pattern('^[A-Z]{2}$')
                     ->build(),
-                Fb::create('preferred_countries', T\StringType::create())
+                Fb::create(self::PREFERRED_COUNTRIES_FIELD, T\StringType::create())
                     ->asASet()
                     ->pattern('^[A-Z]{2}$')
                     ->build(),
-                Fb::create('included_countries', T\StringType::create())
+                Fb::create(self::INCLUDED_COUNTRIES_FIELD, T\StringType::create())
                     ->asASet()
                     ->pattern('^[A-Z]{2}$')
                     ->build(),
-                Fb::create('excluded_countries', T\StringType::create())
+                Fb::create(self::EXCLUDED_COUNTRIES_FIELD, T\StringType::create())
                     ->asASet()
                     ->pattern('^[A-Z]{2}$')
                     ->build(),
             ],
-            [
-                GdbotsFormsFieldV1Mixin::create(),
-            ]
+            self::MIXINS
         );
     }
 }

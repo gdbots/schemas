@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:request:get-node-history-request:1-0-0">
+    <fields>
+      <field name="node_ref" type="node-ref" required="true"/>
+      <field name="since" type="microtime" use-type-default="false">
+        <description>
+          Return events since this time (exclusive greater than if forward=true, less than if forward=false)
+        </description>
+      </field>
+      <field name="count" type="tiny-int">
+        <description>The number of events to return.</description>
+        <default>25</default>
+      </field>
+      <field name="forward" type="boolean">
+        <description>
+          When true, the events are read from oldest to newest, otherwise newest to oldest.
+        </description>
+      </field>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:pbjx:mixin:request:v1</curie-major>
+    </mixins>
+  </schema>
+</pbj-schema>

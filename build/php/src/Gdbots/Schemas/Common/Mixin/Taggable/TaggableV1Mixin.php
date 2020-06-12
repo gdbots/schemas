@@ -1,26 +1,42 @@
 <?php
+declare(strict_types=1);
+
 // @link http://schemas.gdbots.io/json-schema/gdbots/common/mixin/taggable/1-0-0.json#
 namespace Gdbots\Schemas\Common\Mixin\Taggable;
 
-use Gdbots\Pbj\AbstractMixin;
+use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
 
-final class TaggableV1Mixin extends AbstractMixin
+final class TaggableV1Mixin
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
+    const SCHEMA_ID = 'pbj:gdbots:common:mixin:taggable:1-0-0';
+    const SCHEMA_CURIE = 'gdbots:common:mixin:taggable';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:common:mixin:taggable:v1';
+
+    const TAGS_FIELD = 'tags';
+
+    const FIELDS = [
+      self::TAGS_FIELD,
+    ];
+
+    final private function __construct() {}
+
+    public static function getId(): SchemaId
     {
-        return SchemaId::fromString('pbj:gdbots:common:mixin:taggable:1-0-0');
+        return SchemaId::fromString(self::SCHEMA_ID);
+    }
+
+    public static function hasField(string $name): bool
+    {
+        return in_array($name, self::FIELDS, true);
     }
 
     /**
-     * {@inheritdoc}
+     * @return Field[]
      */
-    public function getFields()
+    public static function getFields(): array
     {
         return [
             /*
@@ -28,7 +44,7 @@ final class TaggableV1Mixin extends AbstractMixin
              * external systems. The tags names should be consistent and descriptive,
              * e.g. fb_user_id:123, salesforce_customer_id:456.
              */
-            Fb::create('tags', T\StringType::create())
+            Fb::create(self::TAGS_FIELD, T\StringType::create())
                 ->asAMap()
                 ->pattern('^[\w\/\.:-]+$')
                 ->build(),

@@ -17,32 +17,25 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->get('_id') ?: $this->generateEtag(), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget(self::_ID_FIELD) ?: $this->generateEtag(), $tag);
 }
 
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
     return [
-      '_id' => (string)$this->get('_id'),
-      'vendor' => $this->get('vendor'),
-      'name' => $this->get('name'),
-      'version' => $this->get('version'),
-      'build' => $this->get('build'),
-      'variant' => $this->get('variant'),
+      '_id' => $this->fget(self::_ID_FIELD),
+      'vendor' => $this->fget(self::VENDOR_FIELD),
+      'name' => $this->fget(self::NAME_FIELD),
+      'version' => $this->fget(self::VERSION_FIELD),
+      'build' => $this->fget(self::BUILD_FIELD),
+      'variant' => $this->fget(self::VARIANT_FIELD),
     ];
 }
             ]]>
@@ -54,7 +47,7 @@ public function getUriTemplateVars()
       <insertion-points>
         <imports>
           <![CDATA[
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -64,7 +57,7 @@ import MessageRef from '@gdbots/pbj/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  const id = this.get('_id') || this.generateEtag();
+  const id = this.get(this._ID_FIELD) || this.generateEtag();
   return new MessageRef(this.schema().getCurie(), `${id}`, tag);
 }
 
@@ -73,12 +66,12 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    _id: `${this.get('_id', '')}`,
-    vendor: this.get('vendor'),
-    name: this.get('name'),
-    version: this.get('version'),
-    build: this.get('build'),
-    variant: this.get('variant'),
+    _id: `${this.get(this._ID_FIELD, '')}`,
+    vendor: this.get(this.VENDOR_FIELD),
+    name: this.get(this.NAME_FIELD),
+    version: this.get(this.VERSION_FIELD),
+    build: this.get(this.BUILD_FIELD),
+    variant: this.get(this.VARIANT_FIELD),
   };
 }
             ]]>

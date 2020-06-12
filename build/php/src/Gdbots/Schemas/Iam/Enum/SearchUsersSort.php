@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Iam\Enum;
 
-use Gdbots\Common\Enum;
+use Gdbots\Pbj\Enum;
 
 /**
  * @method static SearchUsersSort UNKNOWN()

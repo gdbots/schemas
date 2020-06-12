@@ -12,15 +12,16 @@ export default class SampleEdge extends Message {
    */
   static defineSchema() {
     return new Schema('pbj:gdbots:tests.schemas.ncr:fixtures:sample-edge:1-0-0', SampleEdge,
-      [],
+      GdbotsNcrEdgeV1Mixin.getFields(),
       [
-        GdbotsNcrEdgeV1Mixin.create(),
+        GdbotsNcrEdgeV1Mixin.SCHEMA_CURIE_MAJOR,
+        GdbotsNcrEdgeV1Mixin.SCHEMA_CURIE,
       ]
     );
   }
 }
 
 GdbotsNcrEdgeV1Trait(SampleEdge);
-MessageResolver.register('gdbots:tests.schemas.ncr:fixtures:sample-edge', SampleEdge);
+MessageResolver.registerMessage('gdbots:tests.schemas.ncr:fixtures:sample-edge:v1', SampleEdge);
 Object.freeze(SampleEdge);
 Object.freeze(SampleEdge.prototype);

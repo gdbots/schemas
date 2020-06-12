@@ -37,29 +37,22 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->get('event_id'), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget(self::EVENT_ID_FIELD), $tag);
 }
 
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
     return [
-        'event_id' => (string)$this->get('event_id'),
-        'occurred_at' => (string)$this->get('occurred_at'),
-        'ctx_user_ref' => (string)$this->get('ctx_user_ref'),
+        'event_id' => $this->fget(self::EVENT_ID_FIELD),
+        'occurred_at' => $this->fget(self::OCCURRED_AT_FIELD),
+        'ctx_user_ref' => $this->fget(self::CTX_USER_REF_FIELD),
     ];
 }
             ]]>
@@ -71,7 +64,7 @@ public function getUriTemplateVars()
       <insertion-points>
         <imports>
           <![CDATA[
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -81,7 +74,7 @@ import MessageRef from '@gdbots/pbj/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  return new MessageRef(this.schema().getCurie(), this.get('event_id'), tag);
+  return new MessageRef(this.schema().getCurie(), this.get(this.EVENT_ID_FIELD), tag);
 },
 
 /**
@@ -89,9 +82,9 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    event_id: `${this.get('event_id')}`,
-    occurred_at: `${this.get('occurred_at')}`,
-    ctx_user_ref: `${this.get('ctx_user_ref', '')}`,
+    event_id: `${this.get(this.EVENT_ID_FIELD)}`,
+    occurred_at: `${this.get(this.OCCURRED_AT_FIELD)}`,
+    ctx_user_ref: `${this.get(this.CTX_USER_REF_FIELD, '')}`,
   };
 }
             ]]>

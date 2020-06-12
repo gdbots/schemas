@@ -10,19 +10,11 @@
           <curie>gdbots:ncr:mixin:node</curie>
         </any-of>
       </field>
-      <field name="missing_node_refs" type="identifier" rule="set">
+      <field name="missing_node_refs" type="node-ref" rule="set">
         <description>
           The "missing_node_refs" field contains a set of node_refs that
           the batch request failed to retrieve.
         </description>
-        <php-options>
-          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
-          <class-name>NodeRef::class</class-name>
-        </php-options>
-        <js-options>
-          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
-          <class-proto>NodeRef</class-proto>
-        </js-options>
       </field>
     </fields>
   </schema>

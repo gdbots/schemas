@@ -1,59 +1,84 @@
 <?php
+declare(strict_types=1);
+
 // @link http://schemas.gdbots.io/json-schema/gdbots/ncr/mixin/node-updated/1-0-1.json#
 namespace Gdbots\Schemas\Ncr\Mixin\NodeUpdated;
 
-use Gdbots\Pbj\AbstractMixin;
 use Gdbots\Pbj\Enum\Format;
+use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Ncr\Mixin\Node\Node as GdbotsNcrNode;
-use Gdbots\Schemas\Ncr\NodeRef;
 
-final class NodeUpdatedV1Mixin extends AbstractMixin
+final class NodeUpdatedV1Mixin
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
+    const SCHEMA_ID = 'pbj:gdbots:ncr:mixin:node-updated:1-0-1';
+    const SCHEMA_CURIE = 'gdbots:ncr:mixin:node-updated';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:ncr:mixin:node-updated:v1';
+
+    const NODE_REF_FIELD = 'node_ref';
+    const SLUG_FIELD = 'slug';
+    const NEW_ETAG_FIELD = 'new_etag';
+    const OLD_ETAG_FIELD = 'old_etag';
+    const NEW_NODE_FIELD = 'new_node';
+    const OLD_NODE_FIELD = 'old_node';
+    const PATHS_FIELD = 'paths';
+
+    const FIELDS = [
+      self::NODE_REF_FIELD,
+      self::SLUG_FIELD,
+      self::NEW_ETAG_FIELD,
+      self::OLD_ETAG_FIELD,
+      self::NEW_NODE_FIELD,
+      self::OLD_NODE_FIELD,
+      self::PATHS_FIELD,
+    ];
+
+    final private function __construct() {}
+
+    public static function getId(): SchemaId
     {
-        return SchemaId::fromString('pbj:gdbots:ncr:mixin:node-updated:1-0-1');
+        return SchemaId::fromString(self::SCHEMA_ID);
+    }
+
+    public static function hasField(string $name): bool
+    {
+        return in_array($name, self::FIELDS, true);
     }
 
     /**
-     * {@inheritdoc}
+     * @return Field[]
      */
-    public function getFields()
+    public static function getFields(): array
     {
         return [
-            Fb::create('node_ref', T\IdentifierType::create())
+            Fb::create(self::NODE_REF_FIELD, T\NodeRefType::create())
                 ->required()
-                ->className(NodeRef::class)
                 ->build(),
-            Fb::create('slug', T\StringType::create())
+            Fb::create(self::SLUG_FIELD, T\StringType::create())
                 ->format(Format::SLUG())
                 ->build(),
-            Fb::create('new_etag', T\StringType::create())
+            Fb::create(self::NEW_ETAG_FIELD, T\StringType::create())
                 ->maxLength(100)
                 ->pattern('^[\w\.:-]+$')
                 ->build(),
-            Fb::create('old_etag', T\StringType::create())
+            Fb::create(self::OLD_ETAG_FIELD, T\StringType::create())
                 ->maxLength(100)
                 ->pattern('^[\w\.:-]+$')
                 ->build(),
-            Fb::create('new_node', T\MessageType::create())
+            Fb::create(self::NEW_NODE_FIELD, T\MessageType::create())
                 ->required()
-                ->anyOfClassNames([
-                    GdbotsNcrNode::class,
+                ->anyOfCuries([
+                    'gdbots:ncr:mixin:node',
                 ])
                 ->overridable(true)
                 ->build(),
             /*
              * The entire node, as it appeared before it was modified.
              */
-            Fb::create('old_node', T\MessageType::create())
-                ->anyOfClassNames([
-                    GdbotsNcrNode::class,
+            Fb::create(self::OLD_NODE_FIELD, T\MessageType::create())
+                ->anyOfCuries([
+                    'gdbots:ncr:mixin:node',
                 ])
                 ->overridable(true)
                 ->build(),
@@ -61,7 +86,7 @@ final class NodeUpdatedV1Mixin extends AbstractMixin
              * The names of the fields this update event should apply changes to.
              * Nested paths can be referenced using dot notation.
              */
-            Fb::create('paths', T\StringType::create())
+            Fb::create(self::PATHS_FIELD, T\StringType::create())
                 ->asASet()
                 ->pattern('^[a-zA-Z_]{1}[\w\.]*$')
                 ->build(),

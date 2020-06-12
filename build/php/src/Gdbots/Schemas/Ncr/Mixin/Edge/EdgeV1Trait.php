@@ -1,38 +1,30 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Ncr\Mixin\Edge;
 
-use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
+use Gdbots\Pbj\WellKnown\MessageRef;
 use Gdbots\Schemas\Ncr\EdgeId;
 
 /**
  * @method static Schema schema
- * @method mixed get($fieldName, $default = null)
+ * @method mixed fget($fieldName, $default = null)
  */
 trait EdgeV1Trait
 {
-    /**
-     * @param string $tag
-     * @return MessageRef
-     */
-    public function generateMessageRef($tag = null)
+    public function generateMessageRef(?string $tag = null): MessageRef
     {
-        /** @var Edge $this */
-        return new MessageRef(static::schema()->getCurie(), EdgeId::fromEdge($this), $tag);
+        return new MessageRef(self::schema()->getCurie(), EdgeId::fromEdge($this)->toString(), $tag);
     }
     
-    /**
-     * @return array
-     */
-    public function getUriTemplateVars()
+    public function getUriTemplateVars(): array
     {
-        /** @var Edge $this */
         return [
             'edge_id' => EdgeId::fromEdge($this)->toString(),
-            'from_ref' => (string)$this->get('from_ref'),
-            'to_ref' => (string)$this->get('to_ref'),
-            'created_at' => (string)$this->get('created_at'),
+            'from_ref' => $this->fget(self::FROM_REF_FIELD),
+            'to_ref' => $this->fget(self::TO_REF_FIELD),
+            'created_at' => $this->fget(self::CREATED_AT_FIELD),
         ];
     }
 }

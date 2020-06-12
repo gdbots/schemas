@@ -12,14 +12,10 @@
         <imports/>
         <methods>
           <![CDATA[
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
     return [
-        '_id' => (string)$this->get('_id'),
-        'sendgrid_api_key' => (string)$this->get('sendgrid_api_key'),
+        '_id' => $this->fget(self::_ID_FIELD),
     ];
 }
           ]]>
@@ -36,8 +32,7 @@ public function getUriTemplateVars()
  */
 getUriTemplateVars() {
   return {
-    _id: `${this.get('_id', '')}`,
-    sendgrid_api_key: `${this.get('sendgrid_api_key', '')}`,
+    _id: `${this.get(this._ID_FIELD)}`,
   };
 }
           ]]>

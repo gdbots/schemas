@@ -1,33 +1,28 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Pbjx\Mixin\Response;
 
-use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
+use Gdbots\Pbj\WellKnown\MessageRef;
 
 /**
  * @method static Schema schema
- * @method mixed get($fieldName, $default = null)
+ * @method mixed fget($fieldName, $default = null)
  */
 trait ResponseV1Trait
 {
-    /**
-     * @param string $tag
-     * @return MessageRef
-     */
-    public function generateMessageRef($tag = null)
+    public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->get('response_id'), $tag);
+        return new MessageRef(self::schema()->getCurie(), $this->fget(self::RESPONSE_ID_FIELD), $tag);
     }
     
-    /**
-     * @return array
-     */
-    public function getUriTemplateVars()
+    public function getUriTemplateVars(): array
     {
         return [
-            'response_id' => (string)$this->get('response_id'),
-            'created_at' => (string)$this->get('created_at'),
+            'response_id' => $this->fget(self::RESPONSE_ID_FIELD),
+            'created_at' => $this->fget(self::CREATED_AT_FIELD),
+            'ctx_tenant_id' => $this->fget(self::CTX_TENANT_ID_FIELD),
         ];
     }
 }

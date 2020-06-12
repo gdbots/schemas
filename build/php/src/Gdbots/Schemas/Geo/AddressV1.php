@@ -1,98 +1,126 @@
 <?php
+declare(strict_types=1);
+
 // @link http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-2.json#
 namespace Gdbots\Schemas\Geo;
 
 use Gdbots\Pbj\AbstractMessage;
 use Gdbots\Pbj\FieldBuilder as Fb;
-use Gdbots\Pbj\MessageRef;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Pbj\WellKnown\MessageRef;
 
-final class AddressV1 extends AbstractMessage implements
-    Address
+final class AddressV1 extends AbstractMessage
 {
+    const SCHEMA_ID = 'pbj:gdbots:geo::address:1-0-2';
+    const SCHEMA_CURIE = 'gdbots:geo::address';
+    const SCHEMA_CURIE_MAJOR = 'gdbots:geo::address:v1';
 
-    /**
-     * @return Schema
-     */
-    protected static function defineSchema()
+    const MIXINS = [];
+
+    const GEO_HASH_FIELD = 'geo_hash';
+    const GEO_POINT_FIELD = 'geo_point';
+    const VERIFIED_FIELD = 'verified';
+    const IS_VERIFIED_FIELD = 'is_verified';
+    const STREET1_FIELD = 'street1';
+    const STREET2_FIELD = 'street2';
+    const PO_BOX_FIELD = 'po_box';
+    const CITY_FIELD = 'city';
+    const COUNTY_FIELD = 'county';
+    const REGION_FIELD = 'region';
+    const REGION_NAME_FIELD = 'region_name';
+    const POSTAL_CODE_FIELD = 'postal_code';
+    const COUNTRY_FIELD = 'country';
+    const CONTINENT_FIELD = 'continent';
+
+    const FIELDS = [
+      self::GEO_HASH_FIELD,
+      self::GEO_POINT_FIELD,
+      self::VERIFIED_FIELD,
+      self::IS_VERIFIED_FIELD,
+      self::STREET1_FIELD,
+      self::STREET2_FIELD,
+      self::PO_BOX_FIELD,
+      self::CITY_FIELD,
+      self::COUNTY_FIELD,
+      self::REGION_FIELD,
+      self::REGION_NAME_FIELD,
+      self::POSTAL_CODE_FIELD,
+      self::COUNTRY_FIELD,
+      self::CONTINENT_FIELD,
+    ];
+
+    protected static function defineSchema(): Schema
     {
-        return new Schema('pbj:gdbots:geo::address:1-0-2', __CLASS__,
+        return new Schema(self::SCHEMA_ID, __CLASS__,
             [
-                Fb::create('geo_hash', T\StringType::create())
+                Fb::create(self::GEO_HASH_FIELD, T\StringType::create())
                     ->maxLength(20)
                     ->pattern('^\w+$')
                     ->build(),
-                Fb::create('geo_point', T\GeoPointType::create())
+                Fb::create(self::GEO_POINT_FIELD, T\GeoPointType::create())
                     ->build(),
                 /*
                  * Indicates if a verification has been run on this address.
                  */
-                Fb::create('verified', T\BooleanType::create())
+                Fb::create(self::VERIFIED_FIELD, T\BooleanType::create())
                     ->build(),
                 /*
                  * Indicates if this is a valid adddress or not. Generally only true if the
                  * verified field is also true.
                  */
-                Fb::create('is_verified', T\BooleanType::create())
+                Fb::create(self::IS_VERIFIED_FIELD, T\BooleanType::create())
                     ->build(),
-                Fb::create('street1', T\StringType::create())
+                Fb::create(self::STREET1_FIELD, T\StringType::create())
                     ->build(),
-                Fb::create('street2', T\StringType::create())
+                Fb::create(self::STREET2_FIELD, T\StringType::create())
                     ->maxLength(20)
                     ->build(),
-                Fb::create('po_box', T\StringType::create())
+                Fb::create(self::PO_BOX_FIELD, T\StringType::create())
                     ->maxLength(20)
                     ->build(),
-                Fb::create('city', T\StringType::create())
+                Fb::create(self::CITY_FIELD, T\StringType::create())
                     ->maxLength(100)
                     ->build(),
-                Fb::create('county', T\StringType::create())
+                Fb::create(self::COUNTY_FIELD, T\StringType::create())
                     ->maxLength(100)
                     ->build(),
                 /*
                  * A two letter alpha or numeric code indicating the region, e.g. "CA".
                  * @link http://www.maxmind.com/download/geoip/misc/region_codes.csv
                  */
-                Fb::create('region', T\StringType::create())
+                Fb::create(self::REGION_FIELD, T\StringType::create())
                     ->pattern('^[A-Z0-9]{2}$')
                     ->build(),
                 /*
                  * The full name of the region, e.g. "California".
                  */
-                Fb::create('region_name', T\StringType::create())
+                Fb::create(self::REGION_NAME_FIELD, T\StringType::create())
                     ->maxLength(150)
                     ->build(),
-                Fb::create('postal_code', T\StringType::create())
+                Fb::create(self::POSTAL_CODE_FIELD, T\StringType::create())
                     ->maxLength(30)
                     ->pattern('^[\w\s-]+$')
                     ->build(),
-                Fb::create('country', T\StringType::create())
+                Fb::create(self::COUNTRY_FIELD, T\StringType::create())
                     ->pattern('^[A-Z]{2}$')
                     ->build(),
-                Fb::create('continent', T\StringType::create())
+                Fb::create(self::CONTINENT_FIELD, T\StringType::create())
                     ->build(),
-            ]
+            ],
+            self::MIXINS
         );
     }
 
-    /**
-     * @param string $tag
-     * @return MessageRef
-     */
-    public function generateMessageRef($tag = null)
+    public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(static::schema()->getCurie(), $this->get('geo_hash'), $tag);
+        return new MessageRef(self::schema()->getCurie(), $this->fget(self::GEO_HASH_FIELD), $tag);
     }
     
-    /**
-     * @return array
-     */
-    public function getUriTemplateVars()
+    public function getUriTemplateVars(): array
     {
         return [
-            'geo_hash' => $this->get('geo_hash'),
-            'geo_point' => (string)$this->get('geo_point'),
+            'geo_hash' => $this->fget(self::GEO_HASH_FIELD),
         ];
     }
 }

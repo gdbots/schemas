@@ -16,31 +16,24 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->generateEtag(), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->generateEtag(), $tag);
 }
 
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
     return [
-      'provider' => $this->get('provider'),
-      'region' => $this->get('region'),
-      'zone' => $this->get('zone'),
-      'instance_id' => $this->get('instance_id'),
-      'instance_type' => $this->get('instance_type'),
+      'provider' => $this->fget(self::PROVIDER_FIELD),
+      'region' => $this->fget(self::REGION_FIELD),
+      'zone' => $this->fget(self::ZONE_FIELD),
+      'instance_id' => $this->fget(self::INSTANCE_ID_FIELD),
+      'instance_type' => $this->fget(self::INSTANCE_TYPE_FIELD),
     ];
 }
             ]]>
@@ -52,7 +45,7 @@ public function getUriTemplateVars()
       <insertion-points>
         <imports>
           <![CDATA[
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -70,11 +63,11 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    provider: this.get('provider'),
-    region: this.get('region'),
-    zone: this.get('zone'),
-    instance_id: this.get('instance_id'),
-    instance_type: this.get('instance_type'),
+    provider: this.get(this.PROVIDER_FIELD),
+    region: this.get(this.REGION_FIELD),
+    zone: this.get(this.ZONE_FIELD),
+    instance_id: this.get(this.INSTANCE_ID_FIELD),
+    instance_type: this.get(this.INSTANCE_TYPE_FIELD),
   };
 }
             ]]>

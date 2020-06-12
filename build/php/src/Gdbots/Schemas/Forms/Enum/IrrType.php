@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Schemas\Forms\Enum;
 
-use Gdbots\Common\Enum;
+use Gdbots\Pbj\Enum;
 
 /**
  * @method static IrrType UNKNOWN()

@@ -5,26 +5,8 @@
 
   <schema id="pbj:gdbots:ncr:mixin:edge:1-0-0" mixin="true">
     <fields>
-      <field name="from_ref" type="identifier" required="true">
-        <php-options>
-          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
-          <class-name>NodeRef::class</class-name>
-        </php-options>
-        <js-options>
-          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
-          <class-proto>NodeRef</class-proto>
-        </js-options>
-      </field>
-      <field name="to_ref" type="identifier" required="true">
-        <php-options>
-          <imports>use Gdbots\Schemas\Ncr\NodeRef;</imports>
-          <class-name>NodeRef::class</class-name>
-        </php-options>
-        <js-options>
-          <imports>import NodeRef from '@gdbots/schemas/gdbots/ncr/NodeRef';</imports>
-          <class-proto>NodeRef</class-proto>
-        </js-options>
-      </field>
+      <field name="from_ref" type="node-ref" required="true"/>
+      <field name="to_ref" type="node-ref" required="true"/>
       <field name="multiplicity" type="string-enum" overridable="true">
         <default>multi</default>
         <enum id="gdbots:ncr:edge-multiplicity"/>
@@ -36,33 +18,24 @@
       <insertion-points>
         <imports>
           <![CDATA[
-use Gdbots\Pbj\MessageRef;
+use Gdbots\Pbj\WellKnown\MessageRef;
 use Gdbots\Schemas\Ncr\EdgeId;
             ]]>
         </imports>
         <methods>
           <![CDATA[
-/**
- * @param string $tag
- * @return MessageRef
- */
-public function generateMessageRef($tag = null)
+public function generateMessageRef(?string $tag = null): MessageRef
 {
-    /** @var Edge $this */
-    return new MessageRef(static::schema()->getCurie(), EdgeId::fromEdge($this), $tag);
+    return new MessageRef(self::schema()->getCurie(), EdgeId::fromEdge($this)->toString(), $tag);
 }
 
-/**
- * @return array
- */
-public function getUriTemplateVars()
+public function getUriTemplateVars(): array
 {
-    /** @var Edge $this */
     return [
         'edge_id' => EdgeId::fromEdge($this)->toString(),
-        'from_ref' => (string)$this->get('from_ref'),
-        'to_ref' => (string)$this->get('to_ref'),
-        'created_at' => (string)$this->get('created_at'),
+        'from_ref' => $this->fget(self::FROM_REF_FIELD),
+        'to_ref' => $this->fget(self::TO_REF_FIELD),
+        'created_at' => $this->fget(self::CREATED_AT_FIELD),
     ];
 }
             ]]>
@@ -75,7 +48,7 @@ public function getUriTemplateVars()
         <imports>
           <![CDATA[
 import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId';
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
             ]]>
         </imports>
         <methods>
@@ -94,9 +67,9 @@ generateMessageRef(tag = null) {
 getUriTemplateVars() {
   return {
     edge_id: `${EdgeId.fromEdge(this)}`,
-    from_ref: `${this.get('from_ref')}`,
-    to_ref: `${this.get('to_ref')}`,
-    created_at: `${this.get('created_at')}`,
+    from_ref: `${this.get(this.FROM_REF_FIELD)}`,
+    to_ref: `${this.get(this.TO_REF_FIELD)}`,
+    created_at: `${this.get(this.CREATED_AT_FIELD)}`,
   };
 }
             ]]>

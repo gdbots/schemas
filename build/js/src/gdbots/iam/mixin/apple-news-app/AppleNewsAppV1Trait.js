@@ -1,13 +1,13 @@
-export default function AppleNewsAppV1Trait(m) {
-  Object.assign(m.prototype, {
+export default function AppleNewsAppV1Trait(M) {
+  Object.assign(M.prototype, {
     /**
      * @returns {Object}
      */
     getUriTemplateVars() {
       return {
-        _id: `${this.get('_id', '')}`,
-        channel_id: this.get('channel_id'),
-        api_key: this.get('api_key'),
+        _id: `${this.get(this._ID_FIELD)}`,
+        channel_id: this.get(this.CHANNEL_ID_FIELD),
+        api_key: this.get(this.API_KEY_FIELD),
       };
     }
   });

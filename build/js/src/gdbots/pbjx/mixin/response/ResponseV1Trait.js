@@ -1,13 +1,13 @@
-import MessageRef from '@gdbots/pbj/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
 
-export default function ResponseV1Trait(m) {
-  Object.assign(m.prototype, {
+export default function ResponseV1Trait(M) {
+  Object.assign(M.prototype, {
     /**
      * @param {?string} tag
      * @returns {MessageRef}
      */
     generateMessageRef(tag = null) {
-      return new MessageRef(this.schema().getCurie(), this.get('response_id'), tag);
+      return new MessageRef(this.schema().getCurie(), this.get(this.RESPONSE_ID_FIELD), tag);
     },
     
     /**
@@ -15,8 +15,9 @@ export default function ResponseV1Trait(m) {
      */
     getUriTemplateVars() {
       return {
-        response_id: `${this.get('response_id')}`,
-        created_at: `${this.get('created_at')}`,
+        response_id: `${this.get(this.RESPONSE_ID_FIELD)}`,
+        created_at: `${this.get(this.CREATED_AT_FIELD)}`,
+        ctx_tenant_id: this.get(this.CTX_TENANT_ID_FIELD),
       };
     }
   });

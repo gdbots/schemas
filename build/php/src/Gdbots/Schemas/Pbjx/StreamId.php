@@ -6,6 +6,7 @@ namespace Gdbots\Schemas\Pbjx;
 use Gdbots\Pbj\Assertion;
 use Gdbots\Pbj\Exception\InvalidArgumentException;
 use Gdbots\Pbj\WellKnown\Identifier;
+use Gdbots\Pbj\WellKnown\NodeRef;
 
 /**
  * A stream id represents a stream of events.  The parts of the id are delimited by a colon
@@ -18,28 +19,29 @@ use Gdbots\Pbj\WellKnown\Identifier;
  * that they were added to the stream.
  *
  * StreamId Format:
- *  topic:partition:sub-partition
+ *  vendor:topic:partition:sub-partition
  *
  * Formats:
+ *  VENDOR:        [a-z0-9-]+
  *  TOPIC:         [\w\.-]+
  *  PARTITION:     ([\w\.-]+)?
  *  SUB_PARTITION: ([\w\.-]+)?
  *
  * Examples:
- *  "twitter.timeline" (topic), "homer-simpson" (partition), "yyyymm" (sub-partition)
- *      twitter.timeline:homer-simpson:201501
- *      twitter.timeline:homer-simpson:201502
- *      twitter.timeline:homer-simpson:201503
+ *  "twitter" (vendor), "user.timeline" (topic), "homer-simpson" (partition), "yyyymm" (sub-partition)
+ *      twitter:user.timeline:homer-simpson:201501
+ *      twitter:user.timeline:homer-simpson:201502
+ *      twitter:user.timeline:homer-simpson:201503
  *
- *  "bank-account" (topic), "homer-simpson" (partition)
- *      bank-account:homer-simpson
+ *  "acme" (vendor), "bank-account" (topic), "homer-simpson" (partition)
+ *      acme:bank-account:homer-simpson
  *
- *  "poll.votes" (topic), "batman-vs-superman" (partition), "yyyymm.[0-9a-f][0-9a-f]" (sub-partition)
+ *  "acme" (vendor), "poll.votes" (topic), "batman-vs-superman" (partition), "yyyymm.[0-9a-f][0-9a-f]" (sub-partition)
  *  Note the sub-partition here is two hexidecimal digits allowing for 256 separate streams ids.
  *  Useful when you need to avoid hot keys and ordering in the overall partition isn't important.
- *      poll.votes:batman-vs-superman:20160301.0a
- *      poll.votes:batman-vs-superman:20160301.1b
- *      poll.votes:batman-vs-superman:20160301.c2
+ *      acme:poll.votes:batman-vs-superman:20160301.0a
+ *      acme:poll.votes:batman-vs-superman:20160301.1b
+ *      acme:poll.votes:batman-vs-superman:20160301.c2
  *
  */
 final class StreamId implements Identifier
@@ -48,31 +50,21 @@ final class StreamId implements Identifier
      * Regular expression pattern for matching a valid StreamId string.
      * @constant string
      */
-    const VALID_PATTERN = '/^([\w\.-]+)(:([\w\.-]+)(:([\w\.-]+))?)?$/';
+    const VALID_PATTERN = '/^([a-z0-9-]+):([\w\.-]+)(:([\w\.-]+)(:([\w\.-]+))?)?$/';
 
-    /** @var string */
-    private $id;
+    private string $vendor;
+    private string $id;
+    private string $topic;
+    private ?string $partition;
+    private ?string $subPartition;
 
-    /** @var string */
-    private $topic;
-
-    /** @var string */
-    private $partition;
-
-    /** @var string */
-    private $subPartition;
-
-    /**
-     * @param string $topic
-     * @param string $partition
-     * @param string $subPartition
-     */
-    private function __construct(string $topic, ?string $partition = null, ?string $subPartition = null)
+    private function __construct(string $vendor, string $topic, ?string $partition = null, ?string $subPartition = null)
     {
+        $this->vendor = $vendor;
         $this->topic = $topic;
         $this->partition = $partition;
         $this->subPartition = $subPartition;
-        $this->id = $topic;
+        $this->id = "{$vendor}:{$topic}";
 
         if (strlen((string)$partition) > 0) {
             $this->id .= ':' . $partition;
@@ -82,11 +74,7 @@ final class StreamId implements Identifier
         }
     }
 
-    /**
-     * {@inheritdoc}
-     * @return static
-     */
-    public static function fromString($string)
+    public static function fromString(string $string): self
     {
         $okay = strlen($string) < 256;
         Assertion::true($okay, 'StreamId cannot be greater than 255 chars.', 'StreamId');
@@ -102,81 +90,65 @@ final class StreamId implements Identifier
 
         return new self(
             $matches[1],
-            isset($matches[3]) ? $matches[3] : null,
-            isset($matches[5]) ? $matches[5] : null
+            $matches[2],
+            $matches[4] ?? null,
+            $matches[6] ?? null
         );
     }
 
-    /**
-     * @return string
-     */
+    public function getVendor(): string
+    {
+        return $this->vendor;
+    }
+
     public function getTopic(): string
     {
         return $this->topic;
     }
 
-    /**
-     * @return bool
-     */
     public function hasPartition(): bool
     {
         return null !== $this->partition;
     }
 
-    /**
-     * @return string
-     */
     public function getPartition(): ?string
     {
         return $this->partition;
     }
 
-    /**
-     * @return bool
-     */
     public function hasSubPartition(): bool
     {
         return null !== $this->subPartition;
     }
 
-    /**
-     * @return string
-     */
     public function getSubPartition(): ?string
     {
         return $this->subPartition;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function toString()
+    public function toString(): string
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __toString()
     {
         return $this->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize()
     {
         return $this->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function equals(Identifier $other)
+    public function equals(Identifier $other): bool
     {
         return $this == $other;
+    }
+
+    public static function fromNodeRef(NodeRef $nodeRef): self
+    {
+        return new self($nodeRef->getVendor(), $nodeRef->getLabel(), $nodeRef->getId());
     }
 
     /**
@@ -204,32 +176,6 @@ final class StreamId implements Identifier
     }
 
     /**
-     * Creates a stream id from an s3 path, assuming it was generated by the "toS3Path" method.
-     *
-     * @deprecated Use 'fromFilePath' instead.
-     *
-     * @param string $string
-     *
-     * @return static
-     */
-    public static function fromS3Path($string): self
-    {
-        return self::fromFilePath($string);
-    }
-
-    /**
-     * Returns a string that can be used for an AWS S3 Path by replacing colons with a slash.
-     *
-     * @deprecated Use 'toFilePath' instead.
-     *
-     * @return string
-     */
-    public function toS3Path(): string
-    {
-        return $this->toFilePath();
-    }
-
-    /**
      * Creates a stream id from a file path, assuming it was generated by the "toFilePath" method.
      *
      * @param string $string
@@ -239,8 +185,8 @@ final class StreamId implements Identifier
     public static function fromFilePath(string $string): self
     {
         $parts = explode('/', $string, 6);
-        unset($parts[1]);
         unset($parts[2]);
+        unset($parts[3]);
         return self::fromString(implode(':', $parts));
     }
 
@@ -258,7 +204,8 @@ final class StreamId implements Identifier
 
         $hash = md5($this->partition);
         return trim(sprintf(
-            '%s/%s/%s/%s/%s',
+            '%s/%s/%s/%s/%s/%s',
+            $this->vendor,
             $this->topic,
             substr($hash, 0, 2),
             substr($hash, 2, 2),
