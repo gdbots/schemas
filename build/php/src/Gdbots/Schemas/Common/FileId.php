@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Gdbots\Schemas\Files;
+namespace Gdbots\Schemas\Common;
 
 use Gdbots\Pbj\Assertion;
 use Gdbots\Pbj\Exception\AssertionFailed;

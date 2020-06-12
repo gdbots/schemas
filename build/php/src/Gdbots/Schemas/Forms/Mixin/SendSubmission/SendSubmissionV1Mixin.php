@@ -9,7 +9,7 @@ use Gdbots\Pbj\Field;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\SchemaId;
 use Gdbots\Pbj\Type as T;
-use Gdbots\Schemas\Files\FileId;
+use Gdbots\Schemas\Common\FileId;
 
 final class SendSubmissionV1Mixin
 {

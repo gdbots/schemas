@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import md5 from 'md5';
 import trim from 'lodash/trim';
 import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
@@ -8,7 +7,7 @@ import Identifier from '@gdbots/pbj/well-known/Identifier';
  * Regular expression pattern for matching a valid StreamId string.
  * @type {RegExp}
  */
-export const VALID_PATTERN = /^([\w\.-]+)(:([\w\.-]+)(:([\w\.-]+))?)?$/;
+export const VALID_PATTERN = /^([a-z0-9-]+):([\w\.-]+)(:([\w\.-]+)(:([\w\.-]+))?)?$/;
 
 /**
  * A stream id represents a stream of events.  The parts of the id are delimited by a colon
@@ -21,38 +20,40 @@ export const VALID_PATTERN = /^([\w\.-]+)(:([\w\.-]+)(:([\w\.-]+))?)?$/;
  * that they were added to the stream.
  *
  * StreamId Format:
- *  topic:partition:sub-partition
+ *  vendor:topic:partition:sub-partition
  *
  * Formats:
+ *  VENDOR:        [a-z0-9-]+
  *  TOPIC:         [\w\.-]+
  *  PARTITION:     ([\w\.-]+)?
  *  SUB_PARTITION: ([\w\.-]+)?
  *
  * Examples:
- *  "twitter.timeline" (topic), "homer-simpson" (partition), "yyyymm" (sub-partition)
- *      twitter.timeline:homer-simpson:201501
- *      twitter.timeline:homer-simpson:201502
- *      twitter.timeline:homer-simpson:201503
+ *  "twitter" (vendor), "user.timeline" (topic), "homer-simpson" (partition), "yyyymm" (sub-partition)
+ *      twitter:user.timeline:homer-simpson:201501
+ *      twitter:user.timeline:homer-simpson:201502
+ *      twitter:user.timeline:homer-simpson:201503
  *
- *  "bank-account" (topic), "homer-simpson" (partition)
- *      bank-account:homer-simpson
+ *  "acme" (vendor), "bank-account" (topic), "homer-simpson" (partition)
+ *      acme:bank-account:homer-simpson
  *
- *  "poll.votes" (topic), "batman-vs-superman" (partition), "yyyymm.[0-9a-f][0-9a-f]" (sub-partition)
+ *  "acme" (vendor), "poll.votes" (topic), "batman-vs-superman" (partition), "yyyymm.[0-9a-f][0-9a-f]" (sub-partition)
  *  Note the sub-partition here is two hexidecimal digits allowing for 256 separate streams ids.
  *  Useful when you need to avoid hot keys and ordering in the overall partition isn't important.
- *      poll.votes:batman-vs-superman:20160301.0a
- *      poll.votes:batman-vs-superman:20160301.1b
- *      poll.votes:batman-vs-superman:20160301.c2
+ *      acme:poll.votes:batman-vs-superman:20160301.0a
+ *      acme:poll.votes:batman-vs-superman:20160301.1b
+ *      acme:poll.votes:batman-vs-superman:20160301.c2
  *
  */
 export default class StreamId extends Identifier {
   /**
+   * @param {string}  vendor
    * @param {string}  topic
    * @param {?string} partition
    * @param {?string} subPartition
    */
-  constructor(topic, partition = null, subPartition = null) {
-    let value = topic;
+  constructor(vendor, topic, partition = null, subPartition = null) {
+    let value = `${vendor}:${topic}`;
     if (partition !== null && partition.length) {
       value += `:${partition}`;
       if (subPartition !== null && subPartition.length) {
@@ -62,6 +63,7 @@ export default class StreamId extends Identifier {
 
     super(value);
 
+    this.vendor = vendor;
     this.topic = topic;
     this.partition = partition;
     this.subPartition = subPartition;
@@ -92,6 +94,13 @@ export default class StreamId extends Identifier {
     }
 
     return new StreamId(...value.split(':'));
+  }
+
+  /**
+   * @returns {string}
+   */
+  getVendor() {
+    return this.vendor;
   }
 
   /**
@@ -130,6 +139,18 @@ export default class StreamId extends Identifier {
   }
 
   /**
+   * Creates a convential stream id from a NodeRef.
+   * e.g. acme:article:123
+   *
+   * @param {NodeRef} nodeRef
+   *
+   * @returns {StreamId}
+   */
+  static fromNodeRef(nodeRef) {
+    return new StreamId(nodeRef.getVendor(), nodeRef.getLabel(), nodeRef.getId());
+  }
+
+  /**
    * Creates a stream id from an sns topic string, assuming it was generated
    * by the "toSnsTopicName" method.
    *
@@ -160,7 +181,7 @@ export default class StreamId extends Identifier {
    */
   static fromFilePath(value) {
     const parts = value.split('/');
-    parts.splice(1, 2);
+    parts.splice(2, 2);
     return StreamId.fromString(parts.join(':'));
   }
 
@@ -176,7 +197,7 @@ export default class StreamId extends Identifier {
     }
 
     const hash = md5(this.partition);
-    const str = `${this.topic}/${hash.substr(0, 2)}/${hash.substr(2, 2)}/${this.partition}/${this.subPartition || ''}`;
+    const str = `${this.vendor}/${this.topic}/${hash.substr(0, 2)}/${hash.substr(2, 2)}/${this.partition}/${this.subPartition || ''}`;
     return trim(str, '/');
   }
 }

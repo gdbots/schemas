@@ -14,8 +14,8 @@ export default class SampleEdge extends Message {
     return new Schema('pbj:gdbots:tests.schemas.ncr:fixtures:sample-edge:1-0-0', SampleEdge,
       GdbotsNcrEdgeV1Mixin.getFields(),
       [
-        GdbotsNcrEdgeV1Mixin.SCHEMA_CURIE,
         GdbotsNcrEdgeV1Mixin.SCHEMA_CURIE_MAJOR,
+        GdbotsNcrEdgeV1Mixin.SCHEMA_CURIE,
       ]
     );
   }

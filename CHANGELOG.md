@@ -10,6 +10,9 @@ __BREAKING CHANGES__
 * Use new fget method where possible in insertion points.
 * Remove use of identifier classes where uuid can be used, e.g. UserId, AppId.
 * Change format of StreamId (added vendor prefix).  Old format `topic:partition:sub-partition` to `vendor:topic:partition:sub-partition`.
+* Moved FileId from _files_ package to _common_ package.
+  * js: `@gdbots/schemas/gdbots/common/FileId`
+  * php: `Gdbots\Schemas\Common\FileId`
 * __Deprecated Schemas:__ (these will be removed in 3.x)
   * `gdbots:iam:mixin:app-roles-granted`
   * `gdbots:iam:mixin:app-roles-revoked`

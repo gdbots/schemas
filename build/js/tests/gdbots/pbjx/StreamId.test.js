@@ -1,11 +1,14 @@
 import test from 'tape';
 import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
 import StreamId from '@gdbots/schemas/gdbots/pbjx/StreamId';
+import NodeRef from '@gdbots/pbj/well-known/NodeRef';
 
-test('StreamId topic tests', (t) => {
-  const id = StreamId.fromString('health-checks');
+
+test('StreamId vendor/topic tests', (t) => {
+  const id = StreamId.fromString('acme:health-checks');
   t.true(id instanceof StreamId);
   t.true(id.equals(StreamId.fromString(`${id}`)));
+  t.same(id.getVendor(), 'acme');
   t.same(id.getTopic(), 'health-checks');
   t.false(id.hasPartition());
   t.true(id.getPartition() === null);
@@ -31,9 +34,10 @@ test('StreamId topic tests', (t) => {
 
 
 test('StreamId partition tests', (t) => {
-  const id = StreamId.fromString('bank-account:homer-simpson');
+  const id = StreamId.fromString('acme:bank-account:homer-simpson');
   t.true(id instanceof StreamId);
   t.true(id.equals(StreamId.fromString(`${id}`)));
+  t.same(id.getVendor(), 'acme');
   t.same(id.getTopic(), 'bank-account');
   t.true(id.hasPartition());
   t.same(id.getPartition(), 'homer-simpson');
@@ -44,9 +48,10 @@ test('StreamId partition tests', (t) => {
 
 
 test('StreamId all parts tests', (t) => {
-  const id = StreamId.fromString('poll.votes:batman-vs-superman:20160301.c2');
+  const id = StreamId.fromString('acme:poll.votes:batman-vs-superman:20160301.c2');
   t.true(id instanceof StreamId);
   t.true(id.equals(StreamId.fromString(`${id}`)));
+  t.same(id.getVendor(), 'acme');
   t.same(id.getTopic(), 'poll.votes');
   t.true(id.hasPartition());
   t.same(id.getPartition(), 'batman-vs-superman');
@@ -57,9 +62,10 @@ test('StreamId all parts tests', (t) => {
 
 
 test('StreamId case sensitive tests', (t) => {
-  const id = StreamId.fromString('My-Topic:IS_COOL:BR0.T33n');
+  const id = StreamId.fromString('acme:My-Topic:IS_COOL:BR0.T33n');
   t.true(id instanceof StreamId);
   t.true(id.equals(StreamId.fromString(`${id}`)));
+  t.same(id.getVendor(), 'acme');
   t.same(id.getTopic(), 'My-Topic');
   t.true(id.hasPartition());
   t.same(id.getPartition(), 'IS_COOL');
@@ -69,29 +75,42 @@ test('StreamId case sensitive tests', (t) => {
 });
 
 
+test('StreamId fromNodeRef tests', (t) => {
+  const nodeRef = NodeRef.fromString('acme:article:123')
+  const id = StreamId.fromNodeRef(nodeRef);
+  t.same(id.getVendor(), 'acme');
+  t.same(id.getTopic(), 'article');
+  t.same(id.getPartition(), '123');
+  t.end();
+});
+
+
 test('StreamId toSnsTopicName tests', (t) => {
-  const id = StreamId.fromString('My-Topic:IS_COOL:BR0.T33n');
-  t.same(id.toSnsTopicName(), 'My-Topic__IS_COOL__BR0--T33n');
+  const id = StreamId.fromString('acme:My-Topic:IS_COOL:BR0.T33n');
+  t.same(id.toSnsTopicName(), 'acme__My-Topic__IS_COOL__BR0--T33n');
   t.true(id.equals(StreamId.fromSnsTopicName(id.toSnsTopicName())));
   t.end();
 });
 
 
 test('StreamId toFilePath tests', (t) => {
-  let id = StreamId.fromString('My-Topic:IS_COOL:BR0.T33n');
-  t.same(id.toFilePath(), 'My-Topic/8a/9f/IS_COOL/BR0.T33n');
+  let id = StreamId.fromString('acme:My-Topic:IS_COOL:BR0.T33n');
+  t.same(id.getVendor(), 'acme');
+  t.same(id.toFilePath(), 'acme/My-Topic/8a/9f/IS_COOL/BR0.T33n');
   t.true(id.equals(StreamId.fromFilePath(id.toFilePath())));
 
-  id = StreamId.fromString('My-Topic:IS_COOL');
-  t.same(id.toFilePath(), 'My-Topic/8a/9f/IS_COOL');
+  id = StreamId.fromString('acme:My-Topic:IS_COOL');
+  t.same(id.getVendor(), 'acme');
+  t.same(id.toFilePath(), 'acme/My-Topic/8a/9f/IS_COOL');
   t.true(id.equals(StreamId.fromFilePath(id.toFilePath())));
 
-  id = StreamId.fromString('My-Topic');
-  t.same(id.toFilePath(), 'My-Topic');
+  id = StreamId.fromString('acme:My-Topic');
+  t.same(id.getVendor(), 'acme');
+  t.same(id.toFilePath(), 'acme/My-Topic');
   t.true(id.equals(StreamId.fromFilePath(id.toFilePath())));
 
-  id = StreamId.fromString('My-Topic:IS_COOL:0');
-  t.same(id.toFilePath(), 'My-Topic/8a/9f/IS_COOL/0');
+  id = StreamId.fromString('acme:My-Topic:IS_COOL:0');
+  t.same(id.toFilePath(), 'acme/My-Topic/8a/9f/IS_COOL/0');
   t.true(id.equals(StreamId.fromFilePath(id.toFilePath())));
 
   t.end();

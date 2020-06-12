@@ -18,6 +18,7 @@ final class SampleEdge extends AbstractMessage
             GdbotsNcrEdgeV1Mixin::getFields(),
             [
                 GdbotsNcrEdgeV1Mixin::SCHEMA_CURIE_MAJOR,
+                GdbotsNcrEdgeV1Mixin::SCHEMA_CURIE,
             ]
         );
     }

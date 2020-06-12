@@ -43,7 +43,7 @@ switch (env) {
     ]);
 
     plugins.push('lodash');
-    plugins.push('./use-lodash-es');
+    plugins.push('./build/js/use-lodash-es');
     break;
 }
 

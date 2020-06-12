@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Gdbots\Tests\Schemas\Files;
+namespace Gdbots\Tests\Schemas\Common;
 
 use Gdbots\Pbj\Exception\AssertionFailed;
 use Gdbots\Pbj\WellKnown\UuidIdentifier;
-use Gdbots\Schemas\Files\FileId;
+use Gdbots\Schemas\Common\FileId;
 use PHPUnit\Framework\TestCase;
 
 class FileIdTest extends TestCase

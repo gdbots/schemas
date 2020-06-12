@@ -1,6 +1,6 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/forms/mixin/send-submission/1-0-0.json#
 import Fb from '@gdbots/pbj/FieldBuilder';
-import FileId from '@gdbots/schemas/gdbots/files/FileId';
+import FileId from '@gdbots/schemas/gdbots/common/FileId';
 import Format from '@gdbots/pbj/enums/Format';
 import SchemaId from '@gdbots/pbj/SchemaId';
 import T from '@gdbots/pbj/types';
