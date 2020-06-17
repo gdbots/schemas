@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## v2.0.2
+* __Add Schemas:__
+  * `gdbots:ncr:command:update-node`
+
+
 ## v2.0.1
 * Restore the closure for the default id in `gdbots:ncr:mixin:node` since the calling javascript passes arguments (message, field).
 

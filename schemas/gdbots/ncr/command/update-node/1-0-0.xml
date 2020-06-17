@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:command:update-node:1-0-0">
+    <fields>
+      <field name="node_ref" type="node-ref" required="true"/>
+      <field name="new_node" type="message" required="true" overridable="true">
+        <any-of>
+          <curie>gdbots:ncr:mixin:node</curie>
+        </any-of>
+      </field>
+      <field name="old_node" type="message" overridable="true">
+        <description>
+          The entire node, as it appeared before it was modified.
+        </description>
+        <any-of>
+          <curie>gdbots:ncr:mixin:node</curie>
+        </any-of>
+      </field>
+      <field name="paths" type="string" pattern="^[a-zA-Z_]{1}[\w\.]*$" rule="set">
+        <description>
+          The names of the fields this update command should apply changes to.
+          Nested paths can be referenced using dot notation.
+        </description>
+      </field>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:pbjx:mixin:command:v1</curie-major>
+      <curie-major>gdbots:common:mixin:taggable:v1</curie-major>
+    </mixins>
+  </schema>
+</pbj-schema>
