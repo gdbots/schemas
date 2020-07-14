@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v2.0.3
+* __Add Schemas:__
+  * `gdbots:common:mixin:labelable`
+  * `gdbots:ncr:command:update-labels`
+  * `gdbots:ncr:event:labels-updated`
+
+
 ## v2.0.2
 * __Add Schemas:__
   * `gdbots:ncr:command:update-node`
