@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:ncr:event:labels-updated:1-0-0">
+    <fields>
+      <field name="labels_updated" type="node-ref" required="true"/>
+      <field name="labels_removed" type="string" format="slug"/>
+      <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+      <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+    </fields>
+
+    <mixins>
+      <curie-major>gdbots:pbjx:mixin:event:v1</curie-major>
+      <curie-major>gdbots:common:mixin:listable:v1</curie-major>
+    </mixins>
+  </schema>
+</pbj-schema>
