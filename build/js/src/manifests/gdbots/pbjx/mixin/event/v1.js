@@ -13,6 +13,7 @@ export default [
   'gdbots:iam:event:user-roles-revoked:v1',
   'gdbots:ncr:event:edge-created:v1',
   'gdbots:ncr:event:edge-deleted:v1',
+  'gdbots:ncr:event:labels-updated:v1',
   'gdbots:ncr:event:node-created:v1',
   'gdbots:ncr:event:node-deleted:v1',
   'gdbots:ncr:event:node-expired:v1',

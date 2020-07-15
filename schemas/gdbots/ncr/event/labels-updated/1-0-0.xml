@@ -13,7 +13,7 @@
 
     <mixins>
       <curie-major>gdbots:pbjx:mixin:event:v1</curie-major>
-      <curie-major>gdbots:common:mixin:listable:v1</curie-major>
+      <curie-major>gdbots:common:mixin:labelable:v1</curie-major>
     </mixins>
   </schema>
 </pbj-schema>
