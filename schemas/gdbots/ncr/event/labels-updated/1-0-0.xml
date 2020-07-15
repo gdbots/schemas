@@ -5,15 +5,13 @@
 
   <schema id="pbj:gdbots:ncr:event:labels-updated:1-0-0">
     <fields>
-      <field name="labels_updated" type="string" rule="list" required="true"/>
-      <field name="labels_removed" type="string" rule="list" required="true"/>
-      <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
-      <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
+      <field name="labels_added" type="string" rule="set"/>
+      <field name="labels_removed" type="string" rule="set"/>
     </fields>
 
     <mixins>
       <curie-major>gdbots:pbjx:mixin:event:v1</curie-major>
-      <curie-major>gdbots:common:mixin:labelable:v1</curie-major>
+      <curie-major>gdbots:common:mixin:taggable:v1</curie-major>
     </mixins>
   </schema>
 </pbj-schema>

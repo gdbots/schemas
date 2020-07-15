@@ -11,5 +11,4 @@ declare(strict_types=1);
 
 return [
     'gdbots:ncr:command:update-labels:v1',
-    'gdbots:ncr:event:labels-updated:v1',
 ];

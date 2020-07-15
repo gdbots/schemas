@@ -99,16 +99,14 @@ export default class UpdateLabelsV1 extends Message {
          * external systems.
          */
         Fb.create(this.LABELS_FIELD, T.StringType.create())
-          .asAList()
+          .asASet()
+          .pattern('^[\\w-]+$')
           .build(),
         Fb.create(this.ADD_LABELS_FIELD, T.StringType.create())
-          .asAList()
-          .required()
+          .asASet()
           .build(),
         Fb.create(this.REMOVE_LABELS_FIELD, T.StringType.create())
-          .asAList()
-          .required()
-          .overridable(true)
+          .asASet()
           .build(),
       ],
       this.MIXINS,

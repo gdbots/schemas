@@ -8,5 +8,4 @@
 
 export default [
   'gdbots:ncr:command:update-labels:v1',
-  'gdbots:ncr:event:labels-updated:v1',
 ];

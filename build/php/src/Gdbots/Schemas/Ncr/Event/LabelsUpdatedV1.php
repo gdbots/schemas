@@ -20,8 +20,8 @@ final class LabelsUpdatedV1 extends AbstractMessage
     const MIXINS = [
       'gdbots:pbjx:mixin:event:v1',
       'gdbots:pbjx:mixin:event',
-      'gdbots:common:mixin:labelable:v1',
-      'gdbots:common:mixin:labelable',
+      'gdbots:common:mixin:taggable:v1',
+      'gdbots:common:mixin:taggable',
     ];
 
     const EVENT_ID_FIELD = 'event_id';
@@ -36,11 +36,9 @@ final class LabelsUpdatedV1 extends AbstractMessage
     const CTX_IPV6_FIELD = 'ctx_ipv6';
     const CTX_UA_FIELD = 'ctx_ua';
     const CTX_MSG_FIELD = 'ctx_msg';
-    const LABELS_FIELD = 'labels';
-    const LABELS_UPDATED_FIELD = 'labels_updated';
+    const TAGS_FIELD = 'tags';
+    const LABELS_ADDED_FIELD = 'labels_added';
     const LABELS_REMOVED_FIELD = 'labels_removed';
-    const NEW_ETAG_FIELD = 'new_etag';
-    const OLD_ETAG_FIELD = 'old_etag';
 
     const FIELDS = [
       self::EVENT_ID_FIELD,
@@ -55,11 +53,9 @@ final class LabelsUpdatedV1 extends AbstractMessage
       self::CTX_IPV6_FIELD,
       self::CTX_UA_FIELD,
       self::CTX_MSG_FIELD,
-      self::LABELS_FIELD,
-      self::LABELS_UPDATED_FIELD,
+      self::TAGS_FIELD,
+      self::LABELS_ADDED_FIELD,
       self::LABELS_REMOVED_FIELD,
-      self::NEW_ETAG_FIELD,
-      self::OLD_ETAG_FIELD,
     ];
 
     use GdbotsPbjxEventV1Trait;
@@ -122,27 +118,19 @@ final class LabelsUpdatedV1 extends AbstractMessage
                 Fb::create(self::CTX_MSG_FIELD, T\TextType::create())
                     ->build(),
                 /*
-                 * Labels is a list that categorizes data or tracks references in
-                 * external systems.
+                 * Tags is a map that categorizes data or tracks references in
+                 * external systems. The tags names should be consistent and descriptive,
+                 * e.g. fb_user_id:123, salesforce_customer_id:456.
                  */
-                Fb::create(self::LABELS_FIELD, T\StringType::create())
-                    ->asAList()
+                Fb::create(self::TAGS_FIELD, T\StringType::create())
+                    ->asAMap()
+                    ->pattern('^[\w\/\.:-]+$')
                     ->build(),
-                Fb::create(self::LABELS_UPDATED_FIELD, T\StringType::create())
-                    ->asAList()
-                    ->required()
+                Fb::create(self::LABELS_ADDED_FIELD, T\StringType::create())
+                    ->asASet()
                     ->build(),
                 Fb::create(self::LABELS_REMOVED_FIELD, T\StringType::create())
-                    ->asAList()
-                    ->required()
-                    ->build(),
-                Fb::create(self::NEW_ETAG_FIELD, T\StringType::create())
-                    ->maxLength(100)
-                    ->pattern('^[\w\.:-]+$')
-                    ->build(),
-                Fb::create(self::OLD_ETAG_FIELD, T\StringType::create())
-                    ->maxLength(100)
-                    ->pattern('^[\w\.:-]+$')
+                    ->asASet()
                     ->build(),
             ],
             self::MIXINS

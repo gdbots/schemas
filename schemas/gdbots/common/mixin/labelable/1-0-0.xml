@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:common:mixin:labelable:1-0-0" mixin="true">
     <fields>
-      <field name="labels" type="string" rule="list">
+      <field name="labels" type="string" rule="set" pattern="^[\w-]+$">
         <description>
           Labels is a list that categorizes data or tracks references in
           external systems.

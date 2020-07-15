@@ -44,7 +44,8 @@ final class LabelableV1Mixin
              * external systems.
              */
             Fb::create(self::LABELS_FIELD, T\StringType::create())
-                ->asAList()
+                ->asASet()
+                ->pattern('^[\w-]+$')
                 ->build(),
         ];
     }

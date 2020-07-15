@@ -154,16 +154,14 @@ final class UpdateLabelsV1 extends AbstractMessage
                  * external systems.
                  */
                 Fb::create(self::LABELS_FIELD, T\StringType::create())
-                    ->asAList()
+                    ->asASet()
+                    ->pattern('^[\w-]+$')
                     ->build(),
                 Fb::create(self::ADD_LABELS_FIELD, T\StringType::create())
-                    ->asAList()
-                    ->required()
+                    ->asASet()
                     ->build(),
                 Fb::create(self::REMOVE_LABELS_FIELD, T\StringType::create())
-                    ->asAList()
-                    ->required()
-                    ->overridable(true)
+                    ->asASet()
                     ->build(),
             ],
             self::MIXINS

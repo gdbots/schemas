@@ -69,27 +69,19 @@ export default class LabelsUpdatedV1 extends Message {
         Fb.create(this.CTX_MSG_FIELD, T.TextType.create())
           .build(),
         /*
-         * Labels is a list that categorizes data or tracks references in
-         * external systems.
+         * Tags is a map that categorizes data or tracks references in
+         * external systems. The tags names should be consistent and descriptive,
+         * e.g. fb_user_id:123, salesforce_customer_id:456.
          */
-        Fb.create(this.LABELS_FIELD, T.StringType.create())
-          .asAList()
+        Fb.create(this.TAGS_FIELD, T.StringType.create())
+          .asAMap()
+          .pattern('^[\\w\\/\\.:-]+$')
           .build(),
-        Fb.create(this.LABELS_UPDATED_FIELD, T.StringType.create())
-          .asAList()
-          .required()
+        Fb.create(this.LABELS_ADDED_FIELD, T.StringType.create())
+          .asASet()
           .build(),
         Fb.create(this.LABELS_REMOVED_FIELD, T.StringType.create())
-          .asAList()
-          .required()
-          .build(),
-        Fb.create(this.NEW_ETAG_FIELD, T.StringType.create())
-          .maxLength(100)
-          .pattern('^[\\w\\.:-]+$')
-          .build(),
-        Fb.create(this.OLD_ETAG_FIELD, T.StringType.create())
-          .maxLength(100)
-          .pattern('^[\\w\\.:-]+$')
+          .asASet()
           .build(),
       ],
       this.MIXINS,
@@ -105,8 +97,8 @@ M.prototype.SCHEMA_CURIE_MAJOR = M.SCHEMA_CURIE_MAJOR = 'gdbots:ncr:event:labels
 M.prototype.MIXINS = M.MIXINS = [
   'gdbots:pbjx:mixin:event:v1',
   'gdbots:pbjx:mixin:event',
-  'gdbots:common:mixin:labelable:v1',
-  'gdbots:common:mixin:labelable',
+  'gdbots:common:mixin:taggable:v1',
+  'gdbots:common:mixin:taggable',
 ];
 
 M.prototype.EVENT_ID_FIELD = M.EVENT_ID_FIELD = 'event_id';
@@ -121,11 +113,9 @@ M.prototype.CTX_IP_FIELD = M.CTX_IP_FIELD = 'ctx_ip';
 M.prototype.CTX_IPV6_FIELD = M.CTX_IPV6_FIELD = 'ctx_ipv6';
 M.prototype.CTX_UA_FIELD = M.CTX_UA_FIELD = 'ctx_ua';
 M.prototype.CTX_MSG_FIELD = M.CTX_MSG_FIELD = 'ctx_msg';
-M.prototype.LABELS_FIELD = M.LABELS_FIELD = 'labels';
-M.prototype.LABELS_UPDATED_FIELD = M.LABELS_UPDATED_FIELD = 'labels_updated';
+M.prototype.TAGS_FIELD = M.TAGS_FIELD = 'tags';
+M.prototype.LABELS_ADDED_FIELD = M.LABELS_ADDED_FIELD = 'labels_added';
 M.prototype.LABELS_REMOVED_FIELD = M.LABELS_REMOVED_FIELD = 'labels_removed';
-M.prototype.NEW_ETAG_FIELD = M.NEW_ETAG_FIELD = 'new_etag';
-M.prototype.OLD_ETAG_FIELD = M.OLD_ETAG_FIELD = 'old_etag';
 
 M.prototype.FIELDS = M.FIELDS = [
   M.EVENT_ID_FIELD,
@@ -140,11 +130,9 @@ M.prototype.FIELDS = M.FIELDS = [
   M.CTX_IPV6_FIELD,
   M.CTX_UA_FIELD,
   M.CTX_MSG_FIELD,
-  M.LABELS_FIELD,
-  M.LABELS_UPDATED_FIELD,
+  M.TAGS_FIELD,
+  M.LABELS_ADDED_FIELD,
   M.LABELS_REMOVED_FIELD,
-  M.NEW_ETAG_FIELD,
-  M.OLD_ETAG_FIELD,
 ];
 
 GdbotsPbjxEventV1Trait(M);

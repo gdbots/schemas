@@ -29,7 +29,8 @@ export default class LabelableV1Mixin {
        * external systems.
        */
       Fb.create(this.LABELS_FIELD, T.StringType.create())
-        .asAList()
+        .asASet()
+        .pattern('^[\\w-]+$')
         .build(),
     ];
   }
