@@ -8,10 +8,10 @@
       <field name="add_labels" type="string" rule="list" required="true"/>
       <field name="remove_labels" type="string" rule="list" required="true" overridable="true"/>
     </fields>
-  </schema>
 
-  <mixins>
-    <curie-major>gdbots:pbjx:mixin:command:v1</curie-major>
-    <curie-major>gdbots:common:mixin:labelable:v1</curie-major>
-  </mixins>
+    <mixins>
+      <curie-major>gdbots:pbjx:mixin:command:v1</curie-major>
+      <curie-major>gdbots:common:mixin:labelable:v1</curie-major>
+    </mixins>
+  </schema>
 </pbj-schema>
