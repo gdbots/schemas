@@ -5,8 +5,8 @@
 
   <schema id="pbj:gdbots:ncr:command:update-labels:1-0-0">
     <fields>
-      <field name="add_labels" type="list" required="true"/>
-      <field name="remove_labels" type="list" required="true" overridable="true"/>
+      <field name="add_labels" type="string" rule="list" required="true"/>
+      <field name="remove_labels" type="string" rule="list" required="true" overridable="true"/>
     </fields>
   </schema>
 

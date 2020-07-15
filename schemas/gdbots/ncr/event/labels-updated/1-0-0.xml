@@ -5,8 +5,8 @@
 
   <schema id="pbj:gdbots:ncr:event:labels-updated:1-0-0">
     <fields>
-      <field name="labels_updated" type="node-ref" required="true"/>
-      <field name="labels_removed" type="string" format="slug"/>
+      <field name="labels_updated" type="string" rule="list" required="true"/>
+      <field name="labels_removed" type="string" rule="list" required="true"/>
       <field name="new_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
       <field name="old_etag" type="string" pattern="^[\w\.:-]+$" max="100"/>
     </fields>
