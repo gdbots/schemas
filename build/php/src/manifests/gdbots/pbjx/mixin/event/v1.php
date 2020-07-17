@@ -16,6 +16,7 @@ return [
     'gdbots:iam:event:user-roles-revoked:v1',
     'gdbots:ncr:event:edge-created:v1',
     'gdbots:ncr:event:edge-deleted:v1',
+    'gdbots:ncr:event:labels-updated:v1',
     'gdbots:ncr:event:node-created:v1',
     'gdbots:ncr:event:node-deleted:v1',
     'gdbots:ncr:event:node-expired:v1',
@@ -28,6 +29,7 @@ return [
     'gdbots:ncr:event:node-unlocked:v1',
     'gdbots:ncr:event:node-unpublished:v1',
     'gdbots:ncr:event:node-updated:v1',
+    'gdbots:ncr:event:tags-updated:v1',
     'gdbots:pbjx:event:event-execution-failed:v1',
     'gdbots:pbjx:event:health-checked:v1',
 ];

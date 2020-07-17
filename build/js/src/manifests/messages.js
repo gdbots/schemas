@@ -10,6 +10,7 @@
 
 export default {
   'gdbots:analytics:tracker:keen:v1': import('@gdbots/schemas/gdbots/analytics/tracker/KeenV1'),
+  'gdbots:common::search-filter:v1': import('@gdbots/schemas/gdbots/common/SearchFilterV1'),
   'gdbots:contexts::app:v1': import('@gdbots/schemas/gdbots/contexts/AppV1'),
   'gdbots:contexts::cloud:v1': import('@gdbots/schemas/gdbots/contexts/CloudV1'),
   'gdbots:contexts::user-agent:v1': import('@gdbots/schemas/gdbots/contexts/UserAgentV1'),
@@ -73,9 +74,12 @@ export default {
   'gdbots:ncr:command:rename-node:v1': import('@gdbots/schemas/gdbots/ncr/command/RenameNodeV1'),
   'gdbots:ncr:command:unlock-node:v1': import('@gdbots/schemas/gdbots/ncr/command/UnlockNodeV1'),
   'gdbots:ncr:command:unpublish-node:v1': import('@gdbots/schemas/gdbots/ncr/command/UnpublishNodeV1'),
+  'gdbots:ncr:command:update-labels:v1': import('@gdbots/schemas/gdbots/ncr/command/UpdateLabelsV1'),
   'gdbots:ncr:command:update-node:v1': import('@gdbots/schemas/gdbots/ncr/command/UpdateNodeV1'),
+  'gdbots:ncr:command:update-tags:v1': import('@gdbots/schemas/gdbots/ncr/command/UpdateTagsV1'),
   'gdbots:ncr:event:edge-created:v1': import('@gdbots/schemas/gdbots/ncr/event/EdgeCreatedV1'),
   'gdbots:ncr:event:edge-deleted:v1': import('@gdbots/schemas/gdbots/ncr/event/EdgeDeletedV1'),
+  'gdbots:ncr:event:labels-updated:v1': import('@gdbots/schemas/gdbots/ncr/event/LabelsUpdatedV1'),
   'gdbots:ncr:event:node-created:v1': import('@gdbots/schemas/gdbots/ncr/event/NodeCreatedV1'),
   'gdbots:ncr:event:node-deleted:v1': import('@gdbots/schemas/gdbots/ncr/event/NodeDeletedV1'),
   'gdbots:ncr:event:node-expired:v1': import('@gdbots/schemas/gdbots/ncr/event/NodeExpiredV1'),
@@ -88,6 +92,7 @@ export default {
   'gdbots:ncr:event:node-unlocked:v1': import('@gdbots/schemas/gdbots/ncr/event/NodeUnlockedV1'),
   'gdbots:ncr:event:node-unpublished:v1': import('@gdbots/schemas/gdbots/ncr/event/NodeUnpublishedV1'),
   'gdbots:ncr:event:node-updated:v1': import('@gdbots/schemas/gdbots/ncr/event/NodeUpdatedV1'),
+  'gdbots:ncr:event:tags-updated:v1': import('@gdbots/schemas/gdbots/ncr/event/TagsUpdatedV1'),
   'gdbots:ncr:request:get-node-batch-request:v1': import('@gdbots/schemas/gdbots/ncr/request/GetNodeBatchRequestV1'),
   'gdbots:ncr:request:get-node-batch-response:v1': import('@gdbots/schemas/gdbots/ncr/request/GetNodeBatchResponseV1'),
   'gdbots:ncr:request:get-node-history-request:v1': import('@gdbots/schemas/gdbots/ncr/request/GetNodeHistoryRequestV1'),
