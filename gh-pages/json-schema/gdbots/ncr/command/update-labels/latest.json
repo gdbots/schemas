@@ -158,25 +158,27 @@
       "maxLength": 65535,
       "description": "An optional message/reason for the command being sent. Consider this like a git commit message."
     },
-    "labels": {
-      "type": "array",
-      "items": [
-        {
+    "tags": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
           "type": "string",
-          "pattern": "^[\\w-]+$"
+          "pattern": "^[\\w\\/\\.:-]+$"
         }
-      ],
-      "uniqueItems": true,
+      },
       "additionalProperties": false,
-      "description": "Labels is a list that categorizes data or tracks references in external systems."
+      "description": "Tags is a map that categorizes data or tracks references in external systems. The tags names should be consistent and descriptive, e.g. fb_user_id:123, salesforce_customer_id:456."
+    },
+    "node_ref": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$"
     },
     "add_labels": {
       "type": "array",
       "items": [
         {
           "type": "string",
-          "minLength": 0,
-          "maxLength": 255
+          "pattern": "^[\\w-]+$"
         }
       ],
       "uniqueItems": true,
@@ -187,8 +189,7 @@
       "items": [
         {
           "type": "string",
-          "minLength": 0,
-          "maxLength": 255
+          "pattern": "^[\\w-]+$"
         }
       ],
       "uniqueItems": true,
@@ -197,7 +198,8 @@
   },
   "required": [
     "_schema",
-    "command_id"
+    "command_id",
+    "node_ref"
   ],
   "definitions": {
     "app": {

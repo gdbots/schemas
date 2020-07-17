@@ -5,10 +5,10 @@
 
   <schema id="pbj:gdbots:common:mixin:labelable:1-0-0" mixin="true">
     <fields>
-      <field name="labels" type="string" rule="set" pattern="^[\w-]+$">
+      <field name="labels" type="string" pattern="^[\w-]+$" rule="set">
         <description>
-          Labels is a list that categorizes data or tracks references in
-          external systems.
+          A set of strings used for categorization or workflow.
+          Similar to slack channels, github or gmail labels.
         </description>
       </field>
     </fields>

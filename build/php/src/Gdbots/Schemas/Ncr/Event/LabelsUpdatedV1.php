@@ -9,6 +9,8 @@ use Gdbots\Pbj\Enum\Format;
 use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
 use Gdbots\Pbj\Type as T;
+use Gdbots\Schemas\Common\Enum\DayOfWeek;
+use Gdbots\Schemas\Common\Enum\Month;
 use Gdbots\Schemas\Pbjx\Mixin\Event\EventV1Trait as GdbotsPbjxEventV1Trait;
 
 final class LabelsUpdatedV1 extends AbstractMessage
@@ -20,8 +22,18 @@ final class LabelsUpdatedV1 extends AbstractMessage
     const MIXINS = [
       'gdbots:pbjx:mixin:event:v1',
       'gdbots:pbjx:mixin:event',
+      'gdbots:analytics:mixin:tracked-message:v1',
+      'gdbots:analytics:mixin:tracked-message',
       'gdbots:common:mixin:taggable:v1',
       'gdbots:common:mixin:taggable',
+      'gdbots:enrichments:mixin:ip-to-geo:v1',
+      'gdbots:enrichments:mixin:ip-to-geo',
+      'gdbots:enrichments:mixin:time-parting:v1',
+      'gdbots:enrichments:mixin:time-parting',
+      'gdbots:enrichments:mixin:time-sampling:v1',
+      'gdbots:enrichments:mixin:time-sampling',
+      'gdbots:enrichments:mixin:ua-parser:v1',
+      'gdbots:enrichments:mixin:ua-parser',
     ];
 
     const EVENT_ID_FIELD = 'event_id';
@@ -37,6 +49,17 @@ final class LabelsUpdatedV1 extends AbstractMessage
     const CTX_UA_FIELD = 'ctx_ua';
     const CTX_MSG_FIELD = 'ctx_msg';
     const TAGS_FIELD = 'tags';
+    const CTX_IP_GEO_FIELD = 'ctx_ip_geo';
+    const MONTH_OF_YEAR_FIELD = 'month_of_year';
+    const DAY_OF_MONTH_FIELD = 'day_of_month';
+    const DAY_OF_WEEK_FIELD = 'day_of_week';
+    const IS_WEEKEND_FIELD = 'is_weekend';
+    const HOUR_OF_DAY_FIELD = 'hour_of_day';
+    const TS_YMDH_FIELD = 'ts_ymdh';
+    const TS_YMD_FIELD = 'ts_ymd';
+    const TS_YM_FIELD = 'ts_ym';
+    const CTX_UA_PARSED_FIELD = 'ctx_ua_parsed';
+    const NODE_REF_FIELD = 'node_ref';
     const LABELS_ADDED_FIELD = 'labels_added';
     const LABELS_REMOVED_FIELD = 'labels_removed';
 
@@ -54,6 +77,17 @@ final class LabelsUpdatedV1 extends AbstractMessage
       self::CTX_UA_FIELD,
       self::CTX_MSG_FIELD,
       self::TAGS_FIELD,
+      self::CTX_IP_GEO_FIELD,
+      self::MONTH_OF_YEAR_FIELD,
+      self::DAY_OF_MONTH_FIELD,
+      self::DAY_OF_WEEK_FIELD,
+      self::IS_WEEKEND_FIELD,
+      self::HOUR_OF_DAY_FIELD,
+      self::TS_YMDH_FIELD,
+      self::TS_YMD_FIELD,
+      self::TS_YM_FIELD,
+      self::CTX_UA_PARSED_FIELD,
+      self::NODE_REF_FIELD,
       self::LABELS_ADDED_FIELD,
       self::LABELS_REMOVED_FIELD,
     ];
@@ -126,11 +160,48 @@ final class LabelsUpdatedV1 extends AbstractMessage
                     ->asAMap()
                     ->pattern('^[\w\/\.:-]+$')
                     ->build(),
+                Fb::create(self::CTX_IP_GEO_FIELD, T\MessageType::create())
+                    ->anyOfCuries([
+                        'gdbots:geo::address',
+                    ])
+                    ->build(),
+                Fb::create(self::MONTH_OF_YEAR_FIELD, T\IntEnumType::create())
+                    ->withDefault(Month::UNKNOWN())
+                    ->className(Month::class)
+                    ->build(),
+                Fb::create(self::DAY_OF_MONTH_FIELD, T\TinyIntType::create())
+                    ->max(31)
+                    ->build(),
+                Fb::create(self::DAY_OF_WEEK_FIELD, T\IntEnumType::create())
+                    ->withDefault(DayOfWeek::UNKNOWN())
+                    ->className(DayOfWeek::class)
+                    ->build(),
+                Fb::create(self::IS_WEEKEND_FIELD, T\BooleanType::create())
+                    ->build(),
+                Fb::create(self::HOUR_OF_DAY_FIELD, T\TinyIntType::create())
+                    ->max(23)
+                    ->build(),
+                Fb::create(self::TS_YMDH_FIELD, T\IntType::create())
+                    ->build(),
+                Fb::create(self::TS_YMD_FIELD, T\IntType::create())
+                    ->build(),
+                Fb::create(self::TS_YM_FIELD, T\MediumIntType::create())
+                    ->build(),
+                Fb::create(self::CTX_UA_PARSED_FIELD, T\MessageType::create())
+                    ->anyOfCuries([
+                        'gdbots:contexts::user-agent',
+                    ])
+                    ->build(),
+                Fb::create(self::NODE_REF_FIELD, T\NodeRefType::create())
+                    ->required()
+                    ->build(),
                 Fb::create(self::LABELS_ADDED_FIELD, T\StringType::create())
                     ->asASet()
+                    ->pattern('^[\w-]+$')
                     ->build(),
                 Fb::create(self::LABELS_REMOVED_FIELD, T\StringType::create())
                     ->asASet()
+                    ->pattern('^[\w-]+$')
                     ->build(),
             ],
             self::MIXINS

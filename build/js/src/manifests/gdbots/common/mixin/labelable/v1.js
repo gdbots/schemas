@@ -7,5 +7,4 @@
  */
 
 export default [
-  'gdbots:ncr:command:update-labels:v1',
 ];

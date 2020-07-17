@@ -40,8 +40,8 @@ final class LabelableV1Mixin
     {
         return [
             /*
-             * Labels is a list that categorizes data or tracks references in
-             * external systems.
+             * A set of strings used for categorization or workflow.
+             * Similar to slack channels, github or gmail labels.
              */
             Fb::create(self::LABELS_FIELD, T\StringType::create())
                 ->asASet()

@@ -26,6 +26,7 @@ export default [
   'gdbots:ncr:event:node-unlocked:v1',
   'gdbots:ncr:event:node-unpublished:v1',
   'gdbots:ncr:event:node-updated:v1',
+  'gdbots:ncr:event:tags-updated:v1',
   'gdbots:pbjx:event:event-execution-failed:v1',
   'gdbots:pbjx:event:health-checked:v1',
 ];

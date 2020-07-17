@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 return [
     'gdbots:analytics:tracker:keen:v1' => 'Gdbots\Schemas\Analytics\Tracker\KeenV1',
+    'gdbots:common::search-filter:v1' => 'Gdbots\Schemas\Common\SearchFilterV1',
     'gdbots:contexts::app:v1' => 'Gdbots\Schemas\Contexts\AppV1',
     'gdbots:contexts::cloud:v1' => 'Gdbots\Schemas\Contexts\CloudV1',
     'gdbots:contexts::user-agent:v1' => 'Gdbots\Schemas\Contexts\UserAgentV1',
@@ -78,6 +79,7 @@ return [
     'gdbots:ncr:command:unpublish-node:v1' => 'Gdbots\Schemas\Ncr\Command\UnpublishNodeV1',
     'gdbots:ncr:command:update-labels:v1' => 'Gdbots\Schemas\Ncr\Command\UpdateLabelsV1',
     'gdbots:ncr:command:update-node:v1' => 'Gdbots\Schemas\Ncr\Command\UpdateNodeV1',
+    'gdbots:ncr:command:update-tags:v1' => 'Gdbots\Schemas\Ncr\Command\UpdateTagsV1',
     'gdbots:ncr:event:edge-created:v1' => 'Gdbots\Schemas\Ncr\Event\EdgeCreatedV1',
     'gdbots:ncr:event:edge-deleted:v1' => 'Gdbots\Schemas\Ncr\Event\EdgeDeletedV1',
     'gdbots:ncr:event:labels-updated:v1' => 'Gdbots\Schemas\Ncr\Event\LabelsUpdatedV1',
@@ -93,6 +95,7 @@ return [
     'gdbots:ncr:event:node-unlocked:v1' => 'Gdbots\Schemas\Ncr\Event\NodeUnlockedV1',
     'gdbots:ncr:event:node-unpublished:v1' => 'Gdbots\Schemas\Ncr\Event\NodeUnpublishedV1',
     'gdbots:ncr:event:node-updated:v1' => 'Gdbots\Schemas\Ncr\Event\NodeUpdatedV1',
+    'gdbots:ncr:event:tags-updated:v1' => 'Gdbots\Schemas\Ncr\Event\TagsUpdatedV1',
     'gdbots:ncr:request:get-node-batch-request:v1' => 'Gdbots\Schemas\Ncr\Request\GetNodeBatchRequestV1',
     'gdbots:ncr:request:get-node-batch-response:v1' => 'Gdbots\Schemas\Ncr\Request\GetNodeBatchResponseV1',
     'gdbots:ncr:request:get-node-history-request:v1' => 'Gdbots\Schemas\Ncr\Request\GetNodeHistoryRequestV1',

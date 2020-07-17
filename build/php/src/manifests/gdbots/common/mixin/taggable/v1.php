@@ -30,7 +30,9 @@ return [
     'gdbots:ncr:command:rename-node:v1',
     'gdbots:ncr:command:unlock-node:v1',
     'gdbots:ncr:command:unpublish-node:v1',
+    'gdbots:ncr:command:update-labels:v1',
     'gdbots:ncr:command:update-node:v1',
+    'gdbots:ncr:command:update-tags:v1',
     'gdbots:ncr:event:edge-created:v1',
     'gdbots:ncr:event:edge-deleted:v1',
     'gdbots:ncr:event:labels-updated:v1',
@@ -46,4 +48,5 @@ return [
     'gdbots:ncr:event:node-unlocked:v1',
     'gdbots:ncr:event:node-unpublished:v1',
     'gdbots:ncr:event:node-updated:v1',
+    'gdbots:ncr:event:tags-updated:v1',
 ];

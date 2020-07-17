@@ -153,13 +153,98 @@
       "additionalProperties": false,
       "description": "Tags is a map that categorizes data or tracks references in external systems. The tags names should be consistent and descriptive, e.g. fb_user_id:123, salesforce_customer_id:456."
     },
+    "ctx_ip_geo": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/address"
+        }
+      ]
+    },
+    "month_of_year": {
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "day_of_month": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 31
+    },
+    "day_of_week": {
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "is_weekend": {
+      "type": "boolean"
+    },
+    "hour_of_day": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 23
+    },
+    "ts_ymdh": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "ts_ymd": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "ts_ym": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 16777215
+    },
+    "ctx_ua_parsed": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/user-agent"
+        }
+      ]
+    },
+    "node_ref": {
+      "type": "string",
+      "pattern": "^[\\w\\/\\.:-]+$"
+    },
     "labels_added": {
       "type": "array",
       "items": [
         {
           "type": "string",
-          "minLength": 0,
-          "maxLength": 255
+          "pattern": "^[\\w-]+$"
         }
       ],
       "uniqueItems": true,
@@ -170,8 +255,7 @@
       "items": [
         {
           "type": "string",
-          "minLength": 0,
-          "maxLength": 255
+          "pattern": "^[\\w-]+$"
         }
       ],
       "uniqueItems": true,
@@ -180,7 +264,8 @@
   },
   "required": [
     "_schema",
-    "event_id"
+    "event_id",
+    "node_ref"
   ],
   "definitions": {
     "app": {
@@ -196,6 +281,28 @@
       "anyOf": [
         {
           "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/cloud/1-0-0.json#"
+        }
+      ]
+    },
+    "address": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-0.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-1.json#"
+        },
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/geo/address/1-0-2.json#"
+        }
+      ]
+    },
+    "user-agent": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "http://schemas.gdbots.io/json-schema/gdbots/contexts/user-agent/1-0-0.json#"
         }
       ]
     }

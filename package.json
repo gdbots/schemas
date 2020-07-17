@@ -19,28 +19,28 @@
   "jsnext:main": "./index.js",
   "dependencies": {},
   "peerDependencies": {
-    "@gdbots/pbj": "^2.0.0",
-    "lodash": "^4.17.11",
-    "lodash-es": "^4.17.11",
+    "@gdbots/pbj": "^2.0.1",
+    "lodash": "^4.17.19",
+    "lodash-es": "^4.17.15",
     "md5": "^2.2.1",
-    "uuid": "^8.1.0"
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/register": "^7.10.1",
-    "@gdbots/pbj": "^2.0.0",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.5",
+    "@gdbots/pbj": "^2.0.1",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-module-resolver": "^4.0.0",
     "faucet": "^0.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lodash-es": "^4.17.15",
     "md5": "^2.2.1",
-    "moment": "^2.26.0",
+    "moment": "^2.27.0",
     "rimraf": "^3.0.2",
     "tape": "^5.0.1",
     "utf8": "^3.0.0",
-    "uuid": "^8.1.0"
+    "uuid": "^8.2.0"
   }
 }

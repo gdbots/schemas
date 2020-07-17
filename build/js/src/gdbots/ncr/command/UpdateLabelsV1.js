@@ -95,18 +95,24 @@ export default class UpdateLabelsV1 extends Message {
         Fb.create(this.CTX_MSG_FIELD, T.TextType.create())
           .build(),
         /*
-         * Labels is a list that categorizes data or tracks references in
-         * external systems.
+         * Tags is a map that categorizes data or tracks references in
+         * external systems. The tags names should be consistent and descriptive,
+         * e.g. fb_user_id:123, salesforce_customer_id:456.
          */
-        Fb.create(this.LABELS_FIELD, T.StringType.create())
-          .asASet()
-          .pattern('^[\\w-]+$')
+        Fb.create(this.TAGS_FIELD, T.StringType.create())
+          .asAMap()
+          .pattern('^[\\w\\/\\.:-]+$')
+          .build(),
+        Fb.create(this.NODE_REF_FIELD, T.NodeRefType.create())
+          .required()
           .build(),
         Fb.create(this.ADD_LABELS_FIELD, T.StringType.create())
           .asASet()
+          .pattern('^[\\w-]+$')
           .build(),
         Fb.create(this.REMOVE_LABELS_FIELD, T.StringType.create())
           .asASet()
+          .pattern('^[\\w-]+$')
           .build(),
       ],
       this.MIXINS,
@@ -122,8 +128,8 @@ M.prototype.SCHEMA_CURIE_MAJOR = M.SCHEMA_CURIE_MAJOR = 'gdbots:ncr:command:upda
 M.prototype.MIXINS = M.MIXINS = [
   'gdbots:pbjx:mixin:command:v1',
   'gdbots:pbjx:mixin:command',
-  'gdbots:common:mixin:labelable:v1',
-  'gdbots:common:mixin:labelable',
+  'gdbots:common:mixin:taggable:v1',
+  'gdbots:common:mixin:taggable',
 ];
 
 M.prototype.COMMAND_ID_FIELD = M.COMMAND_ID_FIELD = 'command_id';
@@ -141,7 +147,8 @@ M.prototype.CTX_IP_FIELD = M.CTX_IP_FIELD = 'ctx_ip';
 M.prototype.CTX_IPV6_FIELD = M.CTX_IPV6_FIELD = 'ctx_ipv6';
 M.prototype.CTX_UA_FIELD = M.CTX_UA_FIELD = 'ctx_ua';
 M.prototype.CTX_MSG_FIELD = M.CTX_MSG_FIELD = 'ctx_msg';
-M.prototype.LABELS_FIELD = M.LABELS_FIELD = 'labels';
+M.prototype.TAGS_FIELD = M.TAGS_FIELD = 'tags';
+M.prototype.NODE_REF_FIELD = M.NODE_REF_FIELD = 'node_ref';
 M.prototype.ADD_LABELS_FIELD = M.ADD_LABELS_FIELD = 'add_labels';
 M.prototype.REMOVE_LABELS_FIELD = M.REMOVE_LABELS_FIELD = 'remove_labels';
 
@@ -161,7 +168,8 @@ M.prototype.FIELDS = M.FIELDS = [
   M.CTX_IPV6_FIELD,
   M.CTX_UA_FIELD,
   M.CTX_MSG_FIELD,
-  M.LABELS_FIELD,
+  M.TAGS_FIELD,
+  M.NODE_REF_FIELD,
   M.ADD_LABELS_FIELD,
   M.REMOVE_LABELS_FIELD,
 ];

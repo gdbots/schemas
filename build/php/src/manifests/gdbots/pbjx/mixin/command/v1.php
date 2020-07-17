@@ -28,5 +28,6 @@ return [
     'gdbots:ncr:command:unpublish-node:v1',
     'gdbots:ncr:command:update-labels:v1',
     'gdbots:ncr:command:update-node:v1',
+    'gdbots:ncr:command:update-tags:v1',
     'gdbots:pbjx:command:check-health:v1',
 ];

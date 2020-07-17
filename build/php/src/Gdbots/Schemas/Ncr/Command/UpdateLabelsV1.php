@@ -20,8 +20,8 @@ final class UpdateLabelsV1 extends AbstractMessage
     const MIXINS = [
       'gdbots:pbjx:mixin:command:v1',
       'gdbots:pbjx:mixin:command',
-      'gdbots:common:mixin:labelable:v1',
-      'gdbots:common:mixin:labelable',
+      'gdbots:common:mixin:taggable:v1',
+      'gdbots:common:mixin:taggable',
     ];
 
     const COMMAND_ID_FIELD = 'command_id';
@@ -39,7 +39,8 @@ final class UpdateLabelsV1 extends AbstractMessage
     const CTX_IPV6_FIELD = 'ctx_ipv6';
     const CTX_UA_FIELD = 'ctx_ua';
     const CTX_MSG_FIELD = 'ctx_msg';
-    const LABELS_FIELD = 'labels';
+    const TAGS_FIELD = 'tags';
+    const NODE_REF_FIELD = 'node_ref';
     const ADD_LABELS_FIELD = 'add_labels';
     const REMOVE_LABELS_FIELD = 'remove_labels';
 
@@ -59,7 +60,8 @@ final class UpdateLabelsV1 extends AbstractMessage
       self::CTX_IPV6_FIELD,
       self::CTX_UA_FIELD,
       self::CTX_MSG_FIELD,
-      self::LABELS_FIELD,
+      self::TAGS_FIELD,
+      self::NODE_REF_FIELD,
       self::ADD_LABELS_FIELD,
       self::REMOVE_LABELS_FIELD,
     ];
@@ -150,18 +152,24 @@ final class UpdateLabelsV1 extends AbstractMessage
                 Fb::create(self::CTX_MSG_FIELD, T\TextType::create())
                     ->build(),
                 /*
-                 * Labels is a list that categorizes data or tracks references in
-                 * external systems.
+                 * Tags is a map that categorizes data or tracks references in
+                 * external systems. The tags names should be consistent and descriptive,
+                 * e.g. fb_user_id:123, salesforce_customer_id:456.
                  */
-                Fb::create(self::LABELS_FIELD, T\StringType::create())
-                    ->asASet()
-                    ->pattern('^[\w-]+$')
+                Fb::create(self::TAGS_FIELD, T\StringType::create())
+                    ->asAMap()
+                    ->pattern('^[\w\/\.:-]+$')
+                    ->build(),
+                Fb::create(self::NODE_REF_FIELD, T\NodeRefType::create())
+                    ->required()
                     ->build(),
                 Fb::create(self::ADD_LABELS_FIELD, T\StringType::create())
                     ->asASet()
+                    ->pattern('^[\w-]+$')
                     ->build(),
                 Fb::create(self::REMOVE_LABELS_FIELD, T\StringType::create())
                     ->asASet()
+                    ->pattern('^[\w-]+$')
                     ->build(),
             ],
             self::MIXINS

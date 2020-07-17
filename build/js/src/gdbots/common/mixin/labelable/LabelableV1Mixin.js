@@ -25,8 +25,8 @@ export default class LabelableV1Mixin {
   static getFields() {
     return [
       /*
-       * Labels is a list that categorizes data or tracks references in
-       * external systems.
+       * A set of strings used for categorization or workflow.
+       * Similar to slack channels, github or gmail labels.
        */
       Fb.create(this.LABELS_FIELD, T.StringType.create())
         .asASet()
