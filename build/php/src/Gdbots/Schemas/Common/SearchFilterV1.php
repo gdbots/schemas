@@ -21,18 +21,20 @@ final class SearchFilterV1 extends AbstractMessage
 
     const NAME_FIELD = 'name';
     const OPERATOR_FIELD = 'operator';
-    const BOOL_VALS_FIELD = 'bool_vals';
-    const DATE_VALS_FIELD = 'date_vals';
-    const INT_VALS_FIELD = 'int_vals';
-    const STRING_VALS_FIELD = 'string_vals';
+    const BOOLS_FIELD = 'bools';
+    const DATES_FIELD = 'dates';
+    const FLOATS_FIELD = 'floats';
+    const INTS_FIELD = 'ints';
+    const STRINGS_FIELD = 'strings';
 
     const FIELDS = [
       self::NAME_FIELD,
       self::OPERATOR_FIELD,
-      self::BOOL_VALS_FIELD,
-      self::DATE_VALS_FIELD,
-      self::INT_VALS_FIELD,
-      self::STRING_VALS_FIELD,
+      self::BOOLS_FIELD,
+      self::DATES_FIELD,
+      self::FLOATS_FIELD,
+      self::INTS_FIELD,
+      self::STRINGS_FIELD,
     ];
 
     protected static function defineSchema(): Schema
@@ -48,16 +50,19 @@ final class SearchFilterV1 extends AbstractMessage
                     ->withDefault(ComparisonOperator::EQUAL_TO())
                     ->className(ComparisonOperator::class)
                     ->build(),
-                Fb::create(self::BOOL_VALS_FIELD, T\BooleanType::create())
+                Fb::create(self::BOOLS_FIELD, T\BooleanType::create())
                     ->asAList()
                     ->build(),
-                Fb::create(self::DATE_VALS_FIELD, T\DateType::create())
+                Fb::create(self::DATES_FIELD, T\DateType::create())
                     ->asAList()
                     ->build(),
-                Fb::create(self::INT_VALS_FIELD, T\IntType::create())
+                Fb::create(self::FLOATS_FIELD, T\FloatType::create())
                     ->asAList()
                     ->build(),
-                Fb::create(self::STRING_VALS_FIELD, T\StringType::create())
+                Fb::create(self::INTS_FIELD, T\IntType::create())
+                    ->asAList()
+                    ->build(),
+                Fb::create(self::STRINGS_FIELD, T\StringType::create())
                     ->asAList()
                     ->build(),
             ],

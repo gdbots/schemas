@@ -24,16 +24,19 @@ export default class SearchFilterV1 extends Message {
           .withDefault(ComparisonOperator.EQUAL_TO)
           .classProto(ComparisonOperator)
           .build(),
-        Fb.create(this.BOOL_VALS_FIELD, T.BooleanType.create())
+        Fb.create(this.BOOLS_FIELD, T.BooleanType.create())
           .asAList()
           .build(),
-        Fb.create(this.DATE_VALS_FIELD, T.DateType.create())
+        Fb.create(this.DATES_FIELD, T.DateType.create())
           .asAList()
           .build(),
-        Fb.create(this.INT_VALS_FIELD, T.IntType.create())
+        Fb.create(this.FLOATS_FIELD, T.FloatType.create())
           .asAList()
           .build(),
-        Fb.create(this.STRING_VALS_FIELD, T.StringType.create())
+        Fb.create(this.INTS_FIELD, T.IntType.create())
+          .asAList()
+          .build(),
+        Fb.create(this.STRINGS_FIELD, T.StringType.create())
           .asAList()
           .build(),
       ],
@@ -68,18 +71,20 @@ M.prototype.MIXINS = M.MIXINS = [];
 
 M.prototype.NAME_FIELD = M.NAME_FIELD = 'name';
 M.prototype.OPERATOR_FIELD = M.OPERATOR_FIELD = 'operator';
-M.prototype.BOOL_VALS_FIELD = M.BOOL_VALS_FIELD = 'bool_vals';
-M.prototype.DATE_VALS_FIELD = M.DATE_VALS_FIELD = 'date_vals';
-M.prototype.INT_VALS_FIELD = M.INT_VALS_FIELD = 'int_vals';
-M.prototype.STRING_VALS_FIELD = M.STRING_VALS_FIELD = 'string_vals';
+M.prototype.BOOLS_FIELD = M.BOOLS_FIELD = 'bools';
+M.prototype.DATES_FIELD = M.DATES_FIELD = 'dates';
+M.prototype.FLOATS_FIELD = M.FLOATS_FIELD = 'floats';
+M.prototype.INTS_FIELD = M.INTS_FIELD = 'ints';
+M.prototype.STRINGS_FIELD = M.STRINGS_FIELD = 'strings';
 
 M.prototype.FIELDS = M.FIELDS = [
   M.NAME_FIELD,
   M.OPERATOR_FIELD,
-  M.BOOL_VALS_FIELD,
-  M.DATE_VALS_FIELD,
-  M.INT_VALS_FIELD,
-  M.STRING_VALS_FIELD,
+  M.BOOLS_FIELD,
+  M.DATES_FIELD,
+  M.FLOATS_FIELD,
+  M.INTS_FIELD,
+  M.STRINGS_FIELD,
 ];
 
 Object.freeze(M);

@@ -10,10 +10,11 @@
         <default>eq</default>
         <enum id="gdbots:common:comparison-operator"/>
       </field>
-      <field name="bool_vals" type="boolean" rule="list"/>
-      <field name="date_vals" type="date" rule="list"/>
-      <field name="int_vals" type="int" rule="list"/>
-      <field name="string_vals" type="string" rule="list"/>
+      <field name="bools" type="boolean" rule="list"/>
+      <field name="dates" type="date" rule="list"/>
+      <field name="floats" type="float" rule="list"/>
+      <field name="ints" type="int" rule="list"/>
+      <field name="strings" type="string" rule="list"/>
     </fields>
 
     <php-options>
