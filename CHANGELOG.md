@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v1.6.6
+* __Add Schemas:__
+  * `gdbots:common:mixin:labelable`
+  * `gdbots:ncr:command:update-node-labels`
+  * `gdbots:ncr:event:node-labels-updated`
+
+
 ## v1.6.5
 * __Add Schemas:__
   * Add new options to enum `gdbots:common:social-network`
