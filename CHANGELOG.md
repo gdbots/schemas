@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v2.0.4
+> Luckily v2.0.3 should never have been used. We named some messages inconsistently, fixing that in this version.
+
+* __Rename Schemas:__
+  * `gdbots:ncr:command:update-node-labels`
+  * `gdbots:ncr:command:update-node-tags`
+  * `gdbots:ncr:event:node-labels-updated`
+  * `gdbots:ncr:event:node-tags-updated`
+
+
 ## v2.0.3
 * __Add Schemas:__
   * `gdbots:common:comparison-operator`
