@@ -1,12 +1,12 @@
 {
-  "id": "http://schemas.gdbots.io/json-schema/gdbots/ncr/event/labels-updated/1-0-0.json#",
+  "id": "http://schemas.gdbots.io/json-schema/gdbots/ncr/event/node-tags-updated/1-0-0.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
     "_schema": {
       "type": "string",
       "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
-      "default": "pbj:gdbots:ncr:event:labels-updated:1-0-0"
+      "default": "pbj:gdbots:ncr:event:node-tags-updated:1-0-0"
     },
     "event_id": {
       "type": "string",
@@ -239,18 +239,17 @@
       "type": "string",
       "pattern": "^[\\w\\/\\.:-]+$"
     },
-    "labels_added": {
-      "type": "array",
-      "items": [
-        {
+    "tags_added": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
           "type": "string",
-          "pattern": "^[\\w-]+$"
+          "pattern": "^[\\w\\/\\.:-]+$"
         }
-      ],
-      "uniqueItems": true,
+      },
       "additionalProperties": false
     },
-    "labels_removed": {
+    "tags_removed": {
       "type": "array",
       "items": [
         {
