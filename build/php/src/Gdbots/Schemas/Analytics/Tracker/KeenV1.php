@@ -15,37 +15,24 @@ final class KeenV1 extends AbstractMessage
     const SCHEMA_ID = 'pbj:gdbots:analytics:tracker:keen:1-0-0';
     const SCHEMA_CURIE = 'gdbots:analytics:tracker:keen';
     const SCHEMA_CURIE_MAJOR = 'gdbots:analytics:tracker:keen:v1';
-
     const MIXINS = [
       'gdbots:analytics:mixin:tracker:v1',
       'gdbots:analytics:mixin:tracker',
-    ];
-
-    const IS_ENABLED_FIELD = 'is_enabled';
-    const PROJECT_ID_FIELD = 'project_id';
-    const READ_KEY_FIELD = 'read_key';
-    const WRITE_KEY_FIELD = 'write_key';
-
-    const FIELDS = [
-      self::IS_ENABLED_FIELD,
-      self::PROJECT_ID_FIELD,
-      self::READ_KEY_FIELD,
-      self::WRITE_KEY_FIELD,
     ];
 
     protected static function defineSchema(): Schema
     {
         return new Schema(self::SCHEMA_ID, __CLASS__,
             [
-                Fb::create(self::IS_ENABLED_FIELD, T\BooleanType::create())
+                Fb::create('is_enabled', T\BooleanType::create())
                     ->build(),
-                Fb::create(self::PROJECT_ID_FIELD, T\StringType::create())
+                Fb::create('project_id', T\StringType::create())
                     ->pattern('^\w+$')
                     ->build(),
-                Fb::create(self::READ_KEY_FIELD, T\StringType::create())
+                Fb::create('read_key', T\StringType::create())
                     ->pattern('^\w+$')
                     ->build(),
-                Fb::create(self::WRITE_KEY_FIELD, T\StringType::create())
+                Fb::create('write_key', T\StringType::create())
                     ->pattern('^\w+$')
                     ->build(),
             ],
@@ -55,15 +42,15 @@ final class KeenV1 extends AbstractMessage
 
     public function generateMessageRef(?string $tag = null): MessageRef
     {
-        return new MessageRef(self::schema()->getCurie(), $this->fget(self::PROJECT_ID_FIELD), $tag);
+        return new MessageRef(self::schema()->getCurie(), $this->fget('project_id'), $tag);
     }
     
     public function getUriTemplateVars(): array
     {
         return [
-            'project_id' => $this->fget(self::PROJECT_ID_FIELD),
-            'read_key' => $this->fget(self::READ_KEY_FIELD),
-            'write_key' => $this->fget(self::WRITE_KEY_FIELD),
+            'project_id' => $this->fget('project_id'),
+            'read_key' => $this->fget('read_key'),
+            'write_key' => $this->fget('write_key'),
         ];
     }
 }

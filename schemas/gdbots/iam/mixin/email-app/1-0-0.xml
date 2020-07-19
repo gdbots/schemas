@@ -15,7 +15,7 @@
 public function getUriTemplateVars(): array
 {
     return [
-        '_id' => $this->fget(self::_ID_FIELD),
+        '_id' => $this->fget('_id'),
     ];
 }
           ]]>
@@ -32,7 +32,7 @@ public function getUriTemplateVars(): array
  */
 getUriTemplateVars() {
   return {
-    _id: `${this.get(this._ID_FIELD)}`,
+    _id: `${this.get('_id')}`,
   };
 }
           ]]>

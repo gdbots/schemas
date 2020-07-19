@@ -24,18 +24,18 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(self::schema()->getCurie(), $this->fget(self::_ID_FIELD) ?: $this->generateEtag(), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget('_id') ?: $this->generateEtag(), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
     return [
-      '_id' => $this->fget(self::_ID_FIELD),
-      'vendor' => $this->fget(self::VENDOR_FIELD),
-      'name' => $this->fget(self::NAME_FIELD),
-      'version' => $this->fget(self::VERSION_FIELD),
-      'build' => $this->fget(self::BUILD_FIELD),
-      'variant' => $this->fget(self::VARIANT_FIELD),
+      '_id' => $this->fget('_id'),
+      'vendor' => $this->fget('vendor'),
+      'name' => $this->fget('name'),
+      'version' => $this->fget('version'),
+      'build' => $this->fget('build'),
+      'variant' => $this->fget('variant'),
     ];
 }
             ]]>
@@ -57,7 +57,7 @@ import MessageRef from '@gdbots/pbj/well-known/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  const id = this.get(this._ID_FIELD) || this.generateEtag();
+  const id = this.get('_id') || this.generateEtag();
   return new MessageRef(this.schema().getCurie(), `${id}`, tag);
 }
 
@@ -66,12 +66,12 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    _id: `${this.get(this._ID_FIELD, '')}`,
-    vendor: this.get(this.VENDOR_FIELD),
-    name: this.get(this.NAME_FIELD),
-    version: this.get(this.VERSION_FIELD),
-    build: this.get(this.BUILD_FIELD),
-    variant: this.get(this.VARIANT_FIELD),
+    _id: `${this.get('_id', '')}`,
+    vendor: this.get('vendor'),
+    name: this.get('name'),
+    version: this.get('version'),
+    build: this.get('build'),
+    variant: this.get('variant'),
   };
 }
             ]]>

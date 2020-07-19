@@ -16,44 +16,29 @@ final class CloudV1 extends AbstractMessage
     const SCHEMA_ID = 'pbj:gdbots:contexts::cloud:1-0-0';
     const SCHEMA_CURIE = 'gdbots:contexts::cloud';
     const SCHEMA_CURIE_MAJOR = 'gdbots:contexts::cloud:v1';
-
     const MIXINS = [];
-
-    const PROVIDER_FIELD = 'provider';
-    const REGION_FIELD = 'region';
-    const ZONE_FIELD = 'zone';
-    const INSTANCE_ID_FIELD = 'instance_id';
-    const INSTANCE_TYPE_FIELD = 'instance_type';
-
-    const FIELDS = [
-      self::PROVIDER_FIELD,
-      self::REGION_FIELD,
-      self::ZONE_FIELD,
-      self::INSTANCE_ID_FIELD,
-      self::INSTANCE_TYPE_FIELD,
-    ];
 
     protected static function defineSchema(): Schema
     {
         return new Schema(self::SCHEMA_ID, __CLASS__,
             [
-                Fb::create(self::PROVIDER_FIELD, T\StringType::create())
+                Fb::create('provider', T\StringType::create())
                     ->maxLength(20)
                     ->format(Format::SLUG())
                     ->build(),
-                Fb::create(self::REGION_FIELD, T\StringType::create())
+                Fb::create('region', T\StringType::create())
                     ->maxLength(20)
                     ->format(Format::SLUG())
                     ->build(),
-                Fb::create(self::ZONE_FIELD, T\StringType::create())
+                Fb::create('zone', T\StringType::create())
                     ->maxLength(20)
                     ->format(Format::SLUG())
                     ->build(),
-                Fb::create(self::INSTANCE_ID_FIELD, T\StringType::create())
+                Fb::create('instance_id', T\StringType::create())
                     ->maxLength(50)
                     ->pattern('^[\w\.-]+$')
                     ->build(),
-                Fb::create(self::INSTANCE_TYPE_FIELD, T\StringType::create())
+                Fb::create('instance_type', T\StringType::create())
                     ->maxLength(20)
                     ->pattern('^[\w\.-]+$')
                     ->build(),
@@ -70,11 +55,11 @@ final class CloudV1 extends AbstractMessage
     public function getUriTemplateVars(): array
     {
         return [
-          'provider' => $this->fget(self::PROVIDER_FIELD),
-          'region' => $this->fget(self::REGION_FIELD),
-          'zone' => $this->fget(self::ZONE_FIELD),
-          'instance_id' => $this->fget(self::INSTANCE_ID_FIELD),
-          'instance_type' => $this->fget(self::INSTANCE_TYPE_FIELD),
+          'provider' => $this->fget('provider'),
+          'region' => $this->fget('region'),
+          'zone' => $this->fget('zone'),
+          'instance_id' => $this->fget('instance_id'),
+          'instance_type' => $this->fget('instance_type'),
         ];
     }
 }

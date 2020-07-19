@@ -48,12 +48,12 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(self::schema()->getCurie(), $this->fget(self::ENVELOPE_ID_FIELD), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget('envelope_id'), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
-    return ['envelope_id' => $this->fget(self::ENVELOPE_ID_FIELD)];
+    return ['envelope_id' => $this->fget('envelope_id')];
 }
             ]]>
         </methods>
@@ -74,14 +74,14 @@ import MessageRef from '@gdbots/pbj/well-known/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  return new MessageRef(this.schema().getCurie(), this.get(this.ENVELOPE_ID_FIELD), tag);
+  return new MessageRef(this.schema().getCurie(), this.get('envelope_id'), tag);
 }
 
 /**
  * @returns {Object}
  */
 getUriTemplateVars() {
-  return { envelope_id: `${this.get(this.ENVELOPE_ID_FIELD)}` };
+  return { envelope_id: `${this.get('envelope_id')}` };
 }
             ]]>
         </methods>

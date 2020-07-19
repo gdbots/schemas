@@ -49,13 +49,13 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(self::schema()->getCurie(), $this->fget(self::GEO_HASH_FIELD), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget('geo_hash'), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
     return [
-        'geo_hash' => $this->fget(self::GEO_HASH_FIELD),
+        'geo_hash' => $this->fget('geo_hash'),
     ];
 }
             ]]>
@@ -77,7 +77,7 @@ import MessageRef from '@gdbots/pbj/well-known/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  return new MessageRef(this.schema().getCurie(), this.get(this.GEO_HASH_FIELD), tag);
+  return new MessageRef(this.schema().getCurie(), this.get('geo_hash'), tag);
 }
 
 /**
@@ -85,7 +85,7 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    geo_hash: this.get(this.GEO_HASH_FIELD),
+    geo_hash: this.get('geo_hash'),
   };
 }
             ]]>
