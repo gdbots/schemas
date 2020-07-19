@@ -14,15 +14,15 @@ export default class KeenV1 extends Message {
   static defineSchema() {
     return new Schema(this.SCHEMA_ID, this,
       [
-        Fb.create(this.IS_ENABLED_FIELD, T.BooleanType.create())
+        Fb.create('is_enabled', T.BooleanType.create())
           .build(),
-        Fb.create(this.PROJECT_ID_FIELD, T.StringType.create())
+        Fb.create('project_id', T.StringType.create())
           .pattern('^\\w+$')
           .build(),
-        Fb.create(this.READ_KEY_FIELD, T.StringType.create())
+        Fb.create('read_key', T.StringType.create())
           .pattern('^\\w+$')
           .build(),
-        Fb.create(this.WRITE_KEY_FIELD, T.StringType.create())
+        Fb.create('write_key', T.StringType.create())
           .pattern('^\\w+$')
           .build(),
       ],
@@ -35,7 +35,7 @@ export default class KeenV1 extends Message {
    * @returns {MessageRef}
    */
   generateMessageRef(tag = null) {
-    return new MessageRef(this.schema().getCurie(), this.get(this.PROJECT_ID_FIELD), tag);
+    return new MessageRef(this.schema().getCurie(), this.get('project_id'), tag);
   }
   
   /**
@@ -43,9 +43,9 @@ export default class KeenV1 extends Message {
    */
   getUriTemplateVars() {
     return {
-      project_id: this.get(this.PROJECT_ID_FIELD),
-      read_key: this.get(this.READ_KEY_FIELD),
-      write_key: this.get(this.WRITE_KEY_FIELD),
+      project_id: this.get('project_id'),
+      read_key: this.get('read_key'),
+      write_key: this.get('write_key'),
     };
   }
 }
@@ -54,22 +54,9 @@ const M = KeenV1;
 M.prototype.SCHEMA_ID = M.SCHEMA_ID = 'pbj:gdbots:analytics:tracker:keen:1-0-0';
 M.prototype.SCHEMA_CURIE = M.SCHEMA_CURIE = 'gdbots:analytics:tracker:keen';
 M.prototype.SCHEMA_CURIE_MAJOR = M.SCHEMA_CURIE_MAJOR = 'gdbots:analytics:tracker:keen:v1';
-
 M.prototype.MIXINS = M.MIXINS = [
   'gdbots:analytics:mixin:tracker:v1',
   'gdbots:analytics:mixin:tracker',
-];
-
-M.prototype.IS_ENABLED_FIELD = M.IS_ENABLED_FIELD = 'is_enabled';
-M.prototype.PROJECT_ID_FIELD = M.PROJECT_ID_FIELD = 'project_id';
-M.prototype.READ_KEY_FIELD = M.READ_KEY_FIELD = 'read_key';
-M.prototype.WRITE_KEY_FIELD = M.WRITE_KEY_FIELD = 'write_key';
-
-M.prototype.FIELDS = M.FIELDS = [
-  M.IS_ENABLED_FIELD,
-  M.PROJECT_ID_FIELD,
-  M.READ_KEY_FIELD,
-  M.WRITE_KEY_FIELD,
 ];
 
 Object.freeze(M);

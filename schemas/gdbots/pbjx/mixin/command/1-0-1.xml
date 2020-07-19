@@ -68,15 +68,15 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(self::schema()->getCurie(), $this->fget(self::COMMAND_ID_FIELD), $tag);
+    return new MessageRef(self::schema()->getCurie(), $this->fget('command_id'), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
     return [
-        'command_id' => $this->fget(self::COMMAND_ID_FIELD),
-        'occurred_at' => $this->fget(self::OCCURRED_AT_FIELD),
-        'ctx_user_ref' => $this->fget(self::CTX_USER_REF_FIELD),
+        'command_id' => $this->fget('command_id'),
+        'occurred_at' => $this->fget('occurred_at'),
+        'ctx_user_ref' => $this->fget('ctx_user_ref'),
     ];
 }
             ]]>
@@ -98,7 +98,7 @@ import MessageRef from '@gdbots/pbj/well-known/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  return new MessageRef(this.schema().getCurie(), this.get(this.COMMAND_ID_FIELD), tag);
+  return new MessageRef(this.schema().getCurie(), this.get('command_id'), tag);
 },
 
 /**
@@ -106,9 +106,9 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    command_id: `${this.get(this.COMMAND_ID_FIELD)}`,
-    occurred_at: `${this.get(this.OCCURRED_AT_FIELD)}`,
-    ctx_user_ref: `${this.get(this.CTX_USER_REF_FIELD, '')}`,
+    command_id: `${this.get('command_id')}`,
+    occurred_at: `${this.get('occurred_at')}`,
+    ctx_user_ref: `${this.get('ctx_user_ref', '')}`,
   };
 }
             ]]>

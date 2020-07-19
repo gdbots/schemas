@@ -4,34 +4,18 @@ declare(strict_types=1);
 // @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/alexa-app/1-0-0.json#
 namespace Gdbots\Schemas\Iam\Mixin\AlexaApp;
 
-use Gdbots\Pbj\Field;
-use Gdbots\Pbj\SchemaId;
+use Gdbots\Pbj\Schema;
 
-final class AlexaAppV1Mixin
+/**
+ * @method static Schema schema
+ * @method mixed fget($fieldName, $default = null)
+ */
+trait AlexaAppV1Mixin
 {
-    const SCHEMA_ID = 'pbj:gdbots:iam:mixin:alexa-app:1-0-0';
-    const SCHEMA_CURIE = 'gdbots:iam:mixin:alexa-app';
-    const SCHEMA_CURIE_MAJOR = 'gdbots:iam:mixin:alexa-app:v1';
-
-    const FIELDS = [];
-
-    final private function __construct() {}
-
-    public static function getId(): SchemaId
+    public function getUriTemplateVars(): array
     {
-        return SchemaId::fromString(self::SCHEMA_ID);
-    }
-
-    public static function hasField(string $name): bool
-    {
-        return in_array($name, self::FIELDS, true);
-    }
-
-    /**
-     * @return Field[]
-     */
-    public static function getFields(): array
-    {
-        return [];
+        return [
+            '_id' => $this->fget('_id'),
+        ];
     }
 }

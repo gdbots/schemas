@@ -10,7 +10,7 @@
         <default>eq</default>
         <enum id="gdbots:common:comparison-operator"/>
       </field>
-      <field name="bools" type="boolean" rule="list"/>
+      <field name="booleans" type="boolean" rule="list"/>
       <field name="dates" type="date" rule="list"/>
       <field name="floats" type="float" rule="list"/>
       <field name="ints" type="int" rule="list"/>
@@ -28,13 +28,13 @@ use Gdbots\Pbj\WellKnown\MessageRef;
           <![CDATA[
 public function generateMessageRef(?string $tag = null): MessageRef
 {
-    return new MessageRef(static::schema()->getCurie(), $this->fget(self::NAME_FIELD), $tag);
+    return new MessageRef(static::schema()->getCurie(), $this->fget('name'), $tag);
 }
 
 public function getUriTemplateVars(): array
 {
     return [
-        'name' => $this->fget(self::NAME_FIELD),
+        'name' => $this->fget('name'),
     ];
 }
             ]]>
@@ -56,7 +56,7 @@ import MessageRef from '@gdbots/pbj/well-known/MessageRef';
  * @returns {MessageRef}
  */
 generateMessageRef(tag = null) {
-  return new MessageRef(this.schema().getCurie(), this.get(this.NAME_FIELD), tag);
+  return new MessageRef(this.schema().getCurie(), this.get('name'), tag);
 }
 
 /**
@@ -64,7 +64,7 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    name: this.get(this.NAME_FIELD),
+    name: this.get('name'),
   };
 }
             ]]>

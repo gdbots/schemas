@@ -29,11 +29,11 @@ public function generateMessageRef(?string $tag = null): MessageRef
 public function getUriTemplateVars(): array
 {
     return [
-      'provider' => $this->fget(self::PROVIDER_FIELD),
-      'region' => $this->fget(self::REGION_FIELD),
-      'zone' => $this->fget(self::ZONE_FIELD),
-      'instance_id' => $this->fget(self::INSTANCE_ID_FIELD),
-      'instance_type' => $this->fget(self::INSTANCE_TYPE_FIELD),
+      'provider' => $this->fget('provider'),
+      'region' => $this->fget('region'),
+      'zone' => $this->fget('zone'),
+      'instance_id' => $this->fget('instance_id'),
+      'instance_type' => $this->fget('instance_type'),
     ];
 }
             ]]>
@@ -63,11 +63,11 @@ generateMessageRef(tag = null) {
  */
 getUriTemplateVars() {
   return {
-    provider: this.get(this.PROVIDER_FIELD),
-    region: this.get(this.REGION_FIELD),
-    zone: this.get(this.ZONE_FIELD),
-    instance_id: this.get(this.INSTANCE_ID_FIELD),
-    instance_type: this.get(this.INSTANCE_TYPE_FIELD),
+    provider: this.get('provider'),
+    region: this.get('region'),
+    zone: this.get('zone'),
+    instance_id: this.get('instance_id'),
+    instance_type: this.get('instance_type'),
   };
 }
             ]]>

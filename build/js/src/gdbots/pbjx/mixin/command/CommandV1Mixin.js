@@ -1,148 +1,25 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/pbjx/mixin/command/1-0-3.json#
-import Fb from '@gdbots/pbj/FieldBuilder';
-import Format from '@gdbots/pbj/enums/Format';
-import SchemaId from '@gdbots/pbj/SchemaId';
-import T from '@gdbots/pbj/types';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef';
 
-export default class CommandV1Mixin {
-  /**
-   * @returns {SchemaId}
-   */
-  static getId() {
-    return SchemaId.fromString(this.SCHEMA_ID);
-  }
-
-  /**
-   * @param {string} name
-   * @returns {boolean}
-   */
-  static hasField(name) {
-    return this.FIELDS.includes(name);
-  }
-
-  /**
-   * @returns {Field[]}
-   */
-  static getFields() {
-    return [
-      Fb.create(this.COMMAND_ID_FIELD, T.TimeUuidType.create())
-        .required()
-        .build(),
-      Fb.create(this.OCCURRED_AT_FIELD, T.MicrotimeType.create())
-        .build(),
-      /*
-       * Used to perform optimistic concurrency control.
-       * @link https://en.wikipedia.org/wiki/HTTP_ETag
-       */
-      Fb.create(this.EXPECTED_ETAG_FIELD, T.StringType.create())
-        .maxLength(100)
-        .pattern('^[\\w\\.:-]+$')
-        .build(),
-      /*
-       * Multi-tenant apps can use this field to track the tenant id.
-       */
-      Fb.create(this.CTX_TENANT_ID_FIELD, T.StringType.create())
-        .pattern('^[\\w\\/\\.:-]+$')
-        .build(),
-      /*
-       * The "ctx_retries" field is used to keep track of how many attempts were
-       * made to process this command. In some cases, the service or transport
-       * that handles the command may be down or an optimistic check has failed
-       * and is being retried.
-       */
-      Fb.create(this.CTX_RETRIES_FIELD, T.TinyIntType.create())
-        .build(),
-      /*
-       * The "ctx_causator" is the actual causator object that "ctx_causator_ref"
-       * refers to. In some cases it's useful for command handlers to copy the
-       * causator into the command. For example, when a node is being updated we
-       * may want to know what the node will be after the update. We can derive
-       * this via the causator instead of requesting the node and engaging a race
-       * condition.
-       */
-      Fb.create(this.CTX_CAUSATOR_FIELD, T.MessageType.create())
-        .build(),
-      Fb.create(this.CTX_CAUSATOR_REF_FIELD, T.MessageRefType.create())
-        .build(),
-      Fb.create(this.CTX_CORRELATOR_REF_FIELD, T.MessageRefType.create())
-        .build(),
-      Fb.create(this.CTX_USER_REF_FIELD, T.MessageRefType.create())
-        .build(),
-      /*
-       * The "ctx_app" refers to the application used to send the command. This is
-       * different from ctx_ua (user_agent) because the agent used (Safari, Firefox)
-       * is not necessarily the app used (cms, iOS app, website)
-       */
-      Fb.create(this.CTX_APP_FIELD, T.MessageType.create())
-        .anyOfCuries([
-          'gdbots:contexts::app',
-        ])
-        .build(),
-      /*
-       * The "ctx_cloud" is set by the server receiving the command and is generally
-       * only used internally for tracking and performance monitoring.
-       */
-      Fb.create(this.CTX_CLOUD_FIELD, T.MessageType.create())
-        .anyOfCuries([
-          'gdbots:contexts::cloud',
-        ])
-        .build(),
-      Fb.create(this.CTX_IP_FIELD, T.StringType.create())
-        .format(Format.IPV4)
-        .overridable(true)
-        .build(),
-      Fb.create(this.CTX_IPV6_FIELD, T.StringType.create())
-        .format(Format.IPV6)
-        .overridable(true)
-        .build(),
-      Fb.create(this.CTX_UA_FIELD, T.TextType.create())
-        .overridable(true)
-        .build(),
-      /*
-       * An optional message/reason for the command being sent.
-       * Consider this like a git commit message.
-       */
-      Fb.create(this.CTX_MSG_FIELD, T.TextType.create())
-        .build(),
-    ];
-  }
+export default function CommandV1Mixin(M) {
+  Object.assign(M.prototype, {
+    /**
+     * @param {?string} tag
+     * @returns {MessageRef}
+     */
+    generateMessageRef(tag = null) {
+      return new MessageRef(this.schema().getCurie(), this.get('command_id'), tag);
+    },
+    
+    /**
+     * @returns {Object}
+     */
+    getUriTemplateVars() {
+      return {
+        command_id: `${this.get('command_id')}`,
+        occurred_at: `${this.get('occurred_at')}`,
+        ctx_tenant_id: this.get('ctx_tenant_id'),
+        ctx_user_ref: `${this.get('ctx_user_ref', '')}`,
+      };
+    }
+  });
 }
-
-const M = CommandV1Mixin;
-M.SCHEMA_ID = 'pbj:gdbots:pbjx:mixin:command:1-0-3';
-M.SCHEMA_CURIE = 'gdbots:pbjx:mixin:command';
-M.SCHEMA_CURIE_MAJOR = 'gdbots:pbjx:mixin:command:v1';
-
-M.COMMAND_ID_FIELD = 'command_id';
-M.OCCURRED_AT_FIELD = 'occurred_at';
-M.EXPECTED_ETAG_FIELD = 'expected_etag';
-M.CTX_TENANT_ID_FIELD = 'ctx_tenant_id';
-M.CTX_RETRIES_FIELD = 'ctx_retries';
-M.CTX_CAUSATOR_FIELD = 'ctx_causator';
-M.CTX_CAUSATOR_REF_FIELD = 'ctx_causator_ref';
-M.CTX_CORRELATOR_REF_FIELD = 'ctx_correlator_ref';
-M.CTX_USER_REF_FIELD = 'ctx_user_ref';
-M.CTX_APP_FIELD = 'ctx_app';
-M.CTX_CLOUD_FIELD = 'ctx_cloud';
-M.CTX_IP_FIELD = 'ctx_ip';
-M.CTX_IPV6_FIELD = 'ctx_ipv6';
-M.CTX_UA_FIELD = 'ctx_ua';
-M.CTX_MSG_FIELD = 'ctx_msg';
-
-M.FIELDS = [
-  M.COMMAND_ID_FIELD,
-  M.OCCURRED_AT_FIELD,
-  M.EXPECTED_ETAG_FIELD,
-  M.CTX_TENANT_ID_FIELD,
-  M.CTX_RETRIES_FIELD,
-  M.CTX_CAUSATOR_FIELD,
-  M.CTX_CAUSATOR_REF_FIELD,
-  M.CTX_CORRELATOR_REF_FIELD,
-  M.CTX_USER_REF_FIELD,
-  M.CTX_APP_FIELD,
-  M.CTX_CLOUD_FIELD,
-  M.CTX_IP_FIELD,
-  M.CTX_IPV6_FIELD,
-  M.CTX_UA_FIELD,
-  M.CTX_MSG_FIELD,
-];

@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## v2.1.0
+__POSSIBLE BREAKING CHANGES__
+
+If using direct references to mixins (unusual) this update will break your code. The mixin classes are no longer created, so the mixin trait is now just the mixin methods injected into the concrete classes. Mixins only exist when defining schemas, they more or less disappear when compiled.
+
+
 ## v2.0.4
 > Luckily v2.0.3 should never have been used. We named some messages inconsistently, fixing that in this version.
 
