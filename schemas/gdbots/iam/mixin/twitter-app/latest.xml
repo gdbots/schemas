@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pbj-schema xmlns="http://gdbots.io/pbj/xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gdbots.io/pbj/xsd http://gdbots.io/pbj/xsd/schema.xsd">
+
+  <schema id="pbj:gdbots:iam:mixin:twitter-app:1-0-0" mixin="true" extends="gdbots:iam:mixin:app:v1">
+    <fields>
+      <field name="oauth_consumer_key" type="string" pattern="^[\w]+$">
+        <description>
+          Equivalent to username of your Twitter developer app when making API requests.
+          @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a
+        </description>
+      </field>
+      <field name="oauth_consumer_key_secret" type="text">
+        <description>
+          Equivalent to password of your Twitter developer app when making API requests.
+          The "oauth_consumer_key_secret" should be encrypted and never stored in plain text.
+          @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a
+        </description>
+      </field>
+      <field name="oauth_token" type="string" pattern="^[\w-]+$">
+        <description>
+          An oauth token is a user-specific credentials used to authenticate OAuth 1.0a API requests.
+          It specifies the Twitter account the request is made on behalf of.
+          @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a
+        </description>
+      </field>
+      <field name="oauth_token_secret" type="text">
+        <description>
+          An oauth token is a user-specific credentials used to authenticate OAuth 1.0a API requests.
+          It specifies the Twitter account the request is made on behalf of.
+          The "oauth_token_secret" should be encrypted and never stored in plain text.
+          @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a
+        </description>
+      </field>
+    </fields>
+
+    <php-options>
+      <insertion-points>
+        <imports/>
+        <methods>
+          <![CDATA[
+public function getUriTemplateVars(): array
+{
+    return [
+        '_id' => $this->fget('_id'),
+    ];
+}
+          ]]>
+        </methods>
+      </insertion-points>
+    </php-options>
+
+    <js-options>
+      <insertion-points>
+        <methods>
+          <![CDATA[
+/**
+ * @returns {Object}
+ */
+getUriTemplateVars() {
+  return {
+    _id: `${this.get('_id')}`,
+  };
+}
+          ]]>
+        </methods>
+      </insertion-points>
+    </js-options>
+  </schema>
+</pbj-schema>

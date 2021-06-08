@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## v2.1.1
+* __Add Schemas:__
+  * `gdbots:iam:mixin:twitter-app`
+
+
 ## v2.1.0
 __POSSIBLE BREAKING CHANGES__
 
