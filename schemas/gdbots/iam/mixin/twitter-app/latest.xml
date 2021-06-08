@@ -11,10 +11,10 @@
           @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a
         </description>
       </field>
-      <field name="oauth_consumer_key_secret" type="text">
+      <field name="oauth_consumer_secret" type="text">
         <description>
           Equivalent to password of your Twitter developer app when making API requests.
-          The "oauth_consumer_key_secret" should be encrypted and never stored in plain text.
+          The "oauth_consumer_secret" should be encrypted and never stored in plain text.
           @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a
         </description>
       </field>
@@ -27,7 +27,7 @@
       </field>
       <field name="oauth_token_secret" type="text">
         <description>
-          An oauth token is a user-specific credentials used to authenticate OAuth 1.0a API requests.
+          An oauth token secret is a user-specific credentials used to authenticate OAuth 1.0a API requests.
           It specifies the Twitter account the request is made on behalf of.
           The "oauth_token_secret" should be encrypted and never stored in plain text.
           @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a

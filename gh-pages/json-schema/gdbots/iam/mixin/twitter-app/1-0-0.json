@@ -143,11 +143,11 @@
       "pattern": "^[\\w]+$",
       "description": "Equivalent to username of your Twitter developer app when making API requests. @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a"
     },
-    "oauth_consumer_key_secret": {
+    "oauth_consumer_secret": {
       "type": "string",
       "minLength": 0,
       "maxLength": 65535,
-      "description": "Equivalent to password of your Twitter developer app when making API requests. The \"oauth_consumer_key_secret\" should be encrypted and never stored in plain text. @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a"
+      "description": "Equivalent to password of your Twitter developer app when making API requests. The \"oauth_consumer_secret\" should be encrypted and never stored in plain text. @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a"
     },
     "oauth_token": {
       "type": "string",
@@ -158,7 +158,7 @@
       "type": "string",
       "minLength": 0,
       "maxLength": 65535,
-      "description": "An oauth token is a user-specific credentials used to authenticate OAuth 1.0a API requests. It specifies the Twitter account the request is made on behalf of. The \"oauth_token_secret\" should be encrypted and never stored in plain text. @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a"
+      "description": "An oauth token secret is a user-specific credentials used to authenticate OAuth 1.0a API requests. It specifies the Twitter account the request is made on behalf of. The \"oauth_token_secret\" should be encrypted and never stored in plain text. @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a"
     }
   },
   "required": [
