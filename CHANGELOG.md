@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## v1.6.7
+* __Add Schemas:__
+  * `gdbots:iam:mixin:twitter-app`
+
+
 ## v1.6.6
 * __Add Schemas:__
   * `gdbots:common:mixin:labelable`
