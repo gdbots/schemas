@@ -5,12 +5,13 @@ namespace Gdbots\Schemas\Ncr;
 
 use Gdbots\Pbj\Message;
 use Gdbots\Pbj\WellKnown\Identifier;
-use Ramsey\Uuid\Rfc4122\UuidV5;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 final class EdgeId implements Identifier
 {
+    private const VALID_REGEX = '/\A[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}\z/ms';
+
     /**
      * For each vendor namespace we create version 5 uuid so
      * the generated ids for an edge don't collide.
@@ -24,7 +25,7 @@ final class EdgeId implements Identifier
     private function __construct(UuidInterface $uuid)
     {
         $this->uuid = $uuid;
-        if (!$uuid instanceof UuidV5) {
+        if (!preg_match(self::VALID_REGEX, $uuid->toString())) {
             throw new \InvalidArgumentException('A name based (version 5) uuid is required.');
         }
     }

@@ -1,6 +1,6 @@
 {
   "name": "@gdbots/schemas",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Schemas for common Gdbots apps and components.",
   "repository": {
     "type": "git",
@@ -17,7 +17,6 @@
   },
   "module": "./index.js",
   "jsnext:main": "./index.js",
-  "dependencies": {},
   "peerDependencies": {
     "@gdbots/pbj": "^2.0.1",
     "lodash": "^4.17.19",
