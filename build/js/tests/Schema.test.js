@@ -1,11 +1,10 @@
 import test from 'tape';
+import isFunction from 'lodash/isFunction';
 import isPlainObject from 'lodash/isPlainObject';
 import Message from '@gdbots/pbj/Message';
 import MessageRef from '@gdbots/pbj/well-known/MessageRef';
 import MessageResolver from '@gdbots/pbj/MessageResolver';
 import '@gdbots/schemas';
-import isFunction from 'lodash-es/isFunction';
-
 
 async function resolveImport(resolver) {
   const result = await (isFunction(resolver) ? resolver() : resolver);

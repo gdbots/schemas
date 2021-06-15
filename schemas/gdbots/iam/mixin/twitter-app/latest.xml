@@ -5,7 +5,7 @@
 
   <schema id="pbj:gdbots:iam:mixin:twitter-app:1-0-0" mixin="true" extends="gdbots:iam:mixin:app:v1">
     <fields>
-      <field name="oauth_consumer_key" type="string" pattern="^[\w]+$">
+      <field name="oauth_consumer_key" type="string" pattern="^[\w-]+$">
         <description>
           Equivalent to username of your Twitter developer app when making API requests.
           @link https://developer.twitter.com/en/docs/authentication/oauth-1-0a

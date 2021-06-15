@@ -4,6 +4,8 @@
 ## v2.1.1
 * __Add Schemas:__
   * `gdbots:iam:mixin:twitter-app`
+  * `gdbots:forms:mixin:tiktok-user-field`
+  * `gdbots:forms:mixin:tiktok-video-field`
 
 
 ## v2.1.0
