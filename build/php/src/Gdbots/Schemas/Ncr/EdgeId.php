@@ -30,7 +30,7 @@ final class EdgeId implements Identifier
         }
     }
 
-    public static function fromString($string): self
+    public static function fromString($string): static
     {
         return new static(Uuid::fromString($string));
     }
@@ -64,7 +64,7 @@ final class EdgeId implements Identifier
         return $this->toString();
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): string
     {
         return $this->toString();
     }

@@ -78,11 +78,11 @@ final class AppRolesRevokedV1 extends AbstractMessage
                     ])
                     ->build(),
                 Fb::create('ctx_ip', T\StringType::create())
-                    ->format(Format::IPV4())
+                    ->format(Format::IPV4)
                     ->overridable(true)
                     ->build(),
                 Fb::create('ctx_ipv6', T\StringType::create())
-                    ->format(Format::IPV6())
+                    ->format(Format::IPV6)
                     ->overridable(true)
                     ->build(),
                 Fb::create('ctx_ua', T\TextType::create())
@@ -109,14 +109,14 @@ final class AppRolesRevokedV1 extends AbstractMessage
                     ])
                     ->build(),
                 Fb::create('month_of_year', T\IntEnumType::create())
-                    ->withDefault(Month::UNKNOWN())
+                    ->withDefault(Month::UNKNOWN)
                     ->className(Month::class)
                     ->build(),
                 Fb::create('day_of_month', T\TinyIntType::create())
                     ->max(31)
                     ->build(),
                 Fb::create('day_of_week', T\IntEnumType::create())
-                    ->withDefault(DayOfWeek::UNKNOWN())
+                    ->withDefault(DayOfWeek::UNKNOWN)
                     ->className(DayOfWeek::class)
                     ->build(),
                 Fb::create('is_weekend', T\BooleanType::create())

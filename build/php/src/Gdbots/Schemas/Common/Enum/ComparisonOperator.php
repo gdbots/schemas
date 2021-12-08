@@ -3,32 +3,17 @@ declare(strict_types=1);
 
 namespace Gdbots\Schemas\Common\Enum;
 
-use Gdbots\Pbj\Enum;
-
-/**
- * @method static ComparisonOperator UNKNOWN()
- * @method static ComparisonOperator EQUAL_TO()
- * @method static ComparisonOperator NOT_EQUAL_TO()
- * @method static ComparisonOperator GREATER_THAN()
- * @method static ComparisonOperator GREATER_THAN_OR_EQUAL_TO()
- * @method static ComparisonOperator LESS_THAN()
- * @method static ComparisonOperator LESS_THAN_OR_EQUAL_TO()
- * @method static ComparisonOperator EXISTS()
- * @method static ComparisonOperator IN()
- * @method static ComparisonOperator CONTAINS()
- * @method static ComparisonOperator NOT_CONTAINS()
- */
-final class ComparisonOperator extends Enum
+enum ComparisonOperator: string
 {
-    const UNKNOWN = 'unknown';
-    const EQUAL_TO = 'eq';
-    const NOT_EQUAL_TO = 'ne';
-    const GREATER_THAN = 'gt';
-    const GREATER_THAN_OR_EQUAL_TO = 'gte';
-    const LESS_THAN = 'lt';
-    const LESS_THAN_OR_EQUAL_TO = 'lte';
-    const EXISTS = 'exists';
-    const IN = 'in';
-    const CONTAINS = 'contains';
-    const NOT_CONTAINS = 'not_contains';
+    case UNKNOWN = 'unknown';
+    case EQUAL_TO = 'eq';
+    case NOT_EQUAL_TO = 'ne';
+    case GREATER_THAN = 'gt';
+    case GREATER_THAN_OR_EQUAL_TO = 'gte';
+    case LESS_THAN = 'lt';
+    case LESS_THAN_OR_EQUAL_TO = 'lte';
+    case EXISTS = 'exists';
+    case IN = 'in';
+    case CONTAINS = 'contains';
+    case NOT_CONTAINS = 'not_contains';
 }

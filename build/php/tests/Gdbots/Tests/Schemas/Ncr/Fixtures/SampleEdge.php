@@ -25,7 +25,7 @@ final class SampleEdge extends AbstractMessage
                     ->required()
                     ->build(),
                 Fb::create('multiplicity', T\StringEnumType::create())
-                    ->withDefault(EdgeMultiplicity::MULTI())
+                    ->withDefault(EdgeMultiplicity::MULTI)
                     ->className(EdgeMultiplicity::class)
                     ->overridable(true)
                     ->build(),

@@ -3,26 +3,14 @@ declare(strict_types=1);
 
 namespace Gdbots\Schemas\Ncr\Enum;
 
-use Gdbots\Pbj\Enum;
-
-/**
- * @method static NodeStatus UNKNOWN()
- * @method static NodeStatus PUBLISHED()
- * @method static NodeStatus SCHEDULED()
- * @method static NodeStatus PENDING()
- * @method static NodeStatus DRAFT()
- * @method static NodeStatus EXPIRED()
- * @method static NodeStatus ARCHIVED()
- * @method static NodeStatus DELETED()
- */
-final class NodeStatus extends Enum
+enum NodeStatus: string
 {
-    const UNKNOWN = 'unknown';
-    const PUBLISHED = 'published';
-    const SCHEDULED = 'scheduled';
-    const PENDING = 'pending';
-    const DRAFT = 'draft';
-    const EXPIRED = 'expired';
-    const ARCHIVED = 'archived';
-    const DELETED = 'deleted';
+    case UNKNOWN = 'unknown';
+    case PUBLISHED = 'published';
+    case SCHEDULED = 'scheduled';
+    case PENDING = 'pending';
+    case DRAFT = 'draft';
+    case EXPIRED = 'expired';
+    case ARCHIVED = 'archived';
+    case DELETED = 'deleted';
 }

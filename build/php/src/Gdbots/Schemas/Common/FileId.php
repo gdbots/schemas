@@ -63,7 +63,7 @@ final class FileId implements Identifier
         $this->id = sprintf('%s_%s_%s_%s', $type, $ext, $this->date, $this->uuid);
     }
 
-    public static function fromString(string $string): self
+    public static function fromString(string $string): static
     {
         if (!preg_match(self::VALID_PATTERN, $string, $matches)) {
             throw new AssertionFailed(
@@ -131,7 +131,7 @@ final class FileId implements Identifier
      *
      * @return \DateTimeInterface|string
      */
-    public function getDate(bool $asObject = false)
+    public function getDate(bool $asObject = false): \DateTimeInterface|string
     {
         if ($asObject) {
             return \DateTimeImmutable::createFromFormat('!Ymd', $this->date, new \DateTimeZone('UTC'));
@@ -145,7 +145,7 @@ final class FileId implements Identifier
      *
      * @return UuidIdentifier|string
      */
-    public function getUuid(bool $asObject = false)
+    public function getUuid(bool $asObject = false): UuidIdentifier|string
     {
         if ($asObject) {
             $uuid = [
@@ -171,7 +171,7 @@ final class FileId implements Identifier
         return $this->toString();
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): string
     {
         return $this->toString();
     }

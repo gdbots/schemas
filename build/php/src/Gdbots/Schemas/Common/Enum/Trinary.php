@@ -3,16 +3,9 @@ declare(strict_types=1);
 
 namespace Gdbots\Schemas\Common\Enum;
 
-use Gdbots\Pbj\Enum;
-
-/**
- * @method static Trinary UNKNOWN()
- * @method static Trinary TRUE_VAL()
- * @method static Trinary FALSE_VAL()
- */
-final class Trinary extends Enum
+enum Trinary: int
 {
-    const UNKNOWN = 0;
-    const TRUE_VAL = 1;
-    const FALSE_VAL = 2;
+    case UNKNOWN = 0;
+    case TRUE_VAL = 1;
+    case FALSE_VAL = 2;
 }

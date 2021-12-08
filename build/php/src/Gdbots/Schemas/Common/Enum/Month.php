@@ -3,36 +3,19 @@ declare(strict_types=1);
 
 namespace Gdbots\Schemas\Common\Enum;
 
-use Gdbots\Pbj\Enum;
-
-/**
- * @method static Month UNKNOWN()
- * @method static Month JANUARY()
- * @method static Month FEBRUARY()
- * @method static Month MARCH()
- * @method static Month APRIL()
- * @method static Month MAY()
- * @method static Month JUNE()
- * @method static Month JULY()
- * @method static Month AUGUST()
- * @method static Month SEPTEMBER()
- * @method static Month OCTOBER()
- * @method static Month NOVEMBER()
- * @method static Month DECEMBER()
- */
-final class Month extends Enum
+enum Month: int
 {
-    const UNKNOWN = 0;
-    const JANUARY = 1;
-    const FEBRUARY = 2;
-    const MARCH = 3;
-    const APRIL = 4;
-    const MAY = 5;
-    const JUNE = 6;
-    const JULY = 7;
-    const AUGUST = 8;
-    const SEPTEMBER = 9;
-    const OCTOBER = 10;
-    const NOVEMBER = 11;
-    const DECEMBER = 12;
+    case UNKNOWN = 0;
+    case JANUARY = 1;
+    case FEBRUARY = 2;
+    case MARCH = 3;
+    case APRIL = 4;
+    case MAY = 5;
+    case JUNE = 6;
+    case JULY = 7;
+    case AUGUST = 8;
+    case SEPTEMBER = 9;
+    case OCTOBER = 10;
+    case NOVEMBER = 11;
+    case DECEMBER = 12;
 }

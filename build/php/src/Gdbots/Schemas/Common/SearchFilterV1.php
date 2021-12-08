@@ -28,7 +28,7 @@ final class SearchFilterV1 extends AbstractMessage
                     ->pattern('^[a-zA-Z_]{1}[\w-]*$')
                     ->build(),
                 Fb::create('operator', T\StringEnumType::create())
-                    ->withDefault(ComparisonOperator::EQUAL_TO())
+                    ->withDefault(ComparisonOperator::EQUAL_TO)
                     ->className(ComparisonOperator::class)
                     ->build(),
                 Fb::create('booleans', T\BooleanType::create())

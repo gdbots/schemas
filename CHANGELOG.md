@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v3.0.0
+__BREAKING CHANGES__
+
+* Require `php>=8.1`
+* Require php gdbots/pbj v4.x.
+* Use new php builtin enum instead of custom enum classes.
+* __Modify Schemas:__
+  * `gdbots:ncr:mixin:search-nodes-request` patch revision `1-0-4`
+    * Add `track_total_hits` boolean field.
+
+
 ## v2.1.1
 * __Add Schemas:__
   * `gdbots:iam:mixin:twitter-app`
