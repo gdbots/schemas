@@ -70,7 +70,7 @@ final class GenderFieldV1 extends AbstractMessage
                  * The URL to use for the replaced token "{link}" within the label or description.
                  */
                 Fb::create('link_url', T\StringType::create())
-                    ->format(Format::URL())
+                    ->format(Format::URL)
                     ->build(),
                 Fb::create('pii_impact', T\StringEnumType::create())
                     ->className(PiiImpact::class)

@@ -32,7 +32,7 @@ final class EnvelopeV1 extends AbstractMessage
                     ->withDefault(0)
                     ->build(),
                 Fb::create('http_code', T\IntEnumType::create())
-                    ->withDefault(HttpCode::HTTP_OK())
+                    ->withDefault(HttpCode::HTTP_OK)
                     ->className(HttpCode::class)
                     ->build(),
                 Fb::create('etag', T\StringType::create())

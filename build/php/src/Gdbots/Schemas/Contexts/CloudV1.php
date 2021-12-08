@@ -24,15 +24,15 @@ final class CloudV1 extends AbstractMessage
             [
                 Fb::create('provider', T\StringType::create())
                     ->maxLength(20)
-                    ->format(Format::SLUG())
+                    ->format(Format::SLUG)
                     ->build(),
                 Fb::create('region', T\StringType::create())
                     ->maxLength(20)
-                    ->format(Format::SLUG())
+                    ->format(Format::SLUG)
                     ->build(),
                 Fb::create('zone', T\StringType::create())
                     ->maxLength(20)
-                    ->format(Format::SLUG())
+                    ->format(Format::SLUG)
                     ->build(),
                 Fb::create('instance_id', T\StringType::create())
                     ->maxLength(50)

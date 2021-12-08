@@ -3,24 +3,13 @@ declare(strict_types=1);
 
 namespace Gdbots\Schemas\Common\Enum;
 
-use Gdbots\Pbj\Enum;
-
-/**
- * @method static SexualOrientation UNKNOWN()
- * @method static SexualOrientation HETEROSEXUAL()
- * @method static SexualOrientation HOMOSEXUAL()
- * @method static SexualOrientation BISEXUAL()
- * @method static SexualOrientation OTHER()
- * @method static SexualOrientation NOT_SURE()
- * @method static SexualOrientation NOT_SPECIFIED()
- */
-final class SexualOrientation extends Enum
+enum SexualOrientation: string
 {
-    const UNKNOWN = 'unknown';
-    const HETEROSEXUAL = '1';
-    const HOMOSEXUAL = '2';
-    const BISEXUAL = '3';
-    const OTHER = '4';
-    const NOT_SURE = 'U';
-    const NOT_SPECIFIED = 'Z';
+    case UNKNOWN = 'unknown';
+    case HETEROSEXUAL = '1';
+    case HOMOSEXUAL = '2';
+    case BISEXUAL = '3';
+    case OTHER = '4';
+    case NOT_SURE = 'U';
+    case NOT_SPECIFIED = 'Z';
 }

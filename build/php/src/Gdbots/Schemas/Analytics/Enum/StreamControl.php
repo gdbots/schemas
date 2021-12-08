@@ -3,16 +3,9 @@ declare(strict_types=1);
 
 namespace Gdbots\Schemas\Analytics\Enum;
 
-use Gdbots\Pbj\Enum;
-
-/**
- * @method static StreamControl UNKNOWN()
- * @method static StreamControl CTRL_STOP()
- * @method static StreamControl CTRL_CONTINUE()
- */
-final class StreamControl extends Enum
+enum StreamControl: int
 {
-    const UNKNOWN = 0;
-    const CTRL_STOP = 0;
-    const CTRL_CONTINUE = 1;
+    case UNKNOWN = 0;
+    case CTRL_STOP = 0;
+    case CTRL_CONTINUE = 1;
 }

@@ -20,14 +20,13 @@
 
     <enum name="day-of-week" type="int">
       <option key="UNKNOWN" value="0"/>
-      <option key="SUNDAY" value="0"/>
       <option key="MONDAY" value="1"/>
       <option key="TUESDAY" value="2"/>
       <option key="WEDNESDAY" value="3"/>
       <option key="THURSDAY" value="4"/>
       <option key="FRIDAY" value="5"/>
       <option key="SATURDAY" value="6"/>
-      <option key="SUNDAY_TOO" value="7"/>
+      <option key="SUNDAY" value="7"/>
     </enum>
 
     <!--

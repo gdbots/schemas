@@ -74,7 +74,7 @@ final class StreamId implements Identifier
         }
     }
 
-    public static function fromString(string $string): self
+    public static function fromString(string $string): static
     {
         $okay = strlen($string) < 256;
         Assertion::true($okay, 'StreamId cannot be greater than 255 chars.', 'StreamId');
@@ -136,7 +136,7 @@ final class StreamId implements Identifier
         return $this->toString();
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): string
     {
         return $this->toString();
     }
