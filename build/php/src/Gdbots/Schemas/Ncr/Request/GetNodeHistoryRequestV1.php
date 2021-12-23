@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-history-request/1-0-0.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-history-request/1-0-1.json#
 namespace Gdbots\Schemas\Ncr\Request;
 
 use Gdbots\Pbj\AbstractMessage;
@@ -13,7 +13,7 @@ use Gdbots\Schemas\Pbjx\Mixin\Request\RequestV1Mixin as GdbotsPbjxRequestV1Mixin
 
 final class GetNodeHistoryRequestV1 extends AbstractMessage
 {
-    const SCHEMA_ID = 'pbj:gdbots:ncr:request:get-node-history-request:1-0-0';
+    const SCHEMA_ID = 'pbj:gdbots:ncr:request:get-node-history-request:1-0-1';
     const SCHEMA_CURIE = 'gdbots:ncr:request:get-node-history-request';
     const SCHEMA_CURIE_MAJOR = 'gdbots:ncr:request:get-node-history-request:v1';
     const MIXINS = [
@@ -109,6 +109,15 @@ final class GetNodeHistoryRequestV1 extends AbstractMessage
                  * When true, the events are read from oldest to newest, otherwise newest to oldest.
                  */
                 Fb::create('forward', T\BooleanType::create())
+                    ->build(),
+                Fb::create('topic', T\StringType::create())
+                    ->pattern('^[\w\.-]+$')
+                    ->build(),
+                Fb::create('partition', T\StringType::create())
+                    ->pattern('^[\w\.-]+$')
+                    ->build(),
+                Fb::create('sub_partition', T\StringType::create())
+                    ->pattern('^[\w\.-]+$')
                     ->build(),
             ],
             self::MIXINS

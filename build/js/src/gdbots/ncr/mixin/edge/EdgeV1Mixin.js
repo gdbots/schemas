@@ -1,5 +1,5 @@
-import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId';
-import MessageRef from '@gdbots/pbj/well-known/MessageRef';
+import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId.js';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef.js';
 
 export default function EdgeV1Mixin(M) {
   Object.assign(M.prototype, {

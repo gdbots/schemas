@@ -1,7 +1,7 @@
 import test from 'tape';
-import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
-import UuidIdentifier from '@gdbots/pbj/well-known/UuidIdentifier';
-import FileId from '@gdbots/schemas/gdbots/common/FileId';
+import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed.js';
+import UuidIdentifier from '@gdbots/pbj/well-known/UuidIdentifier.js';
+import FileId from '@gdbots/schemas/gdbots/common/FileId.js';
 
 test('FileId tests', (t) => {
   const id = FileId.fromString('image_jpg_20151201_cb9c3c8c5c88453b960933a59ede6505');

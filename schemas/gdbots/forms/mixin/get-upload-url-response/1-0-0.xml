@@ -15,7 +15,7 @@
           <class-name>FileId::class</class-name>
         </php-options>
         <js-options>
-          <imports>import FileId from '@gdbots/schemas/gdbots/common/FileId';</imports>
+          <imports>import FileId from '@gdbots/schemas/gdbots/common/FileId.js';</imports>
           <class-proto>FileId</class-proto>
         </js-options>
       </field>

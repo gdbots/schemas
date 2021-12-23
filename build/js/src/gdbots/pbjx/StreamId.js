@@ -1,7 +1,7 @@
 import md5 from 'md5';
-import trim from 'lodash/trim';
-import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
-import Identifier from '@gdbots/pbj/well-known/Identifier';
+import trim from 'lodash-es/trim.js';
+import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed.js';
+import Identifier from '@gdbots/pbj/well-known/Identifier.js';
 
 /**
  * Regular expression pattern for matching a valid StreamId string.

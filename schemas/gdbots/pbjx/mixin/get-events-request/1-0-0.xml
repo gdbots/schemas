@@ -11,7 +11,7 @@
           <class-name>StreamId::class</class-name>
         </php-options>
         <js-options>
-          <imports>import StreamId from '@gdbots/schemas/gdbots/pbjx/StreamId';</imports>
+          <imports>import StreamId from '@gdbots/schemas/gdbots/pbjx/StreamId.js';</imports>
           <class-proto>StreamId</class-proto>
         </js-options>
       </field>

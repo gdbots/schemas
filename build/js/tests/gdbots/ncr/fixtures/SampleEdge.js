@@ -1,10 +1,10 @@
-import GdbotsNcrEdgeV1Mixin from '@gdbots/schemas/gdbots/ncr/mixin/edge/EdgeV1Mixin';
-import EdgeMultiplicity from '@gdbots/schemas/gdbots/ncr/enums/EdgeMultiplicity';
-import Fb from '@gdbots/pbj/FieldBuilder';
-import Message from '@gdbots/pbj/Message';
-import MessageResolver from '@gdbots/pbj/MessageResolver';
-import Schema from '@gdbots/pbj/Schema';
-import T from '@gdbots/pbj/types';
+import GdbotsNcrEdgeV1Mixin from '@gdbots/schemas/gdbots/ncr/mixin/edge/EdgeV1Mixin.js';
+import EdgeMultiplicity from '@gdbots/schemas/gdbots/ncr/enums/EdgeMultiplicity.js';
+import Fb from '@gdbots/pbj/FieldBuilder.js';
+import Message from '@gdbots/pbj/Message.js';
+import MessageResolver from '@gdbots/pbj/MessageResolver.js';
+import Schema from '@gdbots/pbj/Schema.js';
+import T from '@gdbots/pbj/types/index.js';
 
 export default class SampleEdge extends Message {
   /**

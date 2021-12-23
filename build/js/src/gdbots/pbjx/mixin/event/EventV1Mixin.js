@@ -1,4 +1,4 @@
-import MessageRef from '@gdbots/pbj/well-known/MessageRef';
+import MessageRef from '@gdbots/pbj/well-known/MessageRef.js';
 
 export default function EventV1Mixin(M) {
   Object.assign(M.prototype, {
