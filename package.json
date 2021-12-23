@@ -21,13 +21,12 @@
     "@gdbots/pbj": "^3.0.0"
   },
   "devDependencies": {
-    "@gdbots/schemas": "file:./build/js/src/",
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.5",
     "@gdbots/pbj": "^3.0.0",
-    "babel-plugin-module-resolver": "^4.0.0",
+    "@gdbots/schemas": "file:./build/js/src/",
     "faucet": "^0.0.1",
     "lodash-es": "^4.17.15",
     "md5": "^2.2.1",
