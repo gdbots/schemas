@@ -1,11 +1,11 @@
 // @link http://schemas.gdbots.io/json-schema/gdbots/forms/field/video-field/1-0-0.json#
-import Fb from '@gdbots/pbj/FieldBuilder';
-import Format from '@gdbots/pbj/enums/Format';
-import GdbotsFormsFieldV1Mixin from '@gdbots/schemas/gdbots/forms/mixin/field/FieldV1Mixin';
-import Message from '@gdbots/pbj/Message';
-import PiiImpact from '@gdbots/schemas/gdbots/forms/enums/PiiImpact';
-import Schema from '@gdbots/pbj/Schema';
-import T from '@gdbots/pbj/types';
+import Fb from '@gdbots/pbj/FieldBuilder.js';
+import Format from '@gdbots/pbj/enums/Format.js';
+import GdbotsFormsFieldV1Mixin from '@gdbots/schemas/gdbots/forms/mixin/field/FieldV1Mixin.js';
+import Message from '@gdbots/pbj/Message.js';
+import PiiImpact from '@gdbots/schemas/gdbots/forms/enums/PiiImpact.js';
+import Schema from '@gdbots/pbj/Schema.js';
+import T from '@gdbots/pbj/types/index.js';
 
 export default class VideoFieldV1 extends Message {
   /**

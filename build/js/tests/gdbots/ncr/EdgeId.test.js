@@ -1,8 +1,8 @@
 import test from 'tape';
-import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
-import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId';
-import NodeRef from '@gdbots/pbj/well-known/NodeRef';
-import SampleEdge from './fixtures/SampleEdge';
+import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed.js';
+import EdgeId from '@gdbots/schemas/gdbots/ncr/EdgeId.js';
+import NodeRef from '@gdbots/pbj/well-known/NodeRef.js';
+import SampleEdge from './fixtures/SampleEdge.js';
 
 
 test('EdgeId tests', (t) => {

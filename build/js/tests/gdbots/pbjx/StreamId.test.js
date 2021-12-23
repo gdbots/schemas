@@ -1,7 +1,7 @@
 import test from 'tape';
-import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
-import StreamId from '@gdbots/schemas/gdbots/pbjx/StreamId';
-import NodeRef from '@gdbots/pbj/well-known/NodeRef';
+import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed.js';
+import StreamId from '@gdbots/schemas/gdbots/pbjx/StreamId.js';
+import NodeRef from '@gdbots/pbj/well-known/NodeRef.js';
 
 
 test('StreamId vendor/topic tests', (t) => {

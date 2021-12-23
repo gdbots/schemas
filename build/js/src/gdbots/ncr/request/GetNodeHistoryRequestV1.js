@@ -1,10 +1,10 @@
-// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-history-request/1-0-0.json#
-import Fb from '@gdbots/pbj/FieldBuilder';
-import Format from '@gdbots/pbj/enums/Format';
-import GdbotsPbjxRequestV1Mixin from '@gdbots/schemas/gdbots/pbjx/mixin/request/RequestV1Mixin';
-import Message from '@gdbots/pbj/Message';
-import Schema from '@gdbots/pbj/Schema';
-import T from '@gdbots/pbj/types';
+// @link http://schemas.gdbots.io/json-schema/gdbots/ncr/request/get-node-history-request/1-0-1.json#
+import Fb from '@gdbots/pbj/FieldBuilder.js';
+import Format from '@gdbots/pbj/enums/Format.js';
+import GdbotsPbjxRequestV1Mixin from '@gdbots/schemas/gdbots/pbjx/mixin/request/RequestV1Mixin.js';
+import Message from '@gdbots/pbj/Message.js';
+import Schema from '@gdbots/pbj/Schema.js';
+import T from '@gdbots/pbj/types/index.js';
 
 export default class GetNodeHistoryRequestV1 extends Message {
   /**
@@ -98,6 +98,15 @@ export default class GetNodeHistoryRequestV1 extends Message {
          */
         Fb.create('forward', T.BooleanType.create())
           .build(),
+        Fb.create('topic', T.StringType.create())
+          .pattern('^[\\w\\.-]+$')
+          .build(),
+        Fb.create('partition', T.StringType.create())
+          .pattern('^[\\w\\.-]+$')
+          .build(),
+        Fb.create('sub_partition', T.StringType.create())
+          .pattern('^[\\w\\.-]+$')
+          .build(),
       ],
       this.MIXINS,
     );
@@ -105,7 +114,7 @@ export default class GetNodeHistoryRequestV1 extends Message {
 }
 
 const M = GetNodeHistoryRequestV1;
-M.prototype.SCHEMA_ID = M.SCHEMA_ID = 'pbj:gdbots:ncr:request:get-node-history-request:1-0-0';
+M.prototype.SCHEMA_ID = M.SCHEMA_ID = 'pbj:gdbots:ncr:request:get-node-history-request:1-0-1';
 M.prototype.SCHEMA_CURIE = M.SCHEMA_CURIE = 'gdbots:ncr:request:get-node-history-request';
 M.prototype.SCHEMA_CURIE_MAJOR = M.SCHEMA_CURIE_MAJOR = 'gdbots:ncr:request:get-node-history-request:v1';
 M.prototype.MIXINS = M.MIXINS = [

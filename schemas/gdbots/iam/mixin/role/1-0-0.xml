@@ -11,7 +11,7 @@
           <class-name>RoleId::class</class-name>
         </php-options>
         <js-options>
-          <imports>import RoleId from '@gdbots/schemas/gdbots/iam/RoleId';</imports>
+          <imports>import RoleId from '@gdbots/schemas/gdbots/iam/RoleId.js';</imports>
           <class-proto>RoleId</class-proto>
         </js-options>
       </field>

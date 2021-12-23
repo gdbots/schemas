@@ -1,6 +1,6 @@
 import { v5 as uuidv5 } from 'uuid';
-import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed';
-import Identifier from '@gdbots/pbj/well-known/Identifier';
+import AssertionFailed from '@gdbots/pbj/exceptions/AssertionFailed.js';
+import Identifier from '@gdbots/pbj/well-known/Identifier.js';
 
 /**
  * For each vendor namespace we create a version 5 uuid

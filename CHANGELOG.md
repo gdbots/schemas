@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v3.0.1
+__BREAKING CHANGES FOR JAVASCRIPT__
+
+We missed updating the npm gdbots/pbj lib in the last release, luckily nothing is using 3.x in js at the time of this release so we're "safe".
+
+* Use node v14.13.1.
+* Use npm gdbots/pbj 3.x.
+* __Modify Schemas:__
+  * `gdbots:ncr:request:get-node-history-request` patch revision `1-0-1`
+    * Add `topic` string field with pattern `^[\w\.-]+$`.
+    * Add `partition` string field with pattern `^[\w\.-]+$`.
+    * Add `sub_partition` string field with pattern `^[\w\.-]+$`.
+  * `gdbots:pbjx:mixin:search-events-request` patch revision `1-0-1`
+    * Add `track_total_hits` boolean field.
+
+
 ## v3.0.0
 __BREAKING CHANGES__
 
