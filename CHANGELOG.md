@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## v3.0.2
+* __Modify Schemas:__
+  * Add new options to enum `gdbots:common:gender`
+    * `<option key="NON_BINARY" value="3"/>`
+
+
 ## v3.0.1
 __BREAKING CHANGES FOR JAVASCRIPT__
 
