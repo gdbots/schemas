@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v3.0.3
+* __Modify Schemas:__
+  * `gdbots:iam:mixin:android-app` patch revision `1-0-4`
+    * Add `fcm_auth_config` text field.
+  * `gdbots:iam:mixin:browser-app` patch revision `1-0-3`
+    * Add `fcm_auth_config` text field.
+  * `gdbots:iam:mixin:ios-app` patch revision `1-0-4`
+    * Add `fcm_auth_config` text field.
+
+
 ## v3.0.2
 * __Modify Schemas:__
   * Add new options to enum `gdbots:common:gender`

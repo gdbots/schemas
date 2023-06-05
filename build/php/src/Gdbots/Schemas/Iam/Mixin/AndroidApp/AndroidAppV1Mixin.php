@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/android-app/1-0-3.json#
+// @link http://schemas.gdbots.io/json-schema/gdbots/iam/mixin/android-app/1-0-4.json#
 namespace Gdbots\Schemas\Iam\Mixin\AndroidApp;
 
 use Gdbots\Pbj\Schema;
