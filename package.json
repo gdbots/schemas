@@ -1,6 +1,6 @@
 {
   "name": "@gdbots/schemas",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Schemas for common Gdbots apps and components.",
   "repository": {
     "type": "git",

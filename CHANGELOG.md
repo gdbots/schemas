@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v3.0.4
+* __Modify Schemas:__
+  * `gdbots:forms:mixin:form` patch revision `1-0-4`
+    * Add `allow_multiple_submissions` boolean field.
+    * Add `captcha_enabled` boolean field.
+  * `gdbots:forms:mixin:send-submission` patch revision `1-0-1`
+    * Add `captcha_token` text field.
+
+
 ## v3.0.3
 * __Modify Schemas:__
   * `gdbots:iam:mixin:android-app` patch revision `1-0-4`
