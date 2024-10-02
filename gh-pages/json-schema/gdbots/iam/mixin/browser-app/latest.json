@@ -176,7 +176,7 @@
       "type": "string",
       "minLength": 0,
       "maxLength": 65535,
-      "description": "The Braze REST API Key (also known as an API Identifier) that is used to authenticate API requests to Braze. This key should be encrypted for storage and decrypted before use in API calls. Handle with the same level of confidentiality as a password."
+      "description": "The Braze REST API Key (also known as an API Identifier) that is used to authenticate API requests to Braze. This key should be encrypted for storage and decrypted before use in API calls."
     }
   },
   "required": [
