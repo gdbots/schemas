@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## v3.0.5
+* __Modify Schemas:__
+  * `gdbots:iam:mixin:browser-app` patch revision `1-0-4`
+    * Add `braze_api_key` text field.
+
+
 ## v3.0.4
 * __Modify Schemas:__
   * `gdbots:forms:mixin:form` patch revision `1-0-4`
