@@ -11,7 +11,7 @@
           @link https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-nodejs-push-notification-tutorial
         </description>
       </field>
-      <field name="azure_notification_hub_name" type="string" pattern="^[\w-]+$"/>
+      <field name="azure_notification_hub_name" type="string" pattern="^[\w\.-]+$"/>
     </fields>
     <php-options>
       <insertion-points>
